@@ -1,0 +1,82 @@
+/*
+给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
+
+有效字符串需满足：
+1. 左括号必须用相同类型的右括号闭合。
+2. 左括号必须以正确的顺序闭合。
+
+示例 1：
+输入：s = "()"
+输出：true
+
+示例 2：
+输入：s = "()[]{}"
+输出：true
+
+示例 3：
+输入：s = "(]"
+输出：false
+
+示例 4：
+输入：s = "([)]"
+输出：false
+
+示例 5：
+输入：s = "{[]}"
+输出：true
+
+提示：
+  1 <= s.length <= 104
+  s 仅由括号 '()[]{}' 组成
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/valid-parentheses
+*/
+/*
+思路：
+1. 如果括号不匹配，就压栈；
+2. 如果匹配，就出栈。
+*/
+
+#include <string>
+#include <stack>
+#include <unordered_map>
+#include <iostream>
+using namespace std;
+
+class Solution
+{
+public:
+    bool isValid(string s)
+    {
+        if (s.size() % 2 == 1)
+        {
+            return false;
+        }
+
+        unordered_map<char, char> pairs = {
+            {')', '('},
+            {']', '['},
+            {'}', '{'}};
+        stack<char> stack;
+        for (char c : s)
+        {
+            if (!stack.empty() && pairs[c] == stack.top())
+            {
+                stack.pop();
+            }
+            else
+            {
+                stack.push(c);
+            }
+        }
+
+        return stack.empty();
+    }
+};
+
+int main()
+{
+    Solution *s = new Solution();
+    cout << boolalpha << s->isValid("()[]{}") << endl;
+}
