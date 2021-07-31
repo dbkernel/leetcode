@@ -1,3 +1,43 @@
+Table of Contents
+=================
+
+   * [第一阶段（7天）](#第一阶段7天)
+      * [纯编程](#纯编程)
+      * [找规律](#找规律)
+   * [第二阶段（7天）](#第二阶段7天)
+      * [链表](#链表)
+      * [栈](#栈)
+   * [第三阶段（7天）](#第三阶段7天)
+      * [递归   分治](#递归--分治)
+      * [排序](#排序)
+   * [第四阶段（7天）](#第四阶段7天)
+      * [二分查找](#二分查找)
+      * [哈希表](#哈希表)
+   * [第五阶段（14天）](#第五阶段14天)
+      * [二叉树](#二叉树)
+         * [题型1：二叉树前中后序遍历](#题型1二叉树前中后序遍历)
+         * [题型2：二叉树按层遍历](#题型2二叉树按层遍历)
+         * [题型3：二叉树上的递归](#题型3二叉树上的递归)
+         * [题型4：二叉查找树](#题型4二叉查找树)
+         * [题型5：LCA最近公共祖先](#题型5lca最近公共祖先)
+         * [题型6：二叉树转单、双、循环链表](#题型6二叉树转单双循环链表)
+         * [题型7：按照遍历结果反向构建二叉树](#题型7按照遍历结果反向构建二叉树)
+         * [题型8：二叉树上的最长路径和](#题型8二叉树上的最长路径和)
+   * [第六阶段（7天）](#第六阶段7天)
+      * [堆](#堆)
+      * [Trie 树](#trie-树)
+   * [第七阶段（7天）](#第七阶段7天)
+      * [回溯](#回溯)
+      * [DFS](#dfs)
+   * [第八阶段（7天）](#第八阶段7天)
+      * [背包：](#背包)
+      * [打家劫舍：](#打家劫舍)
+      * [买卖股票：](#买卖股票)
+   * [第九阶段（7天）](#第九阶段7天)
+      * [双指针](#双指针)
+      * [滑动窗口](#滑动窗口)
+      * [前缀后缀统计](#前缀后缀统计)
+      * [位运算](#位运算)
 
 
 
@@ -229,17 +269,14 @@
 - [ ] [51. N 皇后（困难）](https://leetcode-cn.com/problems/n-queens/)<br>
 - [ ] [37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/)<br>
 - [ ] [17. 电话号码的字母组合 （中等）](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)<br>
-
 - [ ] [77. 组合 （中等） 给n个数返回所有k个数的组合](https://leetcode-cn.com/problems/combinations/)<br>
 - [ ] [78. 子集（中等） 所有的组合](https://leetcode-cn.com/problems/subsets/)<br>
 - [ ] [90. 子集 II（中等）有重复数据](https://leetcode-cn.com/problems/subsets-ii/)<br>
 - [ ] [46. 全排列 （中等） 所有排列](https://leetcode-cn.com/problems/permutations/)<br>
 - [ ] [47. 全排列 II（中等） 有重复数据](https://leetcode-cn.com/problems/permutations-ii/)<br>
-
 - [ ] [39. 组合总和 （中等） 选出某几个数相加为给定和，无重复数据，可以使用多次，不能有重复答案](https://leetcode-cn.com/problems/combination-sum/)<br>
 - [ ] [40. 组合总和 II（中等）选出某几个数相加为给定和，有重复数据，只能使用一次，不能有重复答案](https://leetcode-cn.com/problems/combination-sum-ii/)<br>
 - [ ] [216. 组合总和 III（中等） 选出k个数相加为给定和，没有重复数据，只能使用一次](https://leetcode-cn.com/problems/combination-sum-iii/)<br>
-
 - [ ] [131. 分割回文串（中等）](https://leetcode-cn.com/problems/palindrome-partitioning/)<br>
 - [ ] [93. 复原 IP 地址（中等）](https://leetcode-cn.com/problems/restore-ip-addresses/)<br>
 - [ ] [22. 括号生成（中等） ](https://leetcode-cn.com/problems/generate-parentheses/)<br>
@@ -284,21 +321,16 @@
 - [ ] [122. 买卖股票的最佳时机 II](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/)<br>
 - [ ] [714. 买卖股票的最佳时机含手续](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/)<br>
 - [ ] [309. 最佳买卖股票时机含冷冻期](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/)<br>
-
 - [ ] [300. 最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/)<br>
-
 - [ ] [62. 不同路径](https://leetcode-cn.com/problems/unique-paths/)<br>
 - [ ] [64. 最小路径和](https://leetcode-cn.com/problems/minimum-path-sum/)<br>
 - [ ] [剑指 Offer 47. 礼物的最大价值](https://leetcode-cn.com/problems/li-wu-de-zui-da-jie-zhi-lcof/) <br>
-
 - [ ] [1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/)<br>
 - [ ] [72. 编辑距离 ](https://leetcode-cn.com/problems/edit-distance/)<br>
 - [ ] [10. 正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/)<br>
-
 - [ ] [剑指 Offer 14- I. 剪绳子](https://leetcode-cn.com/problems/jian-sheng-zi-lcof/)<br>
 - [ ] [剑指 Offer 46. 把数字翻译成字符串](https://leetcode-cn.com/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof/)<br>
 - [ ] [139. 单词拆分](https://leetcode-cn.com/problems/word-break/)<br>
-
 - [ ] [437. 路径总和 III](https://leetcode-cn.com/problems/path-sum-iii/)<br>
 
 # 第九阶段（7天）
