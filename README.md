@@ -101,8 +101,9 @@ Table of Contents
   - [03.01-three-in-one-lcci.cpp](InterviewQuestions/03.01-three-in-one-lcci.cpp)
 - [x] [20. 有效的括号（简单）](https://leetcode-cn.com/problems/valid-parentheses/)<br>
   - [0020-valid-parentheses.cpp](Leetcode/0001-0100/0020-valid-parentheses/0020-valid-parentheses.cpp)
-- [ ] [面试题 16.26. 计算器（中等）](https://leetcode-cn.com/problems/calculator-lcci/)<br>
-- [ ] [772. 基本计算器 III（困难 包含括号 力扣会员）](https://leetcode-cn.com/problems/calculator-lcci/)<br>
+- [x] [面试题 16.26. 计算器（中等）](https://leetcode-cn.com/problems/calculator-lcci/)<br>
+  - [16.26-calculator-lcci.cpp](InterviewQuestions/16.26-calculator-lcci.cpp)
+- [ ] [772. 基本计算器 III（困难 包含括号 `力扣会员`）](https://leetcode-cn.com/problems/basic-calculator-iii/)<br>
 - [ ] [1047. 删除字符串中的所有相邻重复项（简单）](https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/)<br>
 - [ ] [面试题 03.05. 栈排序（中等）](https://leetcode-cn.com/problems/sort-of-stacks-lcci/)<br>
 - [ ] [155. 最小栈（简单）](https://leetcode-cn.com/problems/min-stack/)<br>
