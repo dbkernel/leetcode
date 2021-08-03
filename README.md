@@ -108,7 +108,8 @@ Table of Contents
   - [1047-remove-all-adjacent-duplicates-in-string.cpp](Leetcode/1001-1100/1047-remove-all-adjacent-duplicates-in-string/1047-remove-all-adjacent-duplicates-in-string.cpp)
 - [x] [面试题 03.05. 栈排序（中等）](https://leetcode-cn.com/problems/sort-of-stacks-lcci/)<br>
   - [03.05-sort-of-stacks-lcci.cpp](InterviewQuestions/03.05-sort-of-stacks-lcci.cpp)
-- [ ] [155. 最小栈（简单）](https://leetcode-cn.com/problems/min-stack/)<br>
+- [x] [155. 最小栈（简单）](https://leetcode-cn.com/problems/min-stack/)<br>
+  - [0155-min-stack.cpp](Leetcode/0101-0200/0155-min-stack/0155-min-stack.cpp)
 - [ ] [剑指 Offer 31. 栈的压入、弹出序列（中等）](https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/)<br>
 
 **附加题：**
