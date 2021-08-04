@@ -94,7 +94,7 @@ Table of Contents
 ## 栈
 
 - [x] [剑指 Offer 09. 用两个栈实现队列（简单）](https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/)<br>
-  - [09_用两个栈实现队列.cpp](./JianZhiOffer/09_用两个栈实现队列.cpp)
+  - [09-用两个栈实现队列.cpp](./JianZhiOffer/09-用两个栈实现队列.cpp)
 - [x] [225. 用队列实现栈（简单，字节实习，出处）](https://leetcode-cn.com/problems/implement-stack-using-queues/)<br>
   - [0225-implement-stack-using-queues.cpp](Leetcode/0201-0300/0225-implement-stack-using-queues/0225-implement-stack-using-queues.cpp)
 - [x] [面试题 03.01. 三合一（简单）](https://leetcode-cn.com/problems/three-in-one-lcci/)<br>
@@ -110,7 +110,8 @@ Table of Contents
   - [03.05-sort-of-stacks-lcci.cpp](InterviewQuestions/03.05-sort-of-stacks-lcci.cpp)
 - [x] [155. 最小栈（简单）](https://leetcode-cn.com/problems/min-stack/)<br>
   - [0155-min-stack.cpp](Leetcode/0101-0200/0155-min-stack/0155-min-stack.cpp)
-- [ ] [剑指 Offer 31. 栈的压入、弹出序列（中等）](https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/)<br>
+- [x] [剑指 Offer 31. 栈的压入、弹出序列（中等）](https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/)<br>
+  - [31-栈的压入、弹出序列.cpp](JianZhiOffer/31-栈的压入、弹出序列.cpp)
 
 **附加题：**
 - [ ] [739. 每日温度（中等）单调栈](https://leetcode-cn.com/problems/daily-temperatures/)<br>
