@@ -76,7 +76,8 @@ Table of Contents
 
 ## 链表
 
-- [ ] [203. 移除链表元素 （简单）](https://leetcode-cn.com/problems/remove-linked-list-elements/)<br>
+- [x] [203. 移除链表元素 （简单）](https://leetcode-cn.com/problems/remove-linked-list-elements/)<br>
+  - [0203-remove-linked-list-elements.cpp](Leetcode/0201-0300/0203-remove-linked-list-elements/0203-remove-linked-list-elements.cpp)
 - [ ] [876. 链表的中间结点（简单）](https://leetcode-cn.com/problems/middle-of-the-linked-list/)<br>
 - [ ] [83. 删除排序链表中的重复元素（简单）](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)<br>
 - [ ] [2. 两数相加 （中等，腾讯 WXG 21 届秋招）](https://leetcode-cn.com/problems/add-two-numbers/)<br>
