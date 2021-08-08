@@ -78,7 +78,8 @@ Table of Contents
 
 - [x] [203. 移除链表元素 （简单）](https://leetcode-cn.com/problems/remove-linked-list-elements/)<br>
   - [0203-remove-linked-list-elements.cpp](Leetcode/0201-0300/0203-remove-linked-list-elements/0203-remove-linked-list-elements.cpp)
-- [ ] [876. 链表的中间结点（简单）](https://leetcode-cn.com/problems/middle-of-the-linked-list/)<br>
+- [x] [876. 链表的中间结点（简单）](https://leetcode-cn.com/problems/middle-of-the-linked-list/)<br>
+  - [0876-middle-of-the-linked-list.cpp](Leetcode/0801-0900/0876-middle-of-the-linked-list/0876-middle-of-the-linked-list.cpp)
 - [ ] [83. 删除排序链表中的重复元素（简单）](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)<br>
 - [ ] [2. 两数相加 （中等，腾讯 WXG 21 届秋招）](https://leetcode-cn.com/problems/add-two-numbers/)<br>
 - [ ] [剑指 Offer 25. 合并两个排序的链表 （中等）](https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/)<br>

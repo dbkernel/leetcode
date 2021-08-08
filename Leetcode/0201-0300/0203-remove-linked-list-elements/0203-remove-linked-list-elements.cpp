@@ -67,11 +67,13 @@ int main()
 {
     ListNode *head = new ListNode(6);
     ListNode *temp = head;
-    for (int i = 1; i < 8; i++)
+    for (int i = 2; i < 9; i++)
     {
         ListNode *node = new ListNode(i);
         temp->next = node;
+        temp = temp->next;
     }
+    temp->next = nullptr;
     Solution s;
     s.removeElements(head, 6);
     // need free list nodes
