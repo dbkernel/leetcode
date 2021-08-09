@@ -82,7 +82,8 @@ Table of Contents
   - [0876-middle-of-the-linked-list.cpp](Leetcode/0801-0900/0876-middle-of-the-linked-list/0876-middle-of-the-linked-list.cpp)
 - [x] [83. 删除排序链表中的重复元素（简单）](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)<br>
   - [0083-remove-duplicates-from-sorted-list.cpp](Leetcode/0001-0100/0083-remove-duplicates-from-sorted-list/0083-remove-duplicates-from-sorted-list.cpp)
-- [ ] [2. 两数相加 （中等，腾讯 WXG 21 届秋招）](https://leetcode-cn.com/problems/add-two-numbers/)<br>
+- [x] [2. 两数相加 （中等，腾讯笔试题）](https://leetcode-cn.com/problems/add-two-numbers/)<br>
+  - [0002-two-numbers.cpp](Leetcode/0001-0100/0002-two-numbers/0002-two-numbers.cpp)
 - [ ] [剑指 Offer 25. 合并两个排序的链表 （中等）](https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/)<br>
 - [ ] [369. 给单链表加一（中等）](https://leetcode-cn.com/problems/plus-one-linked-list/)<br>
 - [ ] [剑指 Offer 22. 链表中倒数第k个节点 （简单，百度 22 届暑期实习）](https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/)<br>
