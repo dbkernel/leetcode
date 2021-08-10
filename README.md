@@ -84,7 +84,8 @@ Table of Contents
   - [0083-remove-duplicates-from-sorted-list.cpp](Problems/0001-0100/0083-remove-duplicates-from-sorted-list/0083-remove-duplicates-from-sorted-list.cpp)
 - [x] [2. 两数相加 （中等，腾讯笔试题）](https://leetcode-cn.com/problems/add-two-numbers/)<br>
   - [0002-two-numbers.cpp](Problems/0001-0100/0002-two-numbers/0002-two-numbers.cpp)
-- [ ] [剑指 Offer 25. 合并两个排序的链表 （中等）](https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/)<br>
+- [x] [剑指 Offer 25. 合并两个排序的链表 （中等）](https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/)<br>
+  - [25-合并两个排序的链表.cpp](JianZhiOffer/25-合并两个排序的链表.cpp)
 - [ ] [369. 给单链表加一（中等）](https://leetcode-cn.com/problems/plus-one-linked-list/)<br>
 - [ ] [剑指 Offer 22. 链表中倒数第k个节点 （简单，百度 22 届暑期实习）](https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/)<br>
 - [ ] [19. 删除链表的倒数第 N 个结点 （中等）](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)<br>
