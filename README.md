@@ -77,13 +77,13 @@ Table of Contents
 ## 链表
 
 - [x] [203. 移除链表元素 （简单）](https://leetcode-cn.com/problems/remove-linked-list-elements/)<br>
-  - [0203-remove-linked-list-elements.cpp](Leetcode/0201-0300/0203-remove-linked-list-elements/0203-remove-linked-list-elements.cpp)
+  - [0203-remove-linked-list-elements.cpp](Problems/0201-0300/0203-remove-linked-list-elements/0203-remove-linked-list-elements.cpp)
 - [x] [876. 链表的中间结点（简单）](https://leetcode-cn.com/problems/middle-of-the-linked-list/)<br>
-  - [0876-middle-of-the-linked-list.cpp](Leetcode/0801-0900/0876-middle-of-the-linked-list/0876-middle-of-the-linked-list.cpp)
+  - [0876-middle-of-the-linked-list.cpp](Problems/0801-0900/0876-middle-of-the-linked-list/0876-middle-of-the-linked-list.cpp)
 - [x] [83. 删除排序链表中的重复元素（简单）](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)<br>
-  - [0083-remove-duplicates-from-sorted-list.cpp](Leetcode/0001-0100/0083-remove-duplicates-from-sorted-list/0083-remove-duplicates-from-sorted-list.cpp)
+  - [0083-remove-duplicates-from-sorted-list.cpp](Problems/0001-0100/0083-remove-duplicates-from-sorted-list/0083-remove-duplicates-from-sorted-list.cpp)
 - [x] [2. 两数相加 （中等，腾讯笔试题）](https://leetcode-cn.com/problems/add-two-numbers/)<br>
-  - [0002-two-numbers.cpp](Leetcode/0001-0100/0002-two-numbers/0002-two-numbers.cpp)
+  - [0002-two-numbers.cpp](Problems/0001-0100/0002-two-numbers/0002-two-numbers.cpp)
 - [ ] [剑指 Offer 25. 合并两个排序的链表 （中等）](https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/)<br>
 - [ ] [369. 给单链表加一（中等）](https://leetcode-cn.com/problems/plus-one-linked-list/)<br>
 - [ ] [剑指 Offer 22. 链表中倒数第k个节点 （简单，百度 22 届暑期实习）](https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/)<br>
@@ -100,20 +100,20 @@ Table of Contents
 - [x] [剑指 Offer 09. 用两个栈实现队列（简单）](https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/)<br>
   - [09-用两个栈实现队列.cpp](./JianZhiOffer/09-用两个栈实现队列.cpp)
 - [x] [225. 用队列实现栈（简单，字节实习，出处）](https://leetcode-cn.com/problems/implement-stack-using-queues/)<br>
-  - [0225-implement-stack-using-queues.cpp](Leetcode/0201-0300/0225-implement-stack-using-queues/0225-implement-stack-using-queues.cpp)
+  - [0225-implement-stack-using-queues.cpp](Problems/0201-0300/0225-implement-stack-using-queues/0225-implement-stack-using-queues.cpp)
 - [x] [面试题 03.01. 三合一（简单）](https://leetcode-cn.com/problems/three-in-one-lcci/)<br>
   - [03.01-three-in-one-lcci.cpp](InterviewQuestions/03.01-three-in-one-lcci.cpp)
 - [x] [20. 有效的括号（简单）](https://leetcode-cn.com/problems/valid-parentheses/)<br>
-  - [0020-valid-parentheses.cpp](Leetcode/0001-0100/0020-valid-parentheses/0020-valid-parentheses.cpp)
+  - [0020-valid-parentheses.cpp](Problems/0001-0100/0020-valid-parentheses/0020-valid-parentheses.cpp)
 - [x] [面试题 16.26. 计算器（中等）](https://leetcode-cn.com/problems/calculator-lcci/)<br>
   - [16.26-calculator-lcci.cpp](InterviewQuestions/16.26-calculator-lcci.cpp)
 - [ ] [772. 基本计算器 III（困难 包含括号）](https://leetcode-cn.com/problems/basic-calculator-iii/)[`力扣会员`]<br>
 - [x] [1047. 删除字符串中的所有相邻重复项（简单）](https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/)<br>
-  - [1047-remove-all-adjacent-duplicates-in-string.cpp](Leetcode/1001-1100/1047-remove-all-adjacent-duplicates-in-string/1047-remove-all-adjacent-duplicates-in-string.cpp)
+  - [1047-remove-all-adjacent-duplicates-in-string.cpp](Problems/1001-1100/1047-remove-all-adjacent-duplicates-in-string/1047-remove-all-adjacent-duplicates-in-string.cpp)
 - [x] [面试题 03.05. 栈排序（中等）](https://leetcode-cn.com/problems/sort-of-stacks-lcci/)<br>
   - [03.05-sort-of-stacks-lcci.cpp](InterviewQuestions/03.05-sort-of-stacks-lcci.cpp)
 - [x] [155. 最小栈（简单）](https://leetcode-cn.com/problems/min-stack/)<br>
-  - [0155-min-stack.cpp](Leetcode/0101-0200/0155-min-stack/0155-min-stack.cpp)
+  - [0155-min-stack.cpp](Problems/0101-0200/0155-min-stack/0155-min-stack.cpp)
 - [x] [剑指 Offer 31. 栈的压入、弹出序列（中等）](https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/)<br>
   - [31-栈的压入、弹出序列.cpp](JianZhiOffer/31-栈的压入、弹出序列.cpp)
 
