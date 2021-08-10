@@ -86,8 +86,13 @@ Table of Contents
   - [0002-two-numbers.cpp](Problems/0001-0100/0002-two-numbers/0002-two-numbers.cpp)
 - [x] [剑指 Offer 25. 合并两个排序的链表 （中等）](https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/)<br>
   - [25-合并两个排序的链表.cpp](JianZhiOffer/25-合并两个排序的链表.cpp)
-- [ ] [369. 给单链表加一（中等）](https://leetcode-cn.com/problems/plus-one-linked-list/)<br>
-- [ ] [剑指 Offer 22. 链表中倒数第k个节点 （简单，百度 22 届暑期实习）](https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/)<br>
+- [ ] [369. 给单链表加一（中等）](https://leetcode-cn.com/problems/plus-one-linked-list/)`力扣会员`<br>
+>**题目：** 比如链表[6,8,1,9]，加1后，为[6,8,2,0]
+>
+>**思路：** 先翻转链表为[9,1,8,6]，就可以对9加1，之后根据按照从左往右的顺序进位，直到无位可进，之后再次翻转链表。
+
+- [x] [剑指 Offer 22. 链表中倒数第k个节点 （简单，百度笔试题）](https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/)<br>
+  - [22-链表中倒数第k个节点.cpp](JianZhiOffer/22-链表中倒数第k个节点.cpp)
 - [ ] [19. 删除链表的倒数第 N 个结点 （中等）](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)<br>
 - [ ] [160. 相交链表（简单，新华智云 22 届暑期实习）](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)<br>
 - [ ] [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode-cn.com/problems/linked-list-cycle/)<br>
