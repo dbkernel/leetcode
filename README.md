@@ -93,7 +93,8 @@ Table of Contents
 
 - [x] [剑指 Offer 22. 链表中倒数第k个节点 （简单，百度笔试题）](https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/)<br>
   - [22-链表中倒数第k个节点.cpp](JianZhiOffer/22-链表中倒数第k个节点.cpp)
-- [ ] [19. 删除链表的倒数第 N 个结点 （中等）](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)<br>
+- [x] [19. 删除链表的倒数第 N 个结点 （中等）](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)<br>
+  - [0019-remove-nth-node-from-end-of-list.cpp](Problems/0001-0100/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.cpp)
 - [ ] [160. 相交链表（简单，新华智云 22 届暑期实习）](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)<br>
 - [ ] [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode-cn.com/problems/linked-list-cycle/)<br>
 - [ ] [206. 反转链表 （中等，阿里云存储 22 届暑期实习，出处）](https://leetcode-cn.com/problems/reverse-linked-list/)<br>
