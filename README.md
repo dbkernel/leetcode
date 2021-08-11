@@ -97,7 +97,8 @@ Table of Contents
   - [0019-remove-nth-node-from-end-of-list.cpp](Problems/0001-0100/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.cpp)
 - [x] [160. 相交链表（简单，新华智云笔试题）](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)`步骤简单，但思路清奇`<br>
   - [0160-intersection-of-two-linked-lists.cpp](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.cpp)
-- [ ] [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode-cn.com/problems/linked-list-cycle/)<br>
+- [x] [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode-cn.com/problems/linked-list-cycle/)<br>
+  - [0141-linked-list-cycle.cpp](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.cpp)
 - [ ] [206. 反转链表 （中等，阿里云存储 22 届暑期实习，出处）](https://leetcode-cn.com/problems/reverse-linked-list/)<br>
 - [ ] [234. 回文链表 （中等，蚂蚁金服社招，我当年被Google同事面到的）](https://leetcode-cn.com/problems/palindrome-linked-list/)<br>
 - [ ] [328. 奇偶链表（中等，腾讯 WXG 21 届秋招](https://leetcode-cn.com/problems/odd-even-linked-list/)<br>
