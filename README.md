@@ -95,7 +95,8 @@ Table of Contents
   - [22-链表中倒数第k个节点.cpp](JianZhiOffer/22-链表中倒数第k个节点.cpp)
 - [x] [19. 删除链表的倒数第 N 个结点 （中等）](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)<br>
   - [0019-remove-nth-node-from-end-of-list.cpp](Problems/0001-0100/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.cpp)
-- [ ] [160. 相交链表（简单，新华智云 22 届暑期实习）](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)<br>
+- [x] [160. 相交链表（简单，新华智云笔试题）](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)`步骤简单，但思路清奇`<br>
+  - [0160-intersection-of-two-linked-lists.cpp](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.cpp)
 - [ ] [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode-cn.com/problems/linked-list-cycle/)<br>
 - [ ] [206. 反转链表 （中等，阿里云存储 22 届暑期实习，出处）](https://leetcode-cn.com/problems/reverse-linked-list/)<br>
 - [ ] [234. 回文链表 （中等，蚂蚁金服社招，我当年被Google同事面到的）](https://leetcode-cn.com/problems/palindrome-linked-list/)<br>

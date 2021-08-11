@@ -73,7 +73,6 @@ ListNode *createList(int start, int end)
 
 int main()
 {
-
     ListNode *l1 = createList(1, 8);
     ListNode *l2 = createList(3, 12);
     Solution s;
