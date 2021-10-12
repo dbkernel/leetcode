@@ -99,9 +99,10 @@ Table of Contents
   - [0160-intersection-of-two-linked-lists.cpp](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.cpp)
 - [x] [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode-cn.com/problems/linked-list-cycle/)<br>
   - [0141-linked-list-cycle.cpp](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.cpp)
-- [x] [206. 反转链表 （中等，阿里云笔试题）](https://leetcode-cn.com/problems/reverse-linked-list/)<br>
+- [x] [206. 反转链表 （中等，阿里云笔试题）](https://leetcode-cn.com/problems/reverse-linked-list/)`重点复习`<br>
   - [0206-reverse-linked-list.cpp](Problems/0201-0300/0206-reverse-linked-list/0206-reverse-linked-list.cpp)
-- [ ] [234. 回文链表 （中等，蚂蚁金服笔试题）](https://leetcode-cn.com/problems/palindrome-linked-list/)<br>
+- [x] [234. 回文链表 （中等，蚂蚁金服笔试题）](https://leetcode-cn.com/problems/palindrome-linked-list/)`重点复习`<br>
+  - [0234-palindrome-linked-list.cpp](Problems/0201-0300/0234-palindrome-linked-list/0234-palindrome-linked-list.cpp)
 - [ ] [328. 奇偶链表（中等，腾讯笔试题](https://leetcode-cn.com/problems/odd-even-linked-list/)<br>
 - [ ] [25. K 个一组翻转链表（困难，腾讯笔试题）](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)<br>
 
