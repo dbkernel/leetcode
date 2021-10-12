@@ -103,7 +103,8 @@ Table of Contents
   - [0206-reverse-linked-list.cpp](Problems/0201-0300/0206-reverse-linked-list/0206-reverse-linked-list.cpp)
 - [x] [234. 回文链表 （中等，蚂蚁金服笔试题）](https://leetcode-cn.com/problems/palindrome-linked-list/)`重点复习`<br>
   - [0234-palindrome-linked-list.cpp](Problems/0201-0300/0234-palindrome-linked-list/0234-palindrome-linked-list.cpp)
-- [ ] [328. 奇偶链表（中等，腾讯笔试题](https://leetcode-cn.com/problems/odd-even-linked-list/)<br>
+- [x] [328. 奇偶链表（中等，腾讯笔试题](https://leetcode-cn.com/problems/odd-even-linked-list/)`典型`<br>
+  - [0328-odd-even-linked-list.cpp](Problems/0301-0400/0328-odd-even-linked-list/0328-odd-even-linked-list.cpp)
 - [ ] [25. K 个一组翻转链表（困难，腾讯笔试题）](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)<br>
 
 ## 栈
