@@ -105,7 +105,8 @@ Table of Contents
   - [0234-palindrome-linked-list.cpp](Problems/0201-0300/0234-palindrome-linked-list/0234-palindrome-linked-list.cpp)
 - [x] [328. 奇偶链表（中等，腾讯笔试题](https://leetcode-cn.com/problems/odd-even-linked-list/)`典型`<br>
   - [0328-odd-even-linked-list.cpp](Problems/0301-0400/0328-odd-even-linked-list/0328-odd-even-linked-list.cpp)
-- [ ] [25. K 个一组翻转链表（困难，腾讯笔试题）](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)<br>
+- [x] [25. K 个一组翻转链表（困难，腾讯笔试题）](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)`很好，但并不难`<br>
+  - [0025-reverse-nodes-in-k-group.cpp](Problems/0001-0100/0025-reverse-nodes-in-k-group/0025-reverse-nodes-in-k-group.cpp)
 
 ## 栈
 
@@ -250,18 +251,21 @@ Table of Contents
 - [ ] [剑指 Offer 68 - I. 二叉搜索树的最近公共祖先（中等） ](https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/)<br>
 
 ### 题型6：二叉树转单、双、循环链表
+
 - [ ] [114. 二叉树展开为链表（中等）](https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/)<br>
 - [ ] [面试题 17.12. BiNode（中等）](https://leetcode-cn.com/problems/binode-lcci/)<br>
 - [ ] [剑指 Offer 36. 二叉搜索树与双向链表（中等）](https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/)<br>
 - [ ] [面试题 04.03. 特定深度节点链表（中等）](https://leetcode-cn.com/problems/list-of-depth-lcci/)<br>
 
 ### 题型7：按照遍历结果反向构建二叉树
+
 - [ ] [105. 从前序与中序遍历序列构造二叉树（中等）](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)<br>
 - [ ] [889. 根据前序和后序遍历构造二叉树（中等）](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/)<br>
 - [ ] [106. 从中序与后序遍历序列构造二叉树（中等）](https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)<br>
 - [ ] [剑指 Offer 33. 二叉搜索树的后序遍历序列（中等）](https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/)<br>
 
 ### 题型8：二叉树上的最长路径和
+
 - [ ] [剑指 Offer 34. 二叉树中和为某一值的路径（中等）](https://leetcode-cn.com/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/)<br>
 - [ ] [124. 二叉树中的最大路径和 （困难）](https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/)<br>
 - [ ] [437. 路径总和 III （困难）](https://leetcode-cn.com/problems/path-sum-iii/)<br>
@@ -286,6 +290,7 @@ Table of Contents
 # 第七阶段（7天）
 
 ## 回溯
+
 - [ ] [面试题 08.12. 八皇后（困难）](https://leetcode-cn.com/problems/eight-queens-lcci/)<br>
 - [ ] [51. N 皇后（困难）](https://leetcode-cn.com/problems/n-queens/)<br>
 - [ ] [37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/)<br>
@@ -302,8 +307,8 @@ Table of Contents
 - [ ] [93. 复原 IP 地址（中等）](https://leetcode-cn.com/problems/restore-ip-addresses/)<br>
 - [ ] [22. 括号生成（中等） ](https://leetcode-cn.com/problems/generate-parentheses/)<br>
 
-
 ## DFS
+
 - [ ] [剑指 Offer 13. 机器人的运动范围（中等）](https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/)<br>
 - [ ] [面试题 08.10. 颜色填充（简单）](https://leetcode-cn.com/problems/color-fill-lcci/)<br>
 - [ ] [面试题 04.01. 节点间通路（中等）](https://leetcode-cn.com/problems/route-between-nodes-lcci/)<br>
@@ -325,6 +330,7 @@ Table of Contents
 # 第八阶段（7天）
 
 ## 背包：
+
 - [ ] [416. 分割等和子集](https://leetcode-cn.com/problems/partition-equal-subset-sum/)<br>
 - [ ] [494. 目标和](https://leetcode-cn.com/problems/target-sum/)<br>
 - [ ] [279. 完全平方数](https://leetcode-cn.com/problems/perfect-squares/)<br>
@@ -333,11 +339,13 @@ Table of Contents
 - [ ] [377. 组合总和 Ⅳ](https://leetcode-cn.com/problems/combination-sum-iv/)<br>
 
 ## 打家劫舍：
+
 - [ ] [198. 打家劫舍](https://leetcode-cn.com/problems/house-robber/)<br>
 - [ ] [337. 打家劫舍 III  ](https://leetcode-cn.com/problems/house-robber-iii/)<br>
 - [ ] [面试题 17.16. 按摩师](https://leetcode-cn.com/problems/the-masseuse-lcci/)<br>
 
 ## 买卖股票：
+
 - [ ] [121. 买卖股票的最佳时机](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/)<br>
 - [ ] [122. 买卖股票的最佳时机 II](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/)<br>
 - [ ] [714. 买卖股票的最佳时机含手续](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/)<br>
@@ -357,6 +365,7 @@ Table of Contents
 # 第九阶段（7天）
 
 ## 双指针
+
 - [ ] [344. 反转字符串](https://leetcode-cn.com/problems/reverse-string/)<br>
 - [ ] [面试题 16.24. 数对和（例题1）](https://leetcode-cn.com/problems/pairs-with-sum-lcci/)<br>
 - [ ] [1. 两数之和](https://leetcode-cn.com/problems/two-sum/)<br>
@@ -368,18 +377,21 @@ Table of Contents
 - [ ] [面试题 17.11. 单词距离 类似合并两个有序数组](https://leetcode-cn.com/problems/find-closest-lcci/)<br>
 
 ## 滑动窗口
+
 - [ ] [剑指 Offer 57 - II. 和为s的连续正数序列 （例题1）](https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/)<br>
 - [ ] [剑指 Offer 48. 最长不含重复字符的子字符串 （例题2）](https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/)<br>
 - [ ] [438. 找到字符串中所有字母异位词 ](https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/)<br>
 - [ ] [76. 最小覆盖子串 ](https://leetcode-cn.com/problems/minimum-window-substring/)<br>
 
 ## 前缀后缀统计
+
 - [ ] [53. 最大子序和](https://leetcode-cn.com/problems/maximum-subarray/)<br>
 - [ ] [238. 除自身以外数组的乘积](https://leetcode-cn.com/problems/product-of-array-except-self/)<br>
 - [ ] [面试题 05.03. 翻转数位](https://leetcode-cn.com/problems/reverse-bits-lcci/)<br>
 - [ ] [42. 接雨水](https://leetcode-cn.com/problems/trapping-rain-water/)<br>
 
 ## 位运算
+
 - [ ] [191. 位1的个数 （例题1）](https://leetcode-cn.com/problems/number-of-1-bits/)<br>
 - [ ] [461. 汉明距离（例题2）](https://leetcode-cn.com/problems/hamming-distance/)<br>
 - [ ] [面试题 05.06. 整数转换](https://leetcode-cn.com/problems/convert-integer-lcci/)<br>
