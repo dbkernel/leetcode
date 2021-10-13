@@ -67,9 +67,11 @@ public:
             dummy->next = cur;
             cur = temp;
         }
-        // free node dummy
+
+        // free dummy node
         ListNode *res = dummy->next;
         delete dummy;
+
         return res;
     }
 
@@ -102,7 +104,7 @@ public:
         // 接上最后一组节点数小于k的子链表
         tail->next = start;
 
-        // free node dummy
+        // free dummy node
         ListNode *res = dummy->next;
         delete dummy;
         return res;
