@@ -143,8 +143,10 @@ Table of Contents
 
 ## 递归 + 分治
 
-- [ ] [剑指 Offer 10- I. 斐波那契数列 （简单）](https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof/)<br>
-- [ ] [剑指 Offer 10- II. 青蛙跳台阶问题（简单）](https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/)<br>
+- [x] [剑指 Offer 10- I. 斐波那契数列 （简单）](https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof/)`矩阵方式比较难理解`<br>
+  - [10-1-斐波那契数列.cpp](JianZhiOffer/10-1-斐波那契数列.cpp)
+- [x] [剑指 Offer 10- II. 青蛙跳台阶问题（简单）](https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/)`类似斐波那契`<br>
+  - [10-2-青蛙跳台阶问题.cpp](JianZhiOffer/10-2-青蛙跳台阶问题.cpp)
 - [ ] [面试题 08.01. 三步问题 （简单）](https://leetcode-cn.com/problems/three-steps-problem-lcci/)<br>
 - [ ] [剑指 Offer 06. 从尾到头打印链表 （简单）](https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/)<br>
 - [ ] [剑指 Offer 24. 反转链表 （简单）](https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/)<br>
