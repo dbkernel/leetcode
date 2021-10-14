@@ -155,7 +155,8 @@ Table of Contents
 
 ## 排序
 
-- [ ] [面试题 10.01. 合并排序的数组 （简单）](https://leetcode-cn.com/problems/sorted-merge-lcci/)<br>
+- [x] [面试题 10.01. 合并排序的数组 （简单）](https://leetcode-cn.com/problems/sorted-merge-lcci/)`要用巧妙的方法`<br>
+  - [10.01-sorted-merge-lcci.cpp](InterviewQuestions/10.01-sorted-merge-lcci.cpp)
 - [ ] [21. 合并两个有序链表 （简单）](https://leetcode-cn.com/problems/merge-two-sorted-lists/)<br>
 - [ ] [242. 有效的字母异位词（简单）](https://leetcode-cn.com/problems/valid-anagram/)<br>
 - [ ] [1502. 判断能否形成等差数列（简单）](https://leetcode-cn.com/problems/can-make-arithmetic-progression-from-sequence/)<br>
