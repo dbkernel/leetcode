@@ -157,7 +157,9 @@ Table of Contents
 
 - [x] [面试题 10.01. 合并排序的数组 （简单）](https://leetcode-cn.com/problems/sorted-merge-lcci/)`要用巧妙的方法`<br>
   - [10.01-sorted-merge-lcci.cpp](InterviewQuestions/10.01-sorted-merge-lcci.cpp)
-- [ ] [21. 合并两个有序链表 （简单）](https://leetcode-cn.com/problems/merge-two-sorted-lists/)<br>
+- [x] [21. 合并两个有序链表 （简单）](https://leetcode-cn.com/problems/merge-two-sorted-lists/)<br>
+  - [与剑指Offer 25-合并两个排序的链表.cpp 一致](JianZhiOffer/25-合并两个排序的链表.cpp)
+  - [0021-merge-two-sorted-lists.cpp](Problems/0001-0100/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.cpp)
 - [ ] [242. 有效的字母异位词（简单）](https://leetcode-cn.com/problems/valid-anagram/)<br>
 - [ ] [1502. 判断能否形成等差数列（简单）](https://leetcode-cn.com/problems/can-make-arithmetic-progression-from-sequence/)<br>
 - [ ] [252. 会议室 （简单）](https://leetcode-cn.com/problems/meeting-rooms/)<br>
