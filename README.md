@@ -86,7 +86,7 @@ Table of Contents
   - [0002-two-numbers.cpp](Problems/0001-0100/0002-two-numbers/0002-two-numbers.cpp)
 - [x] [剑指 Offer 25. 合并两个排序的链表 （中等）](https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/)<br>
   - [25-合并两个排序的链表.cpp](JianZhiOffer/25-合并两个排序的链表.cpp)
-- [ ] [369. 给单链表加一（中等）](https://leetcode-cn.com/problems/plus-one-linked-list/)`力扣会员`<br>
+- [ ] [369. 给单链表加一（中等）力扣会员](https://leetcode-cn.com/problems/plus-one-linked-list/)<br>
 >**题目：** 比如链表[6,8,1,9]，加1后，为[6,8,2,0]
 >
 >**思路：** 先翻转链表为[9,1,8,6]，就可以对9加1，之后根据按照从左往右的顺序进位，直到无位可进，之后再次翻转链表。
@@ -120,7 +120,7 @@ Table of Contents
   - [0020-valid-parentheses.cpp](Problems/0001-0100/0020-valid-parentheses/0020-valid-parentheses.cpp)
 - [x] [面试题 16.26. 计算器（中等）](https://leetcode-cn.com/problems/calculator-lcci/)<br>
   - [16.26-calculator-lcci.cpp](InterviewQuestions/16.26-calculator-lcci.cpp)
-- [ ] [772. 基本计算器 III（困难 包含括号）](https://leetcode-cn.com/problems/basic-calculator-iii/)[`力扣会员`]<br>
+- [ ] [772. 基本计算器 III（困难 包含括号）力扣会员](https://leetcode-cn.com/problems/basic-calculator-iii/)<br>
 - [x] [1047. 删除字符串中的所有相邻重复项（简单）](https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/)<br>
   - [1047-remove-all-adjacent-duplicates-in-string.cpp](Problems/1001-1100/1047-remove-all-adjacent-duplicates-in-string/1047-remove-all-adjacent-duplicates-in-string.cpp)
 - [x] [面试题 03.05. 栈排序（中等）](https://leetcode-cn.com/problems/sort-of-stacks-lcci/)<br>
@@ -162,11 +162,12 @@ Table of Contents
   - [0021-merge-two-sorted-lists.cpp](Problems/0001-0100/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.cpp)
 - [x] [242. 有效的字母异位词（简单）](https://leetcode-cn.com/problems/valid-anagram/)`需要字母数组来计数`<br>
   - [0242-valid-anagram.cpp](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.cpp)
-- [x] [1502. 判断能否形成等差数列（简单）](https://leetcode-cn.com/problems/can-make-arithmetic-progression-from-sequence/) 先排序后判断<br>
+- [x] [1502. 判断能否形成等差数列（简单）](https://leetcode-cn.com/problems/can-make-arithmetic-progression-from-sequence/)先排序后判断<br>
   - [1502-can-make-arithmetic-progression-from-sequence.cpp](Problems/1501-1600/1502-can-make-arithmetic-progression-from-sequence/1502-can-make-arithmetic-progression-from-sequence.cpp)
-- [ ] [252. 会议室 （简单）](https://leetcode-cn.com/problems/meeting-rooms/)<br>
+- [ ] [252. 会议室 （简单）力扣会员](https://leetcode-cn.com/problems/meeting-rooms/)<br>
 - [ ] [56. 合并区间（中等） ](https://leetcode-cn.com/problems/merge-intervals/)<br>
-- [ ] [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 （简单）](https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/)<br>
+- [x] [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 （简单）](https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/)`双指针法`<br>
+  - [21-调整数组顺序使奇数位于偶数前面.cpp](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.cpp)
 - [ ] [75. 颜色分类（中等）](https://leetcode-cn.com/problems/sort-colors/)<br>
 - [ ] [147. 对链表进行插入排序（中等）](https://leetcode-cn.com/problems/insertion-sort-list/)<br>
 - [ ] [148. 排序链表（中等） 链表上的归并排序](https://leetcode-cn.com/problems/sort-list/)<br>
