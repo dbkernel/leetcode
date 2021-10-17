@@ -155,7 +155,7 @@ Table of Contents
 
 ## 排序
 
-- [x] [面试题 10.01. 合并排序的数组 （简单）](https://leetcode-cn.com/problems/sorted-merge-lcci/)`要用巧妙的方法`<br>
+- [x] [面试题 10.01. 合并排序的数组 （简单）](https://leetcode-cn.com/problems/sorted-merge-lcci/)`非常巧妙`<br>
   - [10.01-sorted-merge-lcci.cpp](InterviewQuestions/10.01-sorted-merge-lcci.cpp)
 - [x] [21. 合并两个有序链表 （简单）](https://leetcode-cn.com/problems/merge-two-sorted-lists/)<br>
   - [与剑指Offer 25-合并两个排序的链表.cpp 一致](JianZhiOffer/25-合并两个排序的链表.cpp)
@@ -167,9 +167,10 @@ Table of Contents
 - [ ] [252. 会议室 （简单）力扣会员](https://leetcode-cn.com/problems/meeting-rooms/)<br>
 - [x] [56. 合并区间（中等） ](https://leetcode-cn.com/problems/merge-intervals/)`先按区间左值排序，再判断是否需要合并`<br>
   - [0056-merge-intervals.cpp](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.cpp)
-- [x] [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 （简单）](https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/)`首尾双指针法`<br>
+- [x] [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 （简单）](https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/)`首尾双指针法，非常巧妙`<br>
   - [21-调整数组顺序使奇数位于偶数前面.cpp](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.cpp)
-- [ ] [75. 颜色分类（中等）](https://leetcode-cn.com/problems/sort-colors/)<br>
+- [x] [75. 颜色分类（中等）](https://leetcode-cn.com/problems/sort-colors/)`首尾双指针法，非常巧妙`**【精品】**<br>
+  - [0075-sort-colors.cpp](Problems/0001-0100/0075-sort-colors/0075-sort-colors.cpp)
 - [ ] [147. 对链表进行插入排序（中等）](https://leetcode-cn.com/problems/insertion-sort-list/)<br>
 - [ ] [148. 排序链表（中等） 链表上的归并排序](https://leetcode-cn.com/problems/sort-list/)<br>
 - [ ] [215. 数组中的第K个最大元素（中等） ](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)<br>
