@@ -165,8 +165,9 @@ Table of Contents
 - [x] [1502. 判断能否形成等差数列（简单）](https://leetcode-cn.com/problems/can-make-arithmetic-progression-from-sequence/)先排序后判断<br>
   - [1502-can-make-arithmetic-progression-from-sequence.cpp](Problems/1501-1600/1502-can-make-arithmetic-progression-from-sequence/1502-can-make-arithmetic-progression-from-sequence.cpp)
 - [ ] [252. 会议室 （简单）力扣会员](https://leetcode-cn.com/problems/meeting-rooms/)<br>
-- [ ] [56. 合并区间（中等） ](https://leetcode-cn.com/problems/merge-intervals/)<br>
-- [x] [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 （简单）](https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/)`双指针法`<br>
+- [x] [56. 合并区间（中等） ](https://leetcode-cn.com/problems/merge-intervals/)`先按区间左值排序，再判断是否需要合并`<br>
+  - [0056-merge-intervals.cpp](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.cpp)
+- [x] [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 （简单）](https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/)`首尾双指针法`<br>
   - [21-调整数组顺序使奇数位于偶数前面.cpp](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.cpp)
 - [ ] [75. 颜色分类（中等）](https://leetcode-cn.com/problems/sort-colors/)<br>
 - [ ] [147. 对链表进行插入排序（中等）](https://leetcode-cn.com/problems/insertion-sort-list/)<br>
