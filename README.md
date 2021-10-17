@@ -173,9 +173,19 @@ Table of Contents
   - [0075-sort-colors.cpp](Problems/0001-0100/0075-sort-colors/0075-sort-colors.cpp)
 - [ ] [147. 对链表进行插入排序（中等）](https://leetcode-cn.com/problems/insertion-sort-list/)<br>
 - [ ] [148. 排序链表（中等） 链表上的归并排序](https://leetcode-cn.com/problems/sort-list/)<br>
-- [ ] [215. 数组中的第K个最大元素（中等） ](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)<br>
+- [x] [215. 数组中的第K个最大元素（中等） ](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)`快速排序，非常巧妙`**【精品】**<br>
+  - [0215-kth-largest-element-in-an-array.cpp](Problems/0201-0300/0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.cpp)
 - [ ] [面试题 17.14. 最小K个数 （中等）](https://leetcode-cn.com/problems/smallest-k-lcci/)<br>
 - [ ] [剑指 Offer 51. 数组中的逆序对（困难）](https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/)<br>
+- [ ] **补充各类排序算法：**
+  - [x] 快速排序
+    - [quick_sort.cpp](Algorithms/sort/quick_sort.cpp)
+  - [ ] 归并排序
+  - [ ] 冒泡排序
+  - [ ] 插入排序
+  - [ ] 堆排序
+  - [ ] 希尔排序
+  - [ ] ......
 
 # 第四阶段（7天）
 
