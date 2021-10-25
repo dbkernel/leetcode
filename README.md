@@ -175,7 +175,8 @@ Table of Contents
 - [ ] [148. 排序链表（中等） 链表上的归并排序](https://leetcode-cn.com/problems/sort-list/)<br>
 - [x] [215. 数组中的第K个最大元素（中等） ](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)`快速排序，非常巧妙`**【精品】**<br>
   - [0215-kth-largest-element-in-an-array.cpp](Problems/0201-0300/0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.cpp)
-- [ ] [面试题 17.14. 最小K个数 （中等）](https://leetcode-cn.com/problems/smallest-k-lcci/)<br>
+- [x] [面试题 17.14. 最小K个数 （中等）](https://leetcode-cn.com/problems/smallest-k-lcci/)`快速排序，非常巧妙，与上一题类似。不过还有个堆的方法`**【精品】**<br>
+  - [17.14-smallest-k-lcci.cpp](InterviewQuestions/17.14-smallest-k-lcci.cpp)
 - [ ] [剑指 Offer 51. 数组中的逆序对（困难）](https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/)<br>
 - [ ] **补充各类排序算法：**
   - [x] 快速排序
