@@ -214,7 +214,8 @@ Table of Contents
 
 ## 哈希表
 
-- [ ] [两数之和 （简单） 两数之和](https://leetcode-cn.com/problems/two-sum/)<br>
+- [x] [两数之和 （简单） 两数之和](https://leetcode-cn.com/problems/two-sum/)<br>
+  - [0001-two-sum.cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp)
 - [ ] [15. 三数之和（中等）三数之和](https://leetcode-cn.com/problems/3sum/)<br>
 - [ ] [160. 相交链表（简单，新华智云 22 届暑期实习） ](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)<br>
 - [ ] [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode-cn.com/problems/linked-list-cycle/)<br>
