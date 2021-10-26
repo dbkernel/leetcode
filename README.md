@@ -192,7 +192,8 @@ Table of Contents
 
 ## 二分查找
 
-- [ ] [704. 二分查找（简单） 标准二分查找](https://leetcode-cn.com/problems/binary-search/)<br>
+- [x] [704. 二分查找（简单） 标准二分查找](https://leetcode-cn.com/problems/binary-search/)<br>
+  - [0704-binary-search.cpp](Problems/0701-0800/0704-binary-search/0704-binary-search.cpp)
 - [ ] [374. 猜数字大小（简单）](https://leetcode-cn.com/problems/guess-number-higher-or-lower/)<br>
 - [ ] [744. 寻找比目标字母大的最小字母（简单）](https://leetcode-cn.com/problems/find-smallest-letter-greater-than-target/)<br>
 - [ ] [35. 搜索插入位置（简单）](https://leetcode-cn.com/problems/search-insert-position/)<br>
