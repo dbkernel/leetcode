@@ -194,7 +194,8 @@ Table of Contents
 
 - [x] [704. 二分查找（简单） 标准二分查找](https://leetcode-cn.com/problems/binary-search/)<br>
   - [0704-binary-search.cpp](Problems/0701-0800/0704-binary-search/0704-binary-search.cpp)
-- [ ] [374. 猜数字大小（简单）](https://leetcode-cn.com/problems/guess-number-higher-or-lower/)<br>
+- [x] [374. 猜数字大小（简单）](https://leetcode-cn.com/problems/guess-number-higher-or-lower/)<br>
+  - [0374-guess-number-higher-or-lower.cpp](Problems/0301-0400/0374-guess-number-higher-or-lower/0374-guess-number-higher-or-lower.cpp)
 - [ ] [744. 寻找比目标字母大的最小字母（简单）](https://leetcode-cn.com/problems/find-smallest-letter-greater-than-target/)<br>
 - [ ] [35. 搜索插入位置（简单）](https://leetcode-cn.com/problems/search-insert-position/)<br>
 - [ ] [34. 在排序数组中查找元素的第一个和最后一个位置 （中等）](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/)<br>
