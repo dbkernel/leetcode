@@ -39,14 +39,9 @@ listB 中节点数目为 n
 
 来源：力扣（LeetCode）
 链接：https://leetcode-cn.com/problems/intersection-of-two-linked-lists
-
-思路：
-以 listA = [0,9,1,2,4], listB = [3,2,4] 来说明：
-由于两个链表在 相交节点 前的节点数量不相同，因此，采用 双指针 法，
-分别使这两个指针先遍历自身，再遍历另一个链表，以达到这两个指针遍历相等节点数的目的（m + n），
-在遍历到第一个相等节点后，则肯定是 相交节点。
 */
 #include <cassert>
+#include <unordered_set>
 using namespace std;
 
 // Definition for singly-linked list.
@@ -57,6 +52,18 @@ struct ListNode
     ListNode(int x) : val(x), next(NULL) {}
 };
 
+/*
+方法一：双指针法
+
+以 listA = [0,9,1,2,4], listB = [3,2,4] 来说明：
+由于两个链表在 相交节点 前的节点数量不相同，因此，采用 双指针 法，
+分别使这两个指针先遍历自身，再遍历另一个链表，以达到这两个指针遍历相等节点数的目的（m + n），
+在遍历到第一个相等节点后，则肯定是 相交节点。
+
+复杂度分析：
+- 时间复杂度：O(m+n)，其中 m 和 n 是分别是链表 headA 和 headB 的长度。两个指针同时遍历两个链表，每个指针遍历两个链表各一次。
+- 空间复杂度：O(1)。
+*/
 class Solution
 {
 public:
@@ -72,6 +79,45 @@ public:
             pB = (pB == nullptr ? headA : pB->next);
         }
         return pA;
+    }
+};
+
+/*
+方法二：哈希集合
+
+思路和算法
+
+判断两个链表是否相交，可以使用哈希集合存储链表节点。
+首先遍历链表 headA，并将链表 headA 中的每个节点加入哈希集合中。然后遍历链表 headB，对于遍历到的每个节点，判断该节点是否在哈希集合中：
+- 如果当前节点不在哈希集合中，则继续遍历下一个节点；
+- 如果当前节点在哈希集合中，则后面的节点都在哈希集合中，即从当前节点开始的所有节点都在两个链表的相交部分，
+因此在链表 headB 中遍历到的第一个在哈希集合中的节点就是两个链表相交的节点，返回该节点。
+如果链表 headB 中的所有节点都不在哈希集合中，则两个链表不相交，返回 null。
+
+复杂度分析：
+- 时间复杂度：O(m+n)，其中 m 和 n 是分别是链表 headA 和 headB 的长度。需要遍历两个链表各一次。
+- 空间复杂度：O(m)，其中 m 是链表 headA 的长度。需要使用哈希集合存储链表 headA 中的全部节点。
+*/
+class SolutionHashSet
+{
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
+    {
+        unordered_set<ListNode *> visited;
+        ListNode *temp = headA;
+        while (temp)
+        {
+            visited.insert(temp);
+            temp = temp->next;
+        }
+        temp = headB;
+        while (temp)
+        {
+            if (visited.count(temp))
+                return temp;
+            temp = temp->next;
+        }
+        return nullptr;
     }
 };
 

@@ -214,10 +214,11 @@ Table of Contents
 
 ## 哈希表
 
-- [x] [两数之和 （简单） 两数之和](https://leetcode-cn.com/problems/two-sum/)<br>
+- [x] [两数之和 （简单） 两数之和](https://leetcode-cn.com/problems/two-sum/)`unordered_map<int, int> hashtable 存储数值及下表`<br>
   - [0001-two-sum.cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp)
 - [ ] [15. 三数之和（中等）三数之和](https://leetcode-cn.com/problems/3sum/)<br>
-- [ ] [160. 相交链表（简单，新华智云 22 届暑期实习） ](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)<br>
+- [x] [160. 相交链表（简单，新华智云 22 届暑期实习） ](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)`双指针最好，哈希集合 unordered_set 空间复杂度高`<br>
+  - [0160-intersection-of-two-linked-lists.cpp](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.cpp)
 - [ ] [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode-cn.com/problems/linked-list-cycle/)<br>
 - [ ] [面试题 02.01. 移除重复节点（中等） 借助哈希表](https://leetcode-cn.com/problems/remove-duplicate-node-lcci/)<br>
 - [ ] [面试题 16.02. 单词频率 （简单）](https://leetcode-cn.com/problems/words-frequency-lcci/)<br>
