@@ -214,7 +214,7 @@ Table of Contents
 
 ## 哈希表
 
-- [x] [两数之和 （简单） 两数之和](https://leetcode-cn.com/problems/two-sum/)`unordered_map<int, int> hashtable 存储数值及下表`<br>
+- [x] [两数之和 （简单） 两数之和](https://leetcode-cn.com/problems/two-sum/)`unordered_map<int, int> hashtable 存储数值及下表`**【精品】**<br>
   - [0001-two-sum.cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp)
 - [ ] [15. 三数之和（中等）三数之和](https://leetcode-cn.com/problems/3sum/)<br>
 - [x] [160. 相交链表（简单，新华智云 22 届暑期实习） ](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)`双指针最好，哈希集合 unordered_set 空间复杂度高`<br>
@@ -239,7 +239,8 @@ Table of Contents
 
 ### 题型1：二叉树前中后序遍历
 
-- [ ] [144. 二叉树的前序遍历（简单）](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/)<br>
+- [x] [144. 二叉树的前序遍历（简单）](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/)`递归方式简单，迭代方式需要引入辅助栈，Morris方式有些难`<br>
+  - [0144-binary-tree-preorder-traversal.cpp](Problems/0101-0200/0144-binary-tree-preorder-traversal/0144-binary-tree-preorder-traversal.cpp)
 - [ ] [94. 二叉树的中序遍历 （简单）](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)<br>
 - [ ] [145. 二叉树的后序遍历（简单）](https://leetcode-cn.com/problems/binary-tree-postorder-traversal/)<br>
 - [ ] [589. N 叉树的前序遍历（简单）](https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/)<br>
