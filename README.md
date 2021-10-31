@@ -241,7 +241,8 @@ Table of Contents
 
 - [x] [144. 二叉树的前序遍历（简单）](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/)`递归方式简单，迭代方式需要引入辅助栈，Morris方式有些难`<br>
   - [0144-binary-tree-preorder-traversal.cpp](Problems/0101-0200/0144-binary-tree-preorder-traversal/0144-binary-tree-preorder-traversal.cpp)
-- [ ] [94. 二叉树的中序遍历 （简单）](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)<br>
+- [x] [94. 二叉树的中序遍历 （简单）](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)`递归方式简单，迭代方式需要引入辅助栈，Morris方式有些难`<br>
+  - [0094-binary-tree-inorder-traversal.cpp](Problems/0001-0100/0094-binary-tree-inorder-traversal/0094-binary-tree-inorder-traversal.cpp)
 - [ ] [145. 二叉树的后序遍历（简单）](https://leetcode-cn.com/problems/binary-tree-postorder-traversal/)<br>
 - [ ] [589. N 叉树的前序遍历（简单）](https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/)<br>
 - [ ] [590. N 叉树的后序遍历（简单）](https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/)<br>
