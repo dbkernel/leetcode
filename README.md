@@ -247,7 +247,9 @@ Table of Contents
   - [0145-binary-tree-postorder-traversal.cpp](Problems/0101-0200/0145-binary-tree-postorder-traversal/0145-binary-tree-postorder-traversal.cpp)
 - [x] [589. N 叉树的前序遍历（简单）](https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/)`递归方式简单，迭代方式需要引入辅助栈`<br>
   - [0589-n-ary-tree-preorder-traversal.cpp](Problems/0501-0600/0589-n-ary-tree-preorder-traversal/0589-n-ary-tree-preorder-traversal.cpp)
-- [ ] [590. N 叉树的后序遍历（简单）](https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/)<br>
+- [x] N(>2) 叉树没法做中序遍历
+- [x] [590. N 叉树的后序遍历（简单）](https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/)`递归方式简单，迭代方式需要引入辅助栈，很巧妙`**【精品】**<br>
+  - [0590-n-ary-tree-postorder-traversal.cpp](Problems/0501-0600/0590-n-ary-tree-postorder-traversal/0590-n-ary-tree-postorder-traversal.cpp)
 
 ### 题型2：二叉树按层遍历
 
