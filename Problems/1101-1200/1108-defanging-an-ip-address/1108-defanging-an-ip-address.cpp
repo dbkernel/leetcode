@@ -22,6 +22,11 @@
 #include <string>
 using namespace std;
 
+/*
+复杂度分析：
+- 时间复杂度：O(n)，其中 n 为字符串 s 的长度。需要遍历一遍字符串即可。
+- 空间复杂度：O(1)。除返回值外，不需要额外的存储空间。
+*/
 class Solution {
    public:
     string defangIPaddr(string address) {
