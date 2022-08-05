@@ -49,8 +49,10 @@
   - [x] [1108-defanging-an-ip-address.cpp](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.cpp)
 - [x] [344. 反转字符串（简单）](https://leetcode-cn.com/problems/reverse-string/)<br>
   - [x] [0344-reverse-string.cpp](Problems/0301-0400/0344-reverse-string/0344-reverse-string.cpp)
-- [ ] [剑指 Offer 58 - I. 翻转单词顺序（简单）](https://leetcode-cn.com/problems/fan-zhuan-dan-ci-shun-xu-lcof/) <br>
-- [ ] [125. 验证回文串（简单）](https://leetcode-cn.com/problems/valid-palindrome/) <br>
+- [x] [剑指 Offer 58 - I. 翻转单词顺序（简单）](https://leetcode-cn.com/problems/fan-zhuan-dan-ci-shun-xu-lcof/) <br>
+  - [x] [58-I-翻转单词顺序.cpp](JianZhiOffer/58-I-翻转单词顺序.cpp)
+- [x] [125. 验证回文串（简单）](https://leetcode-cn.com/problems/valid-palindrome/) <br>
+  - [x] [0125-valid-palindrome.cpp](Problems/0101-0200/0125-valid-palindrome/0125-valid-palindrome.cpp)
 - [ ] [9. 回文数（简单）](https://leetcode-cn.com/problems/palindrome-number/)<br>
 - [ ] [58. 最后一个单词的长度（简单）](https://leetcode-cn.com/problems/length-of-last-word/)<br>
 - [ ] [剑指 Offer 05. 替换空格（简单）](https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/)<br>
