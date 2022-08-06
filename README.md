@@ -38,6 +38,7 @@
   - [滑动窗口](#滑动窗口)
   - [前缀后缀统计](#前缀后缀统计)
   - [位运算](#位运算)
+- [综合示例](#综合示例)
 
 # 第一阶段（7 天）
 
@@ -435,3 +436,8 @@
 - [ ] [剑指 Offer 56 - II. 数组中数字出现的次数 II ](https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/)<br>
 - [ ] [面试题 16.01. 交换数字](https://leetcode-cn.com/problems/swap-numbers-lcci/)<br>
 - [ ] [231. 2 的幂](https://leetcode-cn.com/problems/power-of-two/)<br>
+
+# 综合示例
+
+- [x] [⾼效处理海量数据,](Examples/BigData/README.md)
+  - [x] [BigData](Examples/BigData)
