@@ -1,19 +1,19 @@
 # Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [第一阶段（7 天）](#第一阶段7-天)
+- [第一阶段（1 周）](#第一阶段1-周)
   - [纯编程](#纯编程)
   - [找规律](#找规律)
-- [第二阶段（7 天）](#第二阶段7-天)
+- [第二阶段（1 周）](#第二阶段1-周)
   - [链表](#链表)
   - [栈](#栈)
-- [第三阶段（7 天）](#第三阶段7-天)
+- [第三阶段（1 周）](#第三阶段1-周)
   - [递归 + 分治](#递归--分治)
   - [排序](#排序)
-- [第四阶段（7 天）](#第四阶段7-天)
+- [第四阶段（1 周）](#第四阶段1-周)
   - [二分查找](#二分查找)
   - [哈希表](#哈希表)
-- [第五阶段（14 天）](#第五阶段14-天)
+- [第五阶段（2 周）](#第五阶段2-周)
   - [二叉树](#二叉树)
     - [题型 1：二叉树前中后序遍历](#题型-1二叉树前中后序遍历)
     - [题型 2：二叉树按层遍历](#题型-2二叉树按层遍历)
@@ -23,24 +23,26 @@
     - [题型 6：二叉树转单、双、循环链表](#题型-6二叉树转单双循环链表)
     - [题型 7：按照遍历结果反向构建二叉树](#题型-7按照遍历结果反向构建二叉树)
     - [题型 8：二叉树上的最长路径和](#题型-8二叉树上的最长路径和)
-- [第六阶段（7 天）](#第六阶段7-天)
+- [第六阶段（1 周）](#第六阶段1-周)
   - [堆](#堆)
   - [Trie 树](#trie-树)
-- [第七阶段（7 天）](#第七阶段7-天)
+- [第七阶段（1 周）](#第七阶段1-周)
   - [回溯](#回溯)
   - [DFS](#dfs)
-- [第八阶段（7 天）](#第八阶段7-天)
+- [第八阶段（1 周）](#第八阶段1-周)
   - [背包：](#背包)
   - [打家劫舍：](#打家劫舍)
   - [买卖股票：](#买卖股票)
-- [第九阶段（7 天）](#第九阶段7-天)
+- [第九阶段（1 周）](#第九阶段1-周)
   - [双指针](#双指针)
   - [滑动窗口](#滑动窗口)
   - [前缀后缀统计](#前缀后缀统计)
   - [位运算](#位运算)
 - [综合示例](#综合示例)
 
-# 第一阶段（7 天）
+# 第一阶段（1 周）
+
+> [详细速览版](Docs/stage01.md)
 
 ## 纯编程
 
@@ -74,7 +76,7 @@
 - [ ] [54. 螺旋矩阵（中等，字节电商 22 届暑期实习，出处）](https://leetcode-cn.com/problems/spiral-matrix/)<br>
 - [ ] [240. 搜索二维矩阵 II （中等）](https://leetcode-cn.com/problems/search-a-2d-matrix-ii/)<br>
 
-# 第二阶段（7 天）
+# 第二阶段（1 周）
 
 ## 链表
 
@@ -142,7 +144,7 @@
 - [ ] [剑指 Offer 59 - II. 队列的最大值（中等） 单调队列](https://leetcode-cn.com/problems/dui-lie-de-zui-da-zhi-lcof/)<br>
 - [ ] [剑指 Offer 59 - I. 滑动窗口的最大值 （困难）单调队列](https://leetcode-cn.com/problems/hua-dong-chuang-kou-de-zui-da-zhi-lcof/)<br>
 
-# 第三阶段（7 天）
+# 第三阶段（1 周）
 
 ## 递归 + 分治
 
@@ -191,7 +193,7 @@
   - [ ] 希尔排序
   - [ ] ......
 
-# 第四阶段（7 天）
+# 第四阶段（1 周）
 
 ## 二分查找
 
@@ -236,7 +238,7 @@
 - [ ] [146. LRU 缓存机制 （中等）标准的 LRU](https://leetcode-cn.com/problems/lru-cache/)<br>
 - [ ] [面试题 16.21. 交换和（中等） 找规律，可以借助哈希表优化](https://leetcode-cn.com/problems/sum-swap-lcci/)<br>
 
-# 第五阶段（14 天）
+# 第五阶段（2 周）
 
 ## 二叉树
 
@@ -304,7 +306,7 @@
 - [ ] [124. 二叉树中的最大路径和 （困难）](https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/)<br>
 - [ ] [437. 路径总和 III （困难）](https://leetcode-cn.com/problems/path-sum-iii/)<br>
 
-# 第六阶段（7 天）
+# 第六阶段（1 周）
 
 ## 堆
 
@@ -321,7 +323,7 @@
 - [ ] [面试题 17.17. 多次搜索（中等） 标准 AC 自动机，不过写 AC 自动机太复杂，Trie 树搞定](https://leetcode-cn.com/problems/multi-search-lcci/)<br>
 - [ ] [212. 单词搜索 II（困难）](https://leetcode-cn.com/problems/word-search-ii/)<br>
 
-# 第七阶段（7 天）
+# 第七阶段（1 周）
 
 ## 回溯
 
@@ -353,6 +355,16 @@
 - [ ] [1306. 跳跃游戏 III（中等）](https://leetcode-cn.com/problems/jump-game-iii/)<br>
 - [ ] [752. 打开转盘锁（中等）](https://leetcode-cn.com/problems/open-the-lock/)<br>
 
+个人补充（不一定是放当前板块）：
+
+- [ ] [207. 课程表（中等）](https://leetcode.cn/problems/course-schedule/)<br>
+- [ ] [210. 课程表 II（中等）](https://leetcode.cn/problems/course-schedule-ii/)<br>
+- [ ] [630. 课程表 III（困难）](https://leetcode.cn/problems/course-schedule-iii/)<br>
+- [ ] [1462. 课程表 IV（中等）](https://leetcode.cn/problems/course-schedule-iv/)<br>
+- [ ] [1136. 并行课程（力扣会员）](https://leetcode.cn/problems/parallel-courses/)<br>
+- [ ] [1494. 并行课程 II（困难）](https://leetcode.cn/problems/parallel-courses-ii/)<br>
+- [ ] [2050. 并行课程 III（困难）](https://leetcode.cn/problems/parallel-courses-iii/)<br>
+
 **附加题：**
 
 - [ ] [面试题 17.22. 单词转换（困难） ](https://leetcode-cn.com/problems/word-transformer-lcci/)<br>
@@ -361,7 +373,7 @@
 - [ ] [127. 单词接龙（困难）](https://leetcode-cn.com/problems/word-ladder/)<br>
 - [ ] [126. 单词接龙 II（困难）](https://leetcode-cn.com/problems/word-ladder-ii/)<br>
 
-# 第八阶段（7 天）
+# 第八阶段（1 周）
 
 ## 背包：
 
@@ -396,7 +408,7 @@
 - [ ] [139. 单词拆分](https://leetcode-cn.com/problems/word-break/)<br>
 - [ ] [437. 路径总和 III](https://leetcode-cn.com/problems/path-sum-iii/)<br>
 
-# 第九阶段（7 天）
+# 第九阶段（1 周）
 
 ## 双指针
 
@@ -443,3 +455,5 @@
   - [x] [BigData](Examples/BigData)
 - [ ] [生成 1 亿行数据存文件，从该文件中找出最大值/最小值](Examples/BigDataFile/README.md)
   - [ ] [BigDataFile](Examples/BigDataFile)
+- [x] [两阶段加锁实现高并发访问](Examples/MultiWorkers/README.md)
+  - [x] [MultiWorkers](Examples/MultiWorkers)

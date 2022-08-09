@@ -66,6 +66,26 @@
         "typeinfo": "cpp",
         "unordered_map": "cpp",
         "unordered_set": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "__bits": "cpp",
+        "codecvt": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "condition_variable": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "ranges": "cpp",
+        "semaphore": "cpp",
+        "thread": "cpp",
+        "variant": "cpp",
+        "*.tcc": "cpp",
+        "memory_resource": "cpp",
+        "stop_token": "cpp",
+        "cinttypes": "cpp",
+        "shared_mutex": "cpp",
+        "__memory": "cpp",
+        "filesystem": "cpp"
     }
 }
