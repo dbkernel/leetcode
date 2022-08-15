@@ -39,6 +39,7 @@
   - [前缀后缀统计](#前缀后缀统计)
   - [位运算](#位运算)
 - [综合示例](#综合示例)
+- [其他](#其他)
 
 # 第一阶段（1 周）
 
@@ -46,7 +47,7 @@
 
 ## 纯编程
 
-- [x] [1.两数之和（简单）](https://leetcode-cn.com/problems/two-sum/)<br>
+- [x] [1.两数之和（简单，虾皮社招）](https://leetcode-cn.com/problems/two-sum/)<br>
   - [x] [0001-two-sum.cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp)
 - [x] [1108. IP 地址无效化（简单）](https://leetcode-cn.com/problems/defanging-an-ip-address/) <br>
   - [x] [1108-defanging-an-ip-address.cpp](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.cpp)
@@ -219,9 +220,9 @@
 
 ## 哈希表
 
-- [x] [两数之和 （简单） 两数之和](https://leetcode-cn.com/problems/two-sum/)`unordered_map<int, int> hashtable 存储数值及下表`**【精品】**<br>
+- [x] [两数之和 （简单，虾皮社招）](https://leetcode-cn.com/problems/two-sum/)`unordered_map<int, int> hashtable 存储数值及下表`**【精品】**<br>
   - [0001-two-sum.cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp)
-- [ ] [15. 三数之和（中等）三数之和](https://leetcode-cn.com/problems/3sum/)<br>
+- [ ] [15. 三数之和（中等，墨奇社招）](https://leetcode-cn.com/problems/3sum/)<br>
 - [x] [160. 相交链表（简单，新华智云 22 届暑期实习） ](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/)`双指针最好，哈希集合 unordered_set 空间复杂度高`<br>
   - [0160-intersection-of-two-linked-lists.cpp](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.cpp)
 - [ ] [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode-cn.com/problems/linked-list-cycle/)<br>
@@ -365,6 +366,11 @@
 - [ ] [1494. 并行课程 II（困难）](https://leetcode.cn/problems/parallel-courses-ii/)<br>
 - [ ] [2050. 并行课程 III（困难）](https://leetcode.cn/problems/parallel-courses-iii/)<br>
 
+个人补充（DFS 其他题）：
+
+- [x] [841. 钥匙和房间（中等）](https://leetcode.cn/problems/keys-and-rooms/)<br>
+  - [x] [0841-keys-and-rooms.cpp](Problems/0801-0900/0841-keys-and-rooms/0841-keys-and-rooms.cpp)
+
 **附加题：**
 
 - [ ] [面试题 17.22. 单词转换（困难） ](https://leetcode-cn.com/problems/word-transformer-lcci/)<br>
@@ -377,12 +383,19 @@
 
 ## 背包：
 
+这个系列是动态规划问题。
+
 - [ ] [416. 分割等和子集](https://leetcode-cn.com/problems/partition-equal-subset-sum/)<br>
 - [ ] [494. 目标和](https://leetcode-cn.com/problems/target-sum/)<br>
 - [ ] [279. 完全平方数](https://leetcode-cn.com/problems/perfect-squares/)<br>
 - [ ] [322. 零钱兑换 ](https://leetcode-cn.com/problems/coin-change/)<br>
 - [ ] [518. 零钱兑换 II](https://leetcode-cn.com/problems/coin-change-2/)<br>
 - [ ] [377. 组合总和 Ⅳ](https://leetcode-cn.com/problems/combination-sum-iv/)<br>
+
+华为机考题：
+
+- [x] [HJ16 购物单](https://www.nowcoder.com/practice/f9c6f980eeec43ef85be20755ddbeaf4)
+  - [x] [HJ16-购物单.cpp](HuaweiJikao/HJ16-购物单/HJ16-购物单.cpp)
 
 ## 打家劫舍：
 
@@ -414,8 +427,10 @@
 
 - [ ] [344. 反转字符串](https://leetcode-cn.com/problems/reverse-string/)<br>
 - [ ] [面试题 16.24. 数对和（例题 1）](https://leetcode-cn.com/problems/pairs-with-sum-lcci/)<br>
-- [ ] [1. 两数之和](https://leetcode-cn.com/problems/two-sum/)<br>
-- [ ] [15. 三数之和](https://leetcode-cn.com/problems/3sum/)<br>
+- [ ] [1. 两数之和（简单，虾皮社招）](https://leetcode-cn.com/problems/two-sum/)<br>
+  - [ ] 参考 三数之和 内层循环
+- [x] [15. 三数之和（中等，墨奇社招）](https://leetcode-cn.com/problems/3sum/)<br>
+  - [x] [0015-3sum.cpp](Problems/0001-0100/0015-3sum/0015-3sum.cpp)
 - [ ] [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 ](https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/)<br>
 - [ ] [75. 颜色分类 ](https://leetcode-cn.com/problems/sort-colors/)<br>
 - [ ] [283. 移动零 已排序未排序指针（例题 2）](https://leetcode-cn.com/problems/move-zeroes/)<br>
@@ -457,3 +472,10 @@
   - [ ] [BigDataFile](Examples/BigDataFile)
 - [x] [两阶段加锁实现高并发访问](Examples/MultiWorkers/README.md)
   - [x] [MultiWorkers](Examples/MultiWorkers)
+- [x] [打车软件的订单调度系统（困难，华为机考）](HuaweiJikao/taxi-order-scheduling-system/taxi-order-scheduling-system.cpp)
+  - [x] [taxi-order-scheduling-system.cpp](HuaweiJikao/taxi-order-scheduling-system/taxi-order-scheduling-system.cpp)
+
+# 其他
+
+- [华为系公司机考部分试题合集，共 103 道](https://www.nowcoder.com/exam/oj/ta?tpId=37)
+  - 本人参加华为机考时，两道题在该合集中都没有，可见这里只是部分试题
