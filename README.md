@@ -466,11 +466,11 @@
 
 # 综合示例
 
-- [x] [⾼效处理海量数据,](Examples/BigData/README.md)
+- [x] [⾼效处理海量数据（四维纵横面试前线下做的题，基本无时间限制）](Examples/BigData/README.md)
   - [x] [BigData](Examples/BigData)
-- [ ] [生成 1 亿行数据存文件，从该文件中找出最大值/最小值](Examples/BigDataFile/README.md)
+- [ ] [生成 1 亿行数据存文件，从该文件中找出最大值/最小值（四维纵横一面题，在面试官的监督下完成）](Examples/BigDataFile/README.md)
   - [ ] [BigDataFile](Examples/BigDataFile)
-- [x] [两阶段加锁实现高并发访问](Examples/MultiWorkers/README.md)
+- [x] [两阶段加锁实现高并发访问（成章数据面试前线下做的题，基本无时间限制）](Examples/MultiWorkers/README.md)
   - [x] [MultiWorkers](Examples/MultiWorkers)
 - [x] [打车软件的订单调度系统（困难，华为机考）](HuaweiJikao/taxi-order-scheduling-system/taxi-order-scheduling-system.cpp)
   - [x] [taxi-order-scheduling-system.cpp](HuaweiJikao/taxi-order-scheduling-system/taxi-order-scheduling-system.cpp)
@@ -478,4 +478,4 @@
 # 其他
 
 - [华为系公司机考部分试题合集，共 103 道](https://www.nowcoder.com/exam/oj/ta?tpId=37)
-  - 本人参加华为机考时，两道题在该合集中都没有，可见这里只是部分试题
+  - 本人参加华为机考时，抽到的两道题在该合集中都没有，可见这里只是部分试题
