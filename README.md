@@ -57,7 +57,8 @@
   - [x] [58-I-翻转单词顺序.cpp](JianZhiOffer/58-I-翻转单词顺序.cpp)
 - [x] [125. 验证回文串（简单）](https://leetcode-cn.com/problems/valid-palindrome/) <br>
   - [x] [0125-valid-palindrome.cpp](Problems/0101-0200/0125-valid-palindrome/0125-valid-palindrome.cpp)
-- [ ] [9. 回文数（简单）](https://leetcode-cn.com/problems/palindrome-number/)<br>
+- [x] [9. 回文数（简单）](https://leetcode-cn.com/problems/palindrome-number/)<br>
+  - [x] [0009-palindrome-number.cpp](Problems/0001-0100/0009-palindrome-number/0009-palindrome-number.cpp)
 - [ ] [58. 最后一个单词的长度（简单）](https://leetcode-cn.com/problems/length-of-last-word/)<br>
 - [ ] [剑指 Offer 05. 替换空格（简单）](https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/)<br>
 - [ ] [剑指 Offer 58 - II. 左旋转字符串（简单）](https://leetcode-cn.com/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/)<br>
