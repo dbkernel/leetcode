@@ -47,13 +47,13 @@
 
 ## 纯编程
 
-- [x] [1.两数之和（简单，虾皮社招）](https://leetcode-cn.com/problems/two-sum/)<br>
+- [x] [1.两数之和（简单，虾皮社招）](https://leetcode-cn.com/problems/two-sum/)
   - [x] [0001-two-sum.cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp)
 - [x] [1108. IP 地址无效化（简单）](https://leetcode-cn.com/problems/defanging-an-ip-address/) <br>
   - [x] [1108-defanging-an-ip-address.cpp](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.cpp)
-- [x] [344. 反转字符串（简单）](https://leetcode-cn.com/problems/reverse-string/)<br>
+- [x] [344. 反转字符串（简单）](https://leetcode-cn.com/problems/reverse-string/)
   - [x] [0344-reverse-string.cpp](Problems/0301-0400/0344-reverse-string/0344-reverse-string.cpp)
-- [x] [剑指 Offer 58 - I. 翻转单词顺序（简单）](https://leetcode-cn.com/problems/fan-zhuan-dan-ci-shun-xu-lcof/) <br>
+- [x] [剑指 Offer 58 - I. 翻转单词顺序（简单）](https://leetcode-cn.com/problems/fan-zhuan-dan-ci-shun-xu-lcof/)
   - [x] [58-I-翻转单词顺序.cpp](JianZhiOffer/58-I-翻转单词顺序.cpp)
 - [x] [125. 验证回文串（简单）](https://leetcode-cn.com/problems/valid-palindrome/) <br>
   - [x] [0125-valid-palindrome.cpp](Problems/0101-0200/0125-valid-palindrome/0125-valid-palindrome.cpp)
@@ -61,10 +61,11 @@
   - [x] [0009-palindrome-number.cpp](Problems/0001-0100/0009-palindrome-number/0009-palindrome-number.cpp)
 - [x] [58. 最后一个单词的长度（简单）](https://leetcode-cn.com/problems/length-of-last-word/)
   - [x] [0058-length-of-last-word.cpp](Problems/0001-0100/0058-length-of-last-word/0058-length-of-last-word.cpp)
-- [ ] [剑指 Offer 05. 替换空格（简单）](https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/)<br>
-- [ ] [剑指 Offer 58 - II. 左旋转字符串（简单）](https://leetcode-cn.com/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/)<br>
-- [ ] [26. 删除排序数组中的重复项（简单）](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)<br>
-- [ ] [剑指 Offer 67. 把字符串转换成整数（中等）](https://leetcode-cn.com/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof/)经典 atoi()，注意范围越界处理<br>
+- [x] [剑指 Offer 05. 替换空格（简单）](https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/)
+  - [x] [05-替换空格.cpp](JianZhiOffer/05-替换空格.cpp)
+- [ ] [剑指 Offer 58 - II. 左旋转字符串（简单）](https://leetcode-cn.com/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/)
+- [ ] [26. 删除排序数组中的重复项（简单）](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)
+- [ ] [剑指 Offer 67. 把字符串转换成整数（中等）](https://leetcode-cn.com/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof/) 经典 atoi()，注意范围越界处理
 
 ## 找规律
 
