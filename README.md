@@ -67,7 +67,8 @@
   - [58-II-左旋转字符串.cpp](JianZhiOffer/58-II-左旋转字符串.cpp)
 - [x] [26. 删除排序数组中的重复项（简单）](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)
   - [0026-remove-duplicates-from-sorted-array.cpp](Problems/0001-0100/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.cpp)
-- [ ] [剑指 Offer 67. 把字符串转换成整数（中等）](https://leetcode-cn.com/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof/) 经典 atoi()，注意范围越界处理
+- [x] [剑指 Offer 67. 把字符串转换成整数（中等）](https://leetcode-cn.com/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof/) 经典 atoi()，注意范围越界处理
+  - [67-把字符串转换成整数.cpp](JianZhiOffer/67-把字符串转换成整数.cpp)
 
 ## 找规律
 
