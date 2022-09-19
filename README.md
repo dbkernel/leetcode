@@ -305,6 +305,7 @@
 - [ ] [105. 从前序与中序遍历序列构造二叉树（中等）](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
 - [ ] [889. 根据前序和后序遍历构造二叉树（中等）](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/)
 - [ ] [106. 从中序与后序遍历序列构造二叉树（中等）](https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
+  - [x] [根据中序和后序序列构建先序序列（天翼云社招）](Others/get_preorder_by_middle_back_order.cpp)
 - [ ] [剑指 Offer 33. 二叉搜索树的后序遍历序列（中等）](https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/)
 
 ### 题型 8：二叉树上的最长路径和
