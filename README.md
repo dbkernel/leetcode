@@ -486,3 +486,8 @@
 
 - [华为系公司机考部分试题合集，共 103 道](https://www.nowcoder.com/exam/oj/ta?tpId=37)
   - 本人参加华为机考时，抽到的两道题在该合集中都没有，可见这里只是部分试题
+
+- 程序员大彬公众号刷题心得：
+  - [LeetCode刷题手册.pdf](./Docs/pdf/LeetCode刷题手册.pdf)
+  - [LeetCode 101 - A LeetCode Grinding Guide (C++ Version).pdf](./Docs/pdf/LeetCode-101_A-LeetCode-Grinding-Guide_C++_Version.pdf)
+  - [LeetCode题解（java语言实现）.pdf](./Docs/pdf/LeetCode题解（java语言实现）.pdf)
