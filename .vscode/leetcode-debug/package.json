@@ -1,0 +1,42 @@
+{
+  "name": "leetcode-debug",
+  "displayName": "LeetCode Debug Current File",
+  "description": "F5 debugs the active Go or C++ file based on language, not the last selected launch config.",
+  "version": "0.0.1",
+  "publisher": "leetcode-local",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Debuggers"
+  ],
+  "activationEvents": [
+    "onCommand:leetcode.debugCurrentFile",
+    "onCommand:leetcode.runCurrentFile"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "leetcode.debugCurrentFile",
+        "title": "LeetCode: Debug Current File"
+      },
+      {
+        "command": "leetcode.runCurrentFile",
+        "title": "LeetCode: Run Current File"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "leetcode.debugCurrentFile",
+        "key": "f5",
+        "when": "editorTextFocus && !inDebugMode && resourcePath =~ /blogs-and-learn[\\\\/]leetcode[\\\\/]/ && (editorLangId == go || editorLangId == cpp || editorLangId == c)"
+      },
+      {
+        "command": "leetcode.runCurrentFile",
+        "key": "ctrl+f5",
+        "when": "editorTextFocus && !inDebugMode && resourcePath =~ /blogs-and-learn[\\\\/]leetcode[\\\\/]/ && (editorLangId == go || editorLangId == cpp || editorLangId == c)"
+      }
+    ]
+  }
+}

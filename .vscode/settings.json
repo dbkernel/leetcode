@@ -1,4 +1,21 @@
 {
+    "C_Cpp.default.compilerPath": "/usr/bin/g++",
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.default.cStandard": "c17",
+    "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+    "go.toolsManagement.checkForUpdates": "local",
+    "go.coverOnSave": false,
+    "go.lintOnSave": "package",
+    "go.vetOnSave": "package",
+    "go.testFlags": ["-v"],
+    "go.delveConfig": {
+        "dlvFlags": ["--check-go-version=false"],
+        "showGlobalVariables": true
+    },
+    "go.alternateTools": {
+        "dlv": "/home/wslu/work/depends/gopath/bin/dlv"
+    },
+    "debug.allowBreakpointsEverywhere": true,
     "files.associations": {
         "stack": "cpp",
         "__split_buffer": "cpp",
