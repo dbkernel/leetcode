@@ -74,7 +74,7 @@
 | ☐ | [面试题 01.05. 一次编辑（中等）](https://leetcode.cn/problems/one-away-lcci/) |  |  |  |  |  |
 | ☐ | [面试题 16.15. 珠玑妙算 （中等）](https://leetcode.cn/problems/master-mind-lcci/) |  |  |  |  |  |
 | ✅ | [面试题 16.04. 井字游戏（中等）](https://leetcode.cn/problems/tic-tac-toe-lcci/) | [cpp](InterviewQuestions/16.04-tic-tac-toe-lcci.cpp) | [go](InterviewQuestions/16.04-tic-tac-toe-lcci.go) | [py](InterviewQuestions/16.04-tic-tac-toe-lcci.py) | [rs](InterviewQuestions/16.04-tic-tac-toe-lcci.rs) | 平台无题解文章，按标准做法写一解：逐行、逐列、两条对角线整线检查，O(N^2) 时间 O(1) 空间即为最优；判定顺序必须是已胜 > 未满 > 平局 |
-| ☐ | [55. 跳跃游戏 （中等）](https://leetcode.cn/problems/jump-game/) |  |  |  |  |  |
+| ✅ | [55. 跳跃游戏 （中等）](https://leetcode.cn/problems/jump-game/) | [cpp](Problems/0001-0100/0055-jump-game/0055-jump-game.cpp) | [go](Problems/0001-0100/0055-jump-game/0055-jump-game.go) | [py](Problems/0001-0100/0055-jump-game/0055-jump-game.py) | [rs](Problems/0001-0100/0055-jump-game/0055-jump-game.rs) | 官方一解：贪心维护最远可达位置，O(n) 时间 O(1) 空间即最优；下标一旦越过最远可达点就不可达，不必回溯 |
 | ☐ | [48. 旋转图像 （中等）](https://leetcode.cn/problems/rotate-image/) |  |  |  |  |  |
 | ☐ | [54. 螺旋矩阵（中等，字节电商 22 届暑期实习，出处）](https://leetcode.cn/problems/spiral-matrix/) |  |  |  |  |  |
 | ☐ | [240. 搜索二维矩阵 II （中等）](https://leetcode.cn/problems/search-a-2d-matrix-ii/) |  |  |  |  |  |
