@@ -323,7 +323,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [面试题 08.12. 八皇后（困难）](https://leetcode.cn/problems/eight-queens-lcci/) |  |  |  |  |  |
+| ✅ | [面试题 08.12. 八皇后（困难）](https://leetcode.cn/problems/eight-queens-lcci/) | [cpp](InterviewQuestions/08.12-eight-queens-lcci.cpp) | [go](InterviewQuestions/08.12-eight-queens-lcci.go) | [py](InterviewQuestions/08.12-eight-queens-lcci.py) | [rs](InterviewQuestions/08.12-eight-queens-lcci.rs) | 官方一解：逐行放置 + 列/主对角/副对角三个冲突集合回溯；与 51 题同构，本题返回全部方案的棋盘列表（n=8 时 92 组）；O(n!) 时间、O(n) 空间 |
 | ☐ | [51. N 皇后（困难）](https://leetcode.cn/problems/n-queens/) |  |  |  |  |  |
 | ☐ | [37. 解数独](https://leetcode.cn/problems/sudoku-solver/) |  |  |  |  |  |
 | ☐ | [17. 电话号码的字母组合 （中等）](https://leetcode.cn/problems/letter-combinations-of-a-phone-number/) |  |  |  |  |  |
