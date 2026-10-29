@@ -190,6 +190,11 @@ commit message 中禁止出现任何形式的协助者、联合开发者或生�
 - [ ] 代码类提交已编译并跑通自测
 - [ ] `git status` 中没有遗留在暂存区的无关文件
 
+提交后用 `git log -1 --pretty=%B` 再看一眼：部分 IDE / 提交工具会自动追加
+`Co-authored-by` 之类的 trailer，命令行里看不到，只有落到 message 里才暴露。
+一旦发现，用 `git commit --amend -m` 重写（尚未推送时）或
+`git filter-branch --msg-filter` 批量清除（已产生多次提交时）。
+
 ---
 
 ## 示例
