@@ -1,0 +1,231 @@
+/*
+============================================================================
+LCR 176 / 剑指 Offer 55 - II. 判断是否为平衡二叉树（简单）
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/ping-heng-er-cha-shu-lcof/
+分类：二叉树 · 递归（后序剪枝 / 先序 + 深度）
+
+输入一棵二叉树的根节点，判断该树是不是平衡二叉树。如果某二叉树中
+任意节点的左右子树的深度相差不超过 1，那么它就是一棵平衡二叉树。
+
+示例 1：
+输入：root = [3,9,20,null,null,15,7]
+输出：true
+解释：如下图
+
+示例 2：
+输入：root = [1,2,2,3,3,null,null,4,4]
+输出：false
+解释：如下图
+
+限制：
+- 0 <= 树的结点个数 <= 10000
+
+注意：本题与主站 110 题相同：https://leetcode.cn/problems/balanced-binary-tree/
+*/
+package main
+
+import "fmt"
+
+// 力扣预置的节点定义
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+/*
+解法一：后序遍历 + 剪枝（自底向上）【最优解】
+
+为什么慢：容易想到的做法是"先序判断"—— 对每个节点都调用一次求深度的函数，
+比较左右深度差，再递归检查左右子树。但 `depth(x)` 会把 x 的整棵子树走一遍，
+而 x 的每个祖先又各自调用了一次，同一批节点被反复数，满二叉树下退化成
+O(n log n)，斜链下更差。
+
+换个角度：求深度这件事本身就是后序遍历的自然产物。让递归在返回时把
+"子树高度"带上来：
+  · 平衡 → 返回真实高度；
+  · 不平衡 → 返回 -1 作为标记，并且只要左右任一侧返回 -1 就立即继续向上
+    返回 -1（剪枝），不再做多余计算。
+这样每个节点只被访问一次，判断和求高度合成一趟。
+
+关键点：
+  · -1 是"不平衡"的哨兵值：真实高度非负，不会与它混淆
+  · 必须先拿 left，判断 left == -1 后立刻返回，再去拿 right，
+    避免在已知不平衡时还白跑另一侧
+  · 判断条件是 abs(left - right) > 1，相等（差 0）和差 1 都算平衡
+  · 空节点高度为 0；叶子左右都是 0，差 0，返回高度 1
+  · 最终答案看 `recur(root) != -1`，不能只看根节点是否"局部平衡"
+
+以示例 1（root = [3,9,20,null,null,15,7]）为例：
+  9、15、7 返回高度 1；
+  20 的左右都是 1，差 0 → 返回 2；
+  根 3 的左 1、右 2，差 1 → 返回 3 ≠ -1 → true ✔
+
+以示例 2（root = [1,2,2,3,3,null,null,4,4]）为例：
+  节点 3（左分支）的两个孩子 4、4 返回 1 → 3 返回 2；
+  节点 2（左分支）的左 2、右 0，差 2 → 返回 -1；
+  根 1 收到 -1，剪枝直接返回 -1 → false ✔
+
+复杂度分析：
+  时间 O(n)：每个节点最多访问一次（剪枝只会更少）
+  空间 O(n)：递归栈，最坏为斜链
+
+解法二：先序遍历 + 判断深度（自顶向下）【非最优】
+
+官方方法二，也最容易想到：
+  · 空树视为平衡，返回 true；
+  · 否则同时满足三条才算平衡：
+      1. |depth(left) - depth(right)| <= 1：当前节点平衡；
+      2. 左子树平衡；
+      3. 右子树平衡。
+  三个条件用 && 连接，短路求值可以让某个条件失败后少走一部分。
+
+关键点：
+  · `depth` 就是"二叉树的最大深度"，空树 0；
+  · 必须三项都检查：只判断当前节点会漏掉子树内部的高度差；
+  · 大量重复计算来自 `depth` 在每一层被反复调用，这是它非最优的原因；
+  · 写法直观，适合面试先讲思路，再优化到解法一。
+
+复杂度分析：
+  时间 O(n log n)：满二叉树时每层累计 O(n) 的 depth 调用，共 O(log n) 层；
+       斜链最坏 O(n^2)
+  空间 O(n)：递归栈
+*/
+
+// 解法一：后序剪枝（最优解）
+func isBalanced(root *TreeNode) bool {
+	var recur func(node *TreeNode) int
+	// 平衡则返回子树高度，不平衡返回 -1
+	recur = func(node *TreeNode) int {
+		if node == nil {
+			return 0
+		}
+
+		left := recur(node.Left)
+		if left == -1 { // 左子树已不平衡，剪枝
+			return -1
+		}
+		right := recur(node.Right)
+		if right == -1 { // 右子树已不平衡，剪枝
+			return -1
+		}
+
+		diff := left - right
+		if diff < 0 {
+			diff = -diff
+		}
+		if diff > 1 {
+			return -1
+		}
+		if left > right {
+			return left + 1
+		}
+		return right + 1
+	}
+
+	return recur(root) != -1
+}
+
+// 解法二：先序遍历 + 判断深度
+func isBalancedTopDown(root *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+
+	diff := treeDepth(root.Left) - treeDepth(root.Right)
+	if diff < 0 {
+		diff = -diff
+	}
+	return diff <= 1 && isBalancedTopDown(root.Left) && isBalancedTopDown(root.Right)
+}
+
+func treeDepth(node *TreeNode) int {
+	if node == nil {
+		return 0
+	}
+	left := treeDepth(node.Left)
+	right := treeDepth(node.Right)
+	if left > right {
+		return left + 1
+	}
+	return right + 1
+}
+
+// ===== 测试辅助：按层序数组（nullNode 表示空）建树 =====
+const nullNode = 1001
+
+func buildTree(levelOrder []int) *TreeNode {
+	if len(levelOrder) == 0 || levelOrder[0] == nullNode {
+		return nil
+	}
+	root := &TreeNode{Val: levelOrder[0]}
+	nodes := []*TreeNode{root}
+	idx := 1
+	for i := 0; i < len(nodes) && idx < len(levelOrder); i++ {
+		if levelOrder[idx] != nullNode {
+			nodes[i].Left = &TreeNode{Val: levelOrder[idx]}
+			nodes = append(nodes, nodes[i].Left)
+		}
+		idx++
+		if idx >= len(levelOrder) {
+			break
+		}
+		if levelOrder[idx] != nullNode {
+			nodes[i].Right = &TreeNode{Val: levelOrder[idx]}
+			nodes = append(nodes, nodes[i].Right)
+		}
+		idx++
+	}
+	return root
+}
+
+func check(input []int, want bool) {
+	if got := isBalanced(buildTree(input)); got != want {
+		panic(fmt.Sprintf("bottomUp(%v) = %v, want %v", input, got, want))
+	}
+	if got := isBalancedTopDown(buildTree(input)); got != want {
+		panic(fmt.Sprintf("topDown(%v) = %v, want %v", input, got, want))
+	}
+}
+
+func main() {
+	// 示例 1
+	check([]int{3, 9, 20, nullNode, nullNode, 15, 7}, true)
+
+	// 示例 2
+	check([]int{1, 2, 2, 3, 3, nullNode, nullNode, 4, 4}, false)
+
+	// 边界：空树，视为平衡
+	check([]int{}, true)
+
+	// 边界：单节点
+	check([]int{1}, true)
+
+	// 边界：只有两个孩子，差 0
+	check([]int{1, 2, 3}, true)
+
+	// 边界：一条两层的左斜链，根左右高度差 2
+	check([]int{1, 2, nullNode, 3}, false)
+
+	// 边界：链藏在左子树内部，根看似还行
+	check([]int{1, 2, 3, 4, nullNode, nullNode, nullNode, 5}, false)
+
+	// 边界：完全二叉树，各节点高度差 <= 1
+	check([]int{1, 2, 3, 4, 5, 6, 7}, true)
+
+	// 边界：只差一层（差 1 仍算平衡）
+	check([]int{1, 2, 3, 4, nullNode, nullNode, nullNode}, true)
+
+	// 边界：负数值不影响结构
+	check([]int{-100, -50, 100, 0, 1}, true)
+
+	// 边界：深链 200 层，必然不平衡
+	levelOrder := []int{}
+	for i := 1; i <= 200; i++ {
+		levelOrder = append(levelOrder, i, nullNode)
+	}
+	check(levelOrder, false)
+
+	fmt.Println("all tests passed")
+}
