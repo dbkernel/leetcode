@@ -1,11 +1,20 @@
 /*
-841. 钥匙和房间
+============================================================================
+841. 钥匙和房间（中等）
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/keys-and-rooms/
+分类：图 · 有向图可达性（DFS / BFS）
 
-有 n 个房间，房间按从 0 到 n - 1 编号。最初，除 0 号房间外的其余所有房间都被锁住。
-你的目标是进入所有的房间。然而，你不能在没有获得钥匙的时候进入锁住的房间。
+有 n 个房间，房间按从 0 到 n - 1 编号。最初，除 0 号房间外的其余所有
+房间都被锁住。你的目标是进入所有的房间。然而，你不能在没有获得钥匙的
+时候进入锁住的房间。
 
-当你进入一个房间，你可能会在里面找到一套不同的钥匙，每把钥匙上都有对应的房间号，即表示钥匙可以打开的房间。你可以拿上所有钥匙去解锁其他房间。
-给你一个数组 rooms 其中 rooms[i] 是你进入 i 号房间可以获得的钥匙集合。如果能进入 所有 房间返回 true，否则返回 false。
+当你进入一个房间，你可能会在里面找到一套 不同的钥匙，每把钥匙上都有
+对应的房间号，即表示钥匙可以打开的房间。你可以拿上所有钥匙去解锁其他
+房间。
+
+给你一个数组 rooms 其中 rooms[i] 是你进入 i 号房间可以获得的钥匙集合。
+如果能进入 所有 房间返回 true，否则返回 false。
 
 示例 1：
 输入：rooms = [[1],[2],[3],[]]
@@ -23,99 +32,201 @@
 解释：我们不能进入 2 号房间。
 
 提示：
-n == rooms.length
-2 <= n <= 1000
-0 <= rooms[i].length <= 1000
-1 <= sum(rooms[i].length) <= 3000
-0 <= rooms[i][j] < n
-所有 rooms[i] 的值 互不相同
-
-来源：力扣（LeetCode）
-链接：https://leetcode.cn/problems/keys-and-rooms
-
-思路：
-当 x 号房间中有 y 号房间的钥匙时，我们就可以从 x 号房间去往 y 号房间。
- 如果我们将这 n 个房间看成有向图中的 n 个节点，那么上述关系就可以看作是图中的 x 号点到 y 号点的一条有向边。
-这样一来，问题就变成了给定一张有向图，询问从 0 号节点出发是否能够到达所有的节点。
+- n == rooms.length
+- 2 <= n <= 1000
+- 0 <= rooms[i].length <= 1000
+- 1 <= sum(rooms[i].length) <= 3000
+- 0 <= rooms[i][j] < n
+- 所有 rooms[i] 的值 互不相同
 */
-
-#include <iostream>
 #include <cassert>
+#include <iostream>
+#include <queue>
+#include <vector>
 using namespace std;
 
 /*
-方法一：深度优先搜索 DFS（Depth First Search）
+解法一：深度优先搜索（DFS）【最优解】
 
-我们可以使用深度优先搜索的方式遍历整张图，统计可以到达的节点个数，并利用数组 vis 标记当前节点是否访问过，以防止重复访问。
+为什么慢：若不记录"进过哪些房间"，只按手里的钥匙逐把开门，同一扇门会被
+不同房间里指向它的钥匙反复打开；房间之间还可能有环，放任递归会陷进无限
+循环。n 个房间、m 把钥匙时，这种做法的代价连上界都写不出来。
 
-复杂度分析
-- 时间复杂度：O(n+m)，其中 n 是房间的数量，m 是所有房间中的钥匙数量的总数。
-- 空间复杂度：O(n)，其中 n 是房间的数量。主要为栈空间的开销。
+换个角度：房间 i 里有一把 j 号钥匙，就是从 i 到 j 的一条有向边，于是问题
+变成"从 0 号节点出发能否到达全部节点"。做一次图遍历，统计进过的房间数，
+等于 n 就是全可达。
+
+关键点：
+  · 起点只能是 0 号房，0 号房自身在进入时立即标记
+  · visited 在"进入"的那一刻置真，而不是等回溯或出栈时再置真：
+    只有这样，环和重复钥匙才不会把同一节点再次压栈
+  · 计数统计的是房间数，不是钥匙数；同一把钥匙在多个房间重复出现也只
+    对应一次访问
+  · 递归栈最坏 n 层（一条链），n ≤ 1000，默认栈够用
+  · vis 与计数都是局部变量，经引用传给 dfs，同一个 Solution 对象可反复调用
+
+手推一遍：
+以示例 2（rooms = [[1,3],[3,0,1],[2],[0]]）为例：
+  进入 0，拿到 1、3 号钥匙
+  进入 1，拿到 3、0、1 号钥匙，三个房间都已标记，不再递归
+  进入 3，拿到 0 号钥匙，已标记
+  2 号房从未被任何可达房间的钥匙指向，访问数 3 ≠ 4 → false ✔
+
+复杂度分析：
+  时间 O(n+m)：每间房进入一次，每把钥匙（每条边）检查一次
+  空间 O(n)：vis 数组 n 项，递归栈最深 n 层
+
+解法二：广度优先搜索（BFS）【最优解，与解法一并列】
+
+为什么慢：与解法一同理，不记录访问状态就会被重复钥匙和环反复开门。此外
+DFS 的递归栈在链状图上要压 n 层，若运行环境栈很小就不可用。
+
+换个角度：同样是一次图遍历，只是把"待访问"的容器从栈换成队列：先拿到的
+钥匙先开门，天然按距离一层层推进，不需要递归。
+
+关键点：
+  · visited 必须在入队时置真，不能等出队：出队才标记，同一间房会被多把
+    钥匙重复入队，vis 形同虚设，队列也会膨胀
+  · 0 号房入队前先置真，否则它自己的钥匙会把它再收一次
+  · num 在出队时累加；每间房至多入队一次，所以不会多计
+  · 队列最多同时容纳 n 间房，空间仍是 O(n)
+
+手推一遍：
+同示例 2（rooms = [[1,3],[3,0,1],[2],[0]]）：
+  队列 [0] → 出 0，收 1、3
+  出 1，钥匙 3、0、1 都已在 vis 中；出 3，钥匙 0 已标记
+  队列空，num = 3 ≠ 4 → false ✔
+
+复杂度分析：
+  时间 O(n+m)：每间房出队一次，每把钥匙检查一次
+  空间 O(n)：vis 数组 n 项，队列最多 n 项
+
+DFS 与 BFS 的时间同为 O(n+m)，空间同为 O(n)：最深链和最大层宽在最坏
+情况下都等于 n，二者并列最优。DFS 不用另开队列；BFS 不依赖递归栈深度，
+链状图上更稳。
 */
-class Solution {
+class Solution1
+{
 public:
-    vector<int> vis; // 标记当前节点是否访问过
-    int num; // 访问过的节点数量
+    bool canVisitAllRooms(vector<vector<int>> &rooms)
+    {
+        int n = static_cast<int>(rooms.size());
+        vector<bool> vis(n, false);
+        int num = 0;
 
-    void dfs(vector<vector<int>>& rooms, int x) {
-        vis[x] = true;
-        num++;
-        for (auto& it : rooms[x]) { // 当前房间里有多把钥匙，每一把都是一个访问分支
-            if (!vis[it]) {
-                dfs(rooms, it);
-            }
-        }
+        // 0 号房是唯一入口，进入它才开始计数
+        dfs(rooms, 0, vis, num);
+        return num == n;
     }
 
-    bool canVisitAllRooms(vector<vector<int>>& rooms) {
-        int len = rooms.size();
-        num = 0;
-        vis.resize(len); // 此时才能确定 vis 数组的大小，因此需要 resize 重建。
-        dfs(rooms, 0); // 从 0 号开始
-        return num == len; // 如果 num 等于 len，说明从 0 号节点出发能够到达所有的节点。
+private:
+    void dfs(const vector<vector<int>> &rooms, int x,
+             vector<bool> &vis, int &num)
+    {
+        // 进入即标记：环和重复钥匙都不会把同一房间再压一次
+        vis[x] = true;
+        ++num;
+
+        for (int key : rooms[x])
+        {
+            if (!vis[key]) dfs(rooms, key, vis, num);
+        }
     }
 };
 
-/*
-方法二：广度优先搜索 BFS（Breadth First Search）
-
-我们也可以使用广度优先搜索的方式遍历整张图，统计可以到达的节点个数，并利用数组 vis 标记当前节点是否访问过，以防止重复访问。
-
-复杂度分析
-- 时间复杂度：O(n+m)，其中 n 是房间的数量，m 是所有房间中的钥匙数量的总数。
-- 空间复杂度：O(n)，其中 n 是房间的数量。主要为队列的开销。
-*/
-class Solution {
+class Solution2
+{
 public:
-    bool canVisitAllRooms(vector<vector<int>>& rooms) {
-        int len = rooms.size(), num = 0; // num 表示访问过的节点数量
-        vector<int> vis(len); // 标记当前节点是否访问过
-        queue<int> que; // 为了保证广度优先遍历，需要用到队列存储平行节点
+    bool canVisitAllRooms(vector<vector<int>> &rooms)
+    {
+        int n = static_cast<int>(rooms.size());
+        vector<bool> vis(n, false);
+        queue<int> que;
 
-        // 先访问 0 号，因此先入队
+        // 入队前先标记，否则 0 号房自己的钥匙会把它再收一次
         vis[0] = true;
-        que.emplace(0);
+        que.push(0);
 
-        // 遍历访问其他节点
-        while (!que.empty()) {
-            // 取出队头元素
+        int num = 0;
+        while (!que.empty())
+        {
             int x = que.front();
             que.pop();
+            ++num;
 
-            num++; // 访问节点数+1
-            for (auto& it : rooms[x]) { // 遍历当前节点指向的下一级节点
-                if (!vis[it]) { // 确保当前节点没有访问过
-                    vis[it] = true;
-                    que.emplace(it); // 入队
+            for (int key : rooms[x])
+            {
+                // 入队即标记：多把钥匙指向同一房间也只入队一次
+                if (!vis[key])
+                {
+                    vis[key] = true;
+                    que.push(key);
                 }
             }
         }
-        return num == len; // 如果 num 等于 len，说明从 0 号节点出发能够到达所有的节点。
+
+        return num == n;
     }
 };
 
+namespace
+{
+void check(const vector<vector<int>> &rooms, bool want)
+{
+    Solution1 s1;
+    Solution2 s2;
 
+    // 两个解法的签名都取非 const 引用，各传一份副本互不影响
+    vector<vector<int>> a = rooms;
+    vector<vector<int>> b = rooms;
 
+    assert(s1.canVisitAllRooms(a) == want);
+    assert(s2.canVisitAllRooms(b) == want);
+}
+} // namespace
 
+int main()
+{
+    // 示例 1：一条链，每间房只给下一间的钥匙
+    check({{1}, {2}, {3}, {}}, true);
 
+    // 示例 2：钥匙跨房间重复，仍有一间不可达
+    check({{1, 3}, {3, 0, 1}, {2}, {0}}, false);
 
+    // 最小规模 n = 2：0 号房直接给出 1 号钥匙
+    check({{1}, {}}, true);
+
+    // 最小规模 n = 2：0 号房没有任何钥匙
+    check({{}, {}}, false);
+
+    // 边界：单房间（题面 n ≥ 2，这里只验证健壮性）
+    check({{}}, true);
+
+    // 边界：除 0 外全部不可达
+    check({{1}, {}, {}}, false);
+
+    // 边界：有环且全可达
+    check({{1}, {2}, {0}}, true);
+
+    // 反直觉：0、1 成环，2 号房仍是孤岛
+    check({{1}, {0}, {}}, false);
+
+    // 重复钥匙：2 号钥匙同时出现在 0 和 1 号房，不能重复计数
+    check({{1, 2}, {2}, {2}}, true);
+
+    // 自环：0、1 号房都指向自己，visited 必须挡住无限递归
+    check({{0, 1}, {1}}, true);
+
+    // 题面外健壮性：同一房间重复给出同一把钥匙
+    check({{1, 1}, {2, 2}, {}}, true);
+
+    // 边界：500 间房的长链，验证递归深度与队列规模
+    {
+        vector<vector<int>> chain(500);
+        for (int i = 0; i + 1 < 500; ++i) chain[i] = {i + 1};
+        check(chain, true);
+    }
+
+    cout << "all tests passed" << endl;
+    return 0;
+}

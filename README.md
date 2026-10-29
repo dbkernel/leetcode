@@ -372,7 +372,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [841. 钥匙和房间（中等）](https://leetcode.cn/problems/keys-and-rooms/) | [cpp](Problems/0801-0900/0841-keys-and-rooms/0841-keys-and-rooms.cpp) |  |  |  |  |
+| ✅ | [841. 钥匙和房间（中等）](https://leetcode.cn/problems/keys-and-rooms/) | [cpp](Problems/0801-0900/0841-keys-and-rooms/0841-keys-and-rooms.cpp) | [go](Problems/0801-0900/0841-keys-and-rooms/0841-keys-and-rooms.go) | [py](Problems/0801-0900/0841-keys-and-rooms/0841-keys-and-rooms.py) | [rs](Problems/0801-0900/0841-keys-and-rooms/0841-keys-and-rooms.rs) | 官方两解：DFS / BFS，时间同为 O(n+m)、空间同为 O(n)，并列最优；只能从 0 号房出发，入队或入栈时即标记已访问，最后按已访问房间数是否等于 n 判定 |
 
 **附加题：**
 
