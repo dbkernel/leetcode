@@ -410,7 +410,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ☐ | [279. 完全平方数](https://leetcode.cn/problems/perfect-squares/) |  |  |  |  |  |
 | ☐ | [322. 零钱兑换 ](https://leetcode.cn/problems/coin-change/) |  |  |  |  |  |
 | ✅ | [518. 零钱兑换 II](https://leetcode.cn/problems/coin-change-2/) | [cpp](Problems/0501-0600/0518-coin-change-ii/0518-coin-change-ii.cpp) | [go](Problems/0501-0600/0518-coin-change-ii/0518-coin-change-ii.go) | [py](Problems/0501-0600/0518-coin-change-ii/0518-coin-change-ii.py) | [rs](Problems/0501-0600/0518-coin-change-ii/0518-coin-change-ii.rs) | 官方两解：二维 DP 按币种逐行递推 / 一维滚动（物品在外、容量在内正序）；最优解为一维滚动；与 377 题的循环顺序正好相反，amount=0 时返回 1 |
-| ☐ | [377. 组合总和 Ⅳ](https://leetcode.cn/problems/combination-sum-iv/) |  |  |  |  |  |
+| ✅ | [377. 组合总和 Ⅳ](https://leetcode.cn/problems/combination-sum-iv/) | [cpp](Problems/0301-0400/0377-combination-sum-iv/0377-combination-sum-iv.cpp) | [go](Problems/0301-0400/0377-combination-sum-iv/0377-combination-sum-iv.go) | [py](Problems/0301-0400/0377-combination-sum-iv/0377-combination-sum-iv.py) | [rs](Problems/0301-0400/0377-combination-sum-iv/0377-combination-sum-iv.rs) | 官方两解：记忆化 DFS / 完全背包（容量在外、物品在内）；两解同为 O(n*target) 时间、O(target) 空间，并列最优；与 518 的循环顺序对照写清，结果可能超 int 用 64 位 |
 
 华为机考题：
 
