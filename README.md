@@ -476,7 +476,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [53. 最大子序和](https://leetcode.cn/problems/maximum-subarray/) | [cpp](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.cpp) | [go](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.go) | [py](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.py) | [rs](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.rs) | 官方三解：Kadane DP / 分治维护区间四值 / 前缀和的最值差；DP 与前缀和同为 O(n) 时间 O(1) 空间，并列最优；四值合并的分治时间也是 O(n)，只因递归栈 O(log n) 才落选（按扫描合并才是 O(n log n)）；全负数时答案初值不能取 0 |
-| ☐ | [238. 除自身以外数组的乘积](https://leetcode.cn/problems/product-of-array-except-self/) |  |  |  |  |  |
+| ✅ | [238. 除自身以外数组的乘积](https://leetcode.cn/problems/product-of-array-except-self/) | [cpp](Problems/0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.cpp) | [go](Problems/0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.go) | [py](Problems/0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.py) | [rs](Problems/0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.rs) | 官方两解：左右乘积数组 / 结果数组存左积再用一个变量滚右积；后者额外空间 O(1)（结果数组不计），为最优；不用除法，所以含 0 甚至含两个 0 也成立 |
 | ☐ | [面试题 05.03. 翻转数位](https://leetcode.cn/problems/reverse-bits-lcci/) |  |  |  |  |  |
 | ☐ | [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/) |  |  |  |  |  |
 
