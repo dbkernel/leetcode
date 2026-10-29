@@ -1,115 +1,161 @@
 /*
-面试题16.26 计算器
+============================================================================
+面试题 16.26. 计算器（中等）
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/calculator-lcci/
+分类：栈 · 表达式求值（乘除优先）
 
 给定一个包含正整数、加(+)、减(-)、乘(*)、除(/)的算数表达式(括号除外)，计算其结果。
-表达式仅包含非负整数，+， - ，*，/ 四种运算符和空格。 整数除法仅保留整数部分。
 
-示例 1:
+表达式仅包含非负整数，+， - ，*，/ 四种运算符和空格  。 整数除法仅保留整数部分。
+
+示例 1：
 输入: "3+2*2"
 输出: 7
 
-示例 2:
+示例 2：
 输入: " 3/2 "
 输出: 1
 
-示例 3:
+示例 3：
 输入: " 3+5 / 2 "
 输出: 5
 
 说明：
-- 你可以假设所给定的表达式都是有效的。
-- 请不要使用内置的库函数 eval。
-
-来源：力扣（LeetCode）
-链接：https://leetcode.cn/problems/calculator-lcci
-
-思路：
-- 算术运算式先算乘除后算加减。
-- 当遇到加法或减法的时候我们没法确定要不要计算，比如2+3*4。
-- 当遇到乘法或者除法的时候我们是可以直接计算的，因为他们的优先级比较高。
-- 所以我们可以把不能确定是否要计算的先加入到栈中，可以直接计算的先计算，然后再加入到栈中。
+  · 你可以假设所给定的表达式都是有效的。
+  · 请不要使用内置的库函数 eval。
 */
-#include <stack>
-#include <iostream>
 #include <cassert>
+#include <cctype>
+#include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
+/*
+解法：栈（乘除就地合并，加减入栈）【最优解】
+
+官方题解只给出这一种方法，也就是本题的最优解：时间 O(n)、空间 O(n)。
+
+为什么慢：把表达式从左到右直接算是不对的，因为乘除优先级高于加减；而解析成
+表达式树（递归下降）又要多一层递归、还要先切分 token，写起来繁琐。本题没有括号，
+值得利用这个简化。
+
+换个角度：既然只有两级优先级，那就让乘除「就地结算」。设想先把所有乘除运算
+做完，并把结果写回原位置 —— 剩下的表达式就只剩一串整数相加减，直接求和即可。
+
+关键点：
+  · 用 preSign 记住「当前这个数字前面的运算符」，第一个数字前面视为 +；
+  · 读到 + 或 - 时，数字原样入栈（减号存相反数），把「加减」推迟到最后求和；
+  · 读到 * 或 / 时，立刻用栈顶和当前数字运算，并把栈顶替换为结果；
+  · 数字可能有多位，用 num = num * 10 + digit 累积；
+  · 「数字结束」的判定是「读到运算符」或「到达字符串末尾」，空格既不累积数字也
+    不是运算符，直接跳过；
+  · 最后把栈中元素全部相加即为答案。
+  · 整数除法要「向零截断」，「-7/2」得 -3 而不是 -4，C++/Go/Rust 的 / 天然如此，
+    Python 的 // 是向下取整，需要额外处理（见 Python 版）。
+
+以 "3+2*2" 为例：
+  i=0 数字 3 → i=1 遇到 '+'：preSign='+' → 栈 [3]，preSign='+'，num=0
+  i=2 数字 2 → i=3 遇到 '*'：preSign='+' → 栈 [3, 2]，preSign='*'
+  i=4 数字 2 → 到末尾：preSign='*' → 栈顶 2*2=4 → 栈 [3, 4]
+  求和 3 + 4 = 7
+
+以 " 3+5 / 2 " 为例：
+  空格跳过；3 入栈；'+' → 栈 [3]；5 入栈 → 栈 [3, 5]；'/' → 5/2=2 → 栈 [3, 2]
+  求和 3 + 2 = 5
+
+复杂度分析：
+  时间 O(n)：每个字符扫描一次，栈操作都是 O(1)
+  空间 O(n)：栈最坏存下所有加减项
+*/
 class Solution
 {
 public:
     int calculate(string s)
     {
-        char ops = '+';
-        stack<int> values;
-        int len = s.length();
-        int stack_head;
+        vector<int> stk;
+        char preSign = '+'; // 第一个数字前面视为 '+'
+        long long num = 0;
+        int n = (int)s.size();
 
-        for (int i = 0; i < len; i++)
+        for (int i = 0; i < n; ++i)
         {
             char ch = s[i];
-            if (ch == ' ') // skip space
+            if (isdigit(ch))
             {
-                continue;
+                num = num * 10 + (ch - '0');
             }
-
-            if (ch >= '0' && ch <= '9')
+            // 读到运算符，或走到末尾，说明一个数字读完了
+            if ((!isdigit(ch) && ch != ' ') || i == n - 1)
             {
-                // 找到连续的数字字符串，把它转化为整数
-                int64_t num = 0; // 如果设为int，leetcode提交代码后会溢出报错
-                while (i < len && (ch = s[i]) >= '0' && ch <= '9')
-                {
-                    num = num * 10 + ch - '0'; // 相较于 '0' 的差值，即为真实的数值
-                    i++;
-                }
-
-                i--; // 抵消上面while循环中最后的 i++，使 i 指向数字的最后一位，比如123中的3
-
-                // 乘法和除法，运算之后在存放到栈中，加法和减法直接存放到栈中。
-                switch (ops)
+                switch (preSign)
                 {
                 case '+':
-                    values.push(num);
+                    stk.push_back((int)num);
                     break;
                 case '-':
-                    values.push(-num);
+                    stk.push_back((int)-num);
                     break;
                 case '*':
-                    stack_head = values.top();
-                    values.pop();
-                    values.push(stack_head * num);
+                    stk.back() *= (int)num;
                     break;
-                case '/':
-                    stack_head = values.top();
-                    values.pop();
-                    values.push(stack_head / num);
+                default: // '/'
+                    // C++ 的整数除法本身就是向零截断
+                    stk.back() /= (int)num;
                     break;
                 }
-            }
-            else
-            {
-                ops = ch;
+                preSign = ch;
+                num = 0;
             }
         }
 
-        //把栈中的所有元素都取出来，计算他们的和
-        int sum = 0;
-        while (!values.empty())
-        {
-            sum += values.top();
-            values.pop();
-        }
-
-        return sum;
+        long long total = 0;
+        for (int v : stk) total += v;
+        return (int)total;
     }
 };
 
+namespace
+{
+void check(const string &expression, int want)
+{
+    Solution solution;
+    int got = solution.calculate(expression);
+    assert(got == want);
+}
+} // namespace
+
 int main()
 {
-    Solution s;
-    assert(s.calculate("3+2") == 5);
-    assert(s.calculate("3/2") == 1);
-    assert(s.calculate("3+2*2") == 7);
-    assert(s.calculate("3+2*2/3") == 4);
-    assert(s.calculate("30+20*4/2") == 70);
+    // 示例 1
+    check("3+2*2", 7);
+
+    // 示例 2
+    check(" 3/2 ", 1);
+
+    // 示例 3
+    check(" 3+5 / 2 ", 5);
+
+    // 边界：只有一个数字
+    check("42", 42);
+    check("  0  ", 0);
+
+    // 边界：减号打头，结果可以为负
+    check("0-7/2", -3); // 向零截断：-7/2 = -3
+    check("1-6/2", -2);
+
+    // 边界：连乘连除，同级从左到右
+    check("1*2*3+4", 10);
+    check("100/10/2", 5);
+
+    // 边界：加减与乘除混合，且含多个空格
+    check("1 + 2 * 3 - 4 / 2", 5);
+    check("12345*10+6/3", 123452);
+
+    // 边界：0 作被乘数
+    check("0*100+3", 3);
+
+    cout << "all tests passed" << endl;
+    return 0;
 }
