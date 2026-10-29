@@ -246,7 +246,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [104. 二叉树的最大深度（简单） ](https://leetcode.cn/problems/maximum-depth-of-binary-tree/) |  |  |  |  |  |
+| ✅ | [104. 二叉树的最大深度（简单） ](https://leetcode.cn/problems/maximum-depth-of-binary-tree/) | [cpp](Problems/0101-0200/0104-maximum-depth-of-binary-tree/0104-maximum-depth-of-binary-tree.cpp) | [go](Problems/0101-0200/0104-maximum-depth-of-binary-tree/0104-maximum-depth-of-binary-tree.go) | [py](Problems/0101-0200/0104-maximum-depth-of-binary-tree/0104-maximum-depth-of-binary-tree.py) | [rs](Problems/0101-0200/0104-maximum-depth-of-binary-tree/0104-maximum-depth-of-binary-tree.rs) | 官方两解：后序递归 1 + max(左, 右) / BFS 按层计数；最优解为 DFS，O(n) 时间 O(h) 空间 |
 | ☐ | [543. 二叉树的直径（简单）](https://leetcode.cn/problems/diameter-of-binary-tree/) |  |  |  |  |  |
 | ☐ | [559. N 叉树的最大深度（简单）](https://leetcode.cn/problems/maximum-depth-of-n-ary-tree/) |  |  |  |  |  |
 | ☐ | [剑指 Offer 55 - II. 平衡二叉树（中等）](https://leetcode.cn/problems/ping-heng-er-cha-shu-lcof/) |  |  |  |  |  |
