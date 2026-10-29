@@ -49,7 +49,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [1.两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 官方两解：暴力枚举 O(n^2) / 哈希表 O(n) |
+| ✅ | [1.两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 官方两解：暴力枚举 O(n^2) / 哈希表 O(n)；最优解为哈希表 |
 | ✅ | [1108. IP 地址无效化（简单）](https://leetcode.cn/problems/defanging-an-ip-address/) | [cpp](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.cpp) |  |  |  |  |
 | ✅ | [344. 反转字符串（简单）](https://leetcode.cn/problems/reverse-string/) | [cpp](Problems/0301-0400/0344-reverse-string/0344-reverse-string.cpp) |  |  |  |  |
 | ✅ | [剑指 Offer 58 - I. 翻转单词顺序（简单）](https://leetcode.cn/problems/fan-zhuan-dan-ci-shun-xu-lcof/) | [cpp](JianZhiOffer/58-I-翻转单词顺序.cpp) |  |  |  |  |
@@ -85,7 +85,7 @@
 | ✅ | [203. 移除链表元素 （简单）](https://leetcode.cn/problems/remove-linked-list-elements/) | [cpp](Problems/0201-0300/0203-remove-linked-list-elements/0203-remove-linked-list-elements.cpp) |  |  |  |  |
 | ✅ | [876. 链表的中间结点（简单）](https://leetcode.cn/problems/middle-of-the-linked-list/) | [cpp](Problems/0801-0900/0876-middle-of-the-linked-list/0876-middle-of-the-linked-list.cpp) |  |  |  |  |
 | ✅ | [83. 删除排序链表中的重复元素（简单）](https://leetcode.cn/problems/remove-duplicates-from-sorted-list/) | [cpp](Problems/0001-0100/0083-remove-duplicates-from-sorted-list/0083-remove-duplicates-from-sorted-list.cpp) |  |  |  |  |
-| ✅ | [2. 两数相加 （中等，腾讯笔试题）](https://leetcode.cn/problems/add-two-numbers/) | [cpp](Problems/0001-0100/0002-two-numbers/0002-two-numbers.cpp) | [go](Problems/0001-0100/0002-two-numbers/0002-two-numbers.go) | [py](Problems/0001-0100/0002-two-numbers/0002-two-numbers.py) | [rs](Problems/0001-0100/0002-two-numbers/0002-two-numbers.rs) | 逐位模拟；注意进位与末尾补位 |
+| ✅ | [2. 两数相加 （中等，腾讯笔试题）](https://leetcode.cn/problems/add-two-numbers/) | [cpp](Problems/0001-0100/0002-two-numbers/0002-two-numbers.cpp) | [go](Problems/0001-0100/0002-two-numbers/0002-two-numbers.go) | [py](Problems/0001-0100/0002-two-numbers/0002-two-numbers.py) | [rs](Problems/0001-0100/0002-two-numbers/0002-two-numbers.rs) | 官方仅一解：逐位模拟 O(max(m,n))，即最优解；注意进位与末尾补位 |
 | ✅ | [剑指 Offer 25. 合并两个排序的链表 （中等）](https://leetcode.cn/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/) | [cpp](JianZhiOffer/25-合并两个排序的链表.cpp) |  |  |  |  |
 | ☐ | [369. 给单链表加一（中等）力扣会员](https://leetcode.cn/problems/plus-one-linked-list/) |  |  |  |  |  |
 
@@ -200,7 +200,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [两数之和 （简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 官方两解：暴力枚举 O(n^2) / 哈希表 O(n)；哈希表关键在「先查后插」；【精品】 |
+| ✅ | [两数之和 （简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 官方两解：暴力枚举 O(n^2) / 哈希表 O(n)；最优解为哈希表，「先查后插」；【精品】 |
 | ☐ | [15. 三数之和（中等，墨奇社招）](https://leetcode.cn/problems/3sum/) |  |  |  |  |  |
 | ✅ | [160. 相交链表（简单，新华智云 22 届暑期实习） ](https://leetcode.cn/problems/intersection-of-two-linked-lists/) | [cpp](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.cpp) |  |  |  | 双指针最好，哈希集合 unordered_set 空间复杂度高 |
 | ☐ | [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode.cn/problems/linked-list-cycle/) |  |  |  |  |  |
