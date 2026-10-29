@@ -1,6 +1,13 @@
 # Table of Contents
 
 - [Table of Contents](#table-of-contents)
+- [手写基础数据结构与算法（独立章节）](#手写基础数据结构与算法独立章节)
+  - [手写排序算法](#手写排序算法)
+  - [手写线性结构](#手写线性结构)
+  - [手写堆与优先队列](#手写堆与优先队列)
+  - [手写树结构](#手写树结构)
+  - [手写图算法](#手写图算法)
+  - [手写哈希表](#手写哈希表)
 - [第一阶段（1 周）](#第一阶段1-周)
   - [纯编程](#纯编程)
   - [找规律](#找规律)
@@ -43,6 +50,78 @@
   - [贪心](#贪心)
 - [综合示例](#综合示例)
 - [其他](#其他)
+
+# 手写基础数据结构与算法（独立章节）
+
+> 与各阶段的刷题计划并行使用，不依赖任何标准库容器与排序：
+> 实现代码里出现的数组、链表、栈、队列、堆、树、图，全部一行行手写出来，
+> 每个文件都自带断言用例，`main` 跑通后打印 `all tests passed`，可直接
+> `g++` / `go run` / `python3` / `rustc` 单文件验证。
+>
+> 定位：把「会用 `std::sort`」变成「能在白板上写出 `sort`」。
+> 面试手撕的高频顺序大致是：快排 → 归并 → 堆 → 单/双链表 → 栈与队列 →
+> 二叉树遍历 → 拓扑排序 → 并查集 → 最短路。
+
+## 手写排序算法
+
+| 状态 | 名称 | C++ | Go | Py | Rust | 复杂度 / 稳定性 | 要点 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ✅ | 冒泡排序 | [cpp](Algorithms/sort/bubble-sort.cpp) | [go](Algorithms/sort/bubble-sort.go) | [py](Algorithms/sort/bubble-sort.py) | [rs](Algorithms/sort/bubble-sort.rs) | 时间最好 O(n)、平均/最坏 O(n^2)；空间 O(1)；稳定 | 每趟把最大值冒到未排序区末尾；`swapped` 标记提前退出，已有序时一趟结束 |
+| ✅ | 选择排序 | [cpp](Algorithms/sort/selection-sort.cpp) | [go](Algorithms/sort/selection-sort.go) | [py](Algorithms/sort/selection-sort.py) | [rs](Algorithms/sort/selection-sort.rs) | O(n^2)；空间 O(1)；不稳定 | 比较次数恒为 n(n-1)/2、交换最多 n-1 次，适合交换代价大的场景；`[2,2,1]` 是打破稳定性的最小反例 |
+| ✅ | 插入排序 | [cpp](Algorithms/sort/insertion-sort.cpp) | [go](Algorithms/sort/insertion-sort.go) | [py](Algorithms/sort/insertion-sort.py) | [rs](Algorithms/sort/insertion-sort.rs) | 最好 O(n)、平均/最坏 O(n^2)；空间 O(1)；稳定 | 先暂存待插入值再整体后移，避免边比较边交换；小数组和链表排序的默认选择 |
+| ✅ | 希尔排序 | [cpp](Algorithms/sort/shell-sort.cpp) | [go](Algorithms/sort/shell-sort.go) | [py](Algorithms/sort/shell-sort.py) | [rs](Algorithms/sort/shell-sort.rs) | 折半增量 O(n^2)、Knuth 序列约 O(n^1.5)；空间 O(1)；不稳定 | 按增量分组做插入排序，增量收敛到 1 时整体已近似有序；复杂度由增量序列决定，不是固定的 O(n log n) |
+| ✅ | 归并排序 | [cpp](Algorithms/sort/merge-sort.cpp) | [go](Algorithms/sort/merge-sort.go) | [py](Algorithms/sort/merge-sort.py) | [rs](Algorithms/sort/merge-sort.rs) | O(n log n)；空间 O(n)；稳定 | 自顶向下 + 自底向上两版；辅助数组只开一次并复用；合并时 `<=` 取左边才稳定 |
+| ✅ | 快速排序 | [cpp](Algorithms/sort/quick-sort.cpp) | [go](Algorithms/sort/quick-sort.go) | [py](Algorithms/sort/quick-sort.py) | [rs](Algorithms/sort/quick-sort.rs) | 平均 O(n log n)、最坏 O(n^2)；空间 O(log n) 栈；不稳定 | 随机化枢轴 + 三路划分，等值段落在最终位置不再递归，全相同数组只扫一趟；注释另给两个可选项（小区间切插入排序、只递归较短一侧）用于把栈压到严格 O(log n)，本例未实现 |
+| ✅ | 堆排序 | [cpp](Algorithms/sort/heap-sort.cpp) | [go](Algorithms/sort/heap-sort.go) | [py](Algorithms/sort/heap-sort.py) | [rs](Algorithms/sort/heap-sort.rs) | O(n log n)；空间 O(1)；不稳定 | 自底向上 heapify 建堆是 O(n)（从 n/2-1 开始下沉）；交换堆顶到末尾后堆区收缩，再对根下沉 |
+| ✅ | 计数排序 | [cpp](Algorithms/sort/counting-sort.cpp) | [go](Algorithms/sort/counting-sort.go) | [py](Algorithms/sort/counting-sort.py) | [rs](Algorithms/sort/counting-sort.rs) | O(n + K)；空间 O(n + K)；稳定 | K 是值域宽度，负数用 `value - min` 偏移；前缀和决定落位，倒序回填才稳定 |
+| ✅ | 基数排序 | [cpp](Algorithms/sort/radix-sort.cpp) | [go](Algorithms/sort/radix-sort.go) | [py](Algorithms/sort/radix-sort.py) | [rs](Algorithms/sort/radix-sort.rs) | O(d(n + 10))；空间 O(n + 10)；稳定 | LSD 从低位到高位，每一位用计数排序做稳定子过程；d 为最大位数，值域大而位数少时优于比较排序 |
+| ✅ | 桶排序 | [cpp](Algorithms/sort/bucket-sort.cpp) | [go](Algorithms/sort/bucket-sort.go) | [py](Algorithms/sort/bucket-sort.py) | [rs](Algorithms/sort/bucket-sort.rs) | 平均 O(n)、最坏 O(n^2)；空间 O(n + k)；稳定 | 按值域均分 k ≈ √n 个桶，桶内插入排序；数据全挤进一个桶就退化成 O(n^2) |
+
+## 手写线性结构
+
+| 状态 | 名称 | C++ | Go | Py | Rust | 复杂度 | 要点 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ✅ | 动态数组 | [cpp](Algorithms/linear/dynamic-array.cpp) | [go](Algorithms/linear/dynamic-array.go) | [py](Algorithms/linear/dynamic-array.py) | [rs](Algorithms/linear/dynamic-array.rs) | 尾插/尾删均摊 O(1)，随机访问 O(1)，中间插删 O(n) | 满时 2 倍扩容、`size <= capacity/4` 时减半，避免临界点反复搬移；均摊分析靠「扩容代价被 2 倍增长摊平」 |
+| ✅ | 单链表 | [cpp](Algorithms/linear/singly-linked-list.cpp) | [go](Algorithms/linear/singly-linked-list.go) | [py](Algorithms/linear/singly-linked-list.py) | [rs](Algorithms/linear/singly-linked-list.rs) | 头插/尾插/删除 O(1)，查找 O(n) | 哑节点统一头插与删头；维护 tail 指针尾插才是 O(1)；删除前先存 `next`，否则释放后无法继续 |
+| ✅ | 双向链表 | [cpp](Algorithms/linear/doubly-linked-list.cpp) | [go](Algorithms/linear/doubly-linked-list.go) | [py](Algorithms/linear/doubly-linked-list.py) | [rs](Algorithms/linear/doubly-linked-list.rs) | 头尾插删 O(1)，删除给定节点 O(1)，查找 O(n) | 相比单链表的唯一核心优势是「拿到节点就能 O(1) 删」；head/tail 双哨兵让边界操作不用特判 |
+| ✅ | 栈 | [cpp](Algorithms/linear/stack.cpp) | [go](Algorithms/linear/stack.go) | [py](Algorithms/linear/stack.py) | [rs](Algorithms/linear/stack.rs) | push/pop/peek 均摊 O(1) | 空栈 `pop` 要返回错误而不是崩溃（C++/Go 返回 bool、Python 抛异常、Rust 返回 `Option`）；附括号匹配应用 |
+| ✅ | 循环队列 | [cpp](Algorithms/linear/circular-queue.cpp) | [go](Algorithms/linear/circular-queue.go) | [py](Algorithms/linear/circular-queue.py) | [rs](Algorithms/linear/circular-queue.rs) | 入队/出队均摊 O(1) | 用 `head` + `size` 判空满，不必牺牲一个空位；扩容时按 `(head + i) % capacity` 重新落位，先搬后改 head |
+| ✅ | 双端队列 | [cpp](Algorithms/linear/deque.cpp) | [go](Algorithms/linear/deque.go) | [py](Algorithms/linear/deque.py) | [rs](Algorithms/linear/deque.rs) | 两端进出均摊 O(1)，随机访问 O(1) | 环形数组实现；头部入队 `head = (head - 1 + capacity) % capacity`，先加容量再取模防止负数 |
+
+## 手写堆与优先队列
+
+| 状态 | 名称 | C++ | Go | Py | Rust | 复杂度 | 要点 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ✅ | 二叉堆 | [cpp](Algorithms/heap/binary-heap.cpp) | [go](Algorithms/heap/binary-heap.go) | [py](Algorithms/heap/binary-heap.py) | [rs](Algorithms/heap/binary-heap.rs) | push/pop O(log n)，peek O(1)，建堆 O(n) | 0-based 下标 `parent = (i-1)/2`、子节点 `2i+1 / 2i+2`；建堆从 `n/2-1` 倒着下沉，总代价 O(n) 而非 O(n log n)；大/小根堆由比较函数切换 |
+| ✅ | 优先队列 | [cpp](Algorithms/heap/priority-queue.cpp) | [go](Algorithms/heap/priority-queue.go) | [py](Algorithms/heap/priority-queue.py) | [rs](Algorithms/heap/priority-queue.rs) | push/pop O(log n)，peek O(1) | 在堆上包一层接口；相同优先级按插入序号做次关键字，把不稳定的堆变成稳定的调度器 |
+
+## 手写树结构
+
+| 状态 | 名称 | C++ | Go | Py | Rust | 复杂度 | 要点 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ✅ | 二叉树遍历 | [cpp](Algorithms/tree/binary-tree-traversal.cpp) | [go](Algorithms/tree/binary-tree-traversal.go) | [py](Algorithms/tree/binary-tree-traversal.py) | [rs](Algorithms/tree/binary-tree-traversal.rs) | 时间 O(n)；空间 O(h)，Morris O(1) | 前/中/后序各写递归与显式栈两版，层序用手写队列；Morris 靠穿线指针，第二次回到该节点时必须拆线，否则树被改坏 |
+| ✅ | 二叉搜索树 | [cpp](Algorithms/tree/binary-search-tree.cpp) | [go](Algorithms/tree/binary-search-tree.go) | [py](Algorithms/tree/binary-search-tree.py) | [rs](Algorithms/tree/binary-search-tree.rs) | 平均 O(log n)、最坏 O(n)（退化成链） | 删除双孩子节点用中序后继替换：后继是右子树最小值，替换后仍满足 BST 性质；中序遍历必须严格递增 |
+| ✅ | AVL 树 | [cpp](Algorithms/tree/avl-tree.cpp) | [go](Algorithms/tree/avl-tree.go) | [py](Algorithms/tree/avl-tree.py) | [rs](Algorithms/tree/avl-tree.rs) | 查找/插入/删除 O(log n) | 四种旋转 LL/RR/LR/RL 各自独立成函数；删除双孩子节点后必须从「后继的父节点」回溯更新高度，漏这一步是最常见的 bug |
+| ✅ | 字典树 Trie | [cpp](Algorithms/tree/trie.cpp) | [go](Algorithms/tree/trie.go) | [py](Algorithms/tree/trie.py) | [rs](Algorithms/tree/trie.rs) | 插入/查询 O(L)，L 为串长；空间 O(总字符数 × 26) | 节点用 26 叉数组 + `pass`/`end` 计数：只有计数才能支持重复插入与删除，`bool` 会在删一个重复词时把整条前缀清空 |
+| ✅ | 线段树 | [cpp](Algorithms/tree/segment-tree.cpp) | [go](Algorithms/tree/segment-tree.go) | [py](Algorithms/tree/segment-tree.py) | [rs](Algorithms/tree/segment-tree.rs) | 建树 O(n)，查询/更新 O(log n)；空间 4n | 区间和 + 单点更新，另附「区间加 + 区间和」的懒标记版本；`push_down` 只在「不完全覆盖」时下传，且懒标记是叠加而不是赋值 |
+| ✅ | 树状数组 | [cpp](Algorithms/tree/fenwick-tree.cpp) | [go](Algorithms/tree/fenwick-tree.go) | [py](Algorithms/tree/fenwick-tree.py) | [rs](Algorithms/tree/fenwick-tree.rs) | 单点更新/前缀和 O(log n)，建树 O(n) | `lowbit(i) = i & -i`；区间和 = 两个前缀和相减；O(n) 建树必须按下标从小到大把 `tree[i]` 并到 `i + lowbit(i)`，逆序会重复累加 |
+
+## 手写图算法
+
+| 状态 | 名称 | C++ | Go | Py | Rust | 复杂度 | 要点 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ✅ | 图的存储 | [cpp](Algorithms/graph/graph-storage.cpp) | [go](Algorithms/graph/graph-storage.go) | [py](Algorithms/graph/graph-storage.py) | [rs](Algorithms/graph/graph-storage.rs) | 邻接矩阵 O(V^2)，邻接表 O(V+E) | 矩阵判邻接 O(1) 适合稠密图，表遍历邻居 O(degree) 适合稀疏图；无向图度数和 = 2E、有向图出度和 = 入度和 = E，自环与重边的处理要写清 |
+| ✅ | 图的遍历 | [cpp](Algorithms/graph/graph-traversal.cpp) | [go](Algorithms/graph/graph-traversal.go) | [py](Algorithms/graph/graph-traversal.py) | [rs](Algorithms/graph/graph-traversal.rs) | O(V+E) | DFS 递归 + 显式栈两版，BFS 用手写队列；迭代 DFS 必须「入栈即标记」，否则同一点会被重复压栈；BFS 只在无权/等权图上保证最短路 |
+| ✅ | 拓扑排序 | [cpp](Algorithms/graph/topological-sort.cpp) | [go](Algorithms/graph/topological-sort.go) | [py](Algorithms/graph/topological-sort.py) | [rs](Algorithms/graph/topological-sort.rs) | O(V+E) | Kahn 用入度 + 队列，输出少于 V 个点即有环；DFS 三色标记，遇到「在栈上」的邻居即有环；合法拓扑序不唯一，测试要校验合法性而不是比对固定序列 |
+| ✅ | Dijkstra 最短路 | [cpp](Algorithms/graph/dijkstra.cpp) | [go](Algorithms/graph/dijkstra.go) | [py](Algorithms/graph/dijkstra.py) | [rs](Algorithms/graph/dijkstra.rs) | 堆优化 O((V+E) log V)，朴素 O(V^2) | 只适用于非负权：负边会让「已确定的最短路」被后来的边推翻；用惰性删除（弹出时 `d > dist[u]` 就跳过）代替 decrease-key |
+| ✅ | 最小生成树 | [cpp](Algorithms/graph/minimum-spanning-tree.cpp) | [go](Algorithms/graph/minimum-spanning-tree.go) | [py](Algorithms/graph/minimum-spanning-tree.py) | [rs](Algorithms/graph/minimum-spanning-tree.rs) | Kruskal O(E log E)，Prim 朴素 O(V^2) | Kruskal 排序 + 并查集判环，Prim 每次选离已选集合最近的点；图不连通时得到的是最小生成森林，返回边数而不是硬凑 V-1 |
+| ✅ | 并查集 | [cpp](Algorithms/graph/union-find.cpp) | [go](Algorithms/graph/union-find.go) | [py](Algorithms/graph/union-find.py) | [rs](Algorithms/graph/union-find.rs) | 均摊 O(α(n)) | 路径压缩 + 按大小/按秩合并二选一；只有路径压缩是均摊 O(log n)，两者同用才是反 Ackermann；迭代版压缩避免深链递归爆栈 |
+
+## 手写哈希表
+
+| 状态 | 名称 | C++ | Go | Py | Rust | 复杂度 | 要点 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ✅ | 哈希表 | [cpp](Algorithms/hash/hash-map.cpp) | [go](Algorithms/hash/hash-map.go) | [py](Algorithms/hash/hash-map.py) | [rs](Algorithms/hash/hash-map.rs) | 平均 O(1)，最坏 O(n)；空间 O(n) | 链地址法 + 负载因子 0.75 扩容；容量取 2 的幂，用 `& (capacity-1)` 代替取模；扩容后每个节点都要用新容量重新计算桶下标，否则「原来同桶」的节点会散错位置 |
 
 # 第一阶段（1 周）
 
@@ -165,15 +244,8 @@
 | ✅ | [面试题 17.14. 最小 K 个数 （中等）](https://leetcode.cn/problems/smallest-k-lcci/) | [cpp](InterviewQuestions/17.14-smallest-k-lcci.cpp) | [go](InterviewQuestions/17.14-smallest-k-lcci.go) | [py](InterviewQuestions/17.14-smallest-k-lcci.py) | [rs](InterviewQuestions/17.14-smallest-k-lcci.rs) | 官方三解：排序 O(n log n) / 大小 k 的大根堆 O(n log k) / 随机化快速选择期望 O(n)；最优解为快速选择；【精品】 |
 | ✅ | [LCR 170 / 剑指 Offer 51. 交易逆序对的总数（困难）](https://leetcode.cn/problems/shu-zu-zhong-de-ni-xu-dui-lcof/) | [cpp](JianZhiOffer/51-数组中的逆序对.cpp) | [go](JianZhiOffer/51-数组中的逆序对.go) | [py](JianZhiOffer/51-数组中的逆序对.py) | [rs](JianZhiOffer/51-数组中的逆序对.rs) | 现收录为 LCR 170「交易逆序对的总数」，签名改为 reversePairs(record)；官方一解：归并排序合并时统计跨段逆序对 O(n log n)；另附离散化 + 树状数组同为 O(n log n)，并列最优 |
 
-- [ ] **补充各类排序算法：**
-  - [x] 快速排序
-    - [quick_sort.cpp](Algorithms/sort/quick_sort.cpp)
-  - [ ] 归并排序
-  - [ ] 冒泡排序
-  - [ ] 插入排序
-  - [ ] 堆排序
-  - [ ] 希尔排序
-  - [ ] ......
+- 手写排序算法（快排 / 归并 / 冒泡 / 插入 / 堆排 / 希尔 / 计数 / 基数 / 桶）
+  已移入独立章节：[手写基础数据结构与算法 · 手写排序算法](#手写排序算法)。
 
 # 第四阶段（1 周）
 
