@@ -69,7 +69,7 @@
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [面试题 01.08. 零矩阵 （简单）](https://leetcode.cn/problems/zero-matrix-lcci/) | [cpp](InterviewQuestions/01.08-zero-matrix-lcci.cpp) | [go](InterviewQuestions/01.08-zero-matrix-lcci.go) | [py](InterviewQuestions/01.08-zero-matrix-lcci.py) | [rs](InterviewQuestions/01.08-zero-matrix-lcci.rs) | 官方三解：两个标记数组 O(m+n) 空间 / 首行首列当标记 + 两个变量 / 只留一个标记变量；后两者 O(1) 空间并列最优；采集标记必须在清零之前，否则首行会被冲掉 |
-| ☐ | [剑指 Offer 61. 扑克牌中的顺子(中等)](https://leetcode.cn/problems/bu-ke-pai-zhong-de-shun-zi-lcof/) |  |  |  |  |  |
+| ✅ | [LCR 186 / 剑指 Offer 61. 文物朝代判断（简单）](https://leetcode.cn/problems/bu-ke-pai-zhong-de-shun-zi-lcof/) | [cpp](JianZhiOffer/61-扑克牌中的顺子.cpp) | [go](JianZhiOffer/61-扑克牌中的顺子.go) | [py](JianZhiOffer/61-扑克牌中的顺子.py) | [rs](JianZhiOffer/61-扑克牌中的顺子.rs) | 现收录为 LCR 186「文物朝代判断」，签名改为 checkDynasty(places)；平台无题解文章，按通行写法给三解：排序 / 哈希集合 / 位掩码；位掩码一趟完成判重与记录，O(n) 时间 O(1) 空间最优；0 不参与判重，极差须小于 5 |
 | ☐ | [面试题 16.11. 跳水板（简单）](https://leetcode.cn/problems/diving-board-lcci/) |  |  |  |  |  |
 | ☐ | [面试题 01.05. 一次编辑（中等）](https://leetcode.cn/problems/one-away-lcci/) |  |  |  |  |  |
 | ☐ | [面试题 16.15. 珠玑妙算 （中等）](https://leetcode.cn/problems/master-mind-lcci/) |  |  |  |  |  |
