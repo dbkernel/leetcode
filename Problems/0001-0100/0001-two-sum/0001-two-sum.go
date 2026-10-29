@@ -1,7 +1,12 @@
 /*
-1. 两数之和
+============================================================================
+LeetCode 1. 两数之和（简单）
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/two-sum/
+分类：哈希表 · 一次遍历
+============================================================================
 
-给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。
+给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。
 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
 你可以按任意顺序返回答案。
 
@@ -25,28 +30,90 @@
 只会存在一个有效答案
 
 进阶：你可以想出一个时间复杂度小于 O(n^2) 的算法吗？
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/two-sum
 */
-
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+)
 
+/*
+解法：哈希表（一次遍历）
+
+朴素做法：对每个 x 再向后扫一遍找 target - x，单次查找 O(n)，总计 O(n^2)。
+换个角度看：对每个新元素 x，只需在「已遍历的前缀」里反向查找 target - x。
+于是把前缀的「值 → 下标」记入 map，查找就从 O(n) 降到 O(1)。
+
+关键：先查后插，两句话顺序不能反。
+  · 先查 —— map 里只有下标 < i 的元素，天然排除「拿自己配自己」
+  · 后插 —— nums[i] 要到第 i 步之后才对后续元素可见，保证 i != j
+所以 [3, 3], target = 6 也能得到 [0, 1]：第二个 3 查到的是第一个 3。
+
+Go 的 map 读不存在的键会返回零值，所以必须用「逗号 ok」形式判断命中，
+直接比较 seen[complement] != 0 会把「下标 0」误判成未命中。
+
+同一数值只需留一个下标：题目只要求任意一组解，同值元素互换不影响合法性，
+因此重复写入覆盖旧下标不会丢失答案（Go 的 map 赋值同样是覆盖语义）。
+
+以示例 1（nums = [2,7,11,15], target = 9）为例：
+  i = 0, x = 2：查 9 - 2 = 7 → 未命中；写入 {2: 0}
+  i = 1, x = 7：查 9 - 7 = 2 → 命中下标 0；返回 [0, 1]
+
+复杂度分析：
+  时间 O(n)：每个元素进出 map 各一次，map 操作摊还 O(1)
+  空间 O(n)：最坏情况下前 n-1 个数都留在 map 里
+*/
+
+// 返回任意一组两个下标 (i, j)，满足 nums[i] + nums[j] == target 且 i != j
 func twoSum(nums []int, target int) []int {
-	vmap := make(map[int]int, len(nums))
-	for i, v := range nums {
-		if j, ok := vmap[target-v]; ok {
+	// 值 → 下标，只保存「已经扫过」的那部分元素；预分配容量省掉扩容时的 rehash
+	seen := make(map[int]int, len(nums))
+
+	for i, x := range nums {
+		// 只在前缀里找：命中时 seen 中存的下标必然 < i，不会是自己
+		if j, ok := seen[target-x]; ok {
 			return []int{j, i}
 		}
-		vmap[v] = i
+
+		// 未命中则登记当前元素，供后续元素匹配；同值重复出现时覆盖旧下标
+		seen[x] = i
 	}
 
+	// 题目保证有解，走不到这里；返回 nil 与空切片在 len 上等价，调用方按长度判断即可
 	return nil
 }
 
+// ---- 以下为自测代码，不属于题解主体 ----
+
+// 题目允许任意顺序返回，先排序再比较，断言就不依赖实现的返回顺序
+func samePair(a, b []int) bool {
+	x := slices.Clone(a)
+	y := slices.Clone(b)
+	slices.Sort(x)
+	slices.Sort(y)
+	return slices.Equal(x, y)
+}
+
+// go test 之外的自测驱动：Go 标准库没有 assert，用 panic 显式报出失败的用例
+func check(name string, got, want []int) {
+	if !samePair(got, want) {
+		panic(fmt.Sprintf("%s: got %v, want %v", name, got, want))
+	}
+}
+
 func main() {
-	nums := []int{2, 7, 11, 15}
-	fmt.Println(twoSum(nums, 9))
+	// 示例 1：2 + 7 == 9
+	check("example 1", twoSum([]int{2, 7, 11, 15}, 9), []int{0, 1})
+
+	// 示例 2：答案不落在开头
+	check("example 2", twoSum([]int{3, 2, 4}, 6), []int{1, 2})
+
+	// 示例 3：重复值 —— 「先查后插」的关键用例
+	check("example 3", twoSum([]int{3, 3}, 6), []int{0, 1})
+
+	// 重复值本身不是答案：重复写入覆盖旧下标，但不得丢失解
+	check("duplicate not the answer", twoSum([]int{3, 3, 5}, 8), []int{1, 2})
+
+	fmt.Println("all tests passed")
 }
