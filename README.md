@@ -179,7 +179,7 @@
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [704. 二分查找（简单） 标准二分查找](https://leetcode.cn/problems/binary-search/) | [cpp](Problems/0701-0800/0704-binary-search/0704-binary-search.cpp) | [go](Problems/0701-0800/0704-binary-search/0704-binary-search.go) | [py](Problems/0701-0800/0704-binary-search/0704-binary-search.py) | [rs](Problems/0701-0800/0704-binary-search/0704-binary-search.rs) | 官方一解：闭区间二分，O(log n) 时间 O(1) 空间 |
-| ✅ | [374. 猜数字大小（简单）](https://leetcode.cn/problems/guess-number-higher-or-lower/) | [cpp](Problems/0301-0400/0374-guess-number-higher-or-lower/0374-guess-number-higher-or-lower.cpp) |  |  |  |  |
+| ✅ | [374. 猜数字大小（简单）](https://leetcode.cn/problems/guess-number-higher-or-lower/) | [cpp](Problems/0301-0400/0374-guess-number-higher-or-lower/0374-guess-number-higher-or-lower.cpp) | [go](Problems/0301-0400/0374-guess-number-higher-or-lower/0374-guess-number-higher-or-lower.go) | [py](Problems/0301-0400/0374-guess-number-higher-or-lower/0374-guess-number-higher-or-lower.py) | [rs](Problems/0301-0400/0374-guess-number-higher-or-lower/0374-guess-number-higher-or-lower.rs) | 交互题。官方一解：二分并把区间收敛到一点，O(log n)；mid 需写成 left+(right-left)/2 防溢出 |
 | ☐ | [744. 寻找比目标字母大的最小字母（简单）](https://leetcode.cn/problems/find-smallest-letter-greater-than-target/) |  |  |  |  |  |
 | ☐ | [35. 搜索插入位置（简单）](https://leetcode.cn/problems/search-insert-position/) |  |  |  |  |  |
 | ☐ | [34. 在排序数组中查找元素的第一个和最后一个位置 （中等）](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/) |  |  |  |  |  |
