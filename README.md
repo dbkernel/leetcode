@@ -391,7 +391,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [127. 单词接龙（困难）](https://leetcode.cn/problems/word-ladder/) | [cpp](Problems/0101-0200/0127-word-ladder/0127-word-ladder.cpp) | [go](Problems/0101-0200/0127-word-ladder/0127-word-ladder.go) | [py](Problems/0101-0200/0127-word-ladder/0127-word-ladder.py) | [rs](Problems/0101-0200/0127-word-ladder/0127-word-ladder.rs) | 官方两解：逐层 BFS / 双向 BFS，同为 O(N·L·26)，并列最优（双向实际只展开 b^(d/2)）；必须枚举替换字母，不能两两建图；beginWord 与 endWord 相同按单词数计 1 |
 | ✅ | [126. 单词接龙 II（困难）](https://leetcode.cn/problems/word-ladder-ii/) | [cpp](Problems/0101-0200/0126-word-ladder-ii/0126-word-ladder-ii.cpp) | [go](Problems/0101-0200/0126-word-ladder-ii/0126-word-ladder-ii.go) | [py](Problems/0101-0200/0126-word-ladder-ii/0126-word-ladder-ii.py) | [rs](Problems/0101-0200/0126-word-ladder-ii/0126-word-ladder-ii.rs) | 官方一解：BFS 建分层 DAG + DFS 回溯所有最短路径，即最优；必须整层扫完再删词，否则同层多父会丢路径 |
-| ☐ | [994. 腐烂的橘子（中等）](https://leetcode.cn/problems/rotting-oranges/) |  |  |  |  |  |
+| ✅ | [994. 腐烂的橘子（中等）](https://leetcode.cn/problems/rotting-oranges/) | [cpp](Problems/0901-1000/0994-rotting-oranges/0994-rotting-oranges.cpp) | [go](Problems/0901-1000/0994-rotting-oranges/0994-rotting-oranges.go) | [py](Problems/0901-1000/0994-rotting-oranges/0994-rotting-oranges.py) | [rs](Problems/0901-1000/0994-rotting-oranges/0994-rotting-oranges.rs) | 官方一解：多源 BFS 按层推进，即最优 O(mn)；新鲜橘子数归零才返回层数，初始全空返回 0，有橘子被隔开返回 -1 |
 | ☐ | [542. 01 矩阵（中等）](https://leetcode.cn/problems/01-matrix/) |  |  |  |  |  |
 | ☐ | [815. 公交路线（困难）](https://leetcode.cn/problems/bus-routes/) |  |  |  |  |  |
 | ☐ | [286. 墙与门（中等）力扣会员](https://leetcode.cn/problems/walls-and-gates/) |  |  |  |  |  |
