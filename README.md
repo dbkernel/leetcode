@@ -50,7 +50,7 @@
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [1.两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 官方两解：暴力枚举 O(n^2) / 哈希表 O(n)；最优解为哈希表 |
-| ✅ | [1108. IP 地址无效化（简单）](https://leetcode.cn/problems/defanging-an-ip-address/) | [cpp](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.cpp) |  |  |  |  |
+| ✅ | [1108. IP 地址无效化（简单）](https://leetcode.cn/problems/defanging-an-ip-address/) | [cpp](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.cpp) | [go](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.go) | [py](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.py) | [rs](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.rs) | 官方仅一解：一次遍历替换 O(n)，即最优解 |
 | ✅ | [344. 反转字符串（简单）](https://leetcode.cn/problems/reverse-string/) | [cpp](Problems/0301-0400/0344-reverse-string/0344-reverse-string.cpp) |  |  |  |  |
 | ✅ | [剑指 Offer 58 - I. 翻转单词顺序（简单）](https://leetcode.cn/problems/fan-zhuan-dan-ci-shun-xu-lcof/) | [cpp](JianZhiOffer/58-I-翻转单词顺序.cpp) |  |  |  |  |
 | ✅ | [125. 验证回文串（简单）](https://leetcode.cn/problems/valid-palindrome/) | [cpp](Problems/0101-0200/0125-valid-palindrome/0125-valid-palindrome.cpp) |  |  |  |  |

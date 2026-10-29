@@ -1,8 +1,14 @@
 /*
-1108. IP 地址无效化
+============================================================================
+LeetCode 1108. IP 地址无效化（简单）
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/defanging-an-ip-address/
+分类：字符串 · 一次遍历替换
+============================================================================
 
-给你一个有效的 IPv4 地址 address，返回这个 IP 地址的无效化版本。
-所谓无效化 IP 地址，其实就是用 "[.]" 代替了每个 "."。
+给你一个有效的 IPv4 地址 address，返回这个 IP 地址的无效化版本。
+
+所谓无效化 IP 地址，其实就是用 "[.]" 代替了每个 "."。
 
 示例 1：
 输入：address = "1.1.1.1"
@@ -11,32 +17,95 @@
 示例 2：
 输入：address = "255.100.50.0"
 输出："255[.]100[.]50[.]0"
- 
+
 提示：
-给出的 address 是一个有效的 IPv4 地址
-
-来源：力扣（LeetCode）
-链接：https://leetcode.cn/problems/defanging-an-ip-address/
+给出的 address 是一个有效的 IPv4 地址
 */
-
 #include <string>
+#include <cassert>
+#include <iostream>
 using namespace std;
 
 /*
+解法：直接遍历（逐字符决定输出片段）【最优解】
+
+官方题解只给出这一种方法，它同时也就是本题的最优解：每个字符都得看一遍，
+O(n) 已是下界。
+
+为什么慢：若在原串上用 insert 就地替换，每插入一个 '[' 或 ']' 都要把后面
+所有字符整体后移，n 次插入最坏退化成 O(n^2)，还要反复扩容。
+
+换个角度：无效化的结果只由「当前字符是不是 '.'」决定 —— 是就输出 "[.]"，
+不是就原样输出。于是不必修改原串，一趟扫描把片段追加到新串即可。
+
+关键点：
+  · 判定用字符比较 address[i] == '.'，不要退化成查找子串
+  · 新串长度 = n + 2 × 点号个数；有效的 IPv4 恰好 3 个点，所以上界是 n + 6，
+    预先 reserve 就能保证全程不发生扩容
+
+以示例 1（address = "1.1.1.1"）为例：
+  读到 '1' → 追加 "1"
+  读到 '.' → 追加 "[.]"
+  后续相同，最终得到 "1[.]1[.]1[.]1"
+
 复杂度分析：
-- 时间复杂度：O(n)，其中 n 为字符串 s 的长度。需要遍历一遍字符串即可。
-- 空间复杂度：O(1)。除返回值外，不需要额外的存储空间。
+  时间 O(n)：每个字符访问一次，追加是摊还 O(1)
+  空间 O(1)：除返回值外只多了几个下标和容量声明
+             （返回值占 O(n)，按官方口径不计入）
 */
-class Solution {
-   public:
-    string defangIPaddr(string address) {
-        string res;
-        for (auto& ch : address) {
-            if (ch == '.')
-                res.append("[.]");
+class Solution
+{
+public:
+    string defangIPaddr(string address)
+    {
+        string ans;
+        // 有效 IPv4 必有 3 个点，每个点从 1 字符膨胀成 3 字符
+        ans.reserve(address.size() + 6);
+
+        for (char c : address)
+        {
+            // '.' 展开成三个字符，其余字符原样保留
+            if (c == '.')
+            {
+                ans.append("[.]");
+            }
             else
-                res.push_back(ch);
+            {
+                ans.push_back(c);
+            }
         }
-        return res;
+
+        return ans;
     }
 };
+
+namespace
+{
+// 一个用例 = 输入 + 期望输出；返回值与期望直接按字符串比较
+void check(const string &address, const string &want)
+{
+    Solution s;
+
+    // 形参按值传递，解法内部拿到的是副本，原串天然不会被改写
+    string got = s.defangIPaddr(address);
+    assert(got == want);
+}
+} // namespace
+
+int main()
+{
+    // 示例 1：最典型的四段地址
+    check("1.1.1.1", "1[.]1[.]1[.]1");
+
+    // 示例 2：每段都是三位数，验证长片段的拼接
+    check("255.100.50.0", "255[.]100[.]50[.]0");
+
+    // 边界：全 0 地址，输入里没有任何多余字符可被误替换
+    check("0.0.0.0", "0[.]0[.]0[.]0");
+
+    // 边界：公有/私有网段的常见地址，验证不会漏掉任何一个点
+    check("192.168.1.1", "192[.]168[.]1[.]1");
+
+    cout << "all tests passed" << endl;
+    return 0;
+}
