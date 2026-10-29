@@ -145,7 +145,7 @@
 | ✅ | [LCR 123 / 剑指 Offer 06. 图书整理 I（简单）](https://leetcode.cn/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/) | [cpp](JianZhiOffer/06-从尾到头打印链表.cpp) | [go](JianZhiOffer/06-从尾到头打印链表.go) | [py](JianZhiOffer/06-从尾到头打印链表.py) | [rs](JianZhiOffer/06-从尾到头打印链表.rs) | 现收录为 LCR 123「图书整理 I」，签名改为 reverseBookList；书中两解：递归到表尾再回溯写入 / 辅助栈；同为 O(n) 时间 O(n) 空间，并列最优 |
 | ✅ | [LCR 141 / 剑指 Offer 24. 训练计划 III（简单）](https://leetcode.cn/problems/fan-zhuan-lian-biao-lcof/) | [cpp](JianZhiOffer/24-反转链表.cpp) | [go](JianZhiOffer/24-反转链表.go) | [py](JianZhiOffer/24-反转链表.py) | [rs](JianZhiOffer/24-反转链表.rs) | 现收录为 LCR 141「训练计划 III」，签名改为 trainningPlan（站点保留 trainning 拼写）；官方两解：三指针迭代 O(1) 空间最优 / 递归 O(n) 栈空间非最优 |
 | ✅ | [LCR 134 / 剑指 Offer 16. Pow(x, n)（中等）](https://leetcode.cn/problems/shu-zhi-de-zheng-shu-ci-fang-lcof/) | [cpp](JianZhiOffer/16-数值的整数次方.cpp) | [go](JianZhiOffer/16-数值的整数次方.go) | [py](JianZhiOffer/16-数值的整数次方.py) | [rs](JianZhiOffer/16-数值的整数次方.rs) | 现收录为 LCR 134「Pow(x, n)」，签名 myPow 未变；官方两解：递归快速幂 O(log n) 栈空间非最优 / 迭代快速幂 O(1) 空间最优；负指数与 INT_MIN 需用 64 位接住 |
-| ☐ | [面试题 08.05. 递归乘法 （中等）](https://leetcode.cn/problems/recursive-mulitply-lcci/) |  |  |  |  |  |
+| ✅ | [面试题 08.05. 递归乘法 （中等）](https://leetcode.cn/problems/recursive-mulitply-lcci/) | [cpp](InterviewQuestions/08.05-recursive-mulitply-lcci.cpp) | [go](InterviewQuestions/08.05-recursive-mulitply-lcci.go) | [py](InterviewQuestions/08.05-recursive-mulitply-lcci.py) | [rs](InterviewQuestions/08.05-recursive-mulitply-lcci.rs) | 中文站无题解文章，按官方提示写三解：逐次累加 O(B) 非最优 / 折半递归 O(log B) 但递归栈同阶 / 二进制拆分迭代 O(log B) O(1) 空间最优；奇数位要补 A，中间量用 64 位 |
 
 ## 排序
 
