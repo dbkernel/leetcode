@@ -502,7 +502,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [684. 冗余连接（中等）](https://leetcode.cn/problems/redundant-connection/) |  |  |  |  |  |
+| ✅ | [684. 冗余连接（中等）](https://leetcode.cn/problems/redundant-connection/) | [cpp](Problems/0601-0700/0684-redundant-connection/0684-redundant-connection.cpp) | [go](Problems/0601-0700/0684-redundant-connection/0684-redundant-connection.go) | [py](Problems/0601-0700/0684-redundant-connection/0684-redundant-connection.py) | [rs](Problems/0601-0700/0684-redundant-connection/0684-redundant-connection.rs) | 官方一解：并查集逐边合并，第一条两端已连通的边即答案，O(n α(n)) 即最优；另附逐边 DFS 作对照 O(n^2)；答案等价于最后出现的成环边 |
 | ☐ | [547. 省份数量（中等）](https://leetcode.cn/problems/number-of-provinces/) |  |  |  |  |  |
 | ☐ | [130. 被围绕的区域（中等）](https://leetcode.cn/problems/surrounded-regions/) |  |  |  |  |  |
 | ☐ | [399. 除法求值（中等）](https://leetcode.cn/problems/evaluate-division/) |  |  |  |  |  |
