@@ -148,7 +148,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [面试题 10.01. 合并排序的数组 （简单）](https://leetcode.cn/problems/sorted-merge-lcci/) | [cpp](InterviewQuestions/10.01-sorted-merge-lcci.cpp) |  |  |  | 非常巧妙 |
+| ✅ | [面试题 10.01. 合并排序的数组（简单）](https://leetcode.cn/problems/sorted-merge-lcci/) | [cpp](InterviewQuestions/10.01-sorted-merge-lcci.cpp) | [go](InterviewQuestions/10.01-sorted-merge-lcci.go) | [py](InterviewQuestions/10.01-sorted-merge-lcci.py) | [rs](InterviewQuestions/10.01-sorted-merge-lcci.rs) | 官方三解：拼接后排序 / 双指针 + 临时数组 / 逆向双指针原地归并；最优解为逆向双指针 O(m+n)、O(1) |
 | ✅ | [21. 合并两个有序链表 （简单）](https://leetcode.cn/problems/merge-two-sorted-lists/) | [25-合并两个排序的链表.cpp](JianZhiOffer/25-合并两个排序的链表.cpp)<br>[0021-merge-two-sorted-lists.cpp](Problems/0001-0100/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.cpp) | [go](Problems/0001-0100/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.go) | [py](Problems/0001-0100/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.py) | [rs](Problems/0001-0100/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.rs) | 官方两解：递归 O(n+m) 栈空间 / 迭代 O(1) 空间；最优解为迭代 + 哨兵 |
 | ✅ | [242. 有效的字母异位词（简单）](https://leetcode.cn/problems/valid-anagram/) | [cpp](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.cpp) |  |  |  | 需要字母数组来计数 |
 | ✅ | [1502. 判断能否形成等差数列（简单）](https://leetcode.cn/problems/can-make-arithmetic-progression-from-sequence/) | [cpp](Problems/1501-1600/1502-can-make-arithmetic-progression-from-sequence/1502-can-make-arithmetic-progression-from-sequence.cpp) |  |  |  | 先排序后判断 |
