@@ -30,7 +30,7 @@ nums[i] 为 0、1 或 2
 - 你能想出一个仅使用常数空间的一趟扫描算法吗？
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/sort-colors
+链接：https://leetcode.cn/problems/sort-colors
 
 思路：
 继续采用首尾双指针法。

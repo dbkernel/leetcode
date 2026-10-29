@@ -20,7 +20,7 @@
 -10^6 <= arr[i] <= 10^6
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/can-make-arithmetic-progression-from-sequence
+链接：https://leetcode.cn/problems/can-make-arithmetic-progression-from-sequence
 
 */
 #include <iostream>

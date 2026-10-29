@@ -21,7 +21,7 @@
 0 <= val <= 50
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/remove-linked-list-elements
+链接：https://leetcode.cn/problems/remove-linked-list-elements
 */
 
 #include <cassert>

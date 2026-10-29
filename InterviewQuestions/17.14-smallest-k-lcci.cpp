@@ -12,7 +12,7 @@
 0 <= k <= min(100000, len(arr))
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/smallest-k-lcci
+链接：https://leetcode.cn/problems/smallest-k-lcci
 
 */
 #include <iostream>

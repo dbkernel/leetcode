@@ -20,7 +20,7 @@ stackNum表示栈下标，value表示压入的值。
 [null, null, null, null, 2, 1, -1, -1]
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/three-in-one-lcci
+链接：https://leetcode.cn/problems/three-in-one-lcci
 */
 
 #include <vector>

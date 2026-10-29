@@ -21,7 +21,7 @@
 栈中的元素数目在[0, 5000]范围内。
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/sort-of-stacks-lcci
+链接：https://leetcode.cn/problems/sort-of-stacks-lcci
 
 思路：
 - peek() ==> top()

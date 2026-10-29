@@ -16,7 +16,7 @@ B = [2,5,6],       n = 3
 A.length == n + m
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/sorted-merge-lcci
+链接：https://leetcode.cn/problems/sorted-merge-lcci
 
 */
 #include <iostream>

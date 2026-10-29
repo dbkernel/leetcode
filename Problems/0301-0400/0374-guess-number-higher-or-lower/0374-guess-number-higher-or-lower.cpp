@@ -32,7 +32,7 @@
 1 <= pick <= n
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/guess-number-higher-or-lower
+链接：https://leetcode.cn/problems/guess-number-higher-or-lower
 
 */
 #include <iostream>

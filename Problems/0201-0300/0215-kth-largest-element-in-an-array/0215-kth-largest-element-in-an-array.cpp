@@ -17,7 +17,7 @@
 -104 <= nums[i] <= 104
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/kth-largest-element-in-an-array
+链接：https://leetcode.cn/problems/kth-largest-element-in-an-array
 
 思路：
 

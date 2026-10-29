@@ -24,7 +24,7 @@
 题目数据保证列表表示的数字不含前导零
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/add-two-numbers/
+链接：https://leetcode.cn/problems/add-two-numbers/
 */
 
 #include <cassert>

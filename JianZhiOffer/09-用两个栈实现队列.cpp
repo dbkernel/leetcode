@@ -20,7 +20,7 @@
 最多会对 appendTail、deleteHead 进行 10000 次调用
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof
+链接：https://leetcode.cn/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof
 */
 
 /*

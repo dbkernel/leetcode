@@ -11,7 +11,7 @@
 0 <= 链表长度 <= 1000
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/
+链接：https://leetcode.cn/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/
 */
 #include <cassert>
 using namespace std;

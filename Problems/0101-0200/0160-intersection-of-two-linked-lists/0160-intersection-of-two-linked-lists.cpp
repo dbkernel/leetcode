@@ -38,7 +38,7 @@ listB 中节点数目为 n
 如果 listA 和 listB 有交点，intersectVal == listA[skipA + 1] == listB[skipB + 1]
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/intersection-of-two-linked-lists
+链接：https://leetcode.cn/problems/intersection-of-two-linked-lists
 */
 #include <cassert>
 #include <unordered_set>

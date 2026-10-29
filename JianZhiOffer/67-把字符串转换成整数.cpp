@@ -46,7 +46,7 @@
 解释: 数字 "-91283472332" 超过 32 位有符号整数范围。
      因此返回 INT_MIN (−2^31) 。
 
-注意：本题与主站 8 题相同：https://leetcode-cn.com/problems/string-to-integer-atoi/
+注意：本题与主站 8 题相同：https://leetcode.cn/problems/string-to-integer-atoi/
 
 来源：力扣（LeetCode）
 链接：https://leetcode.cn/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof

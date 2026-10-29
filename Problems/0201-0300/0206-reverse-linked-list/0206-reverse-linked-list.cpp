@@ -20,7 +20,7 @@
 -5000 <= Node.val <= 5000
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/reverse-linked-list/
+链接：https://leetcode.cn/problems/reverse-linked-list/
 */
 #include <cassert>
 using namespace std;

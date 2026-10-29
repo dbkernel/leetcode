@@ -25,7 +25,7 @@ am a student. "，则输出"student. a am I"。
 - 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
 
 注意：本题与主站 151
-题相同：https://leetcode-cn.com/problems/reverse-words-in-a-string/
+题相同：https://leetcode.cn/problems/reverse-words-in-a-string/
 
 注意：此题对比原题有改动
 

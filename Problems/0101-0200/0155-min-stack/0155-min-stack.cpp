@@ -31,7 +31,7 @@ minStack.getMin();   --> 返回 -2.
 - pop、top 和 getMin 操作总是在 非空栈 上调用。
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/min-stack
+链接：https://leetcode.cn/problems/min-stack
 
 思路：
 - 对于栈来说，如果一个元素 a 在入栈时，栈里有其它的元素 b, c, d，那么无论这个栈在之后经历了什么操作，只要 a 在栈中，b, c, d 就一定在栈中，因为在 a 被弹出之前，b, c, d 不会被弹出。

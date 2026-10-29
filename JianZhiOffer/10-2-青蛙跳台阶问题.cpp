@@ -19,10 +19,10 @@
 提示：
 0 <= n <= 100
 
-注意：本题与主站 70 题相同：https://leetcode-cn.com/problems/climbing-stairs/
+注意：本题与主站 70 题相同：https://leetcode.cn/problems/climbing-stairs/
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof
+链接：https://leetcode.cn/problems/qing-wa-tiao-tai-jie-wen-ti-lcof
 
 
 解题思路：

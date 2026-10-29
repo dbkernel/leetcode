@@ -19,7 +19,7 @@ n 将在 [1, 10000]之间。
 nums 的每个元素都将在 [-9999, 9999]之间。
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/binary-search
+链接：https://leetcode.cn/problems/binary-search
 
 */
 #include <iostream>

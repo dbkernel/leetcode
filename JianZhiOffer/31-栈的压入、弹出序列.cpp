@@ -22,7 +22,7 @@ pushed 是 popped 的排列。
 题目中假设压入栈的所有数字均不相等。
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof
+链接：https://leetcode.cn/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof
 
 思路：
 - 考虑借用一个辅助栈 stackstack ，模拟 压入 / 弹出操作的排列。根据是否模拟成功，即可得到结果。

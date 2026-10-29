@@ -18,7 +18,7 @@
 题目数据保证链表已经按升序排列
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
+链接：https://leetcode.cn/problems/remove-duplicates-from-sorted-list/
 */
 #include <cassert>
 using namespace std;

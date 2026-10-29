@@ -37,7 +37,7 @@ k 是一个正整数，它的值小于或等于链表的长度。
 在于最后一组节点数小于k，就不反转，因此需要每次都取子链表做翻转
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/reverse-nodes-in-k-group
+链接：https://leetcode.cn/problems/reverse-nodes-in-k-group
 
 */
 #include <iostream>

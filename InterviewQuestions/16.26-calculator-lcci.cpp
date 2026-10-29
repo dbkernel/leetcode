@@ -21,7 +21,7 @@
 - 请不要使用内置的库函数 eval。
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/calculator-lcci
+链接：https://leetcode.cn/problems/calculator-lcci
 
 思路：
 - 算术运算式先算乘除后算加减。

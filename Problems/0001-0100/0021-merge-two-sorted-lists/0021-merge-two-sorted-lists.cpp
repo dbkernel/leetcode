@@ -21,7 +21,7 @@
 l1 和 l2 均按 非递减顺序 排列
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/merge-two-sorted-lists
+链接：https://leetcode.cn/problems/merge-two-sorted-lists
 */
 #include <cassert>
 using namespace std;

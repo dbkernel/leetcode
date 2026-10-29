@@ -19,7 +19,7 @@ s 和 t 仅包含小写字母
 进阶: 如果输入字符串包含 unicode 字符怎么办？你能否调整你的解法来应对这种情况？
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/valid-anagram
+链接：https://leetcode.cn/problems/valid-anagram
 
 方法一：排序（太普通。。。）
 

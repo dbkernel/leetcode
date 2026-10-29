@@ -20,7 +20,7 @@ N 叉树的高度小于或等于 1000
 节点总数在范围 [0, 10^4] 内
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal
+链接：https://leetcode.cn/problems/n-ary-tree-postorder-traversal
 */
 #include <iostream>
 #include <cassert>

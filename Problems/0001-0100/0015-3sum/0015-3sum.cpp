@@ -24,7 +24,7 @@
 本题与 [ 1. 两数之和 ] 类似，是非常经典的面试题，但是做法不尽相同。
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/3sum
+链接：https://leetcode.cn/problems/3sum
 
 */
 #include <cassert>

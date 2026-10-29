@@ -15,7 +15,7 @@
 S 仅由小写英文字母组成。
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string
+链接：https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string
 
 思路：
 由于 std::string 类本身就提供了类似「入栈」和「出栈」的接口，因此我们直接将需要被返回的字符串作为栈即可。

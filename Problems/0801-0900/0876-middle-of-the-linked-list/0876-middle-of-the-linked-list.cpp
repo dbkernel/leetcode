@@ -20,7 +20,7 @@ ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, 以及 ans.next.next.next 
 给定链表的结点数介于 1 和 100 之间。
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/middle-of-the-linked-list
+链接：https://leetcode.cn/problems/middle-of-the-linked-list
 
 思路：
 - 方法一：

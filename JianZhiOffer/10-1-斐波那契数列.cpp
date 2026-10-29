@@ -22,10 +22,10 @@ F(N) = F(N - 1) + F(N - 2), 其中 N > 1.
 0 <= n <= 100
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof
+链接：https://leetcode.cn/problems/fei-bo-na-qi-shu-lie-lcof
 
 官方解题思路：
-https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof/solution/fei-bo-na-qi-shu-lie-by-leetcode-solutio-hbss/
+https://leetcode.cn/problems/fei-bo-na-qi-shu-lie-lcof/solution/fei-bo-na-qi-shu-lie-by-leetcode-solutio-hbss/
 
 */
 #include <iostream>

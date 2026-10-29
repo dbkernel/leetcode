@@ -20,7 +20,7 @@ intervals[i].length == 2
 0 <= starti <= endi <= 104
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/merge-intervals
+链接：https://leetcode.cn/problems/merge-intervals
 
 思路：
 如果我们按照区间的左端点排序，那么在排完序的列表中，可以合并的区间一定是连续的。

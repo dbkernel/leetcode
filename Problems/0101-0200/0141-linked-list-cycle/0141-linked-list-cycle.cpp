@@ -29,7 +29,7 @@
 pos 为 -1 或者链表中的一个 有效索引 。
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/linked-list-cycle
+链接：https://leetcode.cn/problems/linked-list-cycle
 
 思路：
 使用快慢指针法，快指针一次两步，慢指针一次一步，直到二者重合。

@@ -23,7 +23,7 @@
 1 <= n <= sz
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list
+链接：https://leetcode.cn/problems/remove-nth-node-from-end-of-list
 
 思路：
 借鉴 [剑指 Offer 22. 链表中倒数第k个节点] 中的思路，使用快慢双指针只需遍历一次。

@@ -30,7 +30,7 @@
   s 仅由括号 '()[]{}' 组成
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/valid-parentheses
+链接：https://leetcode.cn/problems/valid-parentheses
 */
 /*
 思路：

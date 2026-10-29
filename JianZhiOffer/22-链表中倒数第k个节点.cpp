@@ -9,7 +9,7 @@
 返回链表 4->5.
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof
+链接：https://leetcode.cn/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof
 
 思路：
 与 [ 876. 链表的中间结点（简单）] 思路类似，使用快、慢双指针。

@@ -36,7 +36,7 @@ myStack.empty(); // 返回 False
 
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/implement-stack-using-queues
+链接：https://leetcode.cn/problems/implement-stack-using-queues
 */
 
 /*

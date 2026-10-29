@@ -13,7 +13,7 @@
 0 <= nums[i] <= 10000
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof
+链接：https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof
 
 思路：
 首尾双指针法
