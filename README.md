@@ -405,7 +405,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [416. 分割等和子集](https://leetcode.cn/problems/partition-equal-subset-sum/) |  |  |  |  |  |
+| ✅ | [416. 分割等和子集](https://leetcode.cn/problems/partition-equal-subset-sum/) | [cpp](Problems/0401-0500/0416-partition-equal-subset-sum/0416-partition-equal-subset-sum.cpp) | [go](Problems/0401-0500/0416-partition-equal-subset-sum/0416-partition-equal-subset-sum.go) | [py](Problems/0401-0500/0416-partition-equal-subset-sum/0416-partition-equal-subset-sum.py) | [rs](Problems/0401-0500/0416-partition-equal-subset-sum/0416-partition-equal-subset-sum.rs) | 官方两解：二维 0-1 背包 / 一维滚动数组倒序遍历容量；时间同为 O(n*S)，一维把空间从 O(n*S) 降到 O(S)，为最优；总和为奇数直接返回 false |
 | ☐ | [494. 目标和](https://leetcode.cn/problems/target-sum/) |  |  |  |  |  |
 | ☐ | [279. 完全平方数](https://leetcode.cn/problems/perfect-squares/) |  |  |  |  |  |
 | ☐ | [322. 零钱兑换 ](https://leetcode.cn/problems/coin-change/) |  |  |  |  |  |
