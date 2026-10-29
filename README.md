@@ -180,18 +180,18 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [704. 二分查找（简单） 标准二分查找](https://leetcode.cn/problems/binary-search/) | [cpp](Problems/0701-0800/0704-binary-search/0704-binary-search.cpp) | [go](Problems/0701-0800/0704-binary-search/0704-binary-search.go) | [py](Problems/0701-0800/0704-binary-search/0704-binary-search.py) | [rs](Problems/0701-0800/0704-binary-search/0704-binary-search.rs) | 官方一解：闭区间二分，O(log n) 时间 O(1) 空间 |
 | ✅ | [374. 猜数字大小（简单）](https://leetcode.cn/problems/guess-number-higher-or-lower/) | [cpp](Problems/0301-0400/0374-guess-number-higher-or-lower/0374-guess-number-higher-or-lower.cpp) | [go](Problems/0301-0400/0374-guess-number-higher-or-lower/0374-guess-number-higher-or-lower.go) | [py](Problems/0301-0400/0374-guess-number-higher-or-lower/0374-guess-number-higher-or-lower.py) | [rs](Problems/0301-0400/0374-guess-number-higher-or-lower/0374-guess-number-higher-or-lower.rs) | 交互题。官方一解：二分并把区间收敛到一点，O(log n)；mid 需写成 left+(right-left)/2 防溢出 |
-| ☐ | [744. 寻找比目标字母大的最小字母（简单）](https://leetcode.cn/problems/find-smallest-letter-greater-than-target/) |  |  |  |  |  |
-| ☐ | [35. 搜索插入位置（简单）](https://leetcode.cn/problems/search-insert-position/) |  |  |  |  |  |
-| ☐ | [34. 在排序数组中查找元素的第一个和最后一个位置 （中等）](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/) |  |  |  |  |  |
-| ☐ | [面试题 10.05. 稀疏数组搜索（简单） ](https://leetcode.cn/problems/sparse-array-search-lcci/) |  |  |  |  |  |
+| ✅ | [744. 寻找比目标字母大的最小字母（简单）](https://leetcode.cn/problems/find-smallest-letter-greater-than-target/) | [cpp](Problems/0701-0800/0744-find-smallest-letter-greater-than-target/0744-find-smallest-letter-greater-than-target.cpp) | [go](Problems/0701-0800/0744-find-smallest-letter-greater-than-target/0744-find-smallest-letter-greater-than-target.go) | [py](Problems/0701-0800/0744-find-smallest-letter-greater-than-target/0744-find-smallest-letter-greater-than-target.py) | [rs](Problems/0701-0800/0744-find-smallest-letter-greater-than-target/0744-find-smallest-letter-greater-than-target.rs) | 官方仅一解：二分找第一个大于 target 的位置，越界时取模回绕到首字母；O(log n) 时间，即最优解 |
+| ✅ | [35. 搜索插入位置（简单）](https://leetcode.cn/problems/search-insert-position/) | [cpp](Problems/0001-0100/0035-search-insert-position/0035-search-insert-position.cpp) | [go](Problems/0001-0100/0035-search-insert-position/0035-search-insert-position.go) | [py](Problems/0001-0100/0035-search-insert-position/0035-search-insert-position.py) | [rs](Problems/0001-0100/0035-search-insert-position/0035-search-insert-position.rs) | 官方仅一解：左闭右开二分返回 left，即最优解；答案可等于 n，即插到末尾 |
+| ✅ | [34. 在排序数组中查找元素的第一个和最后一个位置 （中等）](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/) | [cpp](Problems/0001-0100/0034-find-first-and-last-position-of-element-in-sorted-array/0034-find-first-and-last-position-of-element-in-sorted-array.cpp) | [go](Problems/0001-0100/0034-find-first-and-last-position-of-element-in-sorted-array/0034-find-first-and-last-position-of-element-in-sorted-array.go) | [py](Problems/0001-0100/0034-find-first-and-last-position-of-element-in-sorted-array/0034-find-first-and-last-position-of-element-in-sorted-array.py) | [rs](Problems/0001-0100/0034-find-first-and-last-position-of-element-in-sorted-array/0034-find-first-and-last-position-of-element-in-sorted-array.rs) | 官方两解：命中后向两侧线性扩展 / 两次二分分别找左右边界；最优解为两次二分，O(log n) 时间；注意空数组与全重复 |
+| ✅ | [面试题 10.05. 稀疏数组搜索（简单） ](https://leetcode.cn/problems/sparse-array-search-lcci/) | [cpp](InterviewQuestions/10.05-sparse-array-search-lcci.cpp) | [go](InterviewQuestions/10.05-sparse-array-search-lcci.go) | [py](InterviewQuestions/10.05-sparse-array-search-lcci.py) | [rs](InterviewQuestions/10.05-sparse-array-search-lcci.rs) | 官方仅一解：二分，中点为空格时向右探测或缩右界；最坏 O(n)（全空串），即最优解 |
 | ☐ | [33. 搜索旋转排序数组（中等）无重复数据 ](https://leetcode.cn/problems/search-in-rotated-sorted-array/) |  |  |  |  |  |
 | ☐ | [81. 搜索旋转排序数组 II（中等）有重复数据](https://leetcode.cn/problems/search-in-rotated-sorted-array-ii/) |  |  |  |  |  |
 | ☐ | [153. 寻找旋转排序数组中的最小值（中等） 无重复数据](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/) |  |  |  |  |  |
 | ☐ | [154. 寻找旋转排序数组中的最小值 II （困难） 有重复数据](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array-ii/) |  |  |  |  |  |
 | ☐ | [852. 山脉数组的峰顶索引（简单）峰值二分](https://leetcode.cn/problems/peak-index-in-a-mountain-array/) |  |  |  |  |  |
 | ☐ | [162. 寻找峰值（中等）峰值二分](https://leetcode.cn/problems/find-peak-element/) |  |  |  |  |  |
-| ☐ | [367. 有效的完全平方数（简单）二分答案](https://leetcode.cn/problems/valid-perfect-square/) |  |  |  |  |  |
-| ☐ | [69. x 的平方根（简单）二分答案](https://leetcode.cn/problems/sqrtx/) |  |  |  |  |  |
+| ✅ | [367. 有效的完全平方数（简单）二分答案](https://leetcode.cn/problems/valid-perfect-square/) | [cpp](Problems/0301-0400/0367-valid-perfect-square/0367-valid-perfect-square.cpp) | [go](Problems/0301-0400/0367-valid-perfect-square/0367-valid-perfect-square.go) | [py](Problems/0301-0400/0367-valid-perfect-square/0367-valid-perfect-square.py) | [rs](Problems/0301-0400/0367-valid-perfect-square/0367-valid-perfect-square.rs) | 官方三解：二分答案 / 牛顿迭代 / 内置 sqrt；最优解为二分与牛顿并列；注意 46340^2 与 2^31-1 的溢出 |
+| ✅ | [69. x 的平方根（简单）二分答案](https://leetcode.cn/problems/sqrtx/) | [cpp](Problems/0001-0100/0069-sqrtx/0069-sqrtx.cpp) | [go](Problems/0001-0100/0069-sqrtx/0069-sqrtx.go) | [py](Problems/0001-0100/0069-sqrtx/0069-sqrtx.py) | [rs](Problems/0001-0100/0069-sqrtx/0069-sqrtx.rs) | 官方三解：二分 / 牛顿迭代 / 内置 exp-log；最优解为牛顿迭代；注意 x=0 不能除、mid*mid 用 64 位 |
 | ☐ | [875. 爱吃香蕉的珂珂（中等）二分答案](https://leetcode.cn/problems/koko-eating-bananas/) |  |  |  |  |  |
 | ☐ | [658. 找到 K 个最接近的元素（中等）](https://leetcode.cn/problems/find-k-closest-elements/) |  |  |  |  |  |
 | ☐ | [74. 搜索二维矩阵（中等） 二维转一维，二分查找](https://leetcode.cn/problems/search-a-2d-matrix/) |  |  |  |  |  |
@@ -292,9 +292,9 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [剑指 Offer 34. 二叉树中和为某一值的路径（中等）](https://leetcode.cn/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/) |  |  |  |  |  |
-| ☐ | [124. 二叉树中的最大路径和 （困难）](https://leetcode.cn/problems/binary-tree-maximum-path-sum/) |  |  |  |  |  |
-| ☐ | [437. 路径总和 III （困难）](https://leetcode.cn/problems/path-sum-iii/) |  |  |  |  |  |
+| ✅ | [LCR 153 / 剑指 Offer 34. 二叉树中和为某一值的路径（中等）](https://leetcode.cn/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/) | [cpp](JianZhiOffer/34-二叉树中和为某一值的路径.cpp) | [go](JianZhiOffer/34-二叉树中和为某一值的路径.go) | [py](JianZhiOffer/34-二叉树中和为某一值的路径.py) | [rs](JianZhiOffer/34-二叉树中和为某一值的路径.rs) | 现收录为 LCR 153；官方仅一解：DFS 回溯，只收「叶子且和相等」的路径，回溯必须弹出末尾元素；O(n) 时间 O(h) 空间，即最优解 |
+| ✅ | [124. 二叉树中的最大路径和 （困难）](https://leetcode.cn/problems/binary-tree-maximum-path-sum/) | [cpp](Problems/0101-0200/0124-binary-tree-maximum-path-sum/0124-binary-tree-maximum-path-sum.cpp) | [go](Problems/0101-0200/0124-binary-tree-maximum-path-sum/0124-binary-tree-maximum-path-sum.go) | [py](Problems/0101-0200/0124-binary-tree-maximum-path-sum/0124-binary-tree-maximum-path-sum.py) | [rs](Problems/0101-0200/0124-binary-tree-maximum-path-sum/0124-binary-tree-maximum-path-sum.rs) | 官方仅一解：后序递归，返回给父节点的一侧贡献要与 0 取 max，答案用「左+右+当前值」更新；O(n) 时间 O(h) 空间，即最优解 |
+| ✅ | [437. 路径总和 III （中等）](https://leetcode.cn/problems/path-sum-iii/) | [cpp](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.cpp) | [go](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.go) | [py](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.py) | [rs](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.rs) | 官方两解：DFS 枚举每个起点 O(n^2) / 前缀和 + 哈希表回溯 O(n)；最优解为前缀和，先查后插、退出时回滚，累加用 64 位 |
 
 # 第六阶段（1 周）
 
