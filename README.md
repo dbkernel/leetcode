@@ -261,7 +261,7 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [LCR 174 / 剑指 Offer 54. 寻找二叉搜索树中的目标节点（简单）](https://leetcode.cn/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof/) | [cpp](JianZhiOffer/54-二叉搜索树的第k大节点.cpp) | [go](JianZhiOffer/54-二叉搜索树的第k大节点.go) | [py](JianZhiOffer/54-二叉搜索树的第k大节点.py) | [rs](JianZhiOffer/54-二叉搜索树的第k大节点.rs) | 现收录为 LCR 174；官方一解：右根左反序中序，数到第 cnt 个即停；O(n) 时间 O(h) 空间，另附迭代栈对照 |
 | ✅ | [538. 把二叉搜索树转换为累加树 （中等）](https://leetcode.cn/problems/convert-bst-to-greater-tree/) | [cpp](Problems/0501-0600/0538-convert-bst-to-greater-tree/0538-convert-bst-to-greater-tree.cpp) | [go](Problems/0501-0600/0538-convert-bst-to-greater-tree/0538-convert-bst-to-greater-tree.go) | [py](Problems/0501-0600/0538-convert-bst-to-greater-tree/0538-convert-bst-to-greater-tree.py) | [rs](Problems/0501-0600/0538-convert-bst-to-greater-tree/0538-convert-bst-to-greater-tree.rs) | 官方两解：递归反序中序累加 / Morris 反序中序；最优解为 Morris，O(n) 时间 O(1) 空间；与 1038 同题 |
-| ☐ | [面试题 04.06. 后继者（中等）](https://leetcode.cn/problems/successor-lcci/) |  |  |  |  |  |
+| ✅ | [面试题 04.06. 后继者（中等）](https://leetcode.cn/problems/successor-lcci/) | [cpp](InterviewQuestions/04.06-successor-lcci.cpp) | [go](InterviewQuestions/04.06-successor-lcci.go) | [py](InterviewQuestions/04.06-successor-lcci.py) | [rs](InterviewQuestions/04.06-successor-lcci.rs) | 官方两解：中序遍历收集全部节点 / 利用 BST 性质找"右子树最左"或"大于 p 的最小祖先"；最优解为后者，O(h) 时间 O(1) 空间 |
 
 ### 题型 5：LCA 最近公共祖先
 
