@@ -358,7 +358,7 @@
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [207. 课程表（中等）](https://leetcode.cn/problems/course-schedule/) | [cpp](Problems/0201-0300/0207-course-schedule/0207-course-schedule.cpp) | [go](Problems/0201-0300/0207-course-schedule/0207-course-schedule.go) | [py](Problems/0201-0300/0207-course-schedule/0207-course-schedule.py) | [rs](Problems/0201-0300/0207-course-schedule/0207-course-schedule.rs) | 同 DFS 板块 207 题：BFS 拓扑排序 / DFS 三色判环，并列最优 |
-| ☐ | [210. 课程表 II（中等）](https://leetcode.cn/problems/course-schedule-ii/) |  |  |  |  |  |
+| ✅ | [210. 课程表 II（中等）](https://leetcode.cn/problems/course-schedule-ii/) | [cpp](Problems/0201-0300/0210-course-schedule-ii/0210-course-schedule-ii.cpp) | [go](Problems/0201-0300/0210-course-schedule-ii/0210-course-schedule-ii.go) | [py](Problems/0201-0300/0210-course-schedule-ii/0210-course-schedule-ii.py) | [rs](Problems/0201-0300/0210-course-schedule-ii/0210-course-schedule-ii.rs) | 官方两解：BFS 拓扑排序，出队即入答案 / DFS 后序逆序；并列最优，O(V+E) 时间；结果长度不足 numCourses 即有环，返回空数组 |
 | ☐ | [630. 课程表 III（困难）](https://leetcode.cn/problems/course-schedule-iii/) |  |  |  |  |  |
 | ☐ | [1462. 课程表 IV（中等）](https://leetcode.cn/problems/course-schedule-iv/) |  |  |  |  |  |
 | ☐ | [1136. 并行课程（力扣会员）](https://leetcode.cn/problems/parallel-courses/) |  |  |  |  |  |
