@@ -379,7 +379,7 @@
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [面试题 17.22. 单词转换（中等） ](https://leetcode.cn/problems/word-transformer-lcci/) | [cpp](InterviewQuestions/17.22-word-transformer-lcci.cpp) | [go](InterviewQuestions/17.22-word-transformer-lcci.go) | [py](InterviewQuestions/17.22-word-transformer-lcci.py) | [rs](InterviewQuestions/17.22-word-transformer-lcci.rs) | 平台无题解文章，按题面自拟两解：单向 BFS / 双向 BFS，同为 O(V·L^2) 时间，并列最优；终点必须在字典里；题目接受任意合法序列，官方示例本身不是最短的 |
-| ☐ | [面试题 17.07. 婴儿名字（困难） ](https://leetcode.cn/problems/baby-names-lcci/) |  |  |  |  |  |
+| ✅ | [面试题 17.07. 婴儿名字（中等） ](https://leetcode.cn/problems/baby-names-lcci/) | [cpp](InterviewQuestions/17.07-baby-names-lcci.cpp) | [go](InterviewQuestions/17.07-baby-names-lcci.go) | [py](InterviewQuestions/17.07-baby-names-lcci.py) | [rs](InterviewQuestions/17.07-baby-names-lcci.rs) | 平台无题解文章，按题面用并查集合并同义词并累加频次，代表名取字典序最小（题面明写，不是取频率最高，官方示例 Chris 13 与 Christopher 19 合成 Chris 36 即此规则）；只出现在同义词里的名字也参与比较 |
 | ✅ | [529. 扫雷游戏（中等）](https://leetcode.cn/problems/minesweeper/) | [cpp](Problems/0501-0600/0529-minesweeper/0529-minesweeper.cpp) | [go](Problems/0501-0600/0529-minesweeper/0529-minesweeper.go) | [py](Problems/0501-0600/0529-minesweeper/0529-minesweeper.py) | [rs](Problems/0501-0600/0529-minesweeper/0529-minesweeper.rs) | 官方两解：DFS + 模拟 / BFS + 模拟，同为 O(mn) 时间 O(mn) 空间，并列最优；踩雷只标 X 不扩散，周围无雷才标 B 并继续展开，数字格不推进 |
 
 ## BFS
