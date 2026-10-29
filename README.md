@@ -259,7 +259,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [剑指 Offer 54. 二叉搜索树的第 k 大节点（中等）](https://leetcode.cn/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof/) |  |  |  |  |  |
+| ✅ | [LCR 174 / 剑指 Offer 54. 寻找二叉搜索树中的目标节点（简单）](https://leetcode.cn/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof/) | [cpp](JianZhiOffer/54-二叉搜索树的第k大节点.cpp) | [go](JianZhiOffer/54-二叉搜索树的第k大节点.go) | [py](JianZhiOffer/54-二叉搜索树的第k大节点.py) | [rs](JianZhiOffer/54-二叉搜索树的第k大节点.rs) | 现收录为 LCR 174；官方一解：右根左反序中序，数到第 cnt 个即停；O(n) 时间 O(h) 空间，另附迭代栈对照 |
 | ☐ | [538. 把二叉搜索树转换为累加树 （中等）](https://leetcode.cn/problems/convert-bst-to-greater-tree/) |  |  |  |  |  |
 | ☐ | [面试题 04.06. 后继者（中等）](https://leetcode.cn/problems/successor-lcci/) |  |  |  |  |  |
 
