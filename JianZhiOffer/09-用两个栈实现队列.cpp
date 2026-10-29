@@ -1,81 +1,212 @@
 /*
-用两个栈实现一个队列。队列的声明如下，请实现它的两个函数 appendTail 和 deleteHead ，
-分别完成在队列尾部插入整数和在队列头部删除整数的功能。(若队列中没有元素，deleteHead 操作返回 -1 )
+============================================================================
+LCR 125 / 剑指 Offer 09. 图书整理 II（简单）
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/
+分类：栈 · 设计（双栈模拟队列）
 
+读者来到图书馆排队借还书，图书管理员使用两个书车来完成整理借还书的任务。
+书车中的书从下往上叠加存放，图书管理员每次只能拿取书车顶部的书。
+排队的读者会有两种操作：
+  · push(bookID)：把借阅的书籍还到图书馆。
+  · pop()：从图书馆中借出书籍。
+
+为了保持图书的顺序，图书管理员每次取出供读者借阅的书籍是 最早 归还到图书馆的书籍。
+你需要返回 每次读者借出书的值 。
+如果没有归还的书可以取出，返回 -1 。
 
 示例 1：
 输入：
-["CQueue","appendTail","deleteHead","deleteHead"]
-[[],[3],[],[]]
-输出：[null,null,3,-1]
-
-示例 2：
-输入：
-["CQueue","deleteHead","appendTail","appendTail","deleteHead","deleteHead"]
-[[],[],[5],[2],[],[]]
-输出：[null,-1,null,null,5,2]
+["BookQueue", "push", "push", "pop"]
+[[], [1], [2], []]
+输出：[null,null,null,1]
+解释：
+MyQueue myQueue = new MyQueue();
+myQueue.push(1); // queue is: [1]
+myQueue.push(2); // queue is: [1, 2] (leftmost is front of the queue)
+myQueue.pop(); // return 1, queue is [2]
 
 提示：
-1 <= values <= 10000
-最多会对 appendTail、deleteHead 进行 10000 次调用
+1 <= bookID <= 10000
+最多会对 push、pop 进行 10000 次调用
 
-来源：力扣（LeetCode）
-链接：https://leetcode.cn/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof
+说明：题面里的 push / pop 在判题模板中对应的函数名是 appendTail / deleteHead，
+下面沿用平台模板的函数签名。
 */
-
-/*
-解题思路：
-1. stack_in 只push数据
-2. stack_out 只pop数据，只有当该栈为空时才从stack_in导入数据
-*/
+#include <cassert>
 #include <iostream>
+#include <queue>
 #include <stack>
-#include <cstdlib>
+#include <string>
+#include <vector>
 using namespace std;
 
+/*
+解法：双栈（输入栈 + 输出栈）【最优解】
+
+官方题解只给出这一种方法，也就是本题的最优解：均摊时间 O(1)、空间 O(n)。
+
+为什么慢：如果只用一个栈，要取出最早进来的元素就得把整栈倒一遍（把栈顶挪开
+再放回去），每次出队都是 O(n)。而要求「先入先出」恰恰是栈做不了的事。
+
+换个角度：一次颠倒改变不了顺序，那就颠倒两次 —— 把输入栈的数据整体倒进输出栈，
+「先进」就变成了「在输出栈的栈顶」。于是：
+  · inStack 只负责 push（进队）；
+  · outStack 只负责 pop（出队）；
+  · 只有当 outStack 空了，才把 inStack 整个倒过去。
+
+关键点：
+  · 「输出栈为空才整体倒一次」是均摊 O(1) 的关键：每个元素一生只在两个栈之间
+    搬一次，所以 m 次操作总共 O(m)，而不是每次出队都 O(n)
+  · 输出栈非空时绝不能倒 —— 否则新倒进来的元素会压在老的上面，顺序就乱了
+  · 两个栈都空时返回 -1
+  · 倒的时候要「依次弹出再压入」，倒完 inStack 必须是空的
+
+以示例 2（deleteHead、appendTail(5)、appendTail(2)、deleteHead、deleteHead）为例：
+  初始：in = []，out = []
+  deleteHead：out 空、in 也空 → 返回 -1
+  appendTail(5)：in = [5]
+  appendTail(2)：in = [5, 2]（2 在栈顶）
+  deleteHead：out 空 → 把 in 倒入 out，out = [2, 5]（5 在栈顶）→ 弹出 5
+  deleteHead：out 非空 → 直接弹出 2
+  结果 [null, -1, null, null, 5, 2]
+
+复杂度分析：
+  时间：单次 deleteHead 最坏 O(n)，但每个元素最多被搬运一次，
+        因此 m 次操作的均摊复杂度为 O(1)
+  空间 O(n)：两个栈合计存放 n 个元素
+*/
 class CQueue
 {
 public:
-    CQueue()
-    {
-    }
+    CQueue() {}
 
     void appendTail(int value)
     {
-        stack_in.push(value);
+        // 进队只往输入栈压
+        inStack.push(value);
     }
 
     int deleteHead()
     {
-        if (stack_out.empty())
+        // 输出栈空了才整体倒一次；非空时绝不能倒，否则顺序被打乱
+        if (outStack.empty())
         {
-            // in -> out
-            while (!stack_in.empty())
+            while (!inStack.empty())
             {
-                stack_out.push(stack_in.top());
-                stack_in.pop();
+                outStack.push(inStack.top());
+                inStack.pop();
             }
         }
 
-        if (stack_out.empty())
+        // 两个栈都空，说明没有书可以借出
+        if (outStack.empty())
         {
             return -1;
         }
 
-        int value = stack_out.top();
-        stack_out.pop();
+        int value = outStack.top();
+        outStack.pop();
         return value;
     }
 
 private:
-    stack<int> stack_in, stack_out;
+    stack<int> inStack, outStack;
 };
+
+namespace
+{
+// 记录一次操作：first 是 "appendTail"/"deleteHead"，second 是参数（出队时忽略）
+struct Op
+{
+    string name;
+    int value;
+};
+
+// 按操作序列跑一遍，返回每次操作的输出（appendTail 记 -2 表示 null）
+vector<int> run(const vector<Op> &ops)
+{
+    CQueue queue;
+    vector<int> out;
+    for (const auto &op : ops)
+    {
+        if (op.name == "appendTail")
+        {
+            queue.appendTail(op.value);
+            out.push_back(-2); // null
+        }
+        else
+        {
+            out.push_back(queue.deleteHead());
+        }
+    }
+    return out;
+}
+
+void check(const vector<Op> &ops, const vector<int> &want)
+{
+    vector<int> got = run(ops);
+    assert(got == want);
+}
+
+// 用标准库 queue 当对照答案，随机操作序列做交叉验证
+void crossCheck()
+{
+    CQueue cq;
+    std::queue<int> expect;
+    unsigned seed = 20240607;
+    for (int i = 0; i < 2000; ++i)
+    {
+        seed = seed * 1103515245 + 12345;
+        // 七成入队、三成出队
+        if ((seed >> 16) % 10 < 7)
+        {
+            int value = (seed >> 8) % 10000 + 1;
+            cq.appendTail(value);
+            expect.push(value);
+        }
+        else if (expect.empty())
+        {
+            assert(cq.deleteHead() == -1);
+        }
+        else
+        {
+            assert(cq.deleteHead() == expect.front());
+            expect.pop();
+        }
+    }
+}
+} // namespace
 
 int main()
 {
-    // Your CQueue object will be instantiated and called as such:
-    int value = rand() % 10000 + 1;
-    CQueue *obj = new CQueue();
-    obj->appendTail(value);
-    int param_2 = obj->deleteHead();
+    // 示例 1
+    check({{"appendTail", 1}, {"appendTail", 2}, {"deleteHead", 0}},
+          {-2, -2, 1});
+
+    // 示例 2
+    check({{"deleteHead", 0},
+           {"appendTail", 5},
+           {"appendTail", 2},
+           {"deleteHead", 0},
+           {"deleteHead", 0}},
+          {-1, -2, -2, 5, 2});
+
+    // 边界：建队后连续出队，全部返回 -1
+    check({{"deleteHead", 0}, {"deleteHead", 0}}, {-1, -1});
+
+    // 边界：入队后清空，再重新入队仍能正确出队
+    check({{"appendTail", 1},
+           {"appendTail", 2},
+           {"deleteHead", 0},
+           {"deleteHead", 0},
+           {"appendTail", 3},
+           {"deleteHead", 0}},
+          {-2, -2, 1, 2, -2, 3});
+
+    // 随机交叉验证
+    crossCheck();
+
+    cout << "all tests passed" << endl;
+    return 0;
 }
