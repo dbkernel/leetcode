@@ -136,7 +136,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [剑指 Offer 10- I. 斐波那契数列 （简单）](https://leetcode.cn/problems/fei-bo-na-qi-shu-lie-lcof/) | [cpp](JianZhiOffer/10-1-斐波那契数列.cpp) |  |  |  | 矩阵方式比较难理解 |
+| ✅ | [LCR 126 / 剑指 Offer 10- I. 斐波那契数（简单）](https://leetcode.cn/problems/fei-bo-na-qi-shu-lie-lcof/) | [cpp](JianZhiOffer/10-1-斐波那契数列.cpp) | [go](JianZhiOffer/10-1-斐波那契数列.go) | [py](JianZhiOffer/10-1-斐波那契数列.py) | [rs](JianZhiOffer/10-1-斐波那契数列.rs) | 官方仅一解：动态规划 + 滚动数组，O(n) 时间、O(1) 空间，即最优解；每步取模 1e9+7 |
 | ✅ | [剑指 Offer 10- II. 青蛙跳台阶问题（简单）](https://leetcode.cn/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/) | [cpp](JianZhiOffer/10-2-青蛙跳台阶问题.cpp) |  |  |  | 类似斐波那契 |
 | ☐ | [面试题 08.01. 三步问题 （简单）](https://leetcode.cn/problems/three-steps-problem-lcci/) |  |  |  |  |  |
 | ☐ | [剑指 Offer 06. 从尾到头打印链表 （简单）](https://leetcode.cn/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/) |  |  |  |  |  |

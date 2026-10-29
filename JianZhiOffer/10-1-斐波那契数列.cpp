@@ -1,140 +1,145 @@
 /*
-剑指 Offer 10- I. 斐波那契数列
+============================================================================
+LCR 126 / 剑指 Offer 10- I. 斐波那契数（简单）
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/fei-bo-na-qi-shu-lie-lcof/
+分类：动态规划 · 滚动数组（线性递推）
 
-写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项（即 F(N)）。斐波那契数列的定义如下：
+斐波那契数 （通常用 F(n) 表示）形成的序列称为 斐波那契数列 。该数列由 0 和 1 开始，
+后面的每一项数字都是前面两项数字的和。也就是：
 
-F(0) = 0,   F(1) = 1
-F(N) = F(N - 1) + F(N - 2), 其中 N > 1.
+F(0) = 0，F(1) = 1
+F(n) = F(n - 1) + F(n - 2)，其中 n > 1
 
-斐波那契数列由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。
+给定 n ，请计算 F(n) 。
 
-答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。
+答案需要取模 1e9+7(1000000007) ，如计算初始结果为：1000000008，请返回 1。
 
 示例 1：
 输入：n = 2
 输出：1
+解释：F(2) = F(1) + F(0) = 1 + 0 = 1
 
 示例 2：
-输入：n = 5
-输出：5
- 
+输入：n = 3
+输出：2
+解释：F(3) = F(2) + F(1) = 1 + 1 = 2
+
+示例 3：
+输入：n = 4
+输出：3
+解释：F(4) = F(3) + F(2) = 2 + 1 = 3
+
 提示：
 0 <= n <= 100
-
-来源：力扣（LeetCode）
-链接：https://leetcode.cn/problems/fei-bo-na-qi-shu-lie-lcof
-
-官方解题思路：
-https://leetcode.cn/problems/fei-bo-na-qi-shu-lie-lcof/solution/fei-bo-na-qi-shu-lie-by-leetcode-solutio-hbss/
-
 */
-#include <iostream>
 #include <cassert>
+#include <iostream>
 #include <vector>
 using namespace std;
 
+/*
+解法：动态规划 + 滚动数组【最优解】
+
+官方题解只给出这一种方法，也就是本题的最优解：时间 O(n)、空间 O(1)。
+
+为什么慢：直接按定义写递归 f(n) = f(n-1) + f(n-2)，同一个子问题会被反复展开，
+调用次数是斐波那契级别的（约 O(1.618^n)），n 稍大就超时。
+
+换个角度：把「从前往后推」这件事显式写出来。边界是 F(0) = 0、F(1) = 1，之后每项
+只依赖前两项。既然只依赖前两项，那两个长度为 n 的数组也没必要，留三个变量滚动即可。
+
+关键点：
+  · 边界：n < 2 时直接返回 n（F(0)=0、F(1)=1）
+  · 滚动变量顺序不能错：先 p = q、再 q = r、最后 r = (p + q) % MOD，
+    旧的 p、q 必须先被覆盖成新的前两项，否则 r 会用错值
+  · 每步都要取模，避免中途溢出；模数 1e9+7
+  · 结果始终保证在 [0, MOD) 内，符合题面「若超过 1e9+7 就取模」的要求
+  · 循环从 i = 2 开始，正好做 n - 1 次加法
+
+以 n = 4 为例：
+  初始 p = 0, q = 0, r = 1（此时 r 代表 F(1)）
+  i=2：p=0, q=1, r=(0+1)=1        → F(2) = 1
+  i=3：p=1, q=1, r=(1+1)=2        → F(3) = 2
+  i=4：p=1, q=2, r=(1+2)=3        → F(4) = 3
+  返回 3
+
+复杂度分析：
+  时间 O(n)：一次循环 n - 1 次加法
+  空间 O(1)：只用三个变量
+*/
 class Solution
 {
 public:
-    // 常规方法：递归方式
-    // 时间复杂度：O(n)，空间复杂度：O(1)
-    int fib_recursive(int n)
+    int fib(int n)
     {
-        if (n == 1 || n == 2)
-            return 1;
-        return (fib_recursive(n - 1) + fib_recursive(n - 2)) % mod;
-    }
+        const int MOD = 1000000007;
+        if (n < 2) return n;
 
-    // 方法一：非递归方式
-    // 时间复杂度：O(n)，空间复杂度：O(1)
-    int fib1(int n)
-    {
-        if (n == 1 || n == 2)
-            return 1;
-
-        int v1 = 1, v2 = 1, v = 0;
-        for (int i = 3; i <= n; i++)
+        // p = F(i-2)，q = F(i-1)，r = F(i)
+        int p = 0, q = 0, r = 1;
+        for (int i = 2; i <= n; ++i)
         {
-            v = (v1 + v2) % mod;
-            v1 = v2;
-            v2 = v;
+            p = q;
+            q = r;
+            r = (p + q) % MOD;
         }
-        return v;
+        return r;
     }
-
-    // 方法二：矩阵快速幂
-    // 时间复杂度：O(logn) ，空间复杂度：O(1)
-    /*
-    方法一的时间复杂度是 O(n)O(n)。使用矩阵快速幂的方法可以降低时间复杂度。
-
-    首先我们可以构建这样一个递推关系：
-    [1 1][F(n)]          [F(n) + F(n-1)]     [F(n+1)]
-    [1 0][F(n-1)]        [F(n)]              [F(n)]
-
-    因此：
-    [F(n+1)]             [1 1]n [F(1)]
-    [F(n)]               [1 0]  [F(0)]
-    令 M =
-    [1 1]
-    [1 0]
-    因此只要我们能快速计算矩阵 M 的 n 次幂，就可以得到 F(n) 的值。如果直接求取 M^n ，时间复杂度是 O(n)，
-    可以定义矩阵乘法，然后用快速幂算法来加速这里 M^n 的求取。
-    */
-    int fib2(int n)
-    {
-        if (n < 2)
-        {
-            return n;
-        }
-        vector<vector<long>> q{{1, 1}, {1, 0}};
-        vector<vector<long>> res = pow(q, n - 1);
-        return res[0][0];
-    }
-
-    vector<vector<long>> pow(vector<vector<long>> &a, int n)
-    {
-        vector<vector<long>> ret{{1, 0}, {0, 1}};
-        while (n > 0)
-        {
-            if (n & 1)
-            {
-                ret = multiply(ret, a);
-            }
-            n >>= 1;
-            a = multiply(a, a);
-        }
-        return ret;
-    }
-
-    vector<vector<long>> multiply(vector<vector<long>> &a, vector<vector<long>> &b)
-    {
-        vector<vector<long>> c{{0, 0}, {0, 0}};
-        for (int i = 0; i < 2; i++)
-        {
-            for (int j = 0; j < 2; j++)
-            {
-                c[i][j] = (a[i][0] * b[0][j] + a[i][1] * b[1][j]) % mod;
-            }
-        }
-        return c;
-    }
-
-private:
-    int mod = 1000000007;
 };
+
+namespace
+{
+void check(int n, int want)
+{
+    Solution solution;
+    int got = solution.fib(n);
+    assert(got == want);
+}
+
+// 交叉验证：用长度为 n + 1 的 DP 数组算一遍，与滚动数组结果比对
+void crossCheck()
+{
+    const int MOD = 1000000007;
+    vector<int> f(101, 0);
+    f[1] = 1;
+    for (int i = 2; i <= 100; ++i) f[i] = (f[i - 1] + f[i - 2]) % MOD;
+
+    Solution solution;
+    for (int n = 0; n <= 100; ++n) assert(solution.fib(n) == f[n]);
+}
+} // namespace
 
 int main()
 {
-    Solution s;
-    assert(s.fib_recursive(2) == 1);
-    assert(s.fib_recursive(5) == 5);
-    assert(s.fib_recursive(8) == 21);
+    // 示例 1
+    check(2, 1);
 
-    assert(s.fib1(2) == 1);
-    assert(s.fib1(5) == 5);
-    assert(s.fib1(8) == 21);
+    // 示例 2
+    check(3, 2);
 
-    assert(s.fib2(2) == 1);
-    assert(s.fib2(5) == 5);
-    assert(s.fib2(8) == 21);
+    // 示例 3
+    check(4, 3);
+
+    // 边界：n = 0，F(0) = 0
+    check(0, 0);
+
+    // 边界：n = 1，F(1) = 1（此时不会进入循环）
+    check(1, 1);
+
+    // 常规值
+    check(10, 55);
+    check(20, 6765);
+    check(30, 832040);
+
+    // 边界：开始取模的规模
+    check(45, 134903163);  // F(45) = 1134903170，取模后为 134903163
+    check(50, 586268941);
+    check(100, 687995182);
+
+    // 交叉验证 n ∈ [0, 100]
+    crossCheck();
+
+    cout << "all tests passed" << endl;
+    return 0;
 }
