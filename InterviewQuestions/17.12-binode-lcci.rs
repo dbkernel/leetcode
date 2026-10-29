@@ -177,7 +177,9 @@ impl Solution2 {
                 None => {
                     // 访问 cur：把上一个访问节点的 right 接过来
                     match &prev {
-                        Some(p) => p.borrow_mut().right = Some(Rc::clone(&node)),
+                        Some(p) => {
+                            p.borrow_mut().right = Some(Rc::clone(&node));
+                        }
                         // 第一个访问的就是最左节点，即链表头
                         None => head = Some(Rc::clone(&node)),
                     }
@@ -248,14 +250,12 @@ fn sorted_values(level_order: &[Option<i32>]) -> Vec<i32> {
 
 fn check(level_order: &[Option<i32>]) {
     let want = sorted_values(level_order);
-    assert_eq!(
-        collect_right_chain(Solution1::convert_bi_node(build_tree(level_order))),
-        want
-    );
-    assert_eq!(
-        collect_right_chain(Solution2::convert_bi_node(build_tree(level_order))),
-        want
-    );
+
+    let head1 = Solution1::convert_bi_node(build_tree(level_order));
+    assert_eq!(collect_right_chain(head1), want);
+
+    let head2 = Solution2::convert_bi_node(build_tree(level_order));
+    assert_eq!(collect_right_chain(head2), want);
 }
 
 fn main() {
