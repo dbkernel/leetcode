@@ -484,7 +484,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [191. 位 1 的个数 （例题 1）](https://leetcode.cn/problems/number-of-1-bits/) |  |  |  |  |  |
+| ✅ | [191. 位 1 的个数 （例题 1）](https://leetcode.cn/problems/number-of-1-bits/) | [cpp](Problems/0101-0200/0191-number-of-1-bits/0191-number-of-1-bits.cpp) | [go](Problems/0101-0200/0191-number-of-1-bits/0191-number-of-1-bits.go) | [py](Problems/0101-0200/0191-number-of-1-bits/0191-number-of-1-bits.py) | [rs](Problems/0101-0200/0191-number-of-1-bits/0191-number-of-1-bits.rs) | 官方三解：逐位检查 32 轮 / n & (n-1) 消去最低位的 1 / 内置 popcount；位宽固定故三者同为 O(1)，并列最优（n&(n-1) 的循环次数只跟 1 的个数有关）；注意入参在平台现版是 int，需先转无符号再移位 |
 | ☐ | [461. 汉明距离（例题 2）](https://leetcode.cn/problems/hamming-distance/) |  |  |  |  |  |
 | ☐ | [面试题 05.06. 整数转换](https://leetcode.cn/problems/convert-integer-lcci/) |  |  |  |  |  |
 | ☐ | [面试题 05.07. 配对交换 ](https://leetcode.cn/problems/exchange-lcci/) |  |  |  |  |  |
