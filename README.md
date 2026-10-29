@@ -517,7 +517,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [45. 跳跃游戏 II（中等）](https://leetcode.cn/problems/jump-game-ii/) | [cpp](Problems/0001-0100/0045-jump-game-ii/0045-jump-game-ii.cpp) | [go](Problems/0001-0100/0045-jump-game-ii/0045-jump-game-ii.go) | [py](Problems/0001-0100/0045-jump-game-ii/0045-jump-game-ii.py) | [rs](Problems/0001-0100/0045-jump-game-ii/0045-jump-game-ii.rs) | 官方两解：反向查找出发位置 O(n^2) 非最优 / 正向分层贪心 O(n) O(1) 最优；n=1 返回 0，跨层才计一次跳跃 |
-| ☐ | [134. 加油站（中等）](https://leetcode.cn/problems/gas-station/) |  |  |  |  |  |
+| ✅ | [134. 加油站（中等）](https://leetcode.cn/problems/gas-station/) | [cpp](Problems/0101-0200/0134-gas-station/0134-gas-station.cpp) | [go](Problems/0101-0200/0134-gas-station/0134-gas-station.go) | [py](Problems/0101-0200/0134-gas-station/0134-gas-station.py) | [rs](Problems/0101-0200/0134-gas-station/0134-gas-station.rs) | 官方两解：一次遍历 / 前缀和最低点（图表法），同为 O(n) O(1) 并列最优；总油量小于总消耗必无解，从累计亏空处重启起点 |
 | ☐ | [455. 分发饼干（简单）](https://leetcode.cn/problems/assign-cookies/) |  |  |  |  |  |
 | ☐ | [334. 递增的三元子序列（中等）](https://leetcode.cn/problems/increasing-triplet-subsequence/) |  |  |  |  |  |
 | ☐ | [452. 用最少数量的箭引爆气球（中等）](https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/) |  |  |  |  |  |
