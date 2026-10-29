@@ -380,7 +380,7 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | ☐ | [面试题 17.22. 单词转换（困难） ](https://leetcode.cn/problems/word-transformer-lcci/) |  |  |  |  |  |
 | ☐ | [面试题 17.07. 婴儿名字（困难） ](https://leetcode.cn/problems/baby-names-lcci/) |  |  |  |  |  |
-| ☐ | [529. 扫雷游戏（困难）](https://leetcode.cn/problems/minesweeper/) |  |  |  |  |  |
+| ✅ | [529. 扫雷游戏（中等）](https://leetcode.cn/problems/minesweeper/) | [cpp](Problems/0501-0600/0529-minesweeper/0529-minesweeper.cpp) | [go](Problems/0501-0600/0529-minesweeper/0529-minesweeper.go) | [py](Problems/0501-0600/0529-minesweeper/0529-minesweeper.py) | [rs](Problems/0501-0600/0529-minesweeper/0529-minesweeper.rs) | 官方两解：DFS + 模拟 / BFS + 模拟，同为 O(mn) 时间 O(mn) 空间，并列最优；踩雷只标 X 不扩散，周围无雷才标 B 并继续展开，数字格不推进 |
 
 ## BFS
 
