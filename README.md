@@ -444,7 +444,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ☐ | [剑指 Offer 14- I. 剪绳子](https://leetcode.cn/problems/jian-sheng-zi-lcof/) |  |  |  |  |  |
 | ☐ | [剑指 Offer 46. 把数字翻译成字符串](https://leetcode.cn/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof/) |  |  |  |  |  |
 | ☐ | [139. 单词拆分](https://leetcode.cn/problems/word-break/) |  |  |  |  |  |
-| ☐ | [437. 路径总和 III](https://leetcode.cn/problems/path-sum-iii/) |  |  |  |  |  |
+| ✅ | [437. 路径总和 III（中等）](https://leetcode.cn/problems/path-sum-iii/) | [cpp](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.cpp) | [go](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.go) | [py](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.py) | [rs](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.rs) | 与第五阶段题型 8 同一题：DFS 枚举起点 O(n^2) / 前缀和 + 哈希表回溯 O(n)，最优解为前缀和；先查后插、退出时回滚 |
 
 # 第九阶段（1 周）
 
