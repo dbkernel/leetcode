@@ -49,7 +49,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [1.两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) |  |
+| ✅ | [1.两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 官方两解：暴力枚举 O(n^2) / 哈希表 O(n) |
 | ✅ | [1108. IP 地址无效化（简单）](https://leetcode.cn/problems/defanging-an-ip-address/) | [cpp](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.cpp) |  |  |  |  |
 | ✅ | [344. 反转字符串（简单）](https://leetcode.cn/problems/reverse-string/) | [cpp](Problems/0301-0400/0344-reverse-string/0344-reverse-string.cpp) |  |  |  |  |
 | ✅ | [剑指 Offer 58 - I. 翻转单词顺序（简单）](https://leetcode.cn/problems/fan-zhuan-dan-ci-shun-xu-lcof/) | [cpp](JianZhiOffer/58-I-翻转单词顺序.cpp) |  |  |  |  |
@@ -200,7 +200,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [两数之和 （简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 四种语言统一用 `seen` 存「值 → 下标」；关键在「先查后插」；【精品】 |
+| ✅ | [两数之和 （简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 官方两解：暴力枚举 O(n^2) / 哈希表 O(n)；哈希表关键在「先查后插」；【精品】 |
 | ☐ | [15. 三数之和（中等，墨奇社招）](https://leetcode.cn/problems/3sum/) |  |  |  |  |  |
 | ✅ | [160. 相交链表（简单，新华智云 22 届暑期实习） ](https://leetcode.cn/problems/intersection-of-two-linked-lists/) | [cpp](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.cpp) |  |  |  | 双指针最好，哈希集合 unordered_set 空间复杂度高 |
 | ☐ | [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode.cn/problems/linked-list-cycle/) |  |  |  |  |  |
@@ -438,7 +438,7 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | ☐ | [344. 反转字符串](https://leetcode.cn/problems/reverse-string/) |  |  |  |  |  |
 | ☐ | [面试题 16.24. 数对和（例题 1）](https://leetcode.cn/problems/pairs-with-sum-lcci/) |  |  |  |  |  |
-| ☐ | [1. 两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) |  |  |  |  | 参考 三数之和 内层循环 |
+| ☐ | [1. 两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) |  |  |  |  | 双指针需先排序，非官方解法；可参考 三数之和 内层循环 |
 | ✅ | [15. 三数之和（中等，墨奇社招）](https://leetcode.cn/problems/3sum/) | [cpp](Problems/0001-0100/0015-3sum/0015-3sum.cpp) |  |  |  |  |
 | ☐ | [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 ](https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/) |  |  |  |  |  |
 | ☐ | [75. 颜色分类 ](https://leetcode.cn/problems/sort-colors/) |  |  |  |  |  |
