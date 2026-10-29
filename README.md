@@ -95,7 +95,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [剑指 Offer 22. 链表中倒数第 k 个节点 （简单，百度笔试题）](https://leetcode.cn/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/) | [cpp](JianZhiOffer/22-链表中倒数第k个节点.cpp) |  |  |  |  |
+| ✅ | [LCR 140 / 剑指 Offer 22. 训练计划 II （简单）](https://leetcode.cn/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/) | [cpp](JianZhiOffer/22-链表中倒数第k个节点.cpp) | [go](JianZhiOffer/22-链表中倒数第k个节点.go) | [py](JianZhiOffer/22-链表中倒数第k个节点.py) | [rs](JianZhiOffer/22-链表中倒数第k个节点.rs) | 官方两解：先数长度再定位 / 快慢双指针一趟；最优解为双指针（原题「链表中倒数第 k 个节点」） |
 | ✅ | [19. 删除链表的倒数第 N 个结点 （中等）](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/) | [cpp](Problems/0001-0100/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.cpp) | [go](Problems/0001-0100/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.go) | [py](Problems/0001-0100/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.py) | [rs](Problems/0001-0100/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.rs) | 官方三解：算长度 O(L) 两趟 / 栈 O(L) 空间 / 快慢指针一趟；最优解为快慢指针 |
 | ✅ | [160. 相交链表（简单，新华智云笔试题）](https://leetcode.cn/problems/intersection-of-two-linked-lists/) | [cpp](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.cpp) |  |  |  | 步骤简单，但思路清奇 |
 | ✅ | [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode.cn/problems/linked-list-cycle/) | [cpp](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.cpp) |  |  |  |  |
