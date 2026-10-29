@@ -59,7 +59,7 @@
 | ✅ | [LCR 122 / 剑指 Offer 05. 路径加密（简单）](https://leetcode.cn/problems/ti-huan-kong-ge-lcof/) | [cpp](JianZhiOffer/05-替换空格.cpp) | [go](JianZhiOffer/05-替换空格.go) | [py](JianZhiOffer/05-替换空格.py) | [rs](JianZhiOffer/05-替换空格.rs) | 官方仅一解：逐字符遍历替换 O(n)，即最优解（原题「替换空格」现改名「路径加密」，把 `.` 换成空格） |
 | ✅ | [LCR 182 / 剑指 Offer 58 - II. 动态口令（简单）](https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/) | [cpp](JianZhiOffer/58-II-左旋转字符串.cpp) | [go](JianZhiOffer/58-II-左旋转字符串.go) | [py](JianZhiOffer/58-II-左旋转字符串.py) | [rs](JianZhiOffer/58-II-左旋转字符串.rs) | 官方四解：切片 / 列表拼接 / 字符串拼接 / 三次翻转；最优解为三次翻转 O(1) 空间 |
 | ✅ | [26. 删除排序数组中的重复项（简单）](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/) | [cpp](Problems/0001-0100/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.cpp) | [go](Problems/0001-0100/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.go) | [py](Problems/0001-0100/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.py) | [rs](Problems/0001-0100/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.rs) | 官方仅一解：快慢双指针原地去重 O(n)，即最优解 |
-| ✅ | [剑指 Offer 67. 把字符串转换成整数（中等）](https://leetcode.cn/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof/) | [cpp](JianZhiOffer/67-把字符串转换成整数.cpp) |  |  |  | 经典 atoi()，注意范围越界处理 |
+| ✅ | [LCR 192 / 剑指 Offer 67. 把字符串转换成整数 (atoi)（中等）](https://leetcode.cn/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof/) | [cpp](JianZhiOffer/67-把字符串转换成整数.cpp) | [go](JianZhiOffer/67-把字符串转换成整数.go) | [py](JianZhiOffer/67-把字符串转换成整数.py) | [rs](JianZhiOffer/67-把字符串转换成整数.rs) | 官方仅一解：逐位扫描 + 拼接前越界预判 O(n)，即最优解；注意只跳前导空格与符号位必须紧跟数字 |
 
 ## 找规律
 

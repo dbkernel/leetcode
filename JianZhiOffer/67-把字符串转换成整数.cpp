@@ -1,192 +1,204 @@
 /*
-剑指 Offer 67. 把字符串转换成整数
-
-写一个函数 StrToInt，实现把字符串转换成整数这个功能。不能使用 atoi 或者其他类似的库函数。
-
-首先，该函数会根据需要丢弃无用的开头空格字符，直到寻找到第一个非空格的字符为止。
-
-当我们寻找到的第一个非空字符为正或者负号时，则将该符号与之后面尽可能多的连续数字组合起来，作为该整数的正负号；
-假如第一个非空字符是数字，则直接将其与之后连续的数字字符组合起来，形成整数。
-
-该字符串除了有效的整数部分之后也可能会存在多余的字符，这些字符可以被忽略，它们对于函数不应该造成影响。
-
-注意：假如该字符串中的第一个非空格字符不是一个有效整数字符、字符串为空或字符串仅包含空白字符时，则你的函数不需要进行转换。
-
-在任何情况下，若函数不能进行有效的转换时，请返回 0。
-
-说明：
-
-假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为[−2^31, 2^31 − 1]。
-如果数值超过这个范围，请返回 INT_MAX (2^31 − 1) 或 INT_MIN (−2^31) 。
-
-示例 1:
-输入: "42"
-输出: 42
-
-示例 2:
-输入: "   -42"
-输出: -42
-解释: 第一个非空白字符为 '-', 它是一个负号。
-     我们尽可能将负号与后面所有连续出现的数字组合起来，最后得到 -42 。
-
-示例 3:
-输入: "4193 with words"
-输出: 4193
-解释: 转换截止于数字 '3' ，因为它的下一个字符不为数字。
-
-示例 4:
-输入: "words and 987"
-输出: 0
-解释: 第一个非空字符是 'w', 但它不是数字或正、负号。
-     因此无法执行有效的转换。
-
-示例 5:
-输入: "-91283472332"
-输出: -2147483648
-解释: 数字 "-91283472332" 超过 32 位有符号整数范围。
-     因此返回 INT_MIN (−2^31) 。
-
-注意：本题与主站 8 题相同：https://leetcode.cn/problems/string-to-integer-atoi/
-
+============================================================================
+LCR 192 / 剑指 Offer 67. 把字符串转换成整数 (atoi)（中等）
 来源：力扣（LeetCode）
-链接：https://leetcode.cn/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof
-*/
+链接：https://leetcode.cn/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof/
+分类：字符串 · 状态机（逐位拼接 + 越界预判）
 
+说明：本题在 leetcode.cn 上现名「把字符串转换成整数 (atoi)」，函数名为
+myAtoi（参数名改为 s）。本质与主站 8 题一致。
+============================================================================
+
+请你来实现一个 myAtoi(string s) 函数，使其能将字符串转换成一个 32 位有符号
+整数（类似 C/C++ 中的 atoi 函数）。
+
+函数 myAtoi(string s) 的算法如下：
+- 读入字符串并丢弃无用的前导空格
+- 检查下一个字符（假设还未到字符末尾）为正还是负号，读取该字符（如果有）。
+  确定最终结果是负数还是正数。如果两者都不存在，则假定结果为正。
+- 读入下一个字符，直到到达下一个非数字字符或到达输入的结尾。字符串的其余
+  部分将被忽略。
+- 将前面步骤读入的这些数字转换为整数（即，"123" -> 123，"0032" -> 32）。
+  如果没有读入数字，则整数为 0。必要时更改符号（从步骤 2 开始）。
+- 如果整数数超过 32 位有符号整数范围 [-2^31, 2^31 - 1]，需要截断这个整数，
+  使其保持在这个范围内。具体来说，小于 -2^31 的整数应该被固定为 -2^31，
+  大于 2^31 - 1 的整数应该被固定为 2^31 - 1。
+- 返回整数作为最终结果。
+
+注意：
+- 本题中的空白字符只包括空格字符 ' '。
+- 除前导空格或数字后的其余字符串外，请勿忽略 任何其他字符。
+
+示例 1：
+输入：s = "42"
+输出：42
+
+示例 2：
+输入：s = "   -42"
+输出：-42
+
+示例 3：
+输入：s = "4193 with words"
+输出：4193
+
+提示：
+0 <= s.length <= 200
+s 由英文字母（大写和小写）、数字（0-9）、' '、'+'、'-' 和 '.' 组成
+
+注意：
+本题与主站 8 题相同：https://leetcode.cn/problems/string-to-integer-atoi/
+*/
 #include <cassert>
 #include <climits>
 #include <iostream>
-#include <vector>
 #include <string>
-#include <unordered_map>
-
 using namespace std;
 
 /*
-方法一：精细化处理（耗时 0ms，超过 100%；内存占用也超过 100%）
+解法：逐位扫描 + 拼接前越界预判【最优解】
+
+官方题解只给出这一种方法，它同时也就是本题的最优解：只扫一遍，时间 O(N)
+已是下界；除几个计数变量外不需要额外空间。
+
+为什么慢：最直接的想法是「先把数字子串截出来，再交给库函数转整数」。问题在于
+超长数字串（200 位）根本放不进任何整型，转完再判断就已经溢出了，行为未定义；
+而用 long long 兜底也只是把边界往后推，遇到更长输入照样失效。
+
+换个角度：既然全串可能远超 int 范围，就别等到算完再判，而是在「这一步拼接
+会不会越界」之前就拦住。设 res 是已经拼好的部分，x 是待拼的当前位，
+阈值 bndry = INT_MAX / 10 = 214748364，则只有两种越界：
+  · res > bndry          → 10 * res 本身就已经 ≥ 2147483650
+  · res == bndry 且 x > 7 → 拼接结果 ≥ 2147483648
+两种情况都直接返回带符号的边界值，剩下的循环不必再跑。
+
+关键点：
+  · 只跳过前导空格；一旦进入数字或符号，后面再遇空格必须停止，不能继续跳
+  · 有符号位才把 i 推到 1，无符号位时 i 停在 0，否则会漏读第一位数字
+  · 符号必须在「返回边界值」时一起生效，否则 "-91283472332" 会返回正数
+  · '-' 和 '+' 之后必须紧跟数字，否则结果为 0（例如 "+-12"、"  + 413"）
+  · 前导零不需要特殊处理，"0032" 自然拼成 32
+
+以 s = "   -42" 为例：
+  跳过 3 个前导空格，i 停在 '-'
+  sign = -1，i 后移一位
+  读 '4'：res = 4；读 '2'：res = 42
+  字符串结束，返回 -1 * 42 = -42
+
+以 s = "-91283472332" 为例：
+  sign = -1
+  拼到 res = 214748364 时，下一位是 '7'，还没越界（等于 bndry 且不大于 7）
+  再拼一位后 res = 2147483647，此时下一位 '2'：res > bndry → 立刻返回
+  INT_MIN = -2147483648
+
+复杂度分析：
+  时间 O(N)：最多扫一遍，越界时提前退出
+  空间 O(1)：只用 res、符号、下标几个变量
 */
-class Solution1 {
+class Solution
+{
 public:
-    int strToInt(string str) {
-        int i = 0, flag = 1;
-        long res = 0; //默认flag = 1，正数
+    int myAtoi(string s)
+    {
+        const int intMax = INT_MAX;
+        const int intMin = INT_MIN;
+        // 拼接阈值：INT_MAX / 10，用来在乘 10 之前判断是否越界
+        const int bndry = INT_MAX / 10;
 
-        // 跳过空白
-        while (str[i] == ' ')
+        int i = 0;
+        // 只跳前导空格；进入数字区后再遇空格必须停，不能继续跳
+        while (i < static_cast<int>(s.size()) && s[i] == ' ')
+        {
             ++i;
-
-        // 处理正负符号
-        if (str[i] == '-')
-            flag = -1;
-        if (str[i] == '-' || str[i] == '+')
-            ++i;
-
-        // 处理数字
-        for (; i < str.size() && isdigit(str[i]); ++i)  {
-            res = res * 10 + (str[i] - '0');
-            if (res >= INT_MAX && flag == 1)
-                return INT_MAX;
-            if (res > INT_MAX && flag == -1)
-                return INT_MIN;
         }
-        return flag * res;
+
+        int sign = 1;
+        if (i < static_cast<int>(s.size()) && s[i] == '-')
+        {
+            sign = -1;
+            ++i;
+        }
+        else if (i < static_cast<int>(s.size()) && s[i] == '+')
+        {
+            // 正号也要吃掉，否则会把 '+' 当成非数字字符直接返回 0
+            ++i;
+        }
+
+        int res = 0;
+        while (i < static_cast<int>(s.size()) && s[i] >= '0' && s[i] <= '9')
+        {
+            int x = s[i] - '0';
+
+            // 先判越界再拼接，避免 10 * res 本身就已经溢出
+            if (res > bndry || (res == bndry && x > 7))
+            {
+                return sign == 1 ? intMax : intMin;
+            }
+
+            res = 10 * res + x;
+            ++i;
+        }
+
+        // 符号必须在这里统一生效，循环里 res 始终保持非负
+        return sign * res;
     }
 };
 
-/*
-方法二：自动状态机（思路简单清晰，但耗时较旧，最少 8ms）
+namespace
+{
+// 一个用例 = 输入 + 期望输出
+void check(const string &s, int want)
+{
+    Solution solution;
+    assert(solution.myAtoi(s) == want);
+}
+} // namespace
 
-思路
+int main()
+{
+    // 示例 1：无符号位、无空格
+    check("42", 42);
 
-字符串处理的题目往往涉及复杂的流程以及条件情况，如果直接上手写程序，一不小心就会写出极其臃肿的代码。
+    // 示例 2：前导空格 + 负号
+    check("   -42", -42);
 
-因此，为了有条理地分析每个输入字符的处理方法，我们可以使用自动机这个概念：
+    // 示例 3：数字之后跟着非数字，其余部分忽略
+    check("4193 with words", 4193);
 
-我们的程序在每个时刻有一个状态 s，每次从序列中输入一个字符 c，并根据字符 c 转移到下一个状态 s'。
-这样，我们只需要建立一个覆盖所有情况的从 s 与 c 映射到 s' 的表格即可解决题目中的问题。
+    // 边界：以字母开头，一个数字都读不到
+    check("words and 987", 0);
 
-算法
+    // 边界：空串与纯空格，必须返回 0 而不是越界
+    check("", 0);
+    check("     ", 0);
 
-本题可以建立如下表格所示的自动机（比如，当 start 遇到 +/- 时，则需要进入 signed 状态）：
+    // 边界：只有符号位，没有数字
+    check("+", 0);
+    check("-", 0);
+    check("+-12", 0);
 
-          ' '      +/-	    number      other
-start     start    signed	in_number	end
-signed	  end      end	    in_number	end
-in_number end      end	    in_number	end
-end       end      end	    end         end
+    // 边界：正号后紧跟数字，验证 '+' 被正确吃掉
+    check("+1", 1);
 
-接下来编程部分就非常简单了：我们只需要把上面这个状态转换表抄进代码即可。
+    // 边界：符号位与数字之间有空格，属于「紧跟」规则之外，应返回 0
+    check("  + 413", 0);
 
-另外自动机也需要记录当前已经输入的数字，只要在 s' 为 in_number 时，更新我们输入的数字，即可最终得到输入的数字。
+    // 边界：前导零不影响结果
+    check("0032", 32);
+    check("00000-42a1234", 0);
 
-复杂度分析
-- 时间复杂度：O(n)，其中 n 为字符串的长度。我们只需要依次处理所有的字符，处理每个字符需要的时间为 O(1)。
-- 空间复杂度：O(1)。自动机的状态只需要常数空间存储。
+    // 上溢：2147483648 应截断为 INT_MAX
+    check("2147483648", 2147483647);
 
-作者：LeetCode-Solution
-链接：https://leetcode.cn/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof/solution/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-sh-epeo/
-来源：力扣（LeetCode）
-*/
+    // 下溢：比 INT_MIN 绝对值更大的负数应截断为 INT_MIN
+    check("-91283472332", -2147483648);
 
-class Automaton {
-private:
-    string state = "start";
-    unordered_map<string, vector<string> > table = {
-            {"start", {"start", "signed", "in_number", "end"}},
-            {"signed", {"end", "end", "in_number", "end"}},
-            {"in_number", {"end", "end", "in_number", "end"}},
-            {"end", {"end", "end", "end", "end"}}
-    };
+    // 边界：恰好等于上下界的两个值必须原样返回，不能被误判为越界
+    check("2147483647", 2147483647);
+    check("-2147483648", -2147483648);
 
-    // 根据当前字符的类型返回 table 中对应的 state 下标
-    int get_col(char c) {
-        if (isspace(c)) return 0;
-        if (c == '+' or c == '-') return 1;
-        if (isdigit(c)) return 2;
-        return 3;
-    }
+    // 边界：比上界小 1，验证 bndry 判定没有提前一位
+    check("2147483646", 2147483646);
 
-public:
-    int sign = 1;
-    long long value = 0;
-
-    Automaton() {}
-    ~Automaton() {}
-
-    void get(char c) {
-        state = table[state][get_col(c)];
-        if (state == "in_number") {
-            value = value * 10 + c - '0'; // 求值
-            // 处理溢出的情况
-            value = (sign == 1 ? min(value, (long long)INT_MAX) : min(value, -(long long)INT_MIN));
-        } else if (state == "signed")
-            sign = (c == '-' ? -1 : 1); // 处理正负符号
-    }
-};
-
-class Solution2 {
-public:
-    int strToInt(string str) {
-        Automaton automaton;
-        for (char c : str)
-            automaton.get(c);
-        return automaton.sign * automaton.value;
-    }
-};
-
-int main() {
-    Solution1 s1;
-    assert(s1.strToInt("42") == 42);
-    assert(s1.strToInt("-42") == -42);
-    assert(s1.strToInt("4193 with words") == 4193);
-    assert(s1.strToInt("words and 987") == 0);
-    assert(s1.strToInt("-91283472332") == -2147483648); // INT_MIN
-
-    Solution1 s2;
-    assert(s2.strToInt("42") == 42);
-    assert(s2.strToInt("-42") == -42);
-    assert(s2.strToInt("4193 with words") == 4193);
-    assert(s2.strToInt("words and 987") == 0);
-    assert(s2.strToInt("-91283472332") == -2147483648); // INT_MIN
-
+    cout << "all tests passed" << endl;
     return 0;
 }
