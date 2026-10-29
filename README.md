@@ -493,7 +493,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ✅ | [LCR 177 / 剑指 Offer 56 - I. 撞色搭配（中等） ](https://leetcode.cn/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-lcof/) | [cpp](JianZhiOffer/56-I-数组中数字出现的次数.cpp) | [go](JianZhiOffer/56-I-数组中数字出现的次数.go) | [py](JianZhiOffer/56-I-数组中数字出现的次数.py) | [rs](JianZhiOffer/56-I-数组中数字出现的次数.rs) | 现收录为 LCR 177「撞色搭配」，签名改为 sockCollocation(sockets)；官方一解：全体异或后用最低位的 1 分组再异或，O(n) 时间 O(1) 空间即最优；分组位取 lowbit，结果无序返回 |
 | ✅ | [LCR 178 / 剑指 Offer 56 - II. 训练计划 VI（中等） ](https://leetcode.cn/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/) | [cpp](JianZhiOffer/56-II-数组中数字出现的次数 II.cpp) | [go](JianZhiOffer/56-II-数组中数字出现的次数 II.go) | [py](JianZhiOffer/56-II-数组中数字出现的次数 II.py) | [rs](JianZhiOffer/56-II-数组中数字出现的次数 II.rs) | 现收录为 LCR 178「训练计划 VI」，签名改为 trainingPlan(actions)；官方两解：按位统计对 3 取模 / 有限状态自动机两掩码；均为 O(n) 时间 O(1) 空间，并列最优（前者 O(32n) 常数，后者一次遍历、状态转移可用卡诺图化简） |
 | ✅ | [面试题 16.01. 交换数字](https://leetcode.cn/problems/swap-numbers-lcci/) | [cpp](InterviewQuestions/16.01-swap-numbers-lcci.cpp) | [go](InterviewQuestions/16.01-swap-numbers-lcci.go) | [py](InterviewQuestions/16.01-swap-numbers-lcci.py) | [rs](InterviewQuestions/16.01-swap-numbers-lcci.rs) | 官方两解：异或交换 / 加减交换；两解同为 O(1) 时间 O(1) 空间，并列最优；异或法在两数相同时会清零，需先判等 |
-| ☐ | [231. 2 的幂](https://leetcode.cn/problems/power-of-two/) |  |  |  |  |  |
+| ✅ | [231. 2 的幂](https://leetcode.cn/problems/power-of-two/) | [cpp](Problems/0201-0300/0231-power-of-two/0231-power-of-two.cpp) | [go](Problems/0201-0300/0231-power-of-two/0231-power-of-two.go) | [py](Problems/0201-0300/0231-power-of-two/0231-power-of-two.py) | [rs](Problems/0201-0300/0231-power-of-two/0231-power-of-two.rs) | 官方三解：反复除以 2 / 清除最低位的 1 看是否归零 / 判断能否整除 2^30；后两解为 O(1)，并列最优；n 为 0 或负数一律 false，取模版本要用 2^30 因为 2^31 溢出 int |
 
 ## 并查集
 
