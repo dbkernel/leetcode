@@ -389,7 +389,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [127. 单词接龙（困难）](https://leetcode.cn/problems/word-ladder/) |  |  |  |  |  |
+| ✅ | [127. 单词接龙（困难）](https://leetcode.cn/problems/word-ladder/) | [cpp](Problems/0101-0200/0127-word-ladder/0127-word-ladder.cpp) | [go](Problems/0101-0200/0127-word-ladder/0127-word-ladder.go) | [py](Problems/0101-0200/0127-word-ladder/0127-word-ladder.py) | [rs](Problems/0101-0200/0127-word-ladder/0127-word-ladder.rs) | 官方两解：逐层 BFS / 双向 BFS，同为 O(N·L·26)，并列最优（双向实际只展开 b^(d/2)）；必须枚举替换字母，不能两两建图；beginWord 与 endWord 相同按单词数计 1 |
 | ☐ | [126. 单词接龙 II（困难）](https://leetcode.cn/problems/word-ladder-ii/) |  |  |  |  |  |
 | ☐ | [994. 腐烂的橘子（中等）](https://leetcode.cn/problems/rotting-oranges/) |  |  |  |  |  |
 | ☐ | [542. 01 矩阵（中等）](https://leetcode.cn/problems/01-matrix/) |  |  |  |  |  |
