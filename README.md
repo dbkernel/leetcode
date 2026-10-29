@@ -348,7 +348,7 @@
 | ☐ | [面试题 04.01. 节点间通路（中等）](https://leetcode.cn/problems/route-between-nodes-lcci/) |  |  |  |  |  |
 | ☐ | [200. 岛屿数量（中等）](https://leetcode.cn/problems/number-of-islands/) |  |  |  |  |  |
 | ☐ | [面试题 16.19. 水域大小（中等）](https://leetcode.cn/problems/pond-sizes-lcci/) |  |  |  |  |  |
-| ☐ | [207. 课程表（中等）](https://leetcode.cn/problems/course-schedule/) |  |  |  |  |  |
+| ✅ | [207. 课程表（中等）](https://leetcode.cn/problems/course-schedule/) | [cpp](Problems/0201-0300/0207-course-schedule/0207-course-schedule.cpp) | [go](Problems/0201-0300/0207-course-schedule/0207-course-schedule.go) | [py](Problems/0201-0300/0207-course-schedule/0207-course-schedule.py) | [rs](Problems/0201-0300/0207-course-schedule/0207-course-schedule.rs) | 官方两解：BFS 拓扑排序（入度数组）/ DFS 三色标记判环；两解同为 O(V+E) 时间、O(V+E) 空间，并列最优 |
 | ☐ | [79. 单词搜索（中等）](https://leetcode.cn/problems/word-search/) |  |  |  |  |  |
 | ☐ | [1306. 跳跃游戏 III（中等）](https://leetcode.cn/problems/jump-game-iii/) |  |  |  |  |  |
 | ☐ | [752. 打开转盘锁（中等）](https://leetcode.cn/problems/open-the-lock/) |  |  |  |  |  |
@@ -357,7 +357,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [207. 课程表（中等）](https://leetcode.cn/problems/course-schedule/) |  |  |  |  |  |
+| ✅ | [207. 课程表（中等）](https://leetcode.cn/problems/course-schedule/) | [cpp](Problems/0201-0300/0207-course-schedule/0207-course-schedule.cpp) | [go](Problems/0201-0300/0207-course-schedule/0207-course-schedule.go) | [py](Problems/0201-0300/0207-course-schedule/0207-course-schedule.py) | [rs](Problems/0201-0300/0207-course-schedule/0207-course-schedule.rs) | 同 DFS 板块 207 题：BFS 拓扑排序 / DFS 三色判环，并列最优 |
 | ☐ | [210. 课程表 II（中等）](https://leetcode.cn/problems/course-schedule-ii/) |  |  |  |  |  |
 | ☐ | [630. 课程表 III（困难）](https://leetcode.cn/problems/course-schedule-iii/) |  |  |  |  |  |
 | ☐ | [1462. 课程表 IV（中等）](https://leetcode.cn/problems/course-schedule-iv/) |  |  |  |  |  |
