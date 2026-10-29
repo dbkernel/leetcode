@@ -111,7 +111,7 @@
 | ✅ | [剑指 Offer 09. 用两个栈实现队列（简单）](https://leetcode.cn/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/) | [cpp](JianZhiOffer/09-用两个栈实现队列.cpp) |  |  |  |  |
 | ✅ | [225. 用队列实现栈（简单，字节实习，出处）](https://leetcode.cn/problems/implement-stack-using-queues/) | [cpp](Problems/0201-0300/0225-implement-stack-using-queues/0225-implement-stack-using-queues.cpp) |  |  |  |  |
 | ✅ | [面试题 03.01. 三合一（简单）](https://leetcode.cn/problems/three-in-one-lcci/) | [cpp](InterviewQuestions/03.01-three-in-one-lcci.cpp) |  |  |  |  |
-| ✅ | [20. 有效的括号（简单）](https://leetcode.cn/problems/valid-parentheses/) | [cpp](Problems/0001-0100/0020-valid-parentheses/0020-valid-parentheses.cpp) |  |  |  |  |
+| ✅ | [20. 有效的括号（简单）](https://leetcode.cn/problems/valid-parentheses/) | [cpp](Problems/0001-0100/0020-valid-parentheses/0020-valid-parentheses.cpp) | [go](Problems/0001-0100/0020-valid-parentheses/0020-valid-parentheses.go) | [py](Problems/0001-0100/0020-valid-parentheses/0020-valid-parentheses.py) | [rs](Problems/0001-0100/0020-valid-parentheses/0020-valid-parentheses.rs) | 官方仅一解：栈匹配 O(n)，即最优解；注意栈空与遍历后非空两种边界 |
 | ✅ | [面试题 16.26. 计算器（中等）](https://leetcode.cn/problems/calculator-lcci/) | [cpp](InterviewQuestions/16.26-calculator-lcci.cpp) |  |  |  |  |
 | ☐ | [772. 基本计算器 III（困难 包含括号）力扣会员](https://leetcode.cn/problems/basic-calculator-iii/) |  |  |  |  |  |
 | ✅ | [1047. 删除字符串中的所有相邻重复项（简单）](https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string/) | [cpp](Problems/1001-1100/1047-remove-all-adjacent-duplicates-in-string/1047-remove-all-adjacent-duplicates-in-string.cpp) |  |  |  |  |
