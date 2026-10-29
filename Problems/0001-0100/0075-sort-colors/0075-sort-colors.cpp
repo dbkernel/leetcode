@@ -1,122 +1,224 @@
 /*
-75. 颜色分类
+============================================================================
+75. 颜色分类（中等）
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/sort-colors/
+分类：双指针 · 三向切分（荷兰国旗问题）
 
-给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
-此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。
+给定一个包含红色、白色和蓝色、共 n 个元素的数组 nums ，原地 对它们进行排序，
+使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
+
+我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。
+
+必须在不使用库内置的 sort 函数的情况下解决这个问题。
 
 示例 1：
 输入：nums = [2,0,2,1,1,0]
 输出：[0,0,1,1,2,2]
+解释：该数组包含两个 0、两个 1 和两个 2。将它们原地排序后，所有 0 排在最前面，
+接着是所有 1，最后是所有 2。
 
 示例 2：
 输入：nums = [2,0,1]
 输出：[0,1,2]
-
-示例 3：
-输入：nums = [0]
-输出：[0]
-
-示例 4：
-输入：nums = [1]
-输出：[1]
+解释：数组中有且仅有一个 0、一个 1、一个 2，按 0、1、2 的顺序原地排列。
 
 提示：
 n == nums.length
 1 <= n <= 300
 nums[i] 为 0、1 或 2
- 
-进阶：
-- 你可以不使用代码库中的排序函数来解决这道题吗？
-- 你能想出一个仅使用常数空间的一趟扫描算法吗？
 
-来源：力扣（LeetCode）
-链接：https://leetcode.cn/problems/sort-colors
-
-思路：
-继续采用首尾双指针法。
-在遍历的过程中，找出所有的 0 交换至数组的头部，找出所有的 2 交换至数组的尾部。
-由于此时其中一个指针 right 是从右向左移动的，因此当我们在从左向右遍历整个数组时，如果遍历到的位置超过了 right，那么就可以直接停止遍历了。
-具体地，我们从左向右遍历整个数组，设当前遍历到的位置为 i，对应的元素为 nums[i]；
-- 如果找到了 0，那么与前面两种方法类似，将其与 nums[left] 进行交换，并将 left 向后移动一个位置；
-- 如果找到了 2，那么将其与 nums[right] 进行交换，并将 right 向前移动一个位置。
-这样做是正确的吗？可以发现，对于第二种情况，当我们将 nums[i] 与 nums[right] 进行交换之后，新的 nums[i] 可能仍然是 2，也可能是 0。
-然而此时我们已经结束了交换，开始遍历下一个元素 nums[i+1]，不会再考虑 nums[i] 了，这样我们就会得到错误的答案。
-因此，当我们找到 2 时，我们需要不断地将其与 nums[right] 进行交换，直到新的 nums[i] 不为 2。
-此时，如果 nums[i] 为 0，那么对应着第一种情况；如果 nums[i] 为 1，那么就不需要进行任何后续的操作。
-
-复杂度分析：
-- 时间复杂度：O(n)，其中 n 是数组 nums 的长度。
-- 空间复杂度：O(1)。
+进阶：你能想出一个仅使用常数空间的一趟扫描算法吗？
 */
-#include <iostream>
 #include <cassert>
+#include <iostream>
 #include <vector>
 using namespace std;
 
+/*
+解法一：单指针，两次遍历【非最优】
+
+官方方法一。用一个指针 ptr 维护「已归位的头部」边界：
+  · 第一遍把所有的 0 换到头部；
+  · 第二遍从头部之后继续，把所有的 1 换到头部之后。
+剩下的自然全是 2。
+
+关键点：
+  · 两遍都是「遇到目标值就与 head 位置交换，然后 head 后移」，只是目标值从 0 换成 1
+  · 第二遍的起点是 ptr（0 已经占好前半段），不是 0
+  · 交换不会破坏已归位的部分：i 总是 >= head，换到 head 的一定是当前扫描到的目标值
+
+复杂度分析：
+  时间 O(n)：两次线性扫描
+  空间 O(1)
+
+解法二：双指针 p0 / p1，一趟扫描【非最优】
+
+官方方法二。维护两个边界：p0 表示「0 的末尾」，p1 表示「1 的末尾」。
+扫描到 1：直接与 p1 交换，p1 后移；
+扫描到 0：先与 p0 交换。但此时 p0 位置可能放着已被换好的 1，所以如果 p0 < p1，
+还要把当前 i 位置（刚换过来的 1）再与 p1 交换一次，把 1 归位。
+
+关键点：
+  · 核心在 p0 < p1 时的二次交换——这是「一趟扫描 + 只用交换」最容易漏掉的一步
+  · 0 归位时 p0 和 p1 都要后移；1 归位时只移动 p1
+  · 扫描到 2 时什么都不做，留给「被 0/1 挤出去」的位置
+
+复杂度分析：
+  时间 O(n)：一趟扫描，每次至多两次交换
+  空间 O(1)
+
+解法三：双指针 p0 / p2，一趟扫描（循环不变量）【最优解】
+
+官方方法三，也是进阶要求的一趟扫描解法。维护左右两个边界：
+  · 下标 < p0 的位置全是 0；
+  · 下标 > p2 的位置全是 2；
+  · 中间 [p0, p2] 是尚未处理的区域，用 i 从左往右推进。
+
+遇到 2 就与 p2 位置交换并收缩 p2——注意换过来的新元素还没被检查过，所以要用
+while 反复处理（这是本题最容易写错的地方）。处理完 2 之后再判断是否为 0，
+是则与 p0 交换并扩张 p0。
+
+关键点：
+  · 为什么遇到 2 要用 while 而不是 if：从尾部换过来的元素可能是 0 或 2，
+    必须继续检验；而遇到 0 用 if 就够，因为 p0 位置只可能是 1（或就是 i 自己）
+  · 交换 2 之后不再 i++，而是就地重新判断；只有确认当前元素不是 2 才 i++
+  · 循环条件是 i <= p2（不是 i < p2），因为 p2 位置本身也还没处理
+  · 每次交换都在把元素送往它最终该在的区间，三个区间单调扩张，故一趟即可
+
+以 nums = [2,0,2,1,1,0] 为例（解法三）：
+  p0=0, p2=5, i=0
+  i=0 是 2 → 与 p2 换 → [0,0,2,1,1,2]，p2=4；仍是 0 → 与 p0 换（自己），p0=1，i=1
+  i=1 是 0 → 与 p0 换（自己），p0=2，i=2
+  i=2 是 2 → 与 p2 换 → [0,0,1,1,2,2]，p2=3；此时 1 不是 2，也不是 0，i=3
+  i=3 是 1，i=4
+  i=4 > p2=3，结束
+  得到 [0,0,1,1,2,2]
+
+复杂度分析（解法三）：
+  时间 O(n)：i 只前进、p2 只后退，两者合计移动 O(n) 次
+  空间 O(1)：只用常数个下标
+*/
 class Solution
 {
 public:
+    // 解法一：单指针，两次遍历
+    void sortColors1(vector<int> &nums)
+    {
+        int head = 0;
+        // 第一遍：把所有 0 换到头部
+        for (int i = 0; i < static_cast<int>(nums.size()); ++i)
+        {
+            if (nums[i] == 0) swap(nums[i], nums[head++]);
+        }
+        // 第二遍：从 0 之后开始，把所有 1 换到头部之后
+        for (int i = head; i < static_cast<int>(nums.size()); ++i)
+        {
+            if (nums[i] == 1) swap(nums[i], nums[head++]);
+        }
+    }
+
+    // 解法二：双指针 p0 / p1，一趟扫描
+    void sortColors2(vector<int> &nums)
+    {
+        int p0 = 0, p1 = 0;
+        for (int i = 0; i < static_cast<int>(nums.size()); ++i)
+        {
+            if (nums[i] == 1)
+            {
+                swap(nums[i], nums[p1++]);
+            }
+            else if (nums[i] == 0)
+            {
+                swap(nums[i], nums[p0]);
+                // 换到 i 位置的可能是 1，需要再把它挪到 1 的区段末尾
+                if (p0 < p1) swap(nums[i], nums[p1]);
+                ++p0;
+                ++p1;
+            }
+        }
+    }
+
+    // 解法三：双指针 p0 / p2，一趟扫描（最优解）
     void sortColors(vector<int> &nums)
     {
-        // 首尾双指针 写法一 From 官方
-        // 遇到2与right交换，遇到0与left交换
-        int left = 0, right = nums.size() - 1;
-        for (int i = 0; i <= right; ++i)
+        int p0 = 0;
+        int p2 = static_cast<int>(nums.size()) - 1;
+        for (int i = 0; i <= p2; ++i)
         {
-            /*
-             当我们将 nums[i] 与 nums[right] 进行交换之后，新的 nums[i] 可能仍然是 2，也可能是 0。
-             然而此时我们已经结束了交换，开始遍历下一个元素 nums[i+1]，不会再考虑 nums[i] 了，这样我们就会得到错误的答案。
-             因此，当我们找到 2 时，我们需要不断地将其与 nums[right] 进行交换，直到新的 nums[i] 不为 2。
-            */
-            while (i <= right && nums[i] == 2)
-                swap(nums[i], nums[right--]);
+            // 尾部换过来的元素还没检验过，可能要连续换多次
+            while (i <= p2 && nums[i] == 2)
+            {
+                swap(nums[i], nums[p2]);
+                --p2;
+            }
+            // 走到这里 nums[i] 只可能是 0 或 1；是 0 就送往左边界
             if (nums[i] == 0)
-                swap(nums[i], nums[left++]);
+            {
+                swap(nums[i], nums[p0]);
+                ++p0;
+            }
         }
-
-        // 首尾双指针法 写法二 From 民间
-        // 遇到2与right交换，遇到0与left交换，遇到1则回退一格
-        // int left = 0, right = nums.size() - 1;
-        // for (int i = 0; i <= right; i++)
-        // {
-        //     if (nums[i] == 0)
-        //         swap(nums[left++], nums[i]);
-        //     if (nums[i] == 2)
-        //     {
-        //         swap(nums[right--], nums[i]);
-        //         if (nums[i] != 1) // 个人理解还是为了处理2，与写法一种的while类似
-        //             --i;
-        //     }
-        // }
     }
 };
 
+namespace
+{
+void check(vector<int> nums, const vector<int> &want)
+{
+    Solution solution;
+
+    auto a = nums, b = nums, c = nums;
+    solution.sortColors1(a);
+    solution.sortColors2(b);
+    solution.sortColors(c);
+    assert(a == want);
+    assert(b == want);
+    assert(c == want);
+}
+} // namespace
+
 int main()
 {
-    Solution s;
+    // 示例 1
+    check({2, 0, 2, 1, 1, 0}, {0, 0, 1, 1, 2, 2});
+
+    // 示例 2
+    check({2, 0, 1}, {0, 1, 2});
+
+    // 边界：单元素
+    check({0}, {0});
+    check({1}, {1});
+    check({2}, {2});
+
+    // 边界：已经有序 / 完全逆序
+    check({0, 1, 2}, {0, 1, 2});
+    check({2, 1, 0}, {0, 1, 2});
+
+    // 边界：只有一种颜色
+    check({1, 1, 1, 1}, {1, 1, 1, 1});
+    check({2, 2, 0, 0}, {0, 0, 2, 2});
+
+    // 边界：全是 2 需要连续收缩
+    check({2, 2, 2, 0, 1, 0}, {0, 0, 1, 2, 2, 2});
+
+    // 边界：0 与 2 交错，考验 p0 < p1 的二次交换
+    check({2, 0, 1, 0, 2, 1, 0}, {0, 0, 0, 1, 1, 2, 2});
+
+    // 边界：题目上限 n = 300
     {
-        vector<int> nums = {2, 2, 0, 1, 1, 0, 1, 1, 0, 2};
-        vector<int> expect = {0, 0, 0, 1, 1, 1, 1, 2, 2, 2};
-        s.sortColors(nums);
-        assert(nums == expect);
+        vector<int> nums(300);
+        for (int i = 0; i < 300; ++i) nums[i] = (i * 7) % 3;
+        vector<int> want = nums;
+        // 手写计数排序作为参考答案（不使用库函数 sort）
+        int cnt[3] = {0, 0, 0};
+        for (int x : nums) ++cnt[x];
+        int pos = 0;
+        for (int v = 0; v < 3; ++v)
+            for (int k = 0; k < cnt[v]; ++k) want[pos++] = v;
+        check(nums, want);
     }
-    {
-        vector<int> nums = {0};
-        vector<int> expect = {0};
-        s.sortColors(nums);
-        assert(nums == expect);
-    }
-    {
-        vector<int> nums = {1};
-        vector<int> expect = {1};
-        s.sortColors(nums);
-        assert(nums == expect);
-    }
-    {
-        vector<int> nums = {2};
-        vector<int> expect = {2};
-        s.sortColors(nums);
-        assert(nums == expect);
-    }
+
+    cout << "all tests passed" << endl;
     return 0;
 }
