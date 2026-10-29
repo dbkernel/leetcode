@@ -126,7 +126,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [739. 每日温度（中等）单调栈](https://leetcode.cn/problems/daily-temperatures/) |  |  |  |  |  |
+| ✅ | [739. 每日温度（中等）单调栈](https://leetcode.cn/problems/daily-temperatures/) | [cpp](Problems/0701-0800/0739-daily-temperatures/0739-daily-temperatures.cpp) | [go](Problems/0701-0800/0739-daily-temperatures/0739-daily-temperatures.go) | [py](Problems/0701-0800/0739-daily-temperatures/0739-daily-temperatures.py) | [rs](Problems/0701-0800/0739-daily-temperatures/0739-daily-temperatures.rs) | 官方两解：反向遍历 + 温度索引表 / 单调栈；温度区间 ≤100 是题面常数，两者时间同为 O(n)，并列最优：单调栈更快，索引表只需 O(100) 空间；必须反向遍历，先查表再更新 |
 | ✅ | [42. 接雨水（困难）单调栈](https://leetcode.cn/problems/trapping-rain-water/) | [cpp](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.cpp) | [go](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.go) | [py](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.py) | [rs](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.rs) | 官方四解：按列暴力 / DP 预处理左右最高 / 单调栈按行结算 / 双指针；最优为双指针 O(n) 时间 O(1) 空间；单调栈解与「单调栈」板块共用同一份实现；首尾列不接水，单调序列答案为 0 |
 | ☐ | [84. 柱状图中最大的矩形（困难）单调栈](https://leetcode.cn/problems/largest-rectangle-in-histogram/) |  |  |  |  |  |
 | ☐ | [面试题 03.06. 动物收容所（中等） 队列](https://leetcode.cn/problems/animal-shelter-lcci/) |  |  |  |  |  |
