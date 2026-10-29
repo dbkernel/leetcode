@@ -423,7 +423,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [198. 打家劫舍](https://leetcode.cn/problems/house-robber/) | [cpp](Problems/0101-0200/0198-house-robber/0198-house-robber.cpp) | [go](Problems/0101-0200/0198-house-robber/0198-house-robber.go) | [py](Problems/0101-0200/0198-house-robber/0198-house-robber.py) | [rs](Problems/0101-0200/0198-house-robber/0198-house-robber.rs) | 官方两解：二维 DP（偷/不偷双状态）/ 一维滚动只留两个变量；最优解为滚动，空间 O(1)；贪心取所有局部最优会得错解 |
-| ☐ | [337. 打家劫舍 III ](https://leetcode.cn/problems/house-robber-iii/) |  |  |  |  |  |
+| ✅ | [337. 打家劫舍 III ](https://leetcode.cn/problems/house-robber-iii/) | [cpp](Problems/0301-0400/0337-house-robber-iii/0337-house-robber-iii.cpp) | [go](Problems/0301-0400/0337-house-robber-iii/0337-house-robber-iii.go) | [py](Problems/0301-0400/0337-house-robber-iii/0337-house-robber-iii.py) | [rs](Problems/0301-0400/0337-house-robber-iii/0337-house-robber-iii.rs) | 官方两解：树上 DP 后序返回 (选, 不选) 二元组 / 记忆化递归按节点缓存；最优解为树形 DP，空间 O(h) 优于记忆化的 O(n)；节点值可为 0 |
 | ☐ | [面试题 17.16. 按摩师](https://leetcode.cn/problems/the-masseuse-lcci/) |  |  |  |  |  |
 
 ## 买卖股票：
