@@ -1,59 +1,125 @@
 /*
-1047. 删除字符串中的所有相邻重复项
+============================================================================
+LeetCode 1047. 删除字符串中的所有相邻重复项（简单）
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string/
+分类：栈 · 相邻消除
+============================================================================
 
-给出由小写字母组成的字符串 S，重复项删除操作会选择两个相邻且相同的字母，并删除它们。
-在 S 上反复执行重复项删除操作，直到无法继续删除。
+给出由小写字母组成的字符串 s，重复项删除操作 会选择两个相邻且相同的字母，
+并删除它们。
+
+在 s 上反复执行重复项删除操作，直到无法继续删除。
+
 在完成所有重复项删除操作后返回最终的字符串。答案保证唯一。
 
-示例：
+示例 1：
 输入："abbaca"
 输出："ca"
-解释：例如，在 "abbaca" 中，我们可以删除 "bb" 由于两字母相邻且相同，这是此时唯一可以执行删除操作的重复项。之后我们得到字符串 "aaca"，其中又只有 "aa" 可以执行重复项删除操作，所以最后的字符串为 "ca"。
- 
+解释：
+例如，在 "abbaca" 中，我们可以删除 "bb" 由于两字母相邻且相同，这是此时
+唯一可以执行删除操作的重复项。之后我们得到字符串 "aaca"，其中又只有 "aa"
+可以执行重复项删除操作，所以最后的字符串为 "ca"。
+
+示例 2：
+输入：s = "azxxzy"
+输出："ay"
+
 提示：
-1 <= S.length <= 20000
-S 仅由小写英文字母组成。
-
-来源：力扣（LeetCode）
-链接：https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string
-
-思路：
-由于 std::string 类本身就提供了类似「入栈」和「出栈」的接口，因此我们直接将需要被返回的字符串作为栈即可。
+1 <= s.length <= 10^5
+s 仅由小写英文字母组成。
 */
 #include <cassert>
+#include <iostream>
 #include <string>
 using namespace std;
 
+/*
+解法：栈（当前字符与栈顶相同就弹出栈顶）【最优解】
+
+官方题解只给出这一种方法，它同时也就是本题的最优解：每个字符进出栈各一次，
+时间 O(n) 已是下界，空间 O(n) 用来存结果串。
+
+为什么慢：反复「从头扫一遍，发现一对就删掉，再从删处往回退」看着直观，
+但每次删除都会让后面的字符整体前移，最坏情况 O(n^2)；而且删完之后
+新的相邻关系会跨过删除位置，容易漏检。
+
+换个角度：删除一对相邻相同字符后，它左边和右边的字符会变成新的相邻对 ——
+这正是「后进先出」：先消掉靠后的，才轮到跨过它的那一对。用栈表达最自然：
+读入一个字符，若它与栈顶相同，两者一起消掉（弹栈）；否则压栈。
+
+关键点：
+  · 只和栈顶比较，不要和「已处理结果的其他位置」比较
+  · 相等时只弹栈，不压入当前字符 —— 两个一起消失
+  · 栈空时直接压入，不要读栈顶（会越界）
+  · 直接把答案串当栈用，弹出就是 pop_back，省掉一次反向拷贝
+
+以示例 1（s = "abbaca"）为例：
+  'a' 压栈 → 栈 "a"
+  'b' 与栈顶 'a' 不同 → 栈 "ab"
+  'b' 与栈顶 'b' 相同 → 弹出 → 栈 "a"
+  'a' 与栈顶 'a' 相同 → 弹出 → 栈 ""
+  'c' 压栈 → 栈 "c"
+  'a' 压栈 → 栈 "ca"
+  结果 "ca"
+
+复杂度分析：
+  时间 O(n)：每个字符最多压栈、弹栈各一次
+  空间 O(n)：答案串本身，最坏情况（无相邻重复）长度等于 n
+*/
 class Solution
 {
 public:
     string removeDuplicates(string s)
     {
-        string stk;
+        string ans;
+        ans.reserve(s.size());
 
-        for (char c : s)
+        for (char ch : s)
         {
-            if (stk.empty() || stk.back() != c)
+            // 栈空时没有栈顶可比，直接压入
+            if (!ans.empty() && ans.back() == ch)
             {
-                stk.push_back(c);
+                // 两个一起消失：只弹栈，不压入当前字符
+                ans.pop_back();
             }
             else
             {
-                stk.pop_back();
+                ans.push_back(ch);
             }
         }
 
-        return stk;
+        return ans;
     }
 };
 
+namespace
+{
+// 一个用例 = 输入 + 期望输出
+void check(const string &s, const string &want)
+{
+    Solution solution;
+    assert(solution.removeDuplicates(s) == want);
+}
+} // namespace
+
 int main()
 {
-    Solution *s = new Solution();
-    assert(s->removeDuplicates("abbaca") == "ca");
-    assert(s->removeDuplicates("abcaca") == "abcaca");
-    free(s);
-    s = NULL;
+    // 示例 1：删除 bb 之后 aa 才成为新的相邻对，验证「连锁消除」
+    check("abbaca", "ca");
 
+    // 示例 2：先删 xx，再删 zz 之外的相邻对
+    check("azxxzy", "ay");
+
+    // 边界：没有相邻重复，结果应与输入相同
+    check("abcd", "abcd");
+
+    // 边界：完全两两抵消，结果为空串
+    check("aabb", "");
+
+    // 边界：单字符，栈空判断分支必须生效
+    check("a", "a");
+
+    cout << "all tests passed" << endl;
     return 0;
 }
