@@ -237,7 +237,7 @@
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [LCR 149 / 剑指 Offer 32 - I. 从上到下打印二叉树（中等）](https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/) | [cpp](JianZhiOffer/32-I-从上到下打印二叉树.cpp) | [go](JianZhiOffer/32-I-从上到下打印二叉树.go) | [py](JianZhiOffer/32-I-从上到下打印二叉树.py) | [rs](JianZhiOffer/32-I-从上到下打印二叉树.rs) | 现收录为 LCR 149「彩灯装饰记录 I」；BFS + 队列，输出一维层序，O(n) 时间 O(w) 空间 |
-| ☐ | [102. 二叉树的层序遍历（中等） ](https://leetcode.cn/problems/binary-tree-level-order-traversal/) |  |  |  |  |  |
+| ✅ | [102. 二叉树的层序遍历（中等） ](https://leetcode.cn/problems/binary-tree-level-order-traversal/) | [cpp](Problems/0101-0200/0102-binary-tree-level-order-traversal/0102-binary-tree-level-order-traversal.cpp) | [go](Problems/0101-0200/0102-binary-tree-level-order-traversal/0102-binary-tree-level-order-traversal.go) | [py](Problems/0101-0200/0102-binary-tree-level-order-traversal/0102-binary-tree-level-order-traversal.py) | [rs](Problems/0101-0200/0102-binary-tree-level-order-traversal/0102-binary-tree-level-order-traversal.rs) | 官方一解：BFS + 按层定长出队；O(n) 时间 O(w) 空间，不需要额外记录层号 |
 | ☐ | [剑指 Offer 32 - III. 从上到下打印二叉树 III （中等）](https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/) |  |  |  |  |  |
 | ☐ | [429. N 叉树的层序遍历（中等）](https://leetcode.cn/problems/n-ary-tree-level-order-traversal/) |  |  |  |  |  |
 | ☐ | [513. 找树左下角的值（中等）](https://leetcode.cn/problems/find-bottom-left-tree-value/) |  |  |  |  |  |
