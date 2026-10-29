@@ -466,7 +466,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [剑指 Offer 57 - II. 和为 s 的连续正数序列 （例题 1）](https://leetcode.cn/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/) |  |  |  |  |  |
+| ✅ | [LCR 180 / 剑指 Offer 57 - II. 文件组合（简单） ](https://leetcode.cn/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/) | [cpp](JianZhiOffer/57-II-和为s的连续正数序列.cpp) | [go](JianZhiOffer/57-II-和为s的连续正数序列.go) | [py](JianZhiOffer/57-II-和为s的连续正数序列.py) | [rs](JianZhiOffer/57-II-和为s的连续正数序列.rs) | 现收录为 LCR 180「文件组合」，签名改为 fileCombination(target)；官方一解：滑动窗口（左右指针 + 当前和），O(target) 时间 O(1) 空间，即最优；target 小于 3 无解，左界止于 target/2，窗口至少两个数 |
 | ☐ | [剑指 Offer 48. 最长不含重复字符的子字符串 （例题 2）](https://leetcode.cn/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/) |  |  |  |  |  |
 | ☐ | [438. 找到字符串中所有字母异位词 ](https://leetcode.cn/problems/find-all-anagrams-in-a-string/) |  |  |  |  |  |
 | ☐ | [76. 最小覆盖子串 ](https://leetcode.cn/problems/minimum-window-substring/) |  |  |  |  |  |
