@@ -206,12 +206,12 @@
 | ✅ | [两数之和 （简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 官方两解：暴力枚举 O(n^2) / 哈希表 O(n)；最优解为哈希表，「先查后插」；【精品】 |
 | ☐ | [15. 三数之和（中等，墨奇社招）](https://leetcode.cn/problems/3sum/) |  |  |  |  |  |
 | ✅ | [160. 相交链表（简单，新华智云 22 届暑期实习） ](https://leetcode.cn/problems/intersection-of-two-linked-lists/) | [cpp](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.cpp) |  |  |  | 双指针最好，哈希集合 unordered_set 空间复杂度高 |
-| ☐ | [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode.cn/problems/linked-list-cycle/) |  |  |  |  |  |
+| ✅ | [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode.cn/problems/linked-list-cycle/) | [cpp](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.cpp) | [go](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.go) | [py](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.py) | [rs](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.rs) | 等价条目，题解见「栈」章节同一行 |
 | ☐ | [面试题 02.01. 移除重复节点（中等） 借助哈希表](https://leetcode.cn/problems/remove-duplicate-node-lcci/) |  |  |  |  |  |
 | ☐ | [面试题 16.02. 单词频率 （简单）](https://leetcode.cn/problems/words-frequency-lcci/) |  |  |  |  |  |
 | ☐ | [面试题 01.02. 判定是否互为字符重排（简单）](https://leetcode.cn/problems/check-permutation-lcci/) |  |  |  |  |  |
 | ✅ | [LCR 120 / 剑指 Offer 03. 数组中重复的数字 （简单） ](https://leetcode.cn/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/) | [cpp](JianZhiOffer/03-数组中重复的数字.cpp) | [go](JianZhiOffer/03-数组中重复的数字.go) | [py](JianZhiOffer/03-数组中重复的数字.py) | [rs](JianZhiOffer/03-数组中重复的数字.rs) | 现收录为 LCR 120「寻找文件副本」，签名改为 findRepeatDocument；官方三解：哈希集合 / 排序 / 原地置换；最优解为原地置换，O(n) 时间 O(1) 空间 |
-| ☐ | [242. 有效的字母异位词（简单）](https://leetcode.cn/problems/valid-anagram/) |  |  |  |  |  |
+| ✅ | [242. 有效的字母异位词（简单）](https://leetcode.cn/problems/valid-anagram/) | [cpp](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.cpp) | [go](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.go) | [py](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.py) | [rs](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.rs) | 等价条目，题解见「排序」章节同一行 |
 | ☐ | [49. 字母异位词分组（中等）](https://leetcode.cn/problems/group-anagrams/) |  |  |  |  |  |
 | ☐ | [136. 只出现一次的数字（简单）](https://leetcode.cn/problems/single-number/) |  |  |  |  |  |
 | ☐ | [349. 两个数组的交集 （简单）](https://leetcode.cn/problems/intersection-of-two-arrays/) |  |  |  |  |  |
@@ -478,7 +478,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ✅ | [53. 最大子序和](https://leetcode.cn/problems/maximum-subarray/) | [cpp](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.cpp) | [go](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.go) | [py](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.py) | [rs](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.rs) | 官方三解：Kadane DP / 分治维护区间四值 / 前缀和的最值差；DP 与前缀和同为 O(n) 时间 O(1) 空间，并列最优；四值合并的分治时间也是 O(n)，只因递归栈 O(log n) 才落选（按扫描合并才是 O(n log n)）；全负数时答案初值不能取 0 |
 | ✅ | [238. 除自身以外数组的乘积](https://leetcode.cn/problems/product-of-array-except-self/) | [cpp](Problems/0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.cpp) | [go](Problems/0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.go) | [py](Problems/0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.py) | [rs](Problems/0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.rs) | 官方两解：左右乘积数组 / 结果数组存左积再用一个变量滚右积；后者额外空间 O(1)（结果数组不计），为最优；不用除法，所以含 0 甚至含两个 0 也成立 |
 | ✅ | [面试题 05.03. 翻转数位](https://leetcode.cn/problems/reverse-bits-lcci/) | [cpp](InterviewQuestions/05.03-reverse-bits-lcci.cpp) | [go](InterviewQuestions/05.03-reverse-bits-lcci.go) | [py](InterviewQuestions/05.03-reverse-bits-lcci.py) | [rs](InterviewQuestions/05.03-reverse-bits-lcci.rs) | 官方一解：用 prev/cur 记录上一段与当前段连续 1 的长度，遇 0 时尝试拼接，即最优；32 位全 1 时结果必须截到 32 不能变 33，负数按无符号位模式处理 |
-| ☐ | [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/) |  |  |  |  |  |
+| ✅ | [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/) | [cpp](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.cpp) | [go](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.go) | [py](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.py) | [rs](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.rs) | 同「单调栈」章节条目，前缀后缀视角即解法二 DP 预处理左右最高 |
 
 ## 位运算
 
