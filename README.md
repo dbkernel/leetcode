@@ -73,7 +73,7 @@
 | ☐ | [面试题 16.11. 跳水板（简单）](https://leetcode.cn/problems/diving-board-lcci/) |  |  |  |  |  |
 | ☐ | [面试题 01.05. 一次编辑（中等）](https://leetcode.cn/problems/one-away-lcci/) |  |  |  |  |  |
 | ☐ | [面试题 16.15. 珠玑妙算 （中等）](https://leetcode.cn/problems/master-mind-lcci/) |  |  |  |  |  |
-| ☐ | [面试题 16.04. 井字游戏（中等）](https://leetcode.cn/problems/tic-tac-toe-lcci/) |  |  |  |  |  |
+| ✅ | [面试题 16.04. 井字游戏（中等）](https://leetcode.cn/problems/tic-tac-toe-lcci/) | [cpp](InterviewQuestions/16.04-tic-tac-toe-lcci.cpp) | [go](InterviewQuestions/16.04-tic-tac-toe-lcci.go) | [py](InterviewQuestions/16.04-tic-tac-toe-lcci.py) | [rs](InterviewQuestions/16.04-tic-tac-toe-lcci.rs) | 平台无题解文章，按标准做法写一解：逐行、逐列、两条对角线整线检查，O(N^2) 时间 O(1) 空间即为最优；判定顺序必须是已胜 > 未满 > 平局 |
 | ☐ | [55. 跳跃游戏 （中等）](https://leetcode.cn/problems/jump-game/) |  |  |  |  |  |
 | ☐ | [48. 旋转图像 （中等）](https://leetcode.cn/problems/rotate-image/) |  |  |  |  |  |
 | ☐ | [54. 螺旋矩阵（中等，字节电商 22 届暑期实习，出处）](https://leetcode.cn/problems/spiral-matrix/) |  |  |  |  |  |
