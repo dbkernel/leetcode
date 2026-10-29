@@ -336,7 +336,7 @@
 | ☐ | [40. 组合总和 II（中等）选出某几个数相加为给定和，有重复数据，只能使用一次，不能有重复答案](https://leetcode.cn/problems/combination-sum-ii/) |  |  |  |  |  |
 | ☐ | [216. 组合总和 III（中等） 选出 k 个数相加为给定和，没有重复数据，只能使用一次](https://leetcode.cn/problems/combination-sum-iii/) |  |  |  |  |  |
 | ☐ | [131. 分割回文串（中等）](https://leetcode.cn/problems/palindrome-partitioning/) |  |  |  |  |  |
-| ☐ | [93. 复原 IP 地址（中等）](https://leetcode.cn/problems/restore-ip-addresses/) |  |  |  |  |  |
+| ✅ | [93. 复原 IP 地址（中等）](https://leetcode.cn/problems/restore-ip-addresses/) | [cpp](Problems/0001-0100/0093-restore-ip-addresses/0093-restore-ip-addresses.cpp) | [go](Problems/0001-0100/0093-restore-ip-addresses/0093-restore-ip-addresses.go) | [py](Problems/0001-0100/0093-restore-ip-addresses/0093-restore-ip-addresses.py) | [rs](Problems/0001-0100/0093-restore-ip-addresses/0093-restore-ip-addresses.rs) | 官方一解：回溯枚举四段，每段长 1~3、不能有前导零、值 ≤255，第四段必须恰好用完；O(3^4) 时间（至多 81 种切分）、O(1) 递归深度 |
 | ✅ | [22. 括号生成（中等） ](https://leetcode.cn/problems/generate-parentheses/) | [cpp](Problems/0001-0100/0022-generate-parentheses/0022-generate-parentheses.cpp) | [go](Problems/0001-0100/0022-generate-parentheses/0022-generate-parentheses.go) | [py](Problems/0001-0100/0022-generate-parentheses/0022-generate-parentheses.py) | [rs](Problems/0001-0100/0022-generate-parentheses/0022-generate-parentheses.rs) | 官方三解：枚举全部 2^(2n) 串再校验（非最优）/ 回溯只放当前合法的括号（最优）/ 按长度用 Catalan 递推拼接（与回溯并列最优）；最优解 O(4^n/sqrt(n)) 时间，回溯仅 O(n) 栈 |
 
 ## DFS
