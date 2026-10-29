@@ -116,7 +116,7 @@
 | ☐ | [772. 基本计算器 III（困难 包含括号）力扣会员](https://leetcode.cn/problems/basic-calculator-iii/) |  |  |  |  |  |
 | ✅ | [1047. 删除字符串中的所有相邻重复项（简单）](https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string/) | [cpp](Problems/1001-1100/1047-remove-all-adjacent-duplicates-in-string/1047-remove-all-adjacent-duplicates-in-string.cpp) | [go](Problems/1001-1100/1047-remove-all-adjacent-duplicates-in-string/1047-remove-all-adjacent-duplicates-in-string.go) | [py](Problems/1001-1100/1047-remove-all-adjacent-duplicates-in-string/1047-remove-all-adjacent-duplicates-in-string.py) | [rs](Problems/1001-1100/1047-remove-all-adjacent-duplicates-in-string/1047-remove-all-adjacent-duplicates-in-string.rs) | 官方仅一解：栈消除 O(n)，即最优解；结果串直接当栈用 |
 | ✅ | [面试题 03.05. 栈排序（中等）](https://leetcode.cn/problems/sort-of-stacks-lcci/) | [cpp](InterviewQuestions/03.05-sort-of-stacks-lcci.cpp) | [go](InterviewQuestions/03.05-sort-of-stacks-lcci.go) | [py](InterviewQuestions/03.05-sort-of-stacks-lcci.py) | [rs](InterviewQuestions/03.05-sort-of-stacks-lcci.rs) | 平台无官方题解；给两种实现（均只用一个临时栈）：push 时插入排序（O(n) 入栈、O(1) 取数）/ 取数时惰性排序，最优解为前者 |
-| ✅ | [155. 最小栈（简单）](https://leetcode.cn/problems/min-stack/) | [cpp](Problems/0101-0200/0155-min-stack/0155-min-stack.cpp) |  |  |  |  |
+| ✅ | [155. 最小栈（简单）](https://leetcode.cn/problems/min-stack/) | [cpp](Problems/0101-0200/0155-min-stack/0155-min-stack.cpp) | [go](Problems/0101-0200/0155-min-stack/0155-min-stack.go) | [py](Problems/0101-0200/0155-min-stack/0155-min-stack.py) | [rs](Problems/0101-0200/0155-min-stack/0155-min-stack.rs) | 官方仅一解：辅助栈与数据栈同步记录前缀最小值，四操作均 O(1)，即最优解 |
 | ✅ | [剑指 Offer 31. 栈的压入、弹出序列（中等）](https://leetcode.cn/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/) | [cpp](JianZhiOffer/31-栈的压入、弹出序列.cpp) |  |  |  |  |
 
 **附加题：**
