@@ -4,3 +4,5 @@ a.out*
 *.exe
 *.out
 **/.build/
+__pycache__/
+*.pyc
