@@ -1,0 +1,248 @@
+/*
+============================================================================
+309. 最佳买卖股票时机含冷冻期（中等）
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+分类：动态规划 · 状态机（冷冻期）
+
+给定一个整数数组 prices，其中第 prices[i] 表示第 i 天的股票价格 。
+
+设计一个算法计算出最大利润。在满足以下约束条件下，你可以尽可能地完成更多的交易（多次买卖一支股票）:
+
+卖出股票后，你无法在第二天买入股票 (即冷冻期为 1 天)。
+
+注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。
+
+示例 1:
+输入: prices = [1,2,3,0,2]
+输出: 3
+解释: 对应的交易状态为: [买入, 卖出, 冷冻期, 买入, 卖出]
+
+示例 2:
+输入: prices = [1]
+输出: 0
+
+提示：
+- 1 <= prices.length <= 5000
+- 0 <= prices[i] <= 1000
+*/
+#include <algorithm>
+#include <cassert>
+#include <iostream>
+#include <random>
+#include <vector>
+using namespace std;
+
+/*
+解法一：三状态 DP（持有 / 当天卖出 / 空仓可买），按天存表【非最优】
+
+为什么慢：如果只用「当前最大收益」一个数，就丢掉了「昨天刚卖过，今天
+不能买」这个信息；若把「哪天卖过」也塞进状态，状态空间随天数膨胀，
+枚举所有买卖序列是指数级的。
+
+换个角度：不持股的情形其实有两种 —— 今天刚卖出（明天被冷冻）与今天
+没有卖出（可以自由买入）。把这一层拆开，恰好三个状态就能覆盖全部情形，
+且每天只从昨天转移。
+
+关键点：
+  · hold[i]：收盘持股。只能由 rest[i-1] 买入，绝不能由 sold[i-1] 买入 ——
+    卖出后的第二天是冷冻期
+  · sold[i]：第 i 天卖出。只能由 hold[i-1] 卖出得到，它代表「明天被冷冻」
+  · rest[i]：收盘不持股且今天没卖，包含「本来就没买」与「冷冻期已过」
+    两种，因此它可以来自 rest[i-1] 或 sold[i-1]（卖出次日正好落进 rest）
+  · 答案取 max(sold[n-1], rest[n-1])：hold 是没卖出的股票，收益不算数
+  · 初值：hold[0] = -p[0]，sold[0] 取负无穷（第 1 天没有股票可卖），
+    rest[0] = 0
+
+手推一遍
+以示例 1（prices = [1,2,3,0,2]）为例：
+  第 1 天：hold = -1，sold = -∞，rest = 0
+  第 2 天：hold = max(-1, 0-2) = -1，sold = -1+2 = 1，rest = 0
+  第 3 天：hold = max(-1, 0-3) = -1，sold = -1+3 = 2，rest = max(0,1) = 1
+  第 4 天：hold = max(-1, 1-0) = 1，sold = -1+0 = -1，rest = max(1,2) = 2
+  第 5 天：hold = max(1, 2-2) = 1，sold = 1+2 = 3，rest = max(2,-1) = 2
+  答案 max(3, 2) = 3
+
+复杂度分析：
+  时间 O(n)：每天三次常数转移
+  空间 O(n)：三条长度为 n 的表
+
+解法二：把三张表滚成三个变量【最优解】
+
+为什么多占了空间：解法一每天存三张表，而三条转移只读第 i-1 天，更早
+的行再也不会被访问，把整个历史留在内存里是浪费。
+
+三个转移都只读第 i-1 天，历史值用完就可以覆盖，于是三张表退化成三个
+标量，空间从 O(n) 降到 O(1)，时间不变。这是本题的最优解。
+
+关键点：
+  · hold 只从 rest 买入，sold 只从 hold 卖出，rest 吸收昨天的 sold ——
+    这三条边方向固定，就是「卖出当天」与「冷冻期后一天」的分界
+  · 三个新值互相依赖旧值，必须先算进临时变量再一起覆盖；先改任意一个
+    都会污染后面的转移（例如先改 hold，sold 就会用今天的新成本）
+  · sold 只存活一天：第二天它的值被并进 rest，冷冻期也随之结束
+  · 答案仍是 max(sold, rest)，收盘持股不计入
+
+手推一遍
+仍以示例 1 为例，滚动三次后 sold 与 rest 的变化与解法一逐行相同：
+  第 5 天结束时 hold = 1、sold = 3、rest = 2 → 答案 3
+
+复杂度分析：
+  时间 O(n)：一次遍历
+  空间 O(1)：三个标量
+*/
+class Solution1
+{
+public:
+    int maxProfit(vector<int> &prices)
+    {
+        const int NEG = -1000000000;
+        int n = static_cast<int>(prices.size());
+
+        // hold：收盘持股；sold：当天卖出；rest：不持股且今天没卖
+        vector<int> hold(static_cast<size_t>(n));
+        vector<int> sold(static_cast<size_t>(n));
+        vector<int> rest(static_cast<size_t>(n));
+
+        hold[0] = -prices[0];
+        sold[0] = NEG; // 第 1 天之前没有持仓，不可能卖出
+        rest[0] = 0;
+
+        for (int i = 1; i < n; ++i)
+        {
+            // 买入只能来自 rest：sold 之后的那一天是冷冻期，不能买
+            hold[i] = max(hold[i - 1], rest[i - 1] - prices[i]);
+            sold[i] = hold[i - 1] + prices[i];
+            // 冷冻期这一天记在 rest 里，所以 sold 过一天就转成 rest
+            rest[i] = max(rest[i - 1], sold[i - 1]);
+        }
+        return max(sold[static_cast<size_t>(n) - 1],
+                   rest[static_cast<size_t>(n) - 1]);
+    }
+};
+
+class Solution2
+{
+public:
+    int maxProfit(vector<int> &prices)
+    {
+        const int NEG = -1000000000;
+        int hold = -prices[0];
+        int sold = NEG;
+        int rest = 0;
+
+        for (size_t i = 1; i < prices.size(); ++i)
+        {
+            // 三个新值都依赖旧值，先算出来再一起覆盖，否则会互相污染
+            int nextHold = max(hold, rest - prices[i]);
+            int nextSold = hold + prices[i];
+            int nextRest = max(rest, sold);
+            hold = nextHold;
+            sold = nextSold;
+            rest = nextRest;
+        }
+        return max(sold, rest);
+    }
+};
+
+namespace
+{
+// 对照用 O(n^2) DP。freeDp[i]：前 i 天处理完、第 i 天可以自由买入时
+// 的最大收益（等价于最后一次卖出不晚于第 i-2 天）
+int brute(const vector<int> &prices)
+{
+    int n = static_cast<int>(prices.size());
+    vector<int> freeDp(static_cast<size_t>(n) + 1, 0);
+    for (int i = 2; i <= n; ++i)
+    {
+        freeDp[i] = freeDp[i - 1];
+        // 最后一笔在第 j 天买入、第 i-2 天卖出，第 i-1 天正好是冷冻期
+        for (int j = 0; j + 1 < i; ++j)
+        {
+            freeDp[i] = max(freeDp[i],
+                            freeDp[j] + prices[i - 2] - prices[j]);
+        }
+    }
+
+    int best = freeDp[n];
+    // 最后一笔在最后一天卖出，之后不需要再等冷冻期
+    for (int j = 0; j + 1 < n; ++j)
+    {
+        best = max(best, freeDp[j] + prices[n - 1] - prices[j]);
+    }
+    return best;
+}
+
+void check(vector<int> prices, int want)
+{
+    Solution1 s1;
+    Solution2 s2;
+    assert(s1.maxProfit(prices) == want);
+    assert(s2.maxProfit(prices) == want);
+    assert(brute(prices) == want);
+}
+
+// 三路对拍：暴力 DP 显式刻画了「卖出后隔一天才能买」，最容易暴露
+// 把 sold[i-1] 当作买入来源的错误
+void randomCheck()
+{
+    mt19937 rng(20240104);
+    uniform_int_distribution<int> len(1, 14);
+    uniform_int_distribution<int> val(0, 12);
+    for (int t = 0; t < 3000; ++t)
+    {
+        vector<int> prices(static_cast<size_t>(len(rng)));
+        for (int &x : prices) x = val(rng);
+
+        Solution1 s1;
+        Solution2 s2;
+        int expected = brute(prices);
+        assert(s1.maxProfit(prices) == expected);
+        assert(s2.maxProfit(prices) == expected);
+    }
+}
+} // namespace
+
+int main()
+{
+    // 示例 1：卖完必须空一天，答案 3
+    check({1, 2, 3, 0, 2}, 3);
+
+    // 示例 2：单日无法交易
+    check({1}, 0);
+
+    // 边界：两日上涨，卖出后没有后续操作，冷冻期不影响答案
+    check({1, 2}, 1);
+
+    // 边界：两日下跌，不交易
+    check({2, 1}, 0);
+
+    // 边界：三日上涨，整段持有优于卖出后再买
+    check({1, 2, 3}, 2);
+
+    // 反直觉：没有冷冻期时能做 2 笔赚 2，有冷冻期只能赚 1
+    check({2, 1, 2, 1, 2}, 1);
+
+    // 反直觉：中间暴涨，值得等冷冻期再换手
+    check({6, 1, 3, 2, 4, 7}, 6);
+
+    // 边界：价格全为 0，任何交易都是 0
+    check({0, 0, 0, 0}, 0);
+
+    // 边界：规模上限，只跑两个 O(n) 解
+    {
+        vector<int> prices(5000);
+        for (size_t i = 0; i < prices.size(); ++i)
+        {
+            prices[i] = static_cast<int>(i * 17 % 1001);
+        }
+        Solution1 s1;
+        Solution2 s2;
+        assert(s1.maxProfit(prices) == s2.maxProfit(prices));
+    }
+
+    randomCheck();
+
+    cout << "all tests passed" << endl;
+    return 0;
+}
