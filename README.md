@@ -422,7 +422,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [198. 打家劫舍](https://leetcode.cn/problems/house-robber/) |  |  |  |  |  |
+| ✅ | [198. 打家劫舍](https://leetcode.cn/problems/house-robber/) | [cpp](Problems/0101-0200/0198-house-robber/0198-house-robber.cpp) | [go](Problems/0101-0200/0198-house-robber/0198-house-robber.go) | [py](Problems/0101-0200/0198-house-robber/0198-house-robber.py) | [rs](Problems/0101-0200/0198-house-robber/0198-house-robber.rs) | 官方两解：二维 DP（偷/不偷双状态）/ 一维滚动只留两个变量；最优解为滚动，空间 O(1)；贪心取所有局部最优会得错解 |
 | ☐ | [337. 打家劫舍 III ](https://leetcode.cn/problems/house-robber-iii/) |  |  |  |  |  |
 | ☐ | [面试题 17.16. 按摩师](https://leetcode.cn/problems/the-masseuse-lcci/) |  |  |  |  |  |
 
