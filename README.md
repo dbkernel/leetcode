@@ -366,7 +366,7 @@
 | ✅ | [1462. 课程表 IV（中等）](https://leetcode.cn/problems/course-schedule-iv/) | [cpp](Problems/1401-1500/1462-course-schedule-iv/1462-course-schedule-iv.cpp) | [go](Problems/1401-1500/1462-course-schedule-iv/1462-course-schedule-iv.go) | [py](Problems/1401-1500/1462-course-schedule-iv/1462-course-schedule-iv.py) | [rs](Problems/1401-1500/1462-course-schedule-iv/1462-course-schedule-iv.rs) | 官方两解：拓扑排序 + 传递矩阵 / DFS 求传递闭包，实际同为 O(V·E + Q)（官方标的 O(V^2+n+m) 与代码不符）并列最优；另附逐查询搜索 O(Q(V+E)) 作非最优对照，仅当 Q 远小于 V 时更省 |
 | ☐ | [1136. 并行课程（力扣会员）](https://leetcode.cn/problems/parallel-courses/) |  |  |  |  | 力扣会员题，中文站无公开题面与官方题解，暂未收录；并行课程可先做 1494、2050 |
 | ✅ | [1494. 并行课程 II（困难）](https://leetcode.cn/problems/parallel-courses-ii/) | [cpp](Problems/1401-1500/1494-parallel-courses-ii/1494-parallel-courses-ii.cpp) | [go](Problems/1401-1500/1494-parallel-courses-ii/1494-parallel-courses-ii.go) | [py](Problems/1401-1500/1494-parallel-courses-ii/1494-parallel-courses-ii.py) | [rs](Problems/1401-1500/1494-parallel-courses-ii/1494-parallel-courses-ii.rs) | 官方一解：状态压缩 DP，dp[mask] 对「最后一学期可上的子集」转移；真实复杂度是 O(3^n) 时间 O(2^n) 空间（不是 O(2^n·n)），按官方分析写；n=15 时约 1.4×10^7 量级 |
-| ☐ | [2050. 并行课程 III（困难）](https://leetcode.cn/problems/parallel-courses-iii/) |  |  |  |  |  |
+| ✅ | [2050. 并行课程 III（困难）](https://leetcode.cn/problems/parallel-courses-iii/) | [cpp](Problems/2001-2100/2050-parallel-courses-iii/2050-parallel-courses-iii.cpp) | [go](Problems/2001-2100/2050-parallel-courses-iii/2050-parallel-courses-iii.go) | [py](Problems/2001-2100/2050-parallel-courses-iii/2050-parallel-courses-iii.py) | [rs](Problems/2001-2100/2050-parallel-courses-iii/2050-parallel-courses-iii.rs) | 官方一解：记忆化搜索求每门课的最早完成月份，O(n+m) 即最优；另附拓扑序 + DP 顺手递推，同阶并列；同层并行取先修完成时间的最大值再加本课耗时，不是累加 |
 
 个人补充（DFS 其他题）：
 
