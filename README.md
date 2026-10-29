@@ -51,7 +51,7 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [1.两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 官方两解：暴力枚举 O(n^2) / 哈希表 O(n)；最优解为哈希表 |
 | ✅ | [1108. IP 地址无效化（简单）](https://leetcode.cn/problems/defanging-an-ip-address/) | [cpp](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.cpp) | [go](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.go) | [py](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.py) | [rs](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.rs) | 官方仅一解：一次遍历替换 O(n)，即最优解 |
-| ✅ | [344. 反转字符串（简单）](https://leetcode.cn/problems/reverse-string/) | [cpp](Problems/0301-0400/0344-reverse-string/0344-reverse-string.cpp) |  |  |  |  |
+| ✅ | [344. 反转字符串（简单）](https://leetcode.cn/problems/reverse-string/) | [cpp](Problems/0301-0400/0344-reverse-string/0344-reverse-string.cpp) | [go](Problems/0301-0400/0344-reverse-string/0344-reverse-string.go) | [py](Problems/0301-0400/0344-reverse-string/0344-reverse-string.py) | [rs](Problems/0301-0400/0344-reverse-string/0344-reverse-string.rs) | 官方仅一解：双指针原地交换 O(n)，即最优解 |
 | ✅ | [剑指 Offer 58 - I. 翻转单词顺序（简单）](https://leetcode.cn/problems/fan-zhuan-dan-ci-shun-xu-lcof/) | [cpp](JianZhiOffer/58-I-翻转单词顺序.cpp) |  |  |  |  |
 | ✅ | [125. 验证回文串（简单）](https://leetcode.cn/problems/valid-palindrome/) | [cpp](Problems/0101-0200/0125-valid-palindrome/0125-valid-palindrome.cpp) |  |  |  |  |
 | ✅ | [9. 回文数（简单）](https://leetcode.cn/problems/palindrome-number/) | [cpp](Problems/0001-0100/0009-palindrome-number/0009-palindrome-number.cpp) |  |  |  |  |
@@ -436,7 +436,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [344. 反转字符串](https://leetcode.cn/problems/reverse-string/) |  |  |  |  |  |
+| ✅ | [344. 反转字符串](https://leetcode.cn/problems/reverse-string/) | [cpp](Problems/0301-0400/0344-reverse-string/0344-reverse-string.cpp) | [go](Problems/0301-0400/0344-reverse-string/0344-reverse-string.go) | [py](Problems/0301-0400/0344-reverse-string/0344-reverse-string.py) | [rs](Problems/0301-0400/0344-reverse-string/0344-reverse-string.rs) | 双指针首尾交换 |
 | ☐ | [面试题 16.24. 数对和（例题 1）](https://leetcode.cn/problems/pairs-with-sum-lcci/) |  |  |  |  |  |
 | ☐ | [1. 两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) |  |  |  |  | 双指针需先排序，非官方解法；可参考 三数之和 内层循环 |
 | ✅ | [15. 三数之和（中等，墨奇社招）](https://leetcode.cn/problems/3sum/) | [cpp](Problems/0001-0100/0015-3sum/0015-3sum.cpp) |  |  |  |  |
