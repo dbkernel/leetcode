@@ -58,7 +58,7 @@
 | ✅ | [58. 最后一个单词的长度（简单）](https://leetcode.cn/problems/length-of-last-word/) | [cpp](Problems/0001-0100/0058-length-of-last-word/0058-length-of-last-word.cpp) | [go](Problems/0001-0100/0058-length-of-last-word/0058-length-of-last-word.go) | [py](Problems/0001-0100/0058-length-of-last-word/0058-length-of-last-word.py) | [rs](Problems/0001-0100/0058-length-of-last-word/0058-length-of-last-word.rs) | 官方仅一解：反向遍历 O(n)，即最优解；先跳尾空格再数 |
 | ✅ | [剑指 Offer 05. 替换空格（简单）](https://leetcode.cn/problems/ti-huan-kong-ge-lcof/) | [cpp](JianZhiOffer/05-替换空格.cpp) |  |  |  |  |
 | ✅ | [剑指 Offer 58 - II. 左旋转字符串（简单）](https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/) | [cpp](JianZhiOffer/58-II-左旋转字符串.cpp) |  |  |  |  |
-| ✅ | [26. 删除排序数组中的重复项（简单）](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/) | [cpp](Problems/0001-0100/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.cpp) |  |  |  |  |
+| ✅ | [26. 删除排序数组中的重复项（简单）](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/) | [cpp](Problems/0001-0100/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.cpp) | [go](Problems/0001-0100/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.go) | [py](Problems/0001-0100/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.py) | [rs](Problems/0001-0100/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.rs) | 官方仅一解：快慢双指针原地去重 O(n)，即最优解 |
 | ✅ | [剑指 Offer 67. 把字符串转换成整数（中等）](https://leetcode.cn/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof/) | [cpp](JianZhiOffer/67-把字符串转换成整数.cpp) |  |  |  | 经典 atoi()，注意范围越界处理 |
 
 ## 找规律
