@@ -350,7 +350,7 @@
 | ☐ | [面试题 16.19. 水域大小（中等）](https://leetcode.cn/problems/pond-sizes-lcci/) |  |  |  |  |  |
 | ✅ | [207. 课程表（中等）](https://leetcode.cn/problems/course-schedule/) | [cpp](Problems/0201-0300/0207-course-schedule/0207-course-schedule.cpp) | [go](Problems/0201-0300/0207-course-schedule/0207-course-schedule.go) | [py](Problems/0201-0300/0207-course-schedule/0207-course-schedule.py) | [rs](Problems/0201-0300/0207-course-schedule/0207-course-schedule.rs) | 官方两解：BFS 拓扑排序（入度数组）/ DFS 三色标记判环；两解同为 O(V+E) 时间、O(V+E) 空间，并列最优 |
 | ☐ | [79. 单词搜索（中等）](https://leetcode.cn/problems/word-search/) |  |  |  |  |  |
-| ☐ | [1306. 跳跃游戏 III（中等）](https://leetcode.cn/problems/jump-game-iii/) |  |  |  |  |  |
+| ✅ | [1306. 跳跃游戏 III（中等）](https://leetcode.cn/problems/jump-game-iii/) | [cpp](Problems/1301-1400/1306-jump-game-iii/1306-jump-game-iii.cpp) | [go](Problems/1301-1400/1306-jump-game-iii/1306-jump-game-iii.go) | [py](Problems/1301-1400/1306-jump-game-iii/1306-jump-game-iii.py) | [rs](Problems/1301-1400/1306-jump-game-iii/1306-jump-game-iii.rs) | 官方两解：BFS 逐层扩展 / DFS 显式栈；并列最优，O(n) 时间；访问后必须立即标记，否则值为 0 的环会死循环 |
 | ☐ | [752. 打开转盘锁（中等）](https://leetcode.cn/problems/open-the-lock/) |  |  |  |  |  |
 
 个人补充（不一定是放当前板块）：
