@@ -516,7 +516,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [45. 跳跃游戏 II（中等）](https://leetcode.cn/problems/jump-game-ii/) |  |  |  |  |  |
+| ✅ | [45. 跳跃游戏 II（中等）](https://leetcode.cn/problems/jump-game-ii/) | [cpp](Problems/0001-0100/0045-jump-game-ii/0045-jump-game-ii.cpp) | [go](Problems/0001-0100/0045-jump-game-ii/0045-jump-game-ii.go) | [py](Problems/0001-0100/0045-jump-game-ii/0045-jump-game-ii.py) | [rs](Problems/0001-0100/0045-jump-game-ii/0045-jump-game-ii.rs) | 官方两解：反向查找出发位置 O(n^2) 非最优 / 正向分层贪心 O(n) O(1) 最优；n=1 返回 0，跨层才计一次跳跃 |
 | ☐ | [134. 加油站（中等）](https://leetcode.cn/problems/gas-station/) |  |  |  |  |  |
 | ☐ | [455. 分发饼干（简单）](https://leetcode.cn/problems/assign-cookies/) |  |  |  |  |  |
 | ☐ | [334. 递增的三元子序列（中等）](https://leetcode.cn/problems/increasing-triplet-subsequence/) |  |  |  |  |  |
