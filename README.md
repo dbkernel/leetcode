@@ -454,10 +454,10 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [344. 反转字符串](https://leetcode.cn/problems/reverse-string/) | [cpp](Problems/0301-0400/0344-reverse-string/0344-reverse-string.cpp) | [go](Problems/0301-0400/0344-reverse-string/0344-reverse-string.go) | [py](Problems/0301-0400/0344-reverse-string/0344-reverse-string.py) | [rs](Problems/0301-0400/0344-reverse-string/0344-reverse-string.rs) | 双指针首尾交换 |
 | ☐ | [面试题 16.24. 数对和（例题 1）](https://leetcode.cn/problems/pairs-with-sum-lcci/) |  |  |  |  |  |
-| ☐ | [1. 两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) |  |  |  |  | 双指针需先排序，非官方解法；可参考 三数之和 内层循环 |
+| ✅ | [1. 两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 与第一阶段同一题：官方哈希表为最优；本题在双指针板块仅作对照——双指针须先排序，会打乱下标，返回下标时不能直接用，故非本题官方解法 |
 | ✅ | [15. 三数之和（中等，墨奇社招）](https://leetcode.cn/problems/3sum/) | [cpp](Problems/0001-0100/0015-3sum/0015-3sum.cpp) |  |  |  |  |
-| ☐ | [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 ](https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/) |  |  |  |  |  |
-| ☐ | [75. 颜色分类 ](https://leetcode.cn/problems/sort-colors/) |  |  |  |  |  |
+| ✅ | [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 ](https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/) | [cpp](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.cpp) | [go](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.go) | [py](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.py) | [rs](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.rs) | 与第三阶段排序板块同一题（现收录为 LCR 139「训练计划 I」）：首尾双指针原地交换，O(n) 时间 O(1) 空间，不保证稳定性 |
+| ✅ | [75. 颜色分类 ](https://leetcode.cn/problems/sort-colors/) | [cpp](Problems/0001-0100/0075-sort-colors/0075-sort-colors.cpp) | [go](Problems/0001-0100/0075-sort-colors/0075-sort-colors.go) | [py](Problems/0001-0100/0075-sort-colors/0075-sort-colors.py) | [rs](Problems/0001-0100/0075-sort-colors/0075-sort-colors.rs) | 与第三阶段排序板块同一题：官方三解中最优为 p0+p2 双指针一趟扫描，O(n) 时间 O(1) 空间，本质是三路划分 |
 | ☐ | [283. 移动零 已排序未排序指针（例题 2）](https://leetcode.cn/problems/move-zeroes/) |  |  |  |  |  |
 | ☐ | [面试题 16.06. 最小差 类似合并两个有序数组（例题 3）](https://leetcode.cn/problems/smallest-difference-lcci/) |  |  |  |  |  |
 | ☐ | [面试题 17.11. 单词距离 类似合并两个有序数组](https://leetcode.cn/problems/find-closest-lcci/) |  |  |  |  |  |
