@@ -440,7 +440,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ☐ | [剑指 Offer 47. 礼物的最大价值](https://leetcode.cn/problems/li-wu-de-zui-da-jie-zhi-lcof/) |  |  |  |  |  |
 | ☐ | [1143. 最长公共子序列](https://leetcode.cn/problems/longest-common-subsequence/) |  |  |  |  |  |
 | ✅ | [72. 编辑距离 ](https://leetcode.cn/problems/edit-distance/) | [cpp](Problems/0001-0100/0072-edit-distance/0072-edit-distance.cpp) | [go](Problems/0001-0100/0072-edit-distance/0072-edit-distance.go) | [py](Problems/0001-0100/0072-edit-distance/0072-edit-distance.py) | [rs](Problems/0001-0100/0072-edit-distance/0072-edit-distance.rs) | 官方两解：记忆化搜索 / 二维 DP + 一维滚动；滚动版空间从 O(mn) 降到 O(min(m,n))，为最优；三种操作的转移与 i=0/j=0 边界要写清 |
-| ☐ | [10. 正则表达式匹配](https://leetcode.cn/problems/regular-expression-matching/) |  |  |  |  |  |
+| ✅ | [10. 正则表达式匹配](https://leetcode.cn/problems/regular-expression-matching/) | [cpp](Problems/0001-0100/0010-regular-expression-matching/0010-regular-expression-matching.cpp) | [go](Problems/0001-0100/0010-regular-expression-matching/0010-regular-expression-matching.go) | [py](Problems/0001-0100/0010-regular-expression-matching/0010-regular-expression-matching.py) | [rs](Problems/0001-0100/0010-regular-expression-matching/0010-regular-expression-matching.rs) | 官方两解：记忆化递归 / 二维 DP；两解同为 O(mn) 时间、O(mn) 空间，并列最优；星号的「配 0 次」与「再配 1 次」两种转移必须分开，a* 要能吃掉空串 |
 | ☐ | [剑指 Offer 14- I. 剪绳子](https://leetcode.cn/problems/jian-sheng-zi-lcof/) |  |  |  |  |  |
 | ☐ | [剑指 Offer 46. 把数字翻译成字符串](https://leetcode.cn/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof/) |  |  |  |  |  |
 | ☐ | [139. 单词拆分](https://leetcode.cn/problems/word-break/) |  |  |  |  |  |
