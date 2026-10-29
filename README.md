@@ -346,7 +346,7 @@
 | ☐ | [剑指 Offer 13. 机器人的运动范围（中等）](https://leetcode.cn/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/) |  |  |  |  |  |
 | ☐ | [面试题 08.10. 颜色填充（简单）](https://leetcode.cn/problems/color-fill-lcci/) |  |  |  |  |  |
 | ✅ | [面试题 04.01. 节点间通路（中等）](https://leetcode.cn/problems/route-between-nodes-lcci/) | [cpp](InterviewQuestions/04.01-route-between-nodes-lcci.cpp) | [go](InterviewQuestions/04.01-route-between-nodes-lcci.go) | [py](InterviewQuestions/04.01-route-between-nodes-lcci.py) | [rs](InterviewQuestions/04.01-route-between-nodes-lcci.rs) | 官方两解：BFS 逐层扩展 / DFS 显式栈；并列最优，O(V+E) 时间；起点等于终点返回 true，节点数可大于边中出现的最大编号 |
-| ☐ | [200. 岛屿数量（中等）](https://leetcode.cn/problems/number-of-islands/) |  |  |  |  |  |
+| ✅ | [200. 岛屿数量（中等）](https://leetcode.cn/problems/number-of-islands/) | [cpp](Problems/0101-0200/0200-number-of-islands/0200-number-of-islands.cpp) | [go](Problems/0101-0200/0200-number-of-islands/0200-number-of-islands.go) | [py](Problems/0101-0200/0200-number-of-islands/0200-number-of-islands.py) | [rs](Problems/0101-0200/0200-number-of-islands/0200-number-of-islands.rs) | 官方两解：DFS 淹岛 / BFS 淹岛；两解同为 O(mn) 时间、O(mn) 空间，并列最优（DFS 省队列但栈深 O(mn)） |
 | ☐ | [面试题 16.19. 水域大小（中等）](https://leetcode.cn/problems/pond-sizes-lcci/) |  |  |  |  |  |
 | ✅ | [207. 课程表（中等）](https://leetcode.cn/problems/course-schedule/) | [cpp](Problems/0201-0300/0207-course-schedule/0207-course-schedule.cpp) | [go](Problems/0201-0300/0207-course-schedule/0207-course-schedule.go) | [py](Problems/0201-0300/0207-course-schedule/0207-course-schedule.py) | [rs](Problems/0201-0300/0207-course-schedule/0207-course-schedule.rs) | 官方两解：BFS 拓扑排序（入度数组）/ DFS 三色标记判环；两解同为 O(V+E) 时间、O(V+E) 空间，并列最优 |
 | ☐ | [79. 单词搜索（中等）](https://leetcode.cn/problems/word-search/) |  |  |  |  |  |
