@@ -318,7 +318,7 @@
 | ✅ | [208. 实现 Trie (前缀树) （中等） 标准 Trie 树](https://leetcode.cn/problems/implement-trie-prefix-tree/) | [cpp](Problems/0201-0300/0208-implement-trie-prefix-tree/0208-implement-trie-prefix-tree.cpp) | [go](Problems/0201-0300/0208-implement-trie-prefix-tree/0208-implement-trie-prefix-tree.go) | [py](Problems/0201-0300/0208-implement-trie-prefix-tree/0208-implement-trie-prefix-tree.py) | [rs](Problems/0201-0300/0208-implement-trie-prefix-tree/0208-implement-trie-prefix-tree.rs) | 官方仅一解：孩子用 26 叉数组存储，四操作均 O(L)；即最优解；词尾标记区分 search 与 startsWith |
 | ☐ | 以下为选做题目： |  |  |  |  |  |
 | ✅ | [面试题 17.17. 多次搜索（中等） 标准 AC 自动机，不过写 AC 自动机太复杂，Trie 树搞定](https://leetcode.cn/problems/multi-search-lcci/) | [cpp](InterviewQuestions/17.17-multi-search-lcci.cpp) | [go](InterviewQuestions/17.17-multi-search-lcci.go) | [py](InterviewQuestions/17.17-multi-search-lcci.py) | [rs](InterviewQuestions/17.17-multi-search-lcci.rs) | 官方一解：把 smalls 建成 Trie，再从 big 的每个起点向下匹配，O(B·L) 即最优；B 不超过 1000，写 AC 自动机收益不足，注释里说明了取舍；逐词暴力为对照 |
-| ☐ | [212. 单词搜索 II（困难）](https://leetcode.cn/problems/word-search-ii/) |  |  |  |  |  |
+| ✅ | [212. 单词搜索 II（困难）](https://leetcode.cn/problems/word-search-ii/) | [cpp](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.cpp) | [go](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.go) | [py](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.py) | [rs](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.rs) | 官方一解：Trie + 回溯，命中后把词尾标记清空即可避免重复输出，同时剪掉无孩子的叶节点；两版实现同阶并列最优；每次回溯必须还原棋盘字符 |
 
 # 第七阶段（1 周）
 
