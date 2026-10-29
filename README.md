@@ -82,7 +82,7 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [203. 移除链表元素 （简单）](https://leetcode.cn/problems/remove-linked-list-elements/) | [cpp](Problems/0201-0300/0203-remove-linked-list-elements/0203-remove-linked-list-elements.cpp) |  |  |  |  |
+| ✅ | [203. 移除链表元素 （简单）](https://leetcode.cn/problems/remove-linked-list-elements/) | [cpp](Problems/0201-0300/0203-remove-linked-list-elements/0203-remove-linked-list-elements.cpp) | [go](Problems/0201-0300/0203-remove-linked-list-elements/0203-remove-linked-list-elements.go) | [py](Problems/0201-0300/0203-remove-linked-list-elements/0203-remove-linked-list-elements.py) | [rs](Problems/0201-0300/0203-remove-linked-list-elements/0203-remove-linked-list-elements.rs) | 官方两解：递归 O(n) 栈 / 迭代 O(1)；最优解为迭代 + 哨兵 |
 | ✅ | [876. 链表的中间结点（简单）](https://leetcode.cn/problems/middle-of-the-linked-list/) | [cpp](Problems/0801-0900/0876-middle-of-the-linked-list/0876-middle-of-the-linked-list.cpp) |  |  |  |  |
 | ✅ | [83. 删除排序链表中的重复元素（简单）](https://leetcode.cn/problems/remove-duplicates-from-sorted-list/) | [cpp](Problems/0001-0100/0083-remove-duplicates-from-sorted-list/0083-remove-duplicates-from-sorted-list.cpp) |  |  |  |  |
 | ✅ | [2. 两数相加 （中等，腾讯笔试题）](https://leetcode.cn/problems/add-two-numbers/) | [cpp](Problems/0001-0100/0002-two-numbers/0002-two-numbers.cpp) | [go](Problems/0001-0100/0002-two-numbers/0002-two-numbers.go) | [py](Problems/0001-0100/0002-two-numbers/0002-two-numbers.py) | [rs](Problems/0001-0100/0002-two-numbers/0002-two-numbers.rs) | 官方仅一解：逐位模拟 O(max(m,n))，即最优解；注意进位与末尾补位 |
