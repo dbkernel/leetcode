@@ -29,6 +29,7 @@
 - [第七阶段（1 周）](#第七阶段1-周)
   - [回溯](#回溯)
   - [DFS](#dfs)
+  - [BFS](#bfs)
 - [第八阶段（1 周）](#第八阶段1-周)
   - [背包：](#背包)
   - [打家劫舍：](#打家劫舍)
@@ -38,6 +39,8 @@
   - [滑动窗口](#滑动窗口)
   - [前缀后缀统计](#前缀后缀统计)
   - [位运算](#位运算)
+  - [并查集](#并查集)
+  - [贪心](#贪心)
 - [综合示例](#综合示例)
 - [其他](#其他)
 
@@ -378,8 +381,21 @@
 | ☐ | [面试题 17.22. 单词转换（困难） ](https://leetcode.cn/problems/word-transformer-lcci/) |  |  |  |  |  |
 | ☐ | [面试题 17.07. 婴儿名字（困难） ](https://leetcode.cn/problems/baby-names-lcci/) |  |  |  |  |  |
 | ☐ | [529. 扫雷游戏（困难）](https://leetcode.cn/problems/minesweeper/) |  |  |  |  |  |
+
+## BFS
+
+BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅长**无权图上的最短路**。
+多源 BFS 与双向 BFS 是这一板块最常考的两个变体。
+
+| 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
+| --- | --- | --- | --- | --- | --- | --- |
 | ☐ | [127. 单词接龙（困难）](https://leetcode.cn/problems/word-ladder/) |  |  |  |  |  |
 | ☐ | [126. 单词接龙 II（困难）](https://leetcode.cn/problems/word-ladder-ii/) |  |  |  |  |  |
+| ☐ | [994. 腐烂的橘子（中等）](https://leetcode.cn/problems/rotting-oranges/) |  |  |  |  |  |
+| ☐ | [542. 01 矩阵（中等）](https://leetcode.cn/problems/01-matrix/) |  |  |  |  |  |
+| ☐ | [815. 公交路线（困难）](https://leetcode.cn/problems/bus-routes/) |  |  |  |  |  |
+| ☐ | [286. 墙与门（中等）力扣会员](https://leetcode.cn/problems/walls-and-gates/) |  |  |  |  |  |
+| ✅ | [752. 打开转盘锁（中等）](https://leetcode.cn/problems/open-the-lock/) | [cpp](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.cpp) | [go](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.go) | [py](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.py) | [rs](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.rs) | 与 DFS 板块同一题：逐层 BFS / 双向 BFS 并列最优，状态空间封顶 10^4 |
 
 # 第八阶段（1 周）
 
@@ -478,6 +494,34 @@
 | ☐ | [剑指 Offer 56 - II. 数组中数字出现的次数 II ](https://leetcode.cn/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/) |  |  |  |  |  |
 | ☐ | [面试题 16.01. 交换数字](https://leetcode.cn/problems/swap-numbers-lcci/) |  |  |  |  |  |
 | ☐ | [231. 2 的幂](https://leetcode.cn/problems/power-of-two/) |  |  |  |  |  |
+
+## 并查集
+
+并查集本身只有十几行，但「连通性 + 逐步合并」这一类问题的正解几乎都是它。
+带权并查集（399）与「并查集 + 二分答案」（778）是两个高频变体。
+
+| 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
+| --- | --- | --- | --- | --- | --- | --- |
+| ☐ | [684. 冗余连接（中等）](https://leetcode.cn/problems/redundant-connection/) |  |  |  |  |  |
+| ☐ | [547. 省份数量（中等）](https://leetcode.cn/problems/number-of-provinces/) |  |  |  |  |  |
+| ☐ | [130. 被围绕的区域（中等）](https://leetcode.cn/problems/surrounded-regions/) |  |  |  |  |  |
+| ☐ | [399. 除法求值（中等）](https://leetcode.cn/problems/evaluate-division/) |  |  |  |  |  |
+| ☐ | [778. 水位上升的泳池中游泳（困难）](https://leetcode.cn/problems/swim-in-rising-water/) |  |  |  |  |  |
+| ☐ | [323. 无向图中连通分量的数目（中等）力扣会员](https://leetcode.cn/problems/number-of-connected-components-in-an-undirected-graph/) |  |  |  |  |  |
+
+## 贪心
+
+贪心单独成板块的理由：它的核心不是模板，而是**证明**。相邻交换论证与「能选就选」
+的正确性论证，才是这一板块真正要练的东西。
+
+| 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
+| --- | --- | --- | --- | --- | --- | --- |
+| ☐ | [45. 跳跃游戏 II（中等）](https://leetcode.cn/problems/jump-game-ii/) |  |  |  |  |  |
+| ☐ | [134. 加油站（中等）](https://leetcode.cn/problems/gas-station/) |  |  |  |  |  |
+| ☐ | [455. 分发饼干（简单）](https://leetcode.cn/problems/assign-cookies/) |  |  |  |  |  |
+| ☐ | [334. 递增的三元子序列（中等）](https://leetcode.cn/problems/increasing-triplet-subsequence/) |  |  |  |  |  |
+| ☐ | [452. 用最少数量的箭引爆气球（中等）](https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/) |  |  |  |  |  |
+| ✅ | [56. 合并区间（中等） ](https://leetcode.cn/problems/merge-intervals/) | [cpp](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.cpp) | [go](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.go) | [py](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.py) | [rs](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.rs) | 与排序板块同一题：按左端点排序后一次扫描合并，O(n log n)，是「排序 + 贪心」的典型 |
 
 # 综合示例
 
