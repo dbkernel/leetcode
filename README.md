@@ -159,7 +159,7 @@
 | ☐ | [147. 对链表进行插入排序（中等）](https://leetcode.cn/problems/insertion-sort-list/) |  |  |  |  |  |
 | ☐ | [148. 排序链表（中等） 链表上的归并排序](https://leetcode.cn/problems/sort-list/) |  |  |  |  |  |
 | ✅ | [215. 数组中的第 K 个最大元素（中等） ](https://leetcode.cn/problems/kth-largest-element-in-an-array/) | [cpp](Problems/0201-0300/0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.cpp) | [go](Problems/0201-0300/0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.go) | [py](Problems/0201-0300/0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.py) | [rs](Problems/0201-0300/0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.rs) | 官方两解：快速选择（期望 O(n)）/ 大根堆（O(n log n)）；最优解为快速选择；【精品】 |
-| ✅ | [面试题 17.14. 最小 K 个数 （中等）](https://leetcode.cn/problems/smallest-k-lcci/) | [cpp](InterviewQuestions/17.14-smallest-k-lcci.cpp) |  |  |  | 快速排序，非常巧妙，与上一题类似。不过还有个堆的方法；【精品】 |
+| ✅ | [面试题 17.14. 最小 K 个数 （中等）](https://leetcode.cn/problems/smallest-k-lcci/) | [cpp](InterviewQuestions/17.14-smallest-k-lcci.cpp) | [go](InterviewQuestions/17.14-smallest-k-lcci.go) | [py](InterviewQuestions/17.14-smallest-k-lcci.py) | [rs](InterviewQuestions/17.14-smallest-k-lcci.rs) | 官方三解：排序 O(n log n) / 大小 k 的大根堆 O(n log k) / 随机化快速选择期望 O(n)；最优解为快速选择；【精品】 |
 | ☐ | [剑指 Offer 51. 数组中的逆序对（困难）](https://leetcode.cn/problems/shu-zu-zhong-de-ni-xu-dui-lcof/) |  |  |  |  |  |
 
 - [ ] **补充各类排序算法：**
