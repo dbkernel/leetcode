@@ -1,116 +1,156 @@
 ---
 name: git-commit-msg
 description: |
-  本仓库（LeetCode 题解集）的 commit message 规范。基于 Conventional Commits，
-  并按本仓库历史提交习惯固定了 scope 词表与 subject 写法。
+  本仓库（LeetCode 题解集）的 commit message 规范。题解类提交以「平台(题号)」开头，
+  非题解类提交沿用 Conventional Commits。
   当准备提交题解、更新 README 目录、修改题解模板或做批量整理时使用；
   涉及 git commit、写提交信息、拆分提交、review 待提交内容时也应触发。
 ---
 
 # Git Commit Message 规范（本仓库）
 
-本文件是本仓库的提交规范，也是唯一标准。与通用 Conventional Commits 文档冲突时，
-以本文件为准；本文件未覆盖的部分按通用规范处理。
+本文件是本仓库的提交规范，也是唯一标准。
 
 ---
 
 ## 一句话规则
 
+仓库里的提交分两类，格式不同：
+
 ```text
-<type>(<scope>): <subject>
+<平台>(<题号>): <动词> <对象>        ← 题解类提交（写代码、写注释、换写法）
+<type>(<scope>): <subject>           ← 非题解类提交（README、模板、配置、批量整理）
 ```
 
-`type` 必填且为下列之一；`scope` 取自[固定词表](#scope-词表)；`subject` 用英文祈使句，
-首字母小写，结尾不加句号。
-
 ```text
-feat(Problems): add 0001-two-sum.cpp
+LeetCode(0001): add solutions in C++, Go and Python
+LeetCode(0015): optimize from O(n^3) to O(n^2)
+JianZhiOffer(58-I): fix off-by-one in the loop
 docs(README): add Rust link for 0001-two-sum
-chore(*): unify leetcode.cn domain across 45 files
+chore(*): unify leetcode.cn domain across 43 files
 ```
 
 ---
 
-## 与历史提交的关系
+## 为什么要和 Conventional Commits 分开
 
-本仓库历史提交多为 `Problems: add 0026-...cpp` 的形式，即「目录名 + 冒号 + add + 文件名」，
-没有 type 前缀。为保持 `git log` 的可检索性，本规范**保留历史 scope 拼写**
-（`Problems`、`JianZhiOffer` 等按下表原样书写，不改成小写，也不改成连字符形式），
-只补上 type 前缀，并把 subject 的动词固定为 `add` / `update` / `fix` / `remove`。
+按 Conventional Commits，题解类提交只能写成 `feat(Problems): add 0001-two-sum.cpp`。
+在这个仓库里这是最差的选择，因为：
 
-历史提交不回改。新提交一律按本规范执行。
+- **scope 恒定无用**：`Problems` 占掉了 scope 位，而 95% 的提交 scope 都是它，
+  等于没有 scope。真正有价值的定位信息是**题号**。
+- **type 区分不成立**：新增一门语言是 `feat`，改注释是 `docs`，断言写错是 `fix` ——
+  这三件事在读者眼里是同一件事（「动了 0001 这道题」），却要在三个 type 之间反复判断，
+  判断结果对 `git log --oneline` 的可读性毫无贡献。
+- **检索方向反了**：查历史时人想按题号找（「0001 这题我改过几次」），
+  而不是按 type 找（「把所有 feat 列出来」）。
 
----
+所以题解类提交把「平台 + 题号」放到最前面，改动的性质交给动词表达。
+非题解类提交（说明书、配置、批量替换）没有题号可言，继续用 Conventional Commits。
 
-## type 词表
-
-| type | 本仓库中的判定标准 | 示例 |
-| --- | --- | --- |
-| `feat` | 新增题解或为已有题目新增一门语言实现，仓库内容变多 | `feat(Problems): add 0001-two-sum.go` |
-| `fix` | 题解代码本身有错、行内注释与 API 行为不符、链接失效、复杂度标注错误 | `fix(Problems): correct overflow handling in 0007-reverse-integer.cpp` |
-| `docs` | 只动 README、模板、规范、题面文字或注释文字，代码行为不变 | `docs(Problems): add solution template` |
-| `style` | 只动空行、缩进、对齐、行宽，逻辑与文案都不变 | `style(Problems): reformat 0020-valid-parentheses.cpp` |
-| `refactor` | 同一题换写法，行为等价且无性能目的 | `refactor(JianZhiOffer): rewrite 09-用两个栈实现队列.cpp with std::stack` |
-| `perf` | 改动的直接目的是降复杂度 | `perf(Problems): optimize 0015-3sum from O(n^3) to O(n^2)` |
-| `test` | 只增删 `main` 里的自测用例或断言 | `test(Problems): add duplicate-value case for 0001-two-sum` |
-| `chore` | 构建配置、`.vscode`、依赖、批量机械替换等与题解内容无关的整理 | `chore(*): unify leetcode.cn domain across 45 files` |
-| `revert` | 回滚某次提交 | `revert: feat(Problems): add 0001-two-sum.rs` |
-
-判断要点：
-
-- **新增一门语言的实现是 `feat` 还是 `docs`**：新增可运行代码 → `feat`；
-  只补 README 里的链接 → `docs`。两者通常分属两个 commit。
-- **改注释是 `docs` 还是 `fix`**：注释说的与代码实际行为不一致 → `fix`（它会误导读者）；
-  只是措辞更清楚 → `docs`。
-- **`chore(*): ...` 是最后的退路**：只有当改动跨多个目录且无法归属单一 scope 时才用，
-  且必须是一次机械操作（域名替换、重命名），不能在里夹带任何解题内容。
+**注意**：本规范不兼容 `commitlint` 的 `type-enum` 默认值。若将来引入 commitlint，
+需要把 `LeetCode`、`JianZhiOffer`、`InterviewQuestions`、`HuaweiJikao`、`Others`
+加进允许的 type 列表，否则会被判为非法 type。
 
 ---
 
-## scope 词表
+## 平台与题号
 
-scope 必须是下列值之一，拼写照抄，不要自创、不要改成小写：
+平台名与目录一一对应，拼写照抄，不要自创：
 
-| scope | 对应目录 |
-| --- | --- |
-| `Problems` | `Problems/` 下所有 LeetCode 官方题号 |
-| `JianZhiOffer` | `JianZhiOffer/` 剑指 Offer 系列 |
-| `InterviewQuestions` | `InterviewQuestions/` 程序员面试金典系列 |
-| `HuaweiJikao` | `HuaweiJikao/` 华为机考题目 |
-| `Algorithms` | `Algorithms/` 算法专题实现 |
-| `Examples` | `Examples/` 综合示例 |
-| `Others` | `Others/` 零散题目 |
-| `Docs` | `Docs/` 阶段性文档与 pdf |
-| `Guidelines` | 模板与开发规范：`Problems/TEMPLATE.md`、`.cursor/skills/` 下的 skill |
-| `README` | 根目录 `README.md` |
-| `Config` | `.vscode/`、`.gitignore` 等工程配置 |
-| `*` | 跨目录的机械操作，仅 `chore` 使用 |
-
-一次提交跨越两个 scope（如同时改 `Problems` 和 `README`）时，按下面的「拆分规则」拆开，
-不要写成 `Problems+README`。
-
----
-
-## subject 写法
-
-固定为「动词 + 对象」，动词只用这四个：
-
-| 动词 | 用法 | 对象形式 |
-| --- | --- | --- |
-| `add` | 新增文件或新增条目 | 文件名带扩展名，如 `0001-two-sum.cpp`；或 `Rust link for 0001-two-sum` |
-| `update` | 修改已有内容 | `README.md`、`solution template`、`complexity analysis for ...` |
-| `fix` | 修正错误 | 错误现象，如 `overflow handling in 0007-reverse-integer.cpp` |
-| `remove` | 删除 | 被删对象，如 `unused include in 0020-valid-parentheses.cpp` |
+| 平台名 | 对应目录 | 题号写法 | 示例 |
+| --- | --- | --- | --- |
+| `LeetCode` | `Problems/` | 4 位补零，与目录名一致 | `LeetCode(0001)`、`LeetCode(1502)` |
+| `JianZhiOffer` | `JianZhiOffer/` | 与文件名中的题号一致，含罗马数字后缀 | `JianZhiOffer(10-2)`、`JianZhiOffer(58-I)`、`JianZhiOffer(05)` |
+| `InterviewQuestions` | `InterviewQuestions/` | 面试金典的点分题号 | `InterviewQuestions(03.05)`、`InterviewQuestions(17.14)` |
+| `HuaweiJikao` | `HuaweiJikao/` | `HJ` + 编号；无编号时用目录 slug | `HuaweiJikao(HJ16)`、`HuaweiJikao(taxi-order-scheduling-system)` |
+| `Others` | `Others/` | 无官方题号，**省略括号** | `Others: add get_preorder_by_middle_back_order.cpp` |
 
 规则：
 
-- 英文，动词开头，首字母小写（`add` 不写 `Add`）
-- 一行写完，一般不超过 72 字符；`add <完整文件名>` 这类写法以文件名可检索优先，
-  允许放宽到 80 字符（本仓库最长的一例是 75 字符，含
-  `1502-can-make-arithmetic-progression-from-sequence.cpp`）
-- 不写「修改」「更新了」这类模糊词，也不写成「add 代码」
-- 文件名保留仓库中的真实拼写，包括中文文件名：
-  `feat(JianZhiOffer): add 67-把字符串转换成整数.cpp`
+- **`LeetCode` 的题号必须补零到 4 位**。`LeetCode(1)` 与 `LeetCode(0001)` 混用会让
+  `git log --grep 'LeetCode(0001)'` 漏掉一半结果，也会让按题号排序失效。
+- 题号只写数字，不写题目 slug：`LeetCode(0001)`，不是 `LeetCode(two-sum)`。
+  slug 和文件名放在 subject 里。
+- 无官方题号时不硬造编号，省略括号即可（`Others: ...`）。
+
+---
+
+## 动词
+
+题解类与非题解类共用同一套动词，英文祈使句、首字母小写、结尾不加句号：
+
+| 动词 | 用法 | 示例 |
+| --- | --- | --- |
+| `add` | 新增文件、新增一门语言、新增条目 | `LeetCode(0001): add solutions in C++, Go and Python` |
+| `update` | 修改已有内容，未改变行为 | `LeetCode(0002): update problem statement to the new wording` |
+| `fix` | 修正错误（代码错、注释与行为不符、链接失效、复杂度标错） | `LeetCode(0007): fix overflow in the reversal loop` |
+| `remove` | 删除 | `LeetCode(0160): remove redundant idea comment` |
+| `rewrite` | 换写法，行为等价 | `LeetCode(0001): rewrite Java solution with hash map` |
+| `rename` | 纯改名 / 纯移动 | `refactor(Problems): rename Leetcode directory to Problems` |
+| `optimize` | 改动目的就是降复杂度 | `LeetCode(0015): optimize from O(n^3) to O(n^2)` |
+
+前四个是常用词。后三个只在需要区分「改法」时使用——`update` 太笼统时，
+`rewrite` 说明换写法、`optimize` 说明为性能而改，二者比 `refactor` 更直白。
+
+subject 里允许出现中文（剑指 Offer 的题名本身就是中文），但动词保持英文：
+
+```text
+JianZhiOffer(67): add 把字符串转换成整数
+JianZhiOffer(21): add 调整数组顺序使奇数位于偶数前面
+```
+
+---
+
+## 非题解类提交的 type 与 scope
+
+| type | 判定标准 | 示例 |
+| --- | --- | --- |
+| `docs` | 只动 README、模板、规范、pdf 索引，代码行为不变 | `docs(README): rebuild problem tables with status columns` |
+| `chore` | 构建配置、`.vscode`、`.gitignore`、依赖、批量机械替换 | `chore(Config): add VS Code build and debug configuration` |
+| `refactor` | 目录重构、批量改名等结构整理，不带解题内容 | `refactor(Problems): rename Leetcode directory to Problems` |
+| `style` | 只动空行、缩进、对齐、行宽 | `style(Problems): reformat 0020-valid-parentheses.cpp` |
+| `test` | 只增删 `main` 里的自测用例或断言 | `test(LeetCode-0001): add duplicate-value case` 见下注 |
+| `revert` | 回滚某次提交 | `revert: LeetCode(0001): add solutions in C++, Go and Python` |
+
+scope 词表（只在这些值里选，拼写照抄）：
+
+| scope | 对应路径 |
+| --- | --- |
+| `README` | 根目录 `README.md` |
+| `Guidelines` | `Problems/TEMPLATE.md`、`.cursor/skills/` |
+| `Config` | `.vscode/`、`.gitignore` |
+| `Docs` | `Docs/` |
+| `Examples` | `Examples/` |
+| `Algorithms` | `Algorithms/` |
+| `Problems` | `Problems/` 目录本身（结构重构、批量替换） |
+| `*` | 跨多个目录的机械操作，仅 `chore` 与 `refactor` 使用 |
+
+**注**：只改某道题的自测用例，仍属题解类提交，写成
+`LeetCode(0001): add duplicate-value test case`，不要为了用 `test` 而退回
+`test(Problems)` —— 题号比 type 更有检索价值。
+
+### 一条提交同时动题解和 README 怎么办
+
+拆成两条：`LeetCode(0001): ...` 之后再跟一条 `docs(README): ...`。
+README 的链接更新量大、变更频繁，混进题解提交会让那道题的 diff 被目录表淹没。
+
+---
+
+## 多题 / 多平台提交
+
+一次提交覆盖多个题号时，把题号列进括号；跨平台时用 `*`：
+
+```text
+LeetCode(0002,0020,0225): add three problems from stage 1
+```
+
+```text
+*: add 0841-keys-and-rooms and HJ16-购物单
+```
+
+括号内的题号按升序排列，用逗号分隔，不加空格。跨平台的提交必须在正文里列出
+每个平台对应的文件，否则事后无法从 subject 还原范围。
 
 ---
 
@@ -119,10 +159,10 @@ scope 必须是下列值之一，拼写照抄，不要自创、不要改成小�
 只在需要解释「为什么」或列出清单时使用，与 subject 之间空一行。
 
 ```text
-feat(Problems): add Go, Python and Rust solutions for 0001-two-sum
+LeetCode(0001): add solutions in C++, Go, Python and Rust
 
-三种语言均按 leetcode.cn 官方题解的哈希表写法实现，
-沿用 0001-two-sum.cpp 的五段式注释结构。
+四种语言均按 leetcode.cn 官方题解的哈希表写法实现，统一为五段式注释结构；
+C++ 版按模板重写，修正 insert/emplace 与 operator[] 语义混淆的说明。
 ```
 
 正文用中文撰写（与本仓库注释语言一致），每行不超过 72 字符。
@@ -161,22 +201,21 @@ commit message 中禁止出现任何形式的协助者、联合开发者或生�
 
 一个 commit 对应一个「可以用一句话说清、且回滚时希望整体回滚」的单元。
 
-本仓库常见的拆分粒度：
-
 | 场景 | 拆分方式 |
 | --- | --- |
-| 新增一道题的多语言解 | 一个 `feat(Problems)`，包含该题所有语言文件；README 链接另起 `docs(README)` |
-| 用模板重写一道旧题 | 一个 `fix` 或 `refactor`，只含该题目录下的文件 |
-| 引入模板或规范 | 一个 `docs`，只含模板/规范文件本身，不带任何题解改动 |
-| 批量替换（域名、路径、命名） | 一个 `chore(*): ...`，只含机械替换，不带语义改动 |
-| 同一道题出现在 README 多处 | 合并到一个 `docs(README)`，不要按阶段拆成多次提交 |
+| 新增一道题的多语言解 | 一个 `LeetCode(<题号>)`，包含该题所有语言文件 |
+| 同一道题补一门新语言 | 同上，另起一条 `LeetCode(<题号>): add Rust solution` |
+| 用模板重写一道旧题 | 一个 `LeetCode(<题号>): rewrite ...`，只含该题目录下的文件 |
+| 引入模板或规范 | 一个 `docs(Guidelines)`，不带任何题解改动 |
+| 批量替换（域名、路径、命名） | 一个 `chore(*): ...` 或 `refactor(...)`，只含机械替换 |
+| README 目录更新 | 一个 `docs(README)`，无论涉及几道题 |
 
 ---
 
 ## 工作流程
 
 1. `git status` + `git diff` 看清变更范围，按「拆分规则」列出分组
-2. 每组确定 type / scope / subject，组装 message
+2. 每组确定平台 / 题号 / 动词（或 type / scope / subject）
 3. 逐组 `git add <精确路径>`（不用 `git add -A`，避免误带文件）
 4. 提交前核对下方的自检清单
 5. `git commit`，然后在输出中展示 `git log --oneline -n` 的结果
@@ -185,8 +224,11 @@ commit message 中禁止出现任何形式的协助者、联合开发者或生�
 
 ## 自检清单
 
-- [ ] type 在词表内，scope 拼写与词表一致
-- [ ] subject 为英文、动词开头、首字母小写、无句号、≤ 80 字符
+- [ ] 题解类提交以 `LeetCode(` / `JianZhiOffer(` / `InterviewQuestions(` / `HuaweiJikao(` 开头
+- [ ] `LeetCode` 题号为 4 位补零，与目录名一致
+- [ ] 多题号写成 `(0002,0020,0225)`，升序、逗号分隔、无空格
+- [ ] 非题解类提交的 type 与 scope 在词表内
+- [ ] subject 动词开头、小写、无句号、≤ 80 字符
 - [ ] 一个 commit 只做一件事，回滚时不需要挑选文件
 - [ ] 已确认 message 中没有 `Co-authored-by` 等任何协助者署名
 - [ ] 代码类提交已编译并跑通自测
@@ -199,17 +241,27 @@ commit message 中禁止出现任何形式的协助者、联合开发者或生�
 
 ---
 
+## 历史提交的处理
+
+历史提交已统一按本规范重写（76 条）。早期提交的原貌保留在
+`backup/pre-msg-normalize` 分支中，可随时对比：
+
+```bash
+git log --oneline backup/pre-msg-normalize    # 重写前的原始信息
+git log --oneline master                      # 规范化之后
+```
+
+---
+
 ## 示例
 
 本次模板化改造的拆分结果：
 
 ```text
 docs(Guidelines): add solution template and commit message convention
-chore(*): unify leetcode.cn domain across 44 files
-feat(Problems): add Go, Python and Rust solutions for 0001-two-sum
-docs(README): add Rust link for 0001-two-sum
+chore(*): unify leetcode.cn domain across 43 files
+LeetCode(0001): add solutions in C++, Go, Python and Rust
 ```
 
-前四条按「规范 / 批量替换 / 题解」分开；README 的链接更新若与题解同批产生，
-可并入题解那条 `feat` 的正文说明，但文件仍需在同一个 commit 内。
-
+三条按「规范 / 批量替换 / 题解」分开。README 里新增的 Rust 链接若与题解同批产生，
+另起一条 `docs(README): add Rust link for 0001-two-sum`，不要并进题解提交。
