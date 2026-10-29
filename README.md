@@ -439,7 +439,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ☐ | [64. 最小路径和](https://leetcode.cn/problems/minimum-path-sum/) |  |  |  |  |  |
 | ☐ | [剑指 Offer 47. 礼物的最大价值](https://leetcode.cn/problems/li-wu-de-zui-da-jie-zhi-lcof/) |  |  |  |  |  |
 | ☐ | [1143. 最长公共子序列](https://leetcode.cn/problems/longest-common-subsequence/) |  |  |  |  |  |
-| ☐ | [72. 编辑距离 ](https://leetcode.cn/problems/edit-distance/) |  |  |  |  |  |
+| ✅ | [72. 编辑距离 ](https://leetcode.cn/problems/edit-distance/) | [cpp](Problems/0001-0100/0072-edit-distance/0072-edit-distance.cpp) | [go](Problems/0001-0100/0072-edit-distance/0072-edit-distance.go) | [py](Problems/0001-0100/0072-edit-distance/0072-edit-distance.py) | [rs](Problems/0001-0100/0072-edit-distance/0072-edit-distance.rs) | 官方两解：记忆化搜索 / 二维 DP + 一维滚动；滚动版空间从 O(mn) 降到 O(min(m,n))，为最优；三种操作的转移与 i=0/j=0 边界要写清 |
 | ☐ | [10. 正则表达式匹配](https://leetcode.cn/problems/regular-expression-matching/) |  |  |  |  |  |
 | ☐ | [剑指 Offer 14- I. 剪绳子](https://leetcode.cn/problems/jian-sheng-zi-lcof/) |  |  |  |  |  |
 | ☐ | [剑指 Offer 46. 把数字翻译成字符串](https://leetcode.cn/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof/) |  |  |  |  |  |
