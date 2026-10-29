@@ -1,0 +1,193 @@
+/*
+============================================================================
+121. 买卖股票的最佳时机（简单）
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
+分类：数组 · 一次遍历维护前缀最小值
+
+给定一个数组 prices ，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。
+
+你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。
+
+返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。
+
+示例 1：
+输入：[7,1,5,3,6,4]
+输出：5
+解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
+     注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
+
+示例 2：
+输入：prices = [7,6,4,3,1]
+输出：0
+解释：在这种情况下, 没有交易完成, 所以最大利润为 0。
+
+提示：
+- 1 <= prices.length <= 10^5
+- 0 <= prices[i] <= 10^4
+*/
+#include <algorithm>
+#include <cassert>
+#include <iostream>
+#include <random>
+#include <vector>
+using namespace std;
+
+/*
+解法一：暴力枚举买入日与卖出日【非最优】
+
+为什么慢：把所有 (买入日, 卖出日) 数对都试一遍，n = 10^5 时数对约
+5×10^9 个，逐个相减必然超时。
+
+换个角度：数对里其实只有「最低的那个买入价」有用，别的买入日算出的
+差值都被它压住。把这个观察留给解法二，暴力只需保证枚举不重不漏。
+
+关键点：
+  · 买入日 i 必须严格早于卖出日 j，内层从 j = i+1 开始，否则同一
+    对数会被正反各算一次
+  · 答案从 0 起步：任意一段都是负收益时不交易，题目要求返回 0
+  · 差值可以为负，不能拿第一对的结果去初始化答案
+
+手推一遍
+以示例 1（prices = [7,1,5,3,6,4]）为例，只看有正收益的数对：
+  第 2 天买 1、第 3 天卖 5 → 4
+  第 2 天买 1、第 5 天卖 6 → 5
+  第 4 天买 3、第 5 天卖 6 → 3
+  其余数对为负，最大值 5
+
+复杂度分析：
+  时间 O(n^2)：每个买入日都要向后扫到末尾
+  空间 O(1)：只用一个答案变量
+
+解法二：一次遍历，维护历史最低价【最优解】
+
+为什么慢：暴力在每个卖出日都要回头把所有买入价再比一遍，同一个
+「前缀最低价」被重复计算了 n 次，这才是 O(n^2) 的来源。
+
+换个角度：卖出日从左向右推进时，最低买入价可以顺路维护 —— 前缀最小值
+只需一个变量带在身上，每个数对都被隐式比较过一次，两重循环塌缩成
+一重。
+
+关键点：
+  · 先用「截至昨天」的最低价算今天的收益，再更新最低价：顺序反过来
+    等于允许当天买、当天卖，违背「不同的日子」
+  · 答案初值取 0：全程递减时一次也不交易，题目要求返回 0
+  · 最低价只向前累积、不回看，才能把两重循环压成一次遍历
+
+手推一遍
+以示例 1（prices = [7,1,5,3,6,4]）为例：
+  第 1 天：最低价 7，收益 0
+  第 2 天：收益 1-7 < 0 保持 0，最低价降到 1
+  第 3 天：收益 5-1 = 4，最低价仍为 1
+  第 4 天：收益 3-1 = 2，不更新
+  第 5 天：收益 6-1 = 5 → 答案 5
+  第 6 天：收益 4-1 = 3，不更新
+
+复杂度分析：
+  时间 O(n)：只扫一遍数组
+  空间 O(1)：只存历史最低价与当前答案
+*/
+class Solution1
+{
+public:
+    int maxProfit(vector<int> &prices)
+    {
+        int best = 0;
+        int n = static_cast<int>(prices.size());
+        // 买入日 i 必须严格早于卖出日 j，所以 j 从 i+1 开始
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = i + 1; j < n; ++j)
+            {
+                best = max(best, prices[j] - prices[i]);
+            }
+        }
+        return best;
+    }
+};
+
+class Solution2
+{
+public:
+    int maxProfit(vector<int> &prices)
+    {
+        // 截止今天之前的最低价，不含今天，保证买入日与卖出日不同
+        int minPrice = prices[0];
+        int best = 0;
+        for (size_t i = 1; i < prices.size(); ++i)
+        {
+            // 先用旧的最低价结算，再更新：顺序反过来等于允许当天买卖
+            best = max(best, prices[i] - minPrice);
+            minPrice = min(minPrice, prices[i]);
+        }
+        return best;
+    }
+};
+
+namespace
+{
+void check(vector<int> prices, int want)
+{
+    Solution1 s1;
+    Solution2 s2;
+    assert(s1.maxProfit(prices) == want);
+    assert(s2.maxProfit(prices) == want);
+}
+
+// 两解对拍：暴力是定义式，一次遍历若有错会在随机小数组上暴露
+void randomCheck()
+{
+    mt19937 rng(20240101);
+    uniform_int_distribution<int> len(1, 24);
+    uniform_int_distribution<int> val(0, 30);
+    for (int t = 0; t < 3000; ++t)
+    {
+        vector<int> prices(static_cast<size_t>(len(rng)));
+        for (int &x : prices) x = val(rng);
+
+        Solution1 s1;
+        Solution2 s2;
+        assert(s1.maxProfit(prices) == s2.maxProfit(prices));
+    }
+}
+} // namespace
+
+int main()
+{
+    // 示例 1：最低点在中间，最大涨幅跨过多天
+    check({7, 1, 5, 3, 6, 4}, 5);
+
+    // 示例 2：全程递减，不能交易
+    check({7, 6, 4, 3, 1}, 0);
+
+    // 边界：只有一天，没有第二个日子可卖
+    check({5}, 0);
+
+    // 边界：两天且上涨，答案是当天差价
+    check({1, 9}, 8);
+
+    // 边界：两天且持平，利润为 0
+    check({3, 3}, 0);
+
+    // 反直觉：最低价出现在最后一天，之前的高点不能当作买入价
+    check({9, 8, 7, 1}, 0);
+
+    // 边界：价格全为 0
+    check({0, 0, 0}, 0);
+
+    // 边界：规模上限，只跑最优解（暴力在这个规模上要 5×10^9 次比较）
+    {
+        vector<int> prices(100000);
+        for (size_t i = 0; i < prices.size(); ++i)
+        {
+            prices[i] = static_cast<int>(i % 10001);
+        }
+        Solution2 s2;
+        assert(s2.maxProfit(prices) == 10000);
+    }
+
+    randomCheck();
+
+    cout << "all tests passed" << endl;
+    return 0;
+}
