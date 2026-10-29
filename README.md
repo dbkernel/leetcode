@@ -131,7 +131,7 @@
 | ✅ | [84. 柱状图中最大的矩形（困难）单调栈](https://leetcode.cn/problems/largest-rectangle-in-histogram/) | [cpp](Problems/0001-0100/0084-largest-rectangle-in-histogram/0084-largest-rectangle-in-histogram.cpp) | [go](Problems/0001-0100/0084-largest-rectangle-in-histogram/0084-largest-rectangle-in-histogram.go) | [py](Problems/0001-0100/0084-largest-rectangle-in-histogram/0084-largest-rectangle-in-histogram.py) | [rs](Problems/0001-0100/0084-largest-rectangle-in-histogram/0084-largest-rectangle-in-histogram.rs) | 官方四解：枚举宽 / 枚举高（向两侧扩展到第一根更矮的柱）/ 两遍单调栈 / 一遍单调栈；后两解同为 O(n) 时间 O(n) 空间并列最优；首尾补 0 哨兵可省掉出栈后的收尾 |
 | ✅ | [面试题 03.06. 动物收容所（简单） 队列](https://leetcode.cn/problems/animal-shelter-lcci/) | [cpp](InterviewQuestions/03.06-animal-shelter-lcci.cpp) | [go](InterviewQuestions/03.06-animal-shelter-lcci.go) | [py](InterviewQuestions/03.06-animal-shelter-lcci.py) | [rs](InterviewQuestions/03.06-animal-shelter-lcci.rs) | 平台无题解文章，按设计题标准做法写一解：猫狗各一条队列 + 全局自增入所序号；dequeueAny 比较两条队首的序号取更早者，均摊 O(1)，严格 FIFO |
 | ☐ | [剑指 Offer 59 - II. 队列的最大值（中等） 单调队列](https://leetcode.cn/problems/dui-lie-de-zui-da-zhi-lcof/) |  |  |  |  |  |
-| ☐ | [剑指 Offer 59 - I. 滑动窗口的最大值 （困难）单调队列](https://leetcode.cn/problems/hua-dong-chuang-kou-de-zui-da-zhi-lcof/) |  |  |  |  |  |
+| ✅ | [LCR 183 / 剑指 Offer 59 - I. 望远镜中最高的海拔（困难） ](https://leetcode.cn/problems/hua-dong-chuang-kou-de-zui-da-zhi-lcof/) | [cpp](JianZhiOffer/59-I-滑动窗口的最大值.cpp) | [go](JianZhiOffer/59-I-滑动窗口的最大值.go) | [py](JianZhiOffer/59-I-滑动窗口的最大值.py) | [rs](JianZhiOffer/59-I-滑动窗口的最大值.rs) | 现收录为 LCR 183「望远镜中最高的海拔」，签名改为 maxAltitude(heights, limit)；官方三解：优先队列 O(n log n) / 单调队列 / 分块前后缀，后两者同为 O(n) 时间，单调队列只需 O(limit) 空间故为最优 |
 
 # 第三阶段（1 周）
 
