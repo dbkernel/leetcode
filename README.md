@@ -337,7 +337,7 @@
 | ☐ | [216. 组合总和 III（中等） 选出 k 个数相加为给定和，没有重复数据，只能使用一次](https://leetcode.cn/problems/combination-sum-iii/) |  |  |  |  |  |
 | ☐ | [131. 分割回文串（中等）](https://leetcode.cn/problems/palindrome-partitioning/) |  |  |  |  |  |
 | ☐ | [93. 复原 IP 地址（中等）](https://leetcode.cn/problems/restore-ip-addresses/) |  |  |  |  |  |
-| ☐ | [22. 括号生成（中等） ](https://leetcode.cn/problems/generate-parentheses/) |  |  |  |  |  |
+| ✅ | [22. 括号生成（中等） ](https://leetcode.cn/problems/generate-parentheses/) | [cpp](Problems/0001-0100/0022-generate-parentheses/0022-generate-parentheses.cpp) | [go](Problems/0001-0100/0022-generate-parentheses/0022-generate-parentheses.go) | [py](Problems/0001-0100/0022-generate-parentheses/0022-generate-parentheses.py) | [rs](Problems/0001-0100/0022-generate-parentheses/0022-generate-parentheses.rs) | 官方三解：枚举全部 2^(2n) 串再校验（非最优）/ 回溯只放当前合法的括号（最优）/ 按长度用 Catalan 递推拼接（与回溯并列最优）；最优解 O(4^n/sqrt(n)) 时间，回溯仅 O(n) 栈 |
 
 ## DFS
 
