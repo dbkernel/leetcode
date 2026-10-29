@@ -475,7 +475,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ☐ | [53. 最大子序和](https://leetcode.cn/problems/maximum-subarray/) |  |  |  |  |  |
+| ✅ | [53. 最大子序和](https://leetcode.cn/problems/maximum-subarray/) | [cpp](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.cpp) | [go](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.go) | [py](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.py) | [rs](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.rs) | 官方三解：Kadane DP / 分治维护区间四值 / 前缀和的最值差；DP 与前缀和同为 O(n) 时间 O(1) 空间，并列最优；四值合并的分治时间也是 O(n)，只因递归栈 O(log n) 才落选（按扫描合并才是 O(n log n)）；全负数时答案初值不能取 0 |
 | ☐ | [238. 除自身以外数组的乘积](https://leetcode.cn/problems/product-of-array-except-self/) |  |  |  |  |  |
 | ☐ | [面试题 05.03. 翻转数位](https://leetcode.cn/problems/reverse-bits-lcci/) |  |  |  |  |  |
 | ☐ | [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/) |  |  |  |  |  |
