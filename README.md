@@ -143,7 +143,7 @@
 | ✅ | [LCR 127 / 剑指 Offer 10- II. 跳跃训练（简单）](https://leetcode.cn/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/) | [cpp](JianZhiOffer/10-2-青蛙跳台阶问题.cpp) | [go](JianZhiOffer/10-2-青蛙跳台阶问题.go) | [py](JianZhiOffer/10-2-青蛙跳台阶问题.py) | [rs](JianZhiOffer/10-2-青蛙跳台阶问题.rs) | 平台无官方题解（同主站 70）；标准做法为动态规划 + 滚动数组 O(n)、O(1)，注意 f(0)=1 的边界 |
 | ✅ | [面试题 08.01. 三步问题 （简单）](https://leetcode.cn/problems/three-steps-problem-lcci/) | [cpp](InterviewQuestions/08.01-three-steps-problem-lcci.cpp) | [go](InterviewQuestions/08.01-three-steps-problem-lcci.go) | [py](InterviewQuestions/08.01-three-steps-problem-lcci.py) | [rs](InterviewQuestions/08.01-three-steps-problem-lcci.rs) | 中文站无题解文章，按官方提示的递推写：整表 DP 非最优（O(n) 空间）/ 滚动数组最优（O(1) 空间），时间同为 O(n)；三项相加用 64 位防溢出，n=0 按递推约定为 1 |
 | ✅ | [LCR 123 / 剑指 Offer 06. 图书整理 I（简单）](https://leetcode.cn/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/) | [cpp](JianZhiOffer/06-从尾到头打印链表.cpp) | [go](JianZhiOffer/06-从尾到头打印链表.go) | [py](JianZhiOffer/06-从尾到头打印链表.py) | [rs](JianZhiOffer/06-从尾到头打印链表.rs) | 现收录为 LCR 123「图书整理 I」，签名改为 reverseBookList；书中两解：递归到表尾再回溯写入 / 辅助栈；同为 O(n) 时间 O(n) 空间，并列最优 |
-| ☐ | [剑指 Offer 24. 反转链表 （简单）](https://leetcode.cn/problems/fan-zhuan-lian-biao-lcof/) |  |  |  |  |  |
+| ✅ | [LCR 141 / 剑指 Offer 24. 训练计划 III（简单）](https://leetcode.cn/problems/fan-zhuan-lian-biao-lcof/) | [cpp](JianZhiOffer/24-反转链表.cpp) | [go](JianZhiOffer/24-反转链表.go) | [py](JianZhiOffer/24-反转链表.py) | [rs](JianZhiOffer/24-反转链表.rs) | 现收录为 LCR 141「训练计划 III」，签名改为 trainningPlan（站点保留 trainning 拼写）；官方两解：三指针迭代 O(1) 空间最优 / 递归 O(n) 栈空间非最优 |
 | ☐ | [剑指 Offer 16. 数值的整数次方 （中等）](https://leetcode.cn/problems/shu-zhi-de-zheng-shu-ci-fang-lcof/) |  |  |  |  |  |
 | ☐ | [面试题 08.05. 递归乘法 （中等）](https://leetcode.cn/problems/recursive-mulitply-lcci/) |  |  |  |  |  |
 
