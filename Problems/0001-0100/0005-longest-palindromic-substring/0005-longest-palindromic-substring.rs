@@ -1,0 +1,348 @@
+/*
+============================================================================
+LeetCode 5. 最长回文子串（中等）
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/longest-palindromic-substring/
+分类：动态规划 · 回文串（区间 DP / 中心扩展 / Manacher）
+============================================================================
+
+给你一个字符串 s，找到 s 中最长的 回文 子串。
+
+示例 1：
+输入：s = "babad"
+输出："bab"
+解释："aba" 同样是符合题意的答案。
+
+示例 2：
+输入：s = "cbbd"
+输出："bb"
+
+提示：
+1 <= s.length <= 1000
+s 仅由数字和英文字母组成
+*/
+
+// 平台上由判题系统预置 Solution，本地 rustc 单文件编译时要显式声明。
+// 三种官方解法按「一解一个结构体」拆成 Solution1 / Solution2 / Solution3，
+// 提交时把选用的那个改名为 Solution 即可。
+struct Solution1;
+struct Solution2;
+struct Solution3;
+
+/*
+解法一：区间 DP（按长度从小到大填表）【非最优】
+
+官方三解中的第一解。
+
+为什么慢：判断 s[i..j] 是不是回文，最直白的办法是双指针往中间收。
+单次判定 O(n)，n^2 / 2 个子串全判一遍就是 O(n^3)，1000 长度会超时。
+
+换个角度：回文去掉首尾仍然是回文。于是
+
+  s[i..j] 是回文  ⟺  s[i] == s[j] 且 s[i+1..j-1] 是回文
+
+子问题比原问题短 2，只要把小长度的答案存下来，大长度就能 O(1) 查表。
+
+关键点：
+  · 长度 1 与长度 2 先写成初值 —— 它们没有「内层区间」可查，
+    硬套递推式会读到 dp[i+1][j-1] 这种 i+1 > j-1 的非法格子
+  · 外层必须按长度枚举 —— dp[i][j] 依赖 dp[i+1][j-1]，
+    若按 i 正序、j 正序枚举，内层那格还没算出来，读到的是假
+
+以示例 1（s = "babad"）为例：
+  长度 1：五个单字符全为真
+  长度 2："ba" "ab" "ba" "ad" 两端都不等，全为假
+  长度 3：i = 0 的 "bab" 两端相等且内层 dp[1][1] 为真 → 长度 3、起点 0
+          i = 1 的 "aba" 也为真，长度没变长，不覆盖答案
+          i = 2 的 "bad" 两端 'b' 与 'd' 不等，为假
+  长度 4、5：仍无回文，答案固定在 "bab"
+
+Rust 的两处写法差异：
+  · 先用 as_bytes() 拿字节切片，比对字节而不是字符 —— 题面保证输入只有
+    数字和英文字母，都是单字节，字节下标与字符下标一一对应
+  · 截取结果用 &s[a..b]，同样依赖这点；换成分隔符之外的输入要改用 char 索引
+
+复杂度分析：
+  时间 O(n^2)：要填 n^2 / 2 个格子，每格 O(1)
+  空间 O(n^2)：整张二维表都要留着，1000 长度约 1MB 的 bool
+*/
+impl Solution1 {
+    // 返回任意一个最长回文子串；同长度的多个答案都算对
+    pub fn longest_palindrome(s: String) -> String {
+        let b = s.as_bytes();
+        let n = b.len();
+        if n < 2 {
+            return s;
+        }
+
+        // dp[i][j] 表示 s[i..j] 是否回文，只填 i <= j 的上三角
+        let mut dp = vec![vec![false; n]; n];
+
+        let mut best_start = 0;
+        let mut best_len = 1;
+
+        // 先写长度 1 与长度 2 的初值，它们不依赖任何内层区间
+        for i in 0..n {
+            dp[i][i] = true;
+        }
+        for i in 0..n - 1 {
+            if b[i] == b[i + 1] {
+                dp[i][i + 1] = true;
+                if best_len < 2 {
+                    best_len = 2;
+                    best_start = i;
+                }
+            }
+        }
+
+        // 长度从 3 起，保证 j - 1 >= i + 1 的内层区间已经算过
+        for len in 3..=n {
+            for i in 0..=n - len {
+                let j = i + len - 1;
+
+                // 两端相等只是必要条件，还得内层也是回文（按长度序已在表里）
+                if b[i] == b[j] && dp[i + 1][j - 1] {
+                    dp[i][j] = true;
+
+                    // 长度严格变大才覆盖：同长度保留先出现的那个，结果更稳定
+                    if len > best_len {
+                        best_len = len;
+                        best_start = i;
+                    }
+                }
+            }
+        }
+
+        s[best_start..best_start + best_len].to_string()
+    }
+}
+
+/*
+解法二：中心扩展（2n-1 个中心各向外走一圈）【非最优】
+
+官方三解中的第二解。它不需要那张 O(n^2) 的表，是空间上的赢家。
+
+为什么慢：解法一存了 n^2 个「是否回文」的答案，但真正被用到的只有
+「内层」那一条链。回文串唯一确定它自己的中心，反过来从不回文也推不出什么，
+这张表有一大半空间是白占的。
+
+换个角度：与其从两端往中间缩，不如从一个中心往两边长。每个中心最多走
+O(n) 步，命中即停。长度为奇数时中心是一个字符（n 个），长度为偶数时中心
+是相邻两字符之间的空隙（n - 1 个），一共 2n - 1 个。
+
+关键点：
+  · 奇数与偶数要合成同一轮 —— 用 c 遍历 0..2n-2，
+    取 l = c / 2、r = l + c % 2：c 为偶数时 l == r（奇中心），
+    c 为奇数时 r == l + 1（偶中心），不会漏掉任何一种
+  · 循环停下的位置决定长度 —— 退出时 l、r 指向的就是第一对不相等的字符
+    （或越界），所以真实长度是 r - l - 1、起点是 l + 1，
+    不要写成 r - l
+  · l 会减到 -1，所以 l 用有符号的 i64（或 isize），
+    用 usize 减到 0 以下会直接 panic
+
+以示例 2（s = "cbbd"）为例，只看 c = 3（偶中心，l = 1、r = 2）：
+  b[1] == b[2] == b'b' → 收缩到 l = 0、r = 3
+  b[0] 是 'c'、b[3] 是 'd'，不等，停
+  长度 3 - 0 - 1 = 2，起点 0 + 1 = 1，得到 "bb"
+
+复杂度分析：
+  时间 O(n^2)：最坏是 "aaaa...a"，每个中心都要走到边界，合计 n^2 / 4 步
+  空间 O(1)：只有左右指针和答案的两个下标
+  注：空间比解法一省，但时间仍是 O(n^2)，所以不是本题渐进最优
+*/
+impl Solution2 {
+    // 返回任意一个最长回文子串；同长度的多个答案都算对
+    pub fn longest_palindrome(s: String) -> String {
+        let b = s.as_bytes();
+        let n = b.len();
+        if n < 2 {
+            return s;
+        }
+
+        let mut best_start = 0;
+        let mut best_len = 1;
+
+        // c 同时编码中心与奇偶：2n - 1 个中心一轮扫完
+        for c in 0..(2 * n - 1) {
+            let mut l = (c / 2) as i64;
+            let mut r = l + (c % 2) as i64;
+
+            // 越界即停，所以循环条件必须先判 l >= 0 再判 r < n
+            while l >= 0 && (r as usize) < n && b[l as usize] == b[r as usize] {
+                l -= 1;
+                r += 1;
+            }
+
+            // 停在第一对不相等的字符上，l 多退了一格、r 多进了一格
+            let len = (r - l - 1) as usize;
+            if len > best_len {
+                best_len = len;
+                best_start = (l + 1) as usize;
+            }
+        }
+
+        s[best_start..best_start + best_len].to_string()
+    }
+}
+
+/*
+解法三：Manacher（马拉车，把中心扩展的重复计算摊掉）【最优解】
+
+官方三解中的第三解，也是本题唯一的线性解法。
+
+为什么慢：解法二每个中心都从零开始向外扩，而在 "aaaa...a" 这种串上，
+第 i 个中心走过的路，第 i+1 个中心基本要重走一遍，白白多出 O(n) 倍。
+
+换个角度：回文串左右对称。若回文的中心是 c、右边界是 right，
+那么区间里任意位置 i 关于 c 的镜像 2c - i 处的半径，可以直接搬过来用——
+能搬多少取决于镜像半径有没有顶到 right，这正是 min(p[mirror], right - i)。
+
+关键点：先插分隔符，把奇偶两种中心统一成一种。
+  · 在每两个字符之间插入 '#'，得到长度 2n + 1 的 t，那么 t 上任意位置的
+    回文在 s 里都对应一个回文，奇数长度和偶数长度被抹平成同一套代码
+  · p[i] 只记「纯半径」，即 t[i - p[i] .. i + p[i]] 是回文，
+    于是 s 里的长度恰好等于 p[i]，起点是 (i - p[i]) / 2
+  · 首尾要放两个哨兵（'^' 与 '$'），让 t[i - p[i] - 1] 与
+    t[i + p[i] + 1] 永远不越界，循环里就不用写边界判断
+
+Rust 的 usize 减法在 0 处会下溢 panic，所以哨兵不只是省一次判断，
+更是让 while 的下标算式在整个循环里都保持非负的前提。
+
+以示例 1（s = "babad"）为例，t = ^ # b # a # b # a # d # $：
+  i = 4 是 'a'：向右依次扩过 '#' 'b' '#'，第 4 圈撞上哨兵 '^' 停下，
+    得 p[4] = 3，即 "b#a#b"；s 里长度 3、起点 (4 - 3) / 2 = 0，得到 "bab"
+  i = 6 是 'b'：落在 right = 7 之内，镜像 2 * 4 - 6 = 2 只肯借出 1，
+    剩下两圈仍得自己扩，最终同样是 p = 3、得到同长的 "aba"，不覆盖答案
+  i = 8 是 'a'：镜像 2 * 6 - 8 = 4 的半径是 3，但 right - i = 1，
+    只借到 1；再往外 t[6] = 'b' 与 t[10] = 'd' 不等，正好停在 O(1) 步
+
+复杂度分析：
+  时间 O(n)：right 全程只向右移动，内层 while 每成功一次 right 就推进一格
+  空间 O(n)：p 数组与 t 各 O(n)
+*/
+impl Solution3 {
+    // 返回任意一个最长回文子串；同长度的多个答案都算对
+    pub fn longest_palindrome(s: String) -> String {
+        let b = s.as_bytes();
+        let n = b.len();
+        if n < 2 {
+            return s;
+        }
+
+        // 首尾哨兵用 ^ 与 $：输入只有数字和字母，这两个字符必然不参与匹配
+        let mut t: Vec<u8> = Vec::with_capacity(2 * n + 3);
+        t.push(b'^');
+        t.push(b'#');
+        for &c in b {
+            t.push(c);
+            t.push(b'#');
+        }
+        t.push(b'$');
+
+        let m = t.len();
+        let mut p = vec![0usize; m];
+
+        // center 是当前最靠右的回文的中心，right 是它的右边界（不含）
+        let mut center = 0;
+        let mut right = 0;
+        let mut best_len = 1;
+        let mut best_start = 0;
+
+        for i in 1..m - 1 {
+            // 镜像半径顶到 right 时只能借到 right - i，剩下的靠下面自己扩
+            if i < right {
+                p[i] = p[2 * center - i].min(right - i);
+            }
+
+            // 从已知半径继续外扩；哨兵保证不会越界，循环必然能停
+            while t[i - p[i] - 1] == t[i + p[i] + 1] {
+                p[i] += 1;
+            }
+
+            // 右边界被推远了才更新中心，否则镜像关系会指错
+            if i + p[i] > right {
+                center = i;
+                right = i + p[i];
+            }
+
+            // 半径就是 s 里的长度；同长不覆盖，保留先出现的那个
+            if p[i] > best_len {
+                best_len = p[i];
+                best_start = (i - p[i]) / 2;
+            }
+        }
+
+        s[best_start..best_start + best_len].to_string()
+    }
+}
+
+// ---- 以下为自测代码，不属于题解主体 ----
+
+// 判断 t 本身是不是回文：t 与自身反序相等即成立
+fn is_palindrome(t: &str) -> bool {
+    t.chars().eq(t.chars().rev())
+}
+
+// 题目允许多个同长答案，所以只校验三件事：长度对、真取自 s、确实是回文
+fn check(name: &str, s: &str, want_len: usize) {
+    let got = [
+        Solution1::longest_palindrome(s.to_string()),
+        Solution2::longest_palindrome(s.to_string()),
+        Solution3::longest_palindrome(s.to_string()),
+    ];
+
+    for (k, t) in got.iter().enumerate() {
+        // 长度是「最长」唯一可比的指标，"bab" 与 "aba" 都算对
+        assert_eq!(
+            t.chars().count(),
+            want_len,
+            "{}: 解法 {} 长度不对，得到 {:?}",
+            name,
+            k + 1,
+            t
+        );
+        // 必须是 s 的连续子串，防止实现自己拼一个同长回文蒙混过关
+        assert!(
+            s.contains(t.as_str()),
+            "{}: 解法 {} 返回 {:?}，不是 s 的子串",
+            name,
+            k + 1,
+            t
+        );
+        assert!(
+            is_palindrome(t),
+            "{}: 解法 {} 返回 {:?}，不是回文",
+            name,
+            k + 1,
+            t
+        );
+    }
+}
+
+fn main() {
+    // 示例 1：奇数长度的答案，官方注明 "aba" 也对
+    check("example 1", "babad", 3);
+
+    // 示例 2：偶数长度的答案 —— 只处理奇中心的写法会在这里挂
+    check("example 2", "cbbd", 2);
+
+    // 边界：单字符，三种解法都该原样返回
+    check("single char", "a", 1);
+
+    // 边界：没有长度 >= 2 的回文，答案退化成任意一个单字符
+    check("no pair", "ac", 1);
+
+    // 关键用例：全同字符 —— 顺带暴露解法一「按 i、j 正序枚举」的错误顺序
+    check("all same", "aaaa", 4);
+
+    // 关键用例：交替串，最长回文跨越多个中心，考的是 p 数组的镜像复用
+    check("alternating", "abababab", 7);
+
+    // 常规用例：最长回文落在中间，两端都要被切掉
+    check("classic", "forgeeksskeegfor", 10);
+
+    // 边界：取到约束上限 n = 1000，验证三者都不会退化成 O(n^2) 以上的常数
+    check("upper bound", &"a".repeat(1000), 1000);
+
+    println!("all tests passed");
+}
