@@ -1,6 +1,13 @@
-# Table of Contents
+# LeetCode 题解集 · 刷题路线
 
-- [Table of Contents](#table-of-contents)
+> 按九个阶段整理了 240 余道经典题目，每题给出 C++17 / Go / Python 3 / Rust 四种语言实现，
+> 全部按 leetcode.cn 官方题解的方法写（有几种官方解法就写几种，并标出最优解）。
+> 每份文件都是可单文件编译运行的自包含程序，`main` 跑通后打印 `all tests passed`。
+> 另有一个独立章节，用手写的方式实现 31 个基础数据结构与算法，不依赖任何标准库容器。
+
+## 目录
+
+- [目录](#目录)
 - [手写基础数据结构与算法](#手写基础数据结构与算法)
   - [手写排序算法](#手写排序算法)
   - [手写线性结构](#手写线性结构)
@@ -40,9 +47,11 @@
   - [拓扑排序（课程表系列）](#拓扑排序课程表系列)
   - [BFS](#bfs)
 - [第八阶段（1 周）](#第八阶段1-周)
-  - [背包：](#背包)
-  - [打家劫舍：](#打家劫舍)
-  - [买卖股票：](#买卖股票)
+  - [背包](#背包)
+  - [线性 DP](#线性-dp)
+  - [路径 DP](#路径-dp)
+  - [区间与序列 DP](#区间与序列-dp)
+  - [状态机 DP（买卖股票）](#状态机-dp买卖股票)
 - [第九阶段（1 周）](#第九阶段1-周)
   - [双指针](#双指针)
   - [滑动窗口](#滑动窗口)
@@ -309,8 +318,10 @@
 | ✅ | [94. 二叉树的中序遍历 （简单）](https://leetcode.cn/problems/binary-tree-inorder-traversal/) | [cpp](Problems/0001-0100/0094-binary-tree-inorder-traversal/0094-binary-tree-inorder-traversal.cpp) | [go](Problems/0001-0100/0094-binary-tree-inorder-traversal/0094-binary-tree-inorder-traversal.go) | [py](Problems/0001-0100/0094-binary-tree-inorder-traversal/0094-binary-tree-inorder-traversal.py) | [rs](Problems/0001-0100/0094-binary-tree-inorder-traversal/0094-binary-tree-inorder-traversal.rs) | 官方三解：递归 / 显式栈迭代 / Morris 遍历；最优解为 Morris，O(n) 时间 O(1) 空间；中序在拆线索时才访问 |
 | ✅ | [145. 二叉树的后序遍历（简单）](https://leetcode.cn/problems/binary-tree-postorder-traversal/) | [cpp](Problems/0101-0200/0145-binary-tree-postorder-traversal/0145-binary-tree-postorder-traversal.cpp) | [go](Problems/0101-0200/0145-binary-tree-postorder-traversal/0145-binary-tree-postorder-traversal.go) | [py](Problems/0101-0200/0145-binary-tree-postorder-traversal/0145-binary-tree-postorder-traversal.py) | [rs](Problems/0101-0200/0145-binary-tree-postorder-traversal/0145-binary-tree-postorder-traversal.rs) | 官方三解：递归 / 显式栈 + prev 指针迭代 / Morris 遍历；最优解为 Morris，O(n) 时间 O(1) 空间；拆线索时把左子树的右脊倒序输出 |
 | ✅ | [589. N 叉树的前序遍历（简单）](https://leetcode.cn/problems/n-ary-tree-preorder-traversal/) | [cpp](Problems/0501-0600/0589-n-ary-tree-preorder-traversal/0589-n-ary-tree-preorder-traversal.cpp) | [go](Problems/0501-0600/0589-n-ary-tree-preorder-traversal/0589-n-ary-tree-preorder-traversal.go) | [py](Problems/0501-0600/0589-n-ary-tree-preorder-traversal/0589-n-ary-tree-preorder-traversal.py) | [rs](Problems/0501-0600/0589-n-ary-tree-preorder-traversal/0589-n-ary-tree-preorder-traversal.rs) | 官方三解：递归 / 显式栈 + 哈希表记录孩子下标 / 逆序压栈迭代；最优解为递归，O(m) 时间 O(h) 空间 |
-| ✅ | N(>2) 叉树没法做中序遍历 |  |  |  |  |  |
 | ✅ | [590. N 叉树的后序遍历（简单）](https://leetcode.cn/problems/n-ary-tree-postorder-traversal/) | [cpp](Problems/0501-0600/0590-n-ary-tree-postorder-traversal/0590-n-ary-tree-postorder-traversal.cpp) | [go](Problems/0501-0600/0590-n-ary-tree-postorder-traversal/0590-n-ary-tree-postorder-traversal.go) | [py](Problems/0501-0600/0590-n-ary-tree-postorder-traversal/0590-n-ary-tree-postorder-traversal.py) | [rs](Problems/0501-0600/0590-n-ary-tree-postorder-traversal/0590-n-ary-tree-postorder-traversal.rs) | 官方四解：递归 / 显式栈 + 哈希表记录下标 / 显式栈 + visited 集合 / 前序反转；最优解为递归，O(m) 时间 O(h) 空间；前序反转最巧但空间 O(m) |
+
+> 补充：N（>2）叉树没有中序遍历。中序要靠「根恰好落在两批孩子之间」来定义，
+> N 叉树的孩子们不存在这样一个天然的二分位置。
 
 ### 题型 2：二叉树按层遍历
 
@@ -393,7 +404,11 @@
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [208. 实现 Trie (前缀树) （中等） 标准 Trie 树](https://leetcode.cn/problems/implement-trie-prefix-tree/) | [cpp](Problems/0201-0300/0208-implement-trie-prefix-tree/0208-implement-trie-prefix-tree.cpp) | [go](Problems/0201-0300/0208-implement-trie-prefix-tree/0208-implement-trie-prefix-tree.go) | [py](Problems/0201-0300/0208-implement-trie-prefix-tree/0208-implement-trie-prefix-tree.py) | [rs](Problems/0201-0300/0208-implement-trie-prefix-tree/0208-implement-trie-prefix-tree.rs) | 官方仅一解：孩子用 26 叉数组存储，四操作均 O(L)；即最优解；词尾标记区分 search 与 startsWith |
-| ☐ | 以下为选做题目： |  |  |  |  |  |
+
+**以下为选做题目：**
+
+| 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
+| --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [面试题 17.17. 多次搜索（中等） 标准 AC 自动机，不过写 AC 自动机太复杂，Trie 树搞定](https://leetcode.cn/problems/multi-search-lcci/) | [cpp](InterviewQuestions/17.17-multi-search-lcci.cpp) | [go](InterviewQuestions/17.17-multi-search-lcci.go) | [py](InterviewQuestions/17.17-multi-search-lcci.py) | [rs](InterviewQuestions/17.17-multi-search-lcci.rs) | 官方一解：把 smalls 建成 Trie，再从 big 的每个起点向下匹配，O(B·L) 即最优；B 不超过 1000，写 AC 自动机收益不足，注释里说明了取舍；逐词暴力为对照 |
 | ✅ | [212. 单词搜索 II（困难）](https://leetcode.cn/problems/word-search-ii/) | [cpp](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.cpp) | [go](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.go) | [py](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.py) | [rs](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.rs) | 官方一解：Trie + 回溯，命中后把词尾标记清空即可避免重复输出，同时剪掉无孩子的叶节点；两版实现同阶并列最优；每次回溯必须还原棋盘字符 |
 
@@ -430,7 +445,6 @@
 | ✅ | [面试题 16.19. 水域大小（中等）](https://leetcode.cn/problems/pond-sizes-lcci/) | [cpp](InterviewQuestions/16.19-pond-sizes-lcci.cpp) | [go](InterviewQuestions/16.19-pond-sizes-lcci.go) | [py](InterviewQuestions/16.19-pond-sizes-lcci.py) | [rs](InterviewQuestions/16.19-pond-sizes-lcci.rs) | 官方一解：DFS 统计八连通块大小，就地标记已访问，结果必须升序返回；O(mn) 时间、O(mn) 最坏递归深度（1000x1000 全水时需注意爆栈） |
 | ✅ | [79. 单词搜索（中等）](https://leetcode.cn/problems/word-search/) | [cpp](Problems/0001-0100/0079-word-search/0079-word-search.cpp) | [go](Problems/0001-0100/0079-word-search/0079-word-search.go) | [py](Problems/0001-0100/0079-word-search/0079-word-search.py) | [rs](Problems/0001-0100/0079-word-search/0079-word-search.rs) | 官方一解：回溯 DFS，逐字符向四方向扩展；官方实现另开 visited 表，本实现把棋盘原地改成占位符，额外空间 O(L) 而非 O(mn)；选完必须回滚，否则共享前缀的搜索会互相污染 |
 | ✅ | [1306. 跳跃游戏 III（中等）](https://leetcode.cn/problems/jump-game-iii/) | [cpp](Problems/1301-1400/1306-jump-game-iii/1306-jump-game-iii.cpp) | [go](Problems/1301-1400/1306-jump-game-iii/1306-jump-game-iii.go) | [py](Problems/1301-1400/1306-jump-game-iii/1306-jump-game-iii.py) | [rs](Problems/1301-1400/1306-jump-game-iii/1306-jump-game-iii.rs) | 官方两解：BFS 逐层扩展 / DFS 显式栈；并列最优，O(n) 时间；访问后必须立即标记，否则值为 0 的环会死循环 |
-| ✅ | [752. 打开转盘锁（中等）](https://leetcode.cn/problems/open-the-lock/) | [cpp](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.cpp) | [go](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.go) | [py](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.py) | [rs](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.rs) | 官方两解：逐层 BFS（每状态 8 个邻居 + deadends 去重）/ 双向 BFS；状态空间固定 10^4，两解最坏同为 O(10^4)，并列最优（双向只把实际展开量从 b^d 压到 b^(d/2)）；0000 在 deadends 中返回 -1 |
 | ✅ | [841. 钥匙和房间（中等）](https://leetcode.cn/problems/keys-and-rooms/) | [cpp](Problems/0801-0900/0841-keys-and-rooms/0841-keys-and-rooms.cpp) | [go](Problems/0801-0900/0841-keys-and-rooms/0841-keys-and-rooms.go) | [py](Problems/0801-0900/0841-keys-and-rooms/0841-keys-and-rooms.py) | [rs](Problems/0801-0900/0841-keys-and-rooms/0841-keys-and-rooms.rs) | 官方两解：DFS / BFS，时间同为 O(n+m)、空间同为 O(n)，并列最优；只能从 0 号房出发，入队或入栈时即标记已访问，最后按已访问房间数是否等于 n 判定 |
 | ✅ | [529. 扫雷游戏（中等）](https://leetcode.cn/problems/minesweeper/) | [cpp](Problems/0501-0600/0529-minesweeper/0529-minesweeper.cpp) | [go](Problems/0501-0600/0529-minesweeper/0529-minesweeper.go) | [py](Problems/0501-0600/0529-minesweeper/0529-minesweeper.py) | [rs](Problems/0501-0600/0529-minesweeper/0529-minesweeper.rs) | 官方两解：DFS + 模拟 / BFS + 模拟，同为 O(mn) 时间 O(mn) 空间，并列最优；踩雷只标 X 不扩散，周围无雷才标 B 并继续展开，数字格不推进 |
 
@@ -463,14 +477,19 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ✅ | [542. 01 矩阵（中等）](https://leetcode.cn/problems/01-matrix/) | [cpp](Problems/0501-0600/0542-01-matrix/0542-01-matrix.cpp) | [go](Problems/0501-0600/0542-01-matrix/0542-01-matrix.go) | [py](Problems/0501-0600/0542-01-matrix/0542-01-matrix.py) | [rs](Problems/0501-0600/0542-01-matrix/0542-01-matrix.rs) | 官方两解：多源 BFS / 两次扫描 DP，同为 O(mn) 并列最优（BFS 直观，DP 不用队列且可原地）；「左上到右下 + 右下到左上」两趟缺一不可 |
 | ✅ | [815. 公交路线（困难）](https://leetcode.cn/problems/bus-routes/) | [cpp](Problems/0801-0900/0815-bus-routes/0815-bus-routes.cpp) | [go](Problems/0801-0900/0815-bus-routes/0815-bus-routes.go) | [py](Problems/0801-0900/0815-bus-routes/0815-bus-routes.py) | [rs](Problems/0801-0900/0815-bus-routes/0815-bus-routes.rs) | 官方一解：以路线为节点的 BFS + 站点倒排索引，即最优 O(Σ routes[i])；路线需标记已坐避免回环，起终点相同返回 0 |
 | ☐ | [286. 墙与门（中等）力扣会员](https://leetcode.cn/problems/walls-and-gates/) |  |  |  |  | 力扣会员题，暂未收录；免费等价练习：542. 01 矩阵（同为多源 BFS） |
-| ✅ | [752. 打开转盘锁（中等）](https://leetcode.cn/problems/open-the-lock/) | [cpp](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.cpp) | [go](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.go) | [py](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.py) | [rs](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.rs) | 与 DFS 板块同一题：逐层 BFS / 双向 BFS 并列最优，状态空间封顶 10^4 |
+| ✅ | [752. 打开转盘锁（中等）](https://leetcode.cn/problems/open-the-lock/) | [cpp](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.cpp) | [go](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.go) | [py](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.py) | [rs](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.rs) | 官方两解：逐层 BFS（每状态 8 个邻居 + deadends 去重）/ 双向 BFS；状态空间固定 10^4，两解最坏同为 O(10^4)，并列最优（双向只把实际展开量从 b^d 压到 b^(d/2)）；0000 在 deadends 中返回 -1 |
 | ✅ | [面试题 17.22. 单词转换（中等） ](https://leetcode.cn/problems/word-transformer-lcci/) | [cpp](InterviewQuestions/17.22-word-transformer-lcci.cpp) | [go](InterviewQuestions/17.22-word-transformer-lcci.go) | [py](InterviewQuestions/17.22-word-transformer-lcci.py) | [rs](InterviewQuestions/17.22-word-transformer-lcci.rs) | 平台无题解文章，按题面自拟两解：单向 BFS / 双向 BFS，同为 O(V·L^2) 时间，并列最优；终点必须在字典里；题目接受任意合法序列，官方示例本身不是最短的 |
 
 # 第八阶段（1 周）
 
-## 背包：
+动态规划按「状态是什么形状」分节，而不是按题面故事分节。股票、房子、背包
+只是外壳；决定转移方程的，是状态带几个下标、下标之上往哪个方向转移。
+同一种形状换一个故事，就是另一道题。
 
-这个系列是动态规划问题。
+## 背包
+
+背包是唯一把「容量」也放进状态的一类：dp 的第二维不是下标，是剩余容量。
+判断用 0-1 还是完全背包，只看一件物品能不能重复选。
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -480,22 +499,50 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ✅ | [322. 零钱兑换 ](https://leetcode.cn/problems/coin-change/) | [cpp](Problems/0301-0400/0322-coin-change/0322-coin-change.cpp) | [go](Problems/0301-0400/0322-coin-change/0322-coin-change.go) | [py](Problems/0301-0400/0322-coin-change/0322-coin-change.py) | [rs](Problems/0301-0400/0322-coin-change/0322-coin-change.rs) | 官方三解：记忆化搜索 / 完全背包容量在外 / 完全背包物品在外；三者同为 O(amount*k) 时间、O(amount) 空间，并列最优；不可达初值取 amount+1 而非 INT_MAX，避免加一溢出 |
 | ✅ | [518. 零钱兑换 II](https://leetcode.cn/problems/coin-change-2/) | [cpp](Problems/0501-0600/0518-coin-change-ii/0518-coin-change-ii.cpp) | [go](Problems/0501-0600/0518-coin-change-ii/0518-coin-change-ii.go) | [py](Problems/0501-0600/0518-coin-change-ii/0518-coin-change-ii.py) | [rs](Problems/0501-0600/0518-coin-change-ii/0518-coin-change-ii.rs) | 官方两解：二维 DP 按币种逐行递推 / 一维滚动（物品在外、容量在内正序）；最优解为一维滚动；与 377 题的循环顺序正好相反，amount=0 时返回 1 |
 | ✅ | [377. 组合总和 Ⅳ](https://leetcode.cn/problems/combination-sum-iv/) | [cpp](Problems/0301-0400/0377-combination-sum-iv/0377-combination-sum-iv.cpp) | [go](Problems/0301-0400/0377-combination-sum-iv/0377-combination-sum-iv.go) | [py](Problems/0301-0400/0377-combination-sum-iv/0377-combination-sum-iv.py) | [rs](Problems/0301-0400/0377-combination-sum-iv/0377-combination-sum-iv.rs) | 官方两解：记忆化 DFS / 完全背包（容量在外、物品在内）；两解同为 O(n*target) 时间、O(target) 空间，并列最优；与 518 的循环顺序对照写清，结果可能超 int 用 64 位 |
+| ✅ | [HJ16 购物单](https://www.nowcoder.com/practice/f9c6f980eeec43ef85be20755ddbeaf4) | [cpp](HuaweiJikao/HJ16-购物单/HJ16-购物单.cpp) |  |  |  | 华为机考，中文站无官方题解；主件—附件构成依赖背包：先把附件按所属主件归拢，再对每个主件枚举「只主件 / +附件一 / +附件二 / +两附件」四种组合做 0-1 背包；价值取 价格×重要度，价格与容量统一除以 10 压缩状态空间，答案最后乘回 10  |
 
-华为机考题：
+## 线性 DP
 
-| 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
-| --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [HJ16 购物单](https://www.nowcoder.com/practice/f9c6f980eeec43ef85be20755ddbeaf4) | [cpp](HuaweiJikao/HJ16-购物单/HJ16-购物单.cpp) |  |  |  |  |
-
-## 打家劫舍：
+状态只有一个下标，转移只往前看一两步。打家劫舍与整数拆分是这里的原型，
+337 只是把同一套转移搬到树上的同构题。
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [198. 打家劫舍](https://leetcode.cn/problems/house-robber/) | [cpp](Problems/0101-0200/0198-house-robber/0198-house-robber.cpp) | [go](Problems/0101-0200/0198-house-robber/0198-house-robber.go) | [py](Problems/0101-0200/0198-house-robber/0198-house-robber.py) | [rs](Problems/0101-0200/0198-house-robber/0198-house-robber.rs) | 官方两解：二维 DP（偷/不偷双状态）/ 一维滚动只留两个变量；最优解为滚动，空间 O(1)；贪心取所有局部最优会得错解 |
 | ✅ | [337. 打家劫舍 III ](https://leetcode.cn/problems/house-robber-iii/) | [cpp](Problems/0301-0400/0337-house-robber-iii/0337-house-robber-iii.cpp) | [go](Problems/0301-0400/0337-house-robber-iii/0337-house-robber-iii.go) | [py](Problems/0301-0400/0337-house-robber-iii/0337-house-robber-iii.py) | [rs](Problems/0301-0400/0337-house-robber-iii/0337-house-robber-iii.rs) | 官方两解：树上 DP 后序返回 (选, 不选) 二元组 / 记忆化递归按节点缓存；最优解为树形 DP，空间 O(h) 优于记忆化的 O(n)；节点值可为 0 |
 | ✅ | [面试题 17.16. 按摩师](https://leetcode.cn/problems/the-masseuse-lcci/) | [cpp](InterviewQuestions/17.16-the-masseuse-lcci.cpp) | [go](InterviewQuestions/17.16-the-masseuse-lcci.go) | [py](InterviewQuestions/17.16-the-masseuse-lcci.py) | [rs](InterviewQuestions/17.16-the-masseuse-lcci.rs) | 官方一解（DP），实现为二维双状态与一维滚动两种写法，滚动为最优；与 198 同构，但本题输入可为空数组，必须返回 0 |
+| ✅ | [300. 最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/) | [cpp](Problems/0301-0400/0300-longest-increasing-subsequence/0300-longest-increasing-subsequence.cpp) | [go](Problems/0301-0400/0300-longest-increasing-subsequence/0300-longest-increasing-subsequence.go) | [py](Problems/0301-0400/0300-longest-increasing-subsequence/0300-longest-increasing-subsequence.py) | [rs](Problems/0301-0400/0300-longest-increasing-subsequence/0300-longest-increasing-subsequence.rs) | 官方三解：以结尾定义的区间 DP O(n^2) / 贪心 + 二分维护 tails / 树状数组按值域求前缀最大值；后两者同为 O(n log n) 时间 O(n) 空间，并列最优（二分常数更小，树状数组可顺带求出每个 f[i]）；严格递增用 lower_bound |
+| ✅ | [LCR 131 / 剑指 Offer 14- I. 砍竹子 I（中等） ](https://leetcode.cn/problems/jian-sheng-zi-lcof/) | [cpp](JianZhiOffer/14-I-剪绳子.cpp) | [go](JianZhiOffer/14-I-剪绳子.go) | [py](JianZhiOffer/14-I-剪绳子.py) | [rs](JianZhiOffer/14-I-剪绳子.rs) | 现收录为 LCR 131「砍竹子 I」，签名改为 cuttingBamboo(bamboo_len)；官方三解：DP O(n^2) / 贪心尽可能多切 3（O(n) 时间 O(1) 空间，最优）/ 记忆化；余数为 1 时退一个 3 凑成 2+2 |
+| ✅ | [LCR 165 / 剑指 Offer 46. 解密数字（中等） ](https://leetcode.cn/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof/) | [cpp](JianZhiOffer/46-把数字翻译成字符串.cpp) | [go](JianZhiOffer/46-把数字翻译成字符串.go) | [py](JianZhiOffer/46-把数字翻译成字符串.py) | [rs](JianZhiOffer/46-把数字翻译成字符串.rs) | 现收录为 LCR 165「解密数字」，签名改为 crackNumber(ciphertext) 且入参是整数；官方一解：DP 滚动两变量，O(log n) 时间 O(1) 空间；两位只认 10..25，带前导零的 06 不算 |
 
-## 买卖股票：
+## 路径 DP
+
+状态是两个坐标，转移只来自左边和上边。网格题不必真的开二维：按行滚动
+或行内原地累加，都能把空间压到 O(n)。
+
+| 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
+| --- | --- | --- | --- | --- | --- | --- |
+| ✅ | [62. 不同路径](https://leetcode.cn/problems/unique-paths/) | [cpp](Problems/0001-0100/0062-unique-paths/0062-unique-paths.cpp) | [go](Problems/0001-0100/0062-unique-paths/0062-unique-paths.go) | [py](Problems/0001-0100/0062-unique-paths/0062-unique-paths.py) | [rs](Problems/0001-0100/0062-unique-paths/0062-unique-paths.rs) | 官方两解：一维滚动 DP O(mn) / 组合数学 C(m+n-2, m-1)；组合数学只需 O(min(m,n)) 时间 O(1) 空间，为最优；乘除交替防溢出，中间量用 64 位 |
+| ✅ | [64. 最小路径和](https://leetcode.cn/problems/minimum-path-sum/) | [cpp](Problems/0001-0100/0064-minimum-path-sum/0064-minimum-path-sum.cpp) | [go](Problems/0001-0100/0064-minimum-path-sum/0064-minimum-path-sum.go) | [py](Problems/0001-0100/0064-minimum-path-sum/0064-minimum-path-sum.py) | [rs](Problems/0001-0100/0064-minimum-path-sum/0064-minimum-path-sum.rs) | 官方两解：二维 DP / 一维滚动原地更新；一维把空间从 O(mn) 降到 O(n)，为最优；首行与首列需单独初始化 |
+| ✅ | [LCR 166 / 剑指 Offer 47. 珠宝的最高价值（中等） ](https://leetcode.cn/problems/li-wu-de-zui-da-jie-zhi-lcof/) | [cpp](JianZhiOffer/47-礼物的最大价值.cpp) | [go](JianZhiOffer/47-礼物的最大价值.go) | [py](JianZhiOffer/47-礼物的最大价值.py) | [rs](JianZhiOffer/47-礼物的最大价值.rs) | 现收录为 LCR 166「珠宝的最高价值」，矩阵名由 grid 改为 frame、签名改为 jewelleryValue；官方一解：二维 DP 行内原地累加，O(mn) 时间 O(1) 额外空间，即最优 |
+
+## 区间与序列 DP
+
+状态需要两个下标来框定一段区间或两个串的前缀。第 5 题框的是同一串的 [i, j]，
+1143 / 72 / 10 框的是两个串各自的前缀，写起来是同一套骨架。
+
+| 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
+| --- | --- | --- | --- | --- | --- | --- |
+| ✅ | [1143. 最长公共子序列](https://leetcode.cn/problems/longest-common-subsequence/) | [cpp](Problems/1101-1200/1143-longest-common-subsequence/1143-longest-common-subsequence.cpp) | [go](Problems/1101-1200/1143-longest-common-subsequence/1143-longest-common-subsequence.go) | [py](Problems/1101-1200/1143-longest-common-subsequence/1143-longest-common-subsequence.py) | [rs](Problems/1101-1200/1143-longest-common-subsequence/1143-longest-common-subsequence.rs) | 官方两解：二维 DP / 一维滚动（短串放内层，空间 O(min(m,n))，为最优）；本实现另附记忆化搜索对照，其空间多出记忆表与递归栈 |
+| ✅ | [72. 编辑距离 ](https://leetcode.cn/problems/edit-distance/) | [cpp](Problems/0001-0100/0072-edit-distance/0072-edit-distance.cpp) | [go](Problems/0001-0100/0072-edit-distance/0072-edit-distance.go) | [py](Problems/0001-0100/0072-edit-distance/0072-edit-distance.py) | [rs](Problems/0001-0100/0072-edit-distance/0072-edit-distance.rs) | 官方两解：记忆化搜索 / 二维 DP + 一维滚动；滚动版空间从 O(mn) 降到 O(min(m,n))，为最优；三种操作的转移与 i=0/j=0 边界要写清 |
+| ✅ | [5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring/) | [cpp](Problems/0001-0100/0005-longest-palindromic-substring/0005-longest-palindromic-substring.cpp) | [go](Problems/0001-0100/0005-longest-palindromic-substring/0005-longest-palindromic-substring.go) | [py](Problems/0001-0100/0005-longest-palindromic-substring/0005-longest-palindromic-substring.py) | [rs](Problems/0001-0100/0005-longest-palindromic-substring/0005-longest-palindromic-substring.rs) | 官方三解：区间 DP O(n^2) 时间 O(n^2) 空间 / 中心扩展 O(n^2) 时间 O(1) 空间 / Manacher O(n) 时间 O(n) 空间；Manacher 为最优；DP 必须按长度枚举，中心扩展要合并 2n-1 个中心，Manacher 靠插 '#' 与首尾哨兵抹平奇偶 |
+| ✅ | [10. 正则表达式匹配](https://leetcode.cn/problems/regular-expression-matching/) | [cpp](Problems/0001-0100/0010-regular-expression-matching/0010-regular-expression-matching.cpp) | [go](Problems/0001-0100/0010-regular-expression-matching/0010-regular-expression-matching.go) | [py](Problems/0001-0100/0010-regular-expression-matching/0010-regular-expression-matching.py) | [rs](Problems/0001-0100/0010-regular-expression-matching/0010-regular-expression-matching.rs) | 官方两解：记忆化递归 / 二维 DP；两解同为 O(mn) 时间、O(mn) 空间，并列最优；星号的「配 0 次」与「再配 1 次」两种转移必须分开，a* 要能吃掉空串 |
+| ✅ | [139. 单词拆分](https://leetcode.cn/problems/word-break/) | [cpp](Problems/0001-0100/0139-word-break/0139-word-break.cpp) | [go](Problems/0001-0100/0139-word-break/0139-word-break.go) | [py](Problems/0001-0100/0139-word-break/0139-word-break.py) | [rs](Problems/0001-0100/0139-word-break/0139-word-break.rs) | 官方三解：DP（内层倒序、命中即 break）/ 记忆化回溯 / BFS 按可达位置建图；三者最坏同为 O(n^2) 时间、O(n) 空间，并列最优 |
+
+## 状态机 DP（买卖股票）
+
+状态不是「位置」，而是「当前持有什么」。四道股票题共用一套持股 / 空仓状态机，
+差别只在有没有手续费、有没有冷冻期。
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -503,18 +550,6 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ✅ | [122. 买卖股票的最佳时机 II](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/) | [cpp](Problems/0101-0200/0122-best-time-to-buy-and-sell-stock-ii/0122-best-time-to-buy-and-sell-stock-ii.cpp) | [go](Problems/0101-0200/0122-best-time-to-buy-and-sell-stock-ii/0122-best-time-to-buy-and-sell-stock-ii.go) | [py](Problems/0101-0200/0122-best-time-to-buy-and-sell-stock-ii/0122-best-time-to-buy-and-sell-stock-ii.py) | [rs](Problems/0101-0200/0122-best-time-to-buy-and-sell-stock-ii/0122-best-time-to-buy-and-sell-stock-ii.rs) | 官方两解：DP 状态机（收盘持股/空仓）/ 贪心累加所有相邻上涨；两解同为 O(n) 时间 O(1) 空间，并列最优；贪心成立是因为任意交易可拆成相邻差之和 |
 | ✅ | [714. 买卖股票的最佳时机含手续](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/) | [cpp](Problems/0701-0800/0714-best-time-to-buy-and-sell-stock-with-transaction-fee/0714-best-time-to-buy-and-sell-stock-with-transaction-fee.cpp) | [go](Problems/0701-0800/0714-best-time-to-buy-and-sell-stock-with-transaction-fee/0714-best-time-to-buy-and-sell-stock-with-transaction-fee.go) | [py](Problems/0701-0800/0714-best-time-to-buy-and-sell-stock-with-transaction-fee/0714-best-time-to-buy-and-sell-stock-with-transaction-fee.py) | [rs](Problems/0701-0800/0714-best-time-to-buy-and-sell-stock-with-transaction-fee/0714-best-time-to-buy-and-sell-stock-with-transaction-fee.rs) | 官方两解：DP 状态机（卖出时扣手续费）/ 贪心（买入时预扣）；并列最优 O(n) 时间 O(1) 空间；手续费只在一头扣一次，fee=0 时退化成 122 题 |
 | ✅ | [309. 最佳买卖股票时机含冷冻期](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/) | [cpp](Problems/0301-0400/0309-best-time-to-buy-and-sell-stock-with-cooldown/0309-best-time-to-buy-and-sell-stock-with-cooldown.cpp) | [go](Problems/0301-0400/0309-best-time-to-buy-and-sell-stock-with-cooldown/0309-best-time-to-buy-and-sell-stock-with-cooldown.go) | [py](Problems/0301-0400/0309-best-time-to-buy-and-sell-stock-with-cooldown/0309-best-time-to-buy-and-sell-stock-with-cooldown.py) | [rs](Problems/0301-0400/0309-best-time-to-buy-and-sell-stock-with-cooldown/0309-best-time-to-buy-and-sell-stock-with-cooldown.rs) | 官方一解：三状态 DP（持有/当天卖出/空仓可买），按天存表为 O(n) 空间、滚成三变量为 O(1) 空间，后者最优；买入只能来自空仓，卖出次日才解冻 |
-| ✅ | [300. 最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/) | [cpp](Problems/0301-0400/0300-longest-increasing-subsequence/0300-longest-increasing-subsequence.cpp) | [go](Problems/0301-0400/0300-longest-increasing-subsequence/0300-longest-increasing-subsequence.go) | [py](Problems/0301-0400/0300-longest-increasing-subsequence/0300-longest-increasing-subsequence.py) | [rs](Problems/0301-0400/0300-longest-increasing-subsequence/0300-longest-increasing-subsequence.rs) | 官方三解：以结尾定义的区间 DP O(n^2) / 贪心 + 二分维护 tails / 树状数组按值域求前缀最大值；后两者同为 O(n log n) 时间 O(n) 空间，并列最优（二分常数更小，树状数组可顺带求出每个 f[i]）；严格递增用 lower_bound |
-| ✅ | [62. 不同路径](https://leetcode.cn/problems/unique-paths/) | [cpp](Problems/0001-0100/0062-unique-paths/0062-unique-paths.cpp) | [go](Problems/0001-0100/0062-unique-paths/0062-unique-paths.go) | [py](Problems/0001-0100/0062-unique-paths/0062-unique-paths.py) | [rs](Problems/0001-0100/0062-unique-paths/0062-unique-paths.rs) | 官方两解：一维滚动 DP O(mn) / 组合数学 C(m+n-2, m-1)；组合数学只需 O(min(m,n)) 时间 O(1) 空间，为最优；乘除交替防溢出，中间量用 64 位 |
-| ✅ | [64. 最小路径和](https://leetcode.cn/problems/minimum-path-sum/) | [cpp](Problems/0001-0100/0064-minimum-path-sum/0064-minimum-path-sum.cpp) | [go](Problems/0001-0100/0064-minimum-path-sum/0064-minimum-path-sum.go) | [py](Problems/0001-0100/0064-minimum-path-sum/0064-minimum-path-sum.py) | [rs](Problems/0001-0100/0064-minimum-path-sum/0064-minimum-path-sum.rs) | 官方两解：二维 DP / 一维滚动原地更新；一维把空间从 O(mn) 降到 O(n)，为最优；首行与首列需单独初始化 |
-| ✅ | [LCR 166 / 剑指 Offer 47. 珠宝的最高价值（中等） ](https://leetcode.cn/problems/li-wu-de-zui-da-jie-zhi-lcof/) | [cpp](JianZhiOffer/47-礼物的最大价值.cpp) | [go](JianZhiOffer/47-礼物的最大价值.go) | [py](JianZhiOffer/47-礼物的最大价值.py) | [rs](JianZhiOffer/47-礼物的最大价值.rs) | 现收录为 LCR 166「珠宝的最高价值」，矩阵名由 grid 改为 frame、签名改为 jewelleryValue；官方一解：二维 DP 行内原地累加，O(mn) 时间 O(1) 额外空间，即最优 |
-| ✅ | [1143. 最长公共子序列](https://leetcode.cn/problems/longest-common-subsequence/) | [cpp](Problems/1101-1200/1143-longest-common-subsequence/1143-longest-common-subsequence.cpp) | [go](Problems/1101-1200/1143-longest-common-subsequence/1143-longest-common-subsequence.go) | [py](Problems/1101-1200/1143-longest-common-subsequence/1143-longest-common-subsequence.py) | [rs](Problems/1101-1200/1143-longest-common-subsequence/1143-longest-common-subsequence.rs) | 官方两解：二维 DP / 一维滚动（短串放内层，空间 O(min(m,n))，为最优）；本实现另附记忆化搜索对照，其空间多出记忆表与递归栈 |
-| ✅ | [72. 编辑距离 ](https://leetcode.cn/problems/edit-distance/) | [cpp](Problems/0001-0100/0072-edit-distance/0072-edit-distance.cpp) | [go](Problems/0001-0100/0072-edit-distance/0072-edit-distance.go) | [py](Problems/0001-0100/0072-edit-distance/0072-edit-distance.py) | [rs](Problems/0001-0100/0072-edit-distance/0072-edit-distance.rs) | 官方两解：记忆化搜索 / 二维 DP + 一维滚动；滚动版空间从 O(mn) 降到 O(min(m,n))，为最优；三种操作的转移与 i=0/j=0 边界要写清 |
-| ✅ | [5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring/) | [cpp](Problems/0001-0100/0005-longest-palindromic-substring/0005-longest-palindromic-substring.cpp) | [go](Problems/0001-0100/0005-longest-palindromic-substring/0005-longest-palindromic-substring.go) | [py](Problems/0001-0100/0005-longest-palindromic-substring/0005-longest-palindromic-substring.py) | [rs](Problems/0001-0100/0005-longest-palindromic-substring/0005-longest-palindromic-substring.rs) | 官方三解：区间 DP O(n^2) 时间 O(n^2) 空间 / 中心扩展 O(n^2) 时间 O(1) 空间 / Manacher O(n) 时间 O(n) 空间；Manacher 为最优；DP 必须按长度枚举，中心扩展要合并 2n-1 个中心，Manacher 靠插 '#' 与首尾哨兵抹平奇偶 |
-| ✅ | [10. 正则表达式匹配](https://leetcode.cn/problems/regular-expression-matching/) | [cpp](Problems/0001-0100/0010-regular-expression-matching/0010-regular-expression-matching.cpp) | [go](Problems/0001-0100/0010-regular-expression-matching/0010-regular-expression-matching.go) | [py](Problems/0001-0100/0010-regular-expression-matching/0010-regular-expression-matching.py) | [rs](Problems/0001-0100/0010-regular-expression-matching/0010-regular-expression-matching.rs) | 官方两解：记忆化递归 / 二维 DP；两解同为 O(mn) 时间、O(mn) 空间，并列最优；星号的「配 0 次」与「再配 1 次」两种转移必须分开，a* 要能吃掉空串 |
-| ✅ | [LCR 131 / 剑指 Offer 14- I. 砍竹子 I（中等） ](https://leetcode.cn/problems/jian-sheng-zi-lcof/) | [cpp](JianZhiOffer/14-I-剪绳子.cpp) | [go](JianZhiOffer/14-I-剪绳子.go) | [py](JianZhiOffer/14-I-剪绳子.py) | [rs](JianZhiOffer/14-I-剪绳子.rs) | 现收录为 LCR 131「砍竹子 I」，签名改为 cuttingBamboo(bamboo_len)；官方三解：DP O(n^2) / 贪心尽可能多切 3（O(n) 时间 O(1) 空间，最优）/ 记忆化；余数为 1 时退一个 3 凑成 2+2 |
-| ✅ | [LCR 165 / 剑指 Offer 46. 解密数字（中等） ](https://leetcode.cn/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof/) | [cpp](JianZhiOffer/46-把数字翻译成字符串.cpp) | [go](JianZhiOffer/46-把数字翻译成字符串.go) | [py](JianZhiOffer/46-把数字翻译成字符串.py) | [rs](JianZhiOffer/46-把数字翻译成字符串.rs) | 现收录为 LCR 165「解密数字」，签名改为 crackNumber(ciphertext) 且入参是整数；官方一解：DP 滚动两变量，O(log n) 时间 O(1) 空间；两位只认 10..25，带前导零的 06 不算 |
-| ✅ | [139. 单词拆分](https://leetcode.cn/problems/word-break/) | [cpp](Problems/0001-0100/0139-word-break/0139-word-break.cpp) | [go](Problems/0001-0100/0139-word-break/0139-word-break.go) | [py](Problems/0001-0100/0139-word-break/0139-word-break.py) | [rs](Problems/0001-0100/0139-word-break/0139-word-break.rs) | 官方三解：DP（内层倒序、命中即 break）/ 记忆化回溯 / BFS 按可达位置建图；三者最坏同为 O(n^2) 时间、O(n) 空间，并列最优 |
-| ✅ | [437. 路径总和 III（中等）](https://leetcode.cn/problems/path-sum-iii/) | [cpp](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.cpp) | [go](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.go) | [py](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.py) | [rs](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.rs) | 与第五阶段题型 8 同一题：DFS 枚举起点 O(n^2) / 前缀和 + 哈希表回溯 O(n)，最优解为前缀和；先查后插、退出时回滚 |
 
 # 第九阶段（1 周）
 
