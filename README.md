@@ -593,6 +593,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ✅ | [334. 递增的三元子序列（中等）](https://leetcode.cn/problems/increasing-triplet-subsequence/) | [cpp](Problems/0301-0400/0334-increasing-triplet-subsequence/0334-increasing-triplet-subsequence.cpp) | [go](Problems/0301-0400/0334-increasing-triplet-subsequence/0334-increasing-triplet-subsequence.go) | [py](Problems/0301-0400/0334-increasing-triplet-subsequence/0334-increasing-triplet-subsequence.py) | [rs](Problems/0301-0400/0334-increasing-triplet-subsequence/0334-increasing-triplet-subsequence.rs) | 官方两解：贪心维护 first/second O(n) O(1) 最优 / 前后缀最值数组 O(n) 空间非最优；first 与 second 不必来自同一组连续下标 |
 | ✅ | [452. 用最少数量的箭引爆气球（中等）](https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/) | [cpp](Problems/0401-0500/0452-minimum-number-of-arrows-to-burst-balloons/0452-minimum-number-of-arrows-to-burst-balloons.cpp) | [go](Problems/0401-0500/0452-minimum-number-of-arrows-to-burst-balloons/0452-minimum-number-of-arrows-to-burst-balloons.go) | [py](Problems/0401-0500/0452-minimum-number-of-arrows-to-burst-balloons/0452-minimum-number-of-arrows-to-burst-balloons.py) | [rs](Problems/0401-0500/0452-minimum-number-of-arrows-to-burst-balloons/0452-minimum-number-of-arrows-to-burst-balloons.rs) | 官方一解：按右端点排序 + 贪心，O(n log n) 即最优；端点相接算覆盖，按左端点排序会得到反例 |
 | ✅ | [56. 合并区间（中等） ](https://leetcode.cn/problems/merge-intervals/) | [cpp](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.cpp) | [go](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.go) | [py](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.py) | [rs](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.rs) | 与排序板块同一题：按左端点排序后一次扫描合并，O(n log n)，是「排序 + 贪心」的典型 |
+| ✅ | [打车软件的订单调度系统（华为机考）](HuaweiJikao/taxi-order-scheduling-system/taxi-order-scheduling-system.cpp) | [cpp](HuaweiJikao/taxi-order-scheduling-system/taxi-order-scheduling-system.cpp) |  |  |  | 华为机考，无官方题解；先按题面把每人耗时折算成闭式公式（拥堵段/2 + 顺畅段/10 + 红灯数×15）并取最小值 T，再在 [T, T+60) 窗口内取评分最高者；每人耗时互不依赖、没有可复用的子问题，所以是「模拟 + 窗口贪心」而非动态规划；样例只覆盖 0 个红灯的司机，红灯按 15 秒还是按 50% 折算成期望 7.5 秒都得到 3,230，两种读法在样例上无法区分 |
 
 # 综合示例
 
@@ -601,7 +602,6 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ✅ | [⾼效处理海量数据（四维纵横面试前线下做的题，基本无时间限制）](Examples/BigData/README.md) |  |  |  |  | [BigData](Examples/BigData) |
 | ☐ | [生成 1 亿行数据存文件，从该文件中找出最大值/最小值（四维纵横一面题，在面试官的监督下完成）](Examples/BigDataFile/README.md) |  |  |  |  | [BigDataFile](Examples/BigDataFile) |
 | ✅ | [两阶段加锁实现高并发访问（成章数据面试前线下做的题，基本无时间限制）](Examples/MultiWorkers/README.md) |  |  |  |  | [MultiWorkers](Examples/MultiWorkers) |
-| ✅ | [打车软件的订单调度系统（困难，华为机考）](HuaweiJikao/taxi-order-scheduling-system/taxi-order-scheduling-system.cpp) | [cpp](HuaweiJikao/taxi-order-scheduling-system/taxi-order-scheduling-system.cpp) |  |  |  |  |
 
 # 其他
 
