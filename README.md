@@ -6,7 +6,8 @@
 > 另有一个独立章节，用手写的方式实现 31 个基础数据结构与算法，不依赖任何标准库容器。
 
 > **阶段怎么划的**：一至六阶段主要看「数据放在什么结构里」——链表、栈、哈希表、
-> 二叉树、堆与 Trie；七至九阶段换成「按什么套路算」——搜索、动态规划、常用技巧。
+> 二叉树、堆与 Trie；七至九阶段换成「按什么套路算」——搜索（含并查集）、
+> 动态规划、常用技巧。
 > 第三阶段的排序与递归分治夹在中间，是二分查找和后面所有递归题型的垫脚；
 > 第一阶段的纯编程与找规律则是最前面的热身。
 >
@@ -26,20 +27,20 @@
   - [手写树结构](#手写树结构)
   - [手写图算法](#手写图算法)
   - [手写哈希表](#手写哈希表)
-- [第一阶段（1 周）](#第一阶段1-周)
+- [第一阶段（1 周）· 代码基本功](#第一阶段1-周-代码基本功)
   - [纯编程](#纯编程)
   - [找规律](#找规律)
-- [第二阶段（2 周）](#第二阶段2-周)
+- [第二阶段（2 周）· 链表与栈](#第二阶段2-周-链表与栈)
   - [链表](#链表)
   - [栈](#栈)
     - [单调栈与单调队列](#单调栈与单调队列)
-- [第三阶段（1 周）](#第三阶段1-周)
+- [第三阶段（1 周）· 递归分治与排序](#第三阶段1-周-递归分治与排序)
   - [递归 + 分治](#递归--分治)
   - [排序](#排序)
-- [第四阶段（2 周）](#第四阶段2-周)
+- [第四阶段（2 周）· 二分查找与哈希表](#第四阶段2-周-二分查找与哈希表)
   - [二分查找](#二分查找)
   - [哈希表](#哈希表)
-- [第五阶段（2 周）](#第五阶段2-周)
+- [第五阶段（2 周）· 二叉树](#第五阶段2-周-二叉树)
   - [二叉树](#二叉树)
     - [题型 1：二叉树前中后序遍历](#题型-1二叉树前中后序遍历)
     - [题型 2：二叉树按层遍历](#题型-2二叉树按层遍历)
@@ -49,26 +50,26 @@
     - [题型 6：二叉树转单、双、循环链表](#题型-6二叉树转单双循环链表)
     - [题型 7：按照遍历结果反向构建二叉树](#题型-7按照遍历结果反向构建二叉树)
     - [题型 8：二叉树上的最长路径和](#题型-8二叉树上的最长路径和)
-- [第六阶段（1 周）](#第六阶段1-周)
+- [第六阶段（1 周）· 堆与 Trie](#第六阶段1-周-堆与-trie)
   - [堆](#堆)
   - [Trie 树](#trie-树)
-- [第七阶段（3 周）](#第七阶段3-周)
+- [第七阶段（4 周）· 图与搜索](#第七阶段4-周-图与搜索)
   - [回溯](#回溯)
   - [DFS](#dfs)
   - [拓扑排序（课程表系列）](#拓扑排序课程表系列)
+  - [并查集](#并查集)
   - [BFS](#bfs)
-- [第八阶段（2 周）](#第八阶段2-周)
+- [第八阶段（2 周）· 动态规划](#第八阶段2-周-动态规划)
   - [背包](#背包)
   - [线性 DP](#线性-dp)
   - [路径 DP](#路径-dp)
   - [区间与序列 DP](#区间与序列-dp)
   - [状态机 DP（买卖股票）](#状态机-dp买卖股票)
-- [第九阶段（3 周）](#第九阶段3-周)
+- [第九阶段（2 周）· 线性扫描与常用技巧](#第九阶段2-周-线性扫描与常用技巧)
   - [双指针](#双指针)
   - [滑动窗口](#滑动窗口)
   - [前缀后缀统计](#前缀后缀统计)
   - [位运算](#位运算)
-  - [并查集](#并查集)
   - [贪心](#贪心)
 - [综合示例](#综合示例)
 - [其他](#其他)
@@ -145,7 +146,7 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | 哈希表 | [cpp](Algorithms/hash/hash-map.cpp) | [go](Algorithms/hash/hash-map.go) | [py](Algorithms/hash/hash-map.py) | [rs](Algorithms/hash/hash-map.rs) | 平均 O(1)，最坏 O(n)；空间 O(n) | 链地址法 + 负载因子 0.75 扩容；容量取 2 的幂，用 `& (capacity-1)` 代替取模；扩容后每个节点都要用新容量重新计算桶下标，否则「原来同桶」的节点会散错位置 |
 
-# 第一阶段（1 周）
+# 第一阶段（1 周）· 代码基本功
 
 > [详细速览版](Docs/stage01.md)
 
@@ -153,9 +154,9 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [1.两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 官方两解：暴力枚举 O(n^2) / 哈希表 O(n)；最优解为哈希表 |
+| ✅ | [1.两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 另见 第四阶段 · 哈希表、第九阶段 · 双指针；官方两解：暴力枚举 O(n^2) / 哈希表 O(n)；最优解为哈希表 |
 | ✅ | [1108. IP 地址无效化（简单）](https://leetcode.cn/problems/defanging-an-ip-address/) | [cpp](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.cpp) | [go](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.go) | [py](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.py) | [rs](Problems/1101-1200/1108-defanging-an-ip-address/1108-defanging-an-ip-address.rs) | 官方仅一解：一次遍历替换 O(n)，即最优解 |
-| ✅ | [344. 反转字符串（简单）](https://leetcode.cn/problems/reverse-string/) | [cpp](Problems/0301-0400/0344-reverse-string/0344-reverse-string.cpp) | [go](Problems/0301-0400/0344-reverse-string/0344-reverse-string.go) | [py](Problems/0301-0400/0344-reverse-string/0344-reverse-string.py) | [rs](Problems/0301-0400/0344-reverse-string/0344-reverse-string.rs) | 官方仅一解：双指针原地交换 O(n)，即最优解 |
+| ✅ | [344. 反转字符串（简单）](https://leetcode.cn/problems/reverse-string/) | [cpp](Problems/0301-0400/0344-reverse-string/0344-reverse-string.cpp) | [go](Problems/0301-0400/0344-reverse-string/0344-reverse-string.go) | [py](Problems/0301-0400/0344-reverse-string/0344-reverse-string.py) | [rs](Problems/0301-0400/0344-reverse-string/0344-reverse-string.rs) | 另见 第九阶段 · 双指针；官方仅一解：双指针原地交换 O(n)，即最优解 |
 | ✅ | [LCR 181 / 剑指 Offer 58 - I. 字符串中的单词反转（简单）](https://leetcode.cn/problems/fan-zhuan-dan-ci-shun-xu-lcof/) | [cpp](JianZhiOffer/58-I-翻转单词顺序.cpp) | [go](JianZhiOffer/58-I-翻转单词顺序.go) | [py](JianZhiOffer/58-I-翻转单词顺序.py) | [rs](JianZhiOffer/58-I-翻转单词顺序.rs) | 官方两解：倒序双指针 / 分割后倒序；最优解为双指针（不依赖内置切分函数） |
 | ✅ | [125. 验证回文串（简单）](https://leetcode.cn/problems/valid-palindrome/) | [cpp](Problems/0101-0200/0125-valid-palindrome/0125-valid-palindrome.cpp) | [go](Problems/0101-0200/0125-valid-palindrome/0125-valid-palindrome.go) | [py](Problems/0101-0200/0125-valid-palindrome/0125-valid-palindrome.py) | [rs](Problems/0101-0200/0125-valid-palindrome/0125-valid-palindrome.rs) | 官方两解：筛选后判断 O(n) 空间 / 原串双指针 O(1) 空间；最优解为原串双指针 |
 | ✅ | [9. 回文数（简单）](https://leetcode.cn/problems/palindrome-number/) | [cpp](Problems/0001-0100/0009-palindrome-number/0009-palindrome-number.cpp) | [go](Problems/0001-0100/0009-palindrome-number/0009-palindrome-number.go) | [py](Problems/0001-0100/0009-palindrome-number/0009-palindrome-number.py) | [rs](Problems/0001-0100/0009-palindrome-number/0009-palindrome-number.rs) | 官方仅一解：反转一半数字 O(log n)，即最优解；规避整体反转溢出 |
@@ -180,7 +181,7 @@
 | ✅ | [54. 螺旋矩阵（中等，字节电商 22 届暑期实习，出处）](https://leetcode.cn/problems/spiral-matrix/) | [cpp](Problems/0001-0100/0054-spiral-matrix/0054-spiral-matrix.cpp) | [go](Problems/0001-0100/0054-spiral-matrix/0054-spiral-matrix.go) | [py](Problems/0001-0100/0054-spiral-matrix/0054-spiral-matrix.py) | [rs](Problems/0001-0100/0054-spiral-matrix/0054-spiral-matrix.rs) | 官方两解：方向数组模拟 O(mn) 访问标记空间非最优 / 四条边界收缩 O(1) 额外空间最优；末圈只剩一行或一列时须跳过下、左两段，否则重复输出 |
 | ✅ | [240. 搜索二维矩阵 II （中等）](https://leetcode.cn/problems/search-a-2d-matrix-ii/) | [cpp](Problems/0201-0300/0240-search-a-2d-matrix-ii/0240-search-a-2d-matrix-ii.cpp) | [go](Problems/0201-0300/0240-search-a-2d-matrix-ii/0240-search-a-2d-matrix-ii.go) | [py](Problems/0201-0300/0240-search-a-2d-matrix-ii/0240-search-a-2d-matrix-ii.py) | [rs](Problems/0201-0300/0240-search-a-2d-matrix-ii/0240-search-a-2d-matrix-ii.rs) | 官方三解：逐个比较 O(mn) / 每行二分 O(m log n) / 右上角 Z 字形 O(m+n)；最优为 Z 字形；只能从右上角或左下角出发，每步才能排除一行或一列 |
 
-# 第二阶段（2 周）
+# 第二阶段（2 周）· 链表与栈
 
 ## 链表
 
@@ -201,8 +202,8 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [LCR 140 / 剑指 Offer 22. 训练计划 II （简单）](https://leetcode.cn/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/) | [cpp](JianZhiOffer/22-链表中倒数第k个节点.cpp) | [go](JianZhiOffer/22-链表中倒数第k个节点.go) | [py](JianZhiOffer/22-链表中倒数第k个节点.py) | [rs](JianZhiOffer/22-链表中倒数第k个节点.rs) | 官方两解：先数长度再定位 / 快慢双指针一趟；最优解为双指针（原题「链表中倒数第 k 个节点」） |
 | ✅ | [19. 删除链表的倒数第 N 个结点 （中等）](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/) | [cpp](Problems/0001-0100/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.cpp) | [go](Problems/0001-0100/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.go) | [py](Problems/0001-0100/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.py) | [rs](Problems/0001-0100/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.rs) | 官方三解：算长度 O(L) 两趟 / 栈 O(L) 空间 / 快慢指针一趟；最优解为快慢指针 |
-| ✅ | [160. 相交链表（简单，新华智云笔试题）](https://leetcode.cn/problems/intersection-of-two-linked-lists/) | [cpp](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.cpp) | [go](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.go) | [py](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.py) | [rs](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.rs) | 官方两解：哈希集合 O(m) 空间 / 双指针走对方的路 O(1) 空间；最优解为双指针（Rust 版平台暂无模板，按裸指针建模） |
-| ✅ | [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode.cn/problems/linked-list-cycle/) | [cpp](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.cpp) | [go](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.go) | [py](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.py) | [rs](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.rs) | 官方两解：哈希表 O(n) 空间 / Floyd 快慢指针 O(1) 空间；最优解为快慢指针（Rust 版平台暂无模板，按裸指针建模） |
+| ✅ | [160. 相交链表（简单，新华智云笔试题）](https://leetcode.cn/problems/intersection-of-two-linked-lists/) | [cpp](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.cpp) | [go](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.go) | [py](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.py) | [rs](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.rs) | 另见 第四阶段 · 哈希表；官方两解：哈希集合 O(m) 空间 / 双指针走对方的路 O(1) 空间；最优解为双指针（Rust 版平台暂无模板，按裸指针建模） |
+| ✅ | [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode.cn/problems/linked-list-cycle/) | [cpp](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.cpp) | [go](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.go) | [py](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.py) | [rs](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.rs) | 另见 第四阶段 · 哈希表；官方两解：哈希表 O(n) 空间 / Floyd 快慢指针 O(1) 空间；最优解为快慢指针（Rust 版平台暂无模板，按裸指针建模） |
 | ✅ | [206. 反转链表 （中等，阿里云笔试题）](https://leetcode.cn/problems/reverse-linked-list/) | [cpp](Problems/0201-0300/0206-reverse-linked-list/0206-reverse-linked-list.cpp) | [go](Problems/0201-0300/0206-reverse-linked-list/0206-reverse-linked-list.go) | [py](Problems/0201-0300/0206-reverse-linked-list/0206-reverse-linked-list.py) | [rs](Problems/0201-0300/0206-reverse-linked-list/0206-reverse-linked-list.rs) | 官方两解：迭代 O(1) 空间 / 递归 O(n) 栈空间；最优解为迭代 |
 | ✅ | [234. 回文链表 （中等，蚂蚁金服笔试题）](https://leetcode.cn/problems/palindrome-linked-list/) | [cpp](Problems/0201-0300/0234-palindrome-linked-list/0234-palindrome-linked-list.cpp) | [go](Problems/0201-0300/0234-palindrome-linked-list/0234-palindrome-linked-list.go) | [py](Problems/0201-0300/0234-palindrome-linked-list/0234-palindrome-linked-list.py) | [rs](Problems/0201-0300/0234-palindrome-linked-list/0234-palindrome-linked-list.rs) | 官方三解：复制到数组 / 递归 / 快慢指针+反转后半；最优解为后者 O(1) 空间 |
 | ✅ | [328. 奇偶链表（中等，腾讯笔试题](https://leetcode.cn/problems/odd-even-linked-list/) | [cpp](Problems/0301-0400/0328-odd-even-linked-list/0328-odd-even-linked-list.cpp) | [go](Problems/0301-0400/0328-odd-even-linked-list/0328-odd-even-linked-list.go) | [py](Problems/0301-0400/0328-odd-even-linked-list/0328-odd-even-linked-list.py) | [rs](Problems/0301-0400/0328-odd-even-linked-list/0328-odd-even-linked-list.rs) | 官方仅一解：分离奇偶两条链再拼接 O(n)、O(1)，即最优解 |
@@ -231,13 +232,13 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [42. 接雨水（困难）单调栈](https://leetcode.cn/problems/trapping-rain-water/) | [cpp](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.cpp) | [go](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.go) | [py](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.py) | [rs](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.rs) | 官方四解：按列暴力 / DP 预处理左右最高 / 单调栈按行结算 / 双指针；最优为双指针 O(n) 时间 O(1) 空间；单调栈解与「前缀后缀统计」板块共用同一份实现；首尾列不接水，单调序列答案为 0 |
+| ✅ | [42. 接雨水（困难）单调栈](https://leetcode.cn/problems/trapping-rain-water/) | [cpp](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.cpp) | [go](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.go) | [py](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.py) | [rs](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.rs) | 另见 第九阶段 · 前缀后缀统计；官方四解：按列暴力 / DP 预处理左右最高 / 单调栈按行结算 / 双指针；最优为双指针 O(n) 时间 O(1) 空间；单调栈解与「前缀后缀统计」板块共用同一份实现；首尾列不接水，单调序列答案为 0 |
 | ✅ | [84. 柱状图中最大的矩形（困难）单调栈](https://leetcode.cn/problems/largest-rectangle-in-histogram/) | [cpp](Problems/0001-0100/0084-largest-rectangle-in-histogram/0084-largest-rectangle-in-histogram.cpp) | [go](Problems/0001-0100/0084-largest-rectangle-in-histogram/0084-largest-rectangle-in-histogram.go) | [py](Problems/0001-0100/0084-largest-rectangle-in-histogram/0084-largest-rectangle-in-histogram.py) | [rs](Problems/0001-0100/0084-largest-rectangle-in-histogram/0084-largest-rectangle-in-histogram.rs) | 官方四解：枚举宽 / 枚举高（向两侧扩展到第一根更矮的柱）/ 两遍单调栈 / 一遍单调栈；后两解同为 O(n) 时间 O(n) 空间并列最优；首尾补 0 哨兵可省掉出栈后的收尾 |
 | ✅ | [739. 每日温度（中等）单调栈](https://leetcode.cn/problems/daily-temperatures/) | [cpp](Problems/0701-0800/0739-daily-temperatures/0739-daily-temperatures.cpp) | [go](Problems/0701-0800/0739-daily-temperatures/0739-daily-temperatures.go) | [py](Problems/0701-0800/0739-daily-temperatures/0739-daily-temperatures.py) | [rs](Problems/0701-0800/0739-daily-temperatures/0739-daily-temperatures.rs) | 官方两解：反向遍历 + 温度索引表 / 单调栈；温度区间 ≤100 是题面常数，两者时间同为 O(n)，并列最优：单调栈更快，索引表只需 O(100) 空间；必须反向遍历，先查表再更新 |
 | ✅ | [LCR 183 / 剑指 Offer 59 - I. 望远镜中最高的海拔（困难） ](https://leetcode.cn/problems/hua-dong-chuang-kou-de-zui-da-zhi-lcof/) | [cpp](JianZhiOffer/59-I-滑动窗口的最大值.cpp) | [go](JianZhiOffer/59-I-滑动窗口的最大值.go) | [py](JianZhiOffer/59-I-滑动窗口的最大值.py) | [rs](JianZhiOffer/59-I-滑动窗口的最大值.rs) | 现收录为 LCR 183「望远镜中最高的海拔」，签名改为 maxAltitude(heights, limit)；官方三解：优先队列 O(n log n) / 单调队列 / 分块前后缀，后两者同为 O(n) 时间，单调队列只需 O(limit) 空间故为最优 |
 | ✅ | [LCR 184 / 剑指 Offer 59 - II. 设计自助结算系统（中等） 单调队列](https://leetcode.cn/problems/dui-lie-de-zui-da-zhi-lcof/) | [cpp](JianZhiOffer/59-II-队列的最大值.cpp) | [go](JianZhiOffer/59-II-队列的最大值.go) | [py](JianZhiOffer/59-II-队列的最大值.py) | [rs](JianZhiOffer/59-II-队列的最大值.rs) | 现收录为 LCR 184「设计自助结算系统」，类名改为 Checkout（add/remove/get_max）；官方两解：普通队列线性扫描 / 辅助单调双端队列；后者均摊 O(1) 最优；队列为空时 remove 与 get_max 都返回 -1 |
 
-# 第三阶段（1 周）
+# 第三阶段（1 周）· 递归分治与排序
 
 ## 递归 + 分治
 
@@ -257,12 +258,12 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [面试题 10.01. 合并排序的数组（简单）](https://leetcode.cn/problems/sorted-merge-lcci/) | [cpp](InterviewQuestions/10.01-sorted-merge-lcci.cpp) | [go](InterviewQuestions/10.01-sorted-merge-lcci.go) | [py](InterviewQuestions/10.01-sorted-merge-lcci.py) | [rs](InterviewQuestions/10.01-sorted-merge-lcci.rs) | 官方三解：拼接后排序 / 双指针 + 临时数组 / 逆向双指针原地归并；最优解为逆向双指针 O(m+n)、O(1) |
 | ✅ | [21. 合并两个有序链表 （简单）](https://leetcode.cn/problems/merge-two-sorted-lists/) | [25-合并两个排序的链表.cpp](JianZhiOffer/25-合并两个排序的链表.cpp)<br>[0021-merge-two-sorted-lists.cpp](Problems/0001-0100/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.cpp) | [go](Problems/0001-0100/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.go) | [py](Problems/0001-0100/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.py) | [rs](Problems/0001-0100/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.rs) | 官方两解：递归 O(n+m) 栈空间 / 迭代 O(1) 空间；最优解为迭代 + 哨兵 |
-| ✅ | [242. 有效的字母异位词（简单）](https://leetcode.cn/problems/valid-anagram/) | [cpp](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.cpp) | [go](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.go) | [py](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.py) | [rs](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.rs) | 官方两解：排序后比较 O(n log n) / 频次数组计数 O(n)；最优解为频次数组（含 unicode 时换哈希表） |
+| ✅ | [242. 有效的字母异位词（简单）](https://leetcode.cn/problems/valid-anagram/) | [cpp](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.cpp) | [go](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.go) | [py](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.py) | [rs](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.rs) | 另见 第四阶段 · 哈希表；官方两解：排序后比较 O(n log n) / 频次数组计数 O(n)；最优解为频次数组（含 unicode 时换哈希表） |
 | ✅ | [1502. 判断能否形成等差数列（简单）](https://leetcode.cn/problems/can-make-arithmetic-progression-from-sequence/) | [cpp](Problems/1501-1600/1502-can-make-arithmetic-progression-from-sequence/1502-can-make-arithmetic-progression-from-sequence.cpp) | [go](Problems/1501-1600/1502-can-make-arithmetic-progression-from-sequence/1502-can-make-arithmetic-progression-from-sequence.go) | [py](Problems/1501-1600/1502-can-make-arithmetic-progression-from-sequence/1502-can-make-arithmetic-progression-from-sequence.py) | [rs](Problems/1501-1600/1502-can-make-arithmetic-progression-from-sequence/1502-can-make-arithmetic-progression-from-sequence.rs) | 官方一解：排序后检查相邻公差是否一致，O(n log n) |
 | ☐ | [252. 会议室 （简单）力扣会员](https://leetcode.cn/problems/meeting-rooms/) |  |  |  |  | 力扣会员题，中文站无公开题面与官方题解，暂未收录 |
-| ✅ | [56. 合并区间（中等） ](https://leetcode.cn/problems/merge-intervals/) | [cpp](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.cpp) | [go](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.go) | [py](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.py) | [rs](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.rs) | 官方一解：按左端点排序后一次扫描贪心合并，O(n log n) |
-| ✅ | [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 （简单）](https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/) | [cpp](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.cpp) | [go](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.go) | [py](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.py) | [rs](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.rs) | 现收录为 LCR 139「训练计划 I」；官方一解：首尾双指针原地交换，O(n) 时间 O(1) 空间；不保证稳定性 |
-| ✅ | [75. 颜色分类（中等）](https://leetcode.cn/problems/sort-colors/) | [cpp](Problems/0001-0100/0075-sort-colors/0075-sort-colors.cpp) | [go](Problems/0001-0100/0075-sort-colors/0075-sort-colors.go) | [py](Problems/0001-0100/0075-sort-colors/0075-sort-colors.py) | [rs](Problems/0001-0100/0075-sort-colors/0075-sort-colors.rs) | 荷兰国旗问题。官方三解：单指针两趟 / 双指针 p0+p1 / 双指针 p0+p2 一趟扫描；最优解为 p0+p2 一趟扫描，O(n) 时间 O(1) 空间 |
+| ✅ | [56. 合并区间（中等） ](https://leetcode.cn/problems/merge-intervals/) | [cpp](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.cpp) | [go](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.go) | [py](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.py) | [rs](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.rs) | 另见 第九阶段 · 贪心；官方一解：按左端点排序后一次扫描贪心合并，O(n log n) |
+| ✅ | [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 （简单）](https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/) | [cpp](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.cpp) | [go](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.go) | [py](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.py) | [rs](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.rs) | 另见 第九阶段 · 双指针；现收录为 LCR 139「训练计划 I」；官方一解：首尾双指针原地交换，O(n) 时间 O(1) 空间；不保证稳定性 |
+| ✅ | [75. 颜色分类（中等）](https://leetcode.cn/problems/sort-colors/) | [cpp](Problems/0001-0100/0075-sort-colors/0075-sort-colors.cpp) | [go](Problems/0001-0100/0075-sort-colors/0075-sort-colors.go) | [py](Problems/0001-0100/0075-sort-colors/0075-sort-colors.py) | [rs](Problems/0001-0100/0075-sort-colors/0075-sort-colors.rs) | 另见 第九阶段 · 双指针；荷兰国旗问题。官方三解：单指针两趟 / 双指针 p0+p1 / 双指针 p0+p2 一趟扫描；最优解为 p0+p2 一趟扫描，O(n) 时间 O(1) 空间 |
 | ✅ | [147. 对链表进行插入排序（中等）](https://leetcode.cn/problems/insertion-sort-list/) | [cpp](Problems/0001-0100/0147-insertion-sort-list/0147-insertion-sort-list.cpp) | [go](Problems/0001-0100/0147-insertion-sort-list/0147-insertion-sort-list.go) | [py](Problems/0001-0100/0147-insertion-sort-list/0147-insertion-sort-list.py) | [rs](Problems/0001-0100/0147-insertion-sort-list/0147-insertion-sort-list.rs) | 官方一解且题面点名「使用插入排序」：链表插入排序 O(n^2)，即本题的解；另附归并 O(n log n) 仅作对照，虽渐近更优但不满足题意，不计入解法 |
 | ✅ | [148. 排序链表（中等） 链表上的归并排序](https://leetcode.cn/problems/sort-list/) | [cpp](Problems/0101-0200/0148-sort-list/0148-sort-list.cpp) | [go](Problems/0101-0200/0148-sort-list/0148-sort-list.go) | [py](Problems/0101-0200/0148-sort-list/0148-sort-list.py) | [rs](Problems/0101-0200/0148-sort-list/0148-sort-list.rs) | 官方两解：自顶向下归并 O(log n) 栈 / 自底向上归并 O(1) 辅助空间；时间同为 O(n log n)，后者最优；堆排序时间同阶但需 O(n) 数组存节点值，为非最优 |
 | ✅ | [215. 数组中的第 K 个最大元素（中等） ](https://leetcode.cn/problems/kth-largest-element-in-an-array/) | [cpp](Problems/0201-0300/0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.cpp) | [go](Problems/0201-0300/0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.go) | [py](Problems/0201-0300/0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.py) | [rs](Problems/0201-0300/0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.rs) | 官方两解：快速选择（期望 O(n)）/ 大根堆（O(n log n)）；最优解为快速选择；【精品】 |
@@ -272,7 +273,7 @@
 - 手写排序算法（快排 / 归并 / 冒泡 / 插入 / 堆排 / 希尔 / 计数 / 基数 / 桶）
   见独立章节：[手写基础数据结构与算法 · 手写排序算法](#手写排序算法)。
 
-# 第四阶段（2 周）
+# 第四阶段（2 周）· 二分查找与哈希表
 
 ## 二分查找
 
@@ -300,15 +301,15 @@
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [两数之和 （简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 官方两解：暴力枚举 O(n^2) / 哈希表 O(n)；最优解为哈希表，「先查后插」；【精品】 |
-| ✅ | [15. 三数之和（中等，墨奇社招）](https://leetcode.cn/problems/3sum/) | [cpp](Problems/0001-0100/0015-3sum/0015-3sum.cpp) | [go](Problems/0001-0100/0015-3sum/0015-3sum.go) | [py](Problems/0001-0100/0015-3sum/0015-3sum.py) | [rs](Problems/0001-0100/0015-3sum/0015-3sum.rs) | 官方一解：排序 + 双指针，O(n^2) 时间、O(1) 额外空间（不含返回值），即最优；排序后三层去重缺一不可，指针相交即退出 |
-| ✅ | [160. 相交链表（简单，新华智云 22 届暑期实习） ](https://leetcode.cn/problems/intersection-of-two-linked-lists/) | [cpp](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.cpp) |  |  |  | 双指针最好，哈希集合 unordered_set 空间复杂度高 |
-| ✅ | [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode.cn/problems/linked-list-cycle/) | [cpp](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.cpp) | [go](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.go) | [py](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.py) | [rs](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.rs) | 等价条目，题解见「栈」章节同一行 |
+| ✅ | [两数之和 （简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 另见 第一阶段 · 纯编程、第九阶段 · 双指针；官方两解：暴力枚举 O(n^2) / 哈希表 O(n)；最优解为哈希表，「先查后插」；【精品】 |
+| ✅ | [15. 三数之和（中等，墨奇社招）](https://leetcode.cn/problems/3sum/) | [cpp](Problems/0001-0100/0015-3sum/0015-3sum.cpp) | [go](Problems/0001-0100/0015-3sum/0015-3sum.go) | [py](Problems/0001-0100/0015-3sum/0015-3sum.py) | [rs](Problems/0001-0100/0015-3sum/0015-3sum.rs) | 另见 第九阶段 · 双指针；官方一解：排序 + 双指针，O(n^2) 时间、O(1) 额外空间（不含返回值），即最优；排序后三层去重缺一不可，指针相交即退出 |
+| ✅ | [160. 相交链表（简单，新华智云 22 届暑期实习） ](https://leetcode.cn/problems/intersection-of-two-linked-lists/) | [cpp](Problems/0101-0200/0160-intersection-of-two-linked-lists/0160-intersection-of-two-linked-lists.cpp) |  |  |  | 另见 第二阶段 · 链表；双指针最好，哈希集合 unordered_set 空间复杂度高 |
+| ✅ | [141. 环形链表（简单） 判断链表中是否存在环 ](https://leetcode.cn/problems/linked-list-cycle/) | [cpp](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.cpp) | [go](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.go) | [py](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.py) | [rs](Problems/0101-0200/0141-linked-list-cycle/0141-linked-list-cycle.rs) | 另见 第二阶段 · 链表；等价条目，题解见链表章节同一行 |
 | ✅ | [面试题 02.01. 移除重复节点（简单） 借助哈希表](https://leetcode.cn/problems/remove-duplicate-node-lcci/) | [cpp](InterviewQuestions/02.01-remove-duplicate-node-lcci.cpp) | [go](InterviewQuestions/02.01-remove-duplicate-node-lcci.go) | [py](InterviewQuestions/02.01-remove-duplicate-node-lcci.py) | [rs](InterviewQuestions/02.01-remove-duplicate-node-lcci.rs) | 官方两解：哈希集合一次遍历 O(n) O(n) 最优 / 两重循环 O(n^2) O(1)；进阶要求 O(1) 空间时退化为后者；保留首次出现的节点，需自行维护前驱 |
 | ✅ | [面试题 16.02. 单词频率 （中等）](https://leetcode.cn/problems/words-frequency-lcci/) | [cpp](InterviewQuestions/16.02-words-frequency-lcci.cpp) | [go](InterviewQuestions/16.02-words-frequency-lcci.go) | [py](InterviewQuestions/16.02-words-frequency-lcci.py) | [rs](InterviewQuestions/16.02-words-frequency-lcci.rs) | 中文站无官方题解；按哈希表计数实现，构造时一次遍历 O(n)，query 只查不插 O(1)，即为最优；题面难度以站点为准（中等） |
 | ✅ | [面试题 01.02. 判定是否互为字符重排（简单）](https://leetcode.cn/problems/check-permutation-lcci/) | [cpp](InterviewQuestions/01.02-check-permutation-lcci.cpp) | [go](InterviewQuestions/01.02-check-permutation-lcci.go) | [py](InterviewQuestions/01.02-check-permutation-lcci.py) | [rs](InterviewQuestions/01.02-check-permutation-lcci.rs) | 官方两解：排序后比较 O(n log n) / 频次数组一次遍历 O(n)；后者最优且 O(1) 定长空间；先比长度，能提前挡掉大多数不等长输入 |
 | ✅ | [LCR 120 / 剑指 Offer 03. 数组中重复的数字 （简单） ](https://leetcode.cn/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/) | [cpp](JianZhiOffer/03-数组中重复的数字.cpp) | [go](JianZhiOffer/03-数组中重复的数字.go) | [py](JianZhiOffer/03-数组中重复的数字.py) | [rs](JianZhiOffer/03-数组中重复的数字.rs) | 现收录为 LCR 120「寻找文件副本」，签名改为 findRepeatDocument；官方三解：哈希集合 / 排序 / 原地置换；最优解为原地置换，O(n) 时间 O(1) 空间 |
-| ✅ | [242. 有效的字母异位词（简单）](https://leetcode.cn/problems/valid-anagram/) | [cpp](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.cpp) | [go](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.go) | [py](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.py) | [rs](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.rs) | 等价条目，题解见「排序」章节同一行 |
+| ✅ | [242. 有效的字母异位词（简单）](https://leetcode.cn/problems/valid-anagram/) | [cpp](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.cpp) | [go](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.go) | [py](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.py) | [rs](Problems/0201-0300/0242-valid-anagram/0242-valid-anagram.rs) | 另见 第三阶段 · 排序；两处共用同一份题解 |
 | ✅ | [49. 字母异位词分组（中等）](https://leetcode.cn/problems/group-anagrams/) | [cpp](Problems/0001-0100/0049-group-anagrams/0049-group-anagrams.cpp) | [go](Problems/0001-0100/0049-group-anagrams/0049-group-anagrams.go) | [py](Problems/0001-0100/0049-group-anagrams/0049-group-anagrams.py) | [rs](Problems/0001-0100/0049-group-anagrams/0049-group-anagrams.rs) | 官方两解：排序后字符串作键 O(n·k log k) / 计数数组作键 O(n·k) 最优；不用质数乘积作键，字母多时乘积会溢出 64 位 |
 | ✅ | [136. 只出现一次的数字（简单）](https://leetcode.cn/problems/single-number/) | [cpp](Problems/0001-0100/0136-single-number/0136-single-number.cpp) | [go](Problems/0001-0100/0136-single-number/0136-single-number.go) | [py](Problems/0001-0100/0136-single-number/0136-single-number.py) | [rs](Problems/0001-0100/0136-single-number/0136-single-number.rs) | 官方一解：全部元素异或，O(n) 时间 O(1) 空间即最优；文中另给哈希计数与排序两种同阶或更差的对照写法；只有一个元素的数组直接返回它自身 |
 | ✅ | [349. 两个数组的交集 （简单）](https://leetcode.cn/problems/intersection-of-two-arrays/) | [cpp](Problems/0301-0400/0349-intersection-of-two-arrays/0349-intersection-of-two-arrays.cpp) | [go](Problems/0301-0400/0349-intersection-of-two-arrays/0349-intersection-of-two-arrays.go) | [py](Problems/0301-0400/0349-intersection-of-two-arrays/0349-intersection-of-two-arrays.py) | [rs](Problems/0301-0400/0349-intersection-of-two-arrays/0349-intersection-of-two-arrays.rs) | 官方两解：两个集合 O(m+n) 最优 / 排序 + 双指针 O(m log m + n log n)；结果必须去重，输出顺序任意，集合版先小后大遍历可少扫一遍 |
@@ -317,7 +318,7 @@
 | ✅ | [146. LRU 缓存机制 （中等）标准的 LRU](https://leetcode.cn/problems/lru-cache/) | [cpp](Problems/0101-0200/0146-lru-cache/0146-lru-cache.cpp) | [go](Problems/0101-0200/0146-lru-cache/0146-lru-cache.go) | [py](Problems/0101-0200/0146-lru-cache/0146-lru-cache.py) | [rs](Problems/0101-0200/0146-lru-cache/0146-lru-cache.rs) | 官方一解：哈希表 + 双向链表，get 与 put 均 O(1) 即最优；更新已有 key 要先摘节点再插到头部、不触发淘汰，容量为 1 时每次插入都会逐出旧 key |
 | ✅ | [面试题 16.21. 交换和（中等） 找规律，可以借助哈希表优化](https://leetcode.cn/problems/sum-swap-lcci/) | [cpp](InterviewQuestions/16.21-sum-swap-lcci.cpp) | [go](InterviewQuestions/16.21-sum-swap-lcci.go) | [py](InterviewQuestions/16.21-sum-swap-lcci.py) | [rs](InterviewQuestions/16.21-sum-swap-lcci.rs) | 平台无题解文章（306 篇均为投稿），按通行写法给两解：排序 + 双指针 / 哈希集合；后者 O(m+n) 时间最优；两数组和之差为奇数时必然无解，切不可整除后直接取半 |
 
-# 第五阶段（2 周）
+# 第五阶段（2 周）· 二叉树
 
 ## 二叉树
 
@@ -398,7 +399,7 @@
 | ✅ | [124. 二叉树中的最大路径和 （困难）](https://leetcode.cn/problems/binary-tree-maximum-path-sum/) | [cpp](Problems/0101-0200/0124-binary-tree-maximum-path-sum/0124-binary-tree-maximum-path-sum.cpp) | [go](Problems/0101-0200/0124-binary-tree-maximum-path-sum/0124-binary-tree-maximum-path-sum.go) | [py](Problems/0101-0200/0124-binary-tree-maximum-path-sum/0124-binary-tree-maximum-path-sum.py) | [rs](Problems/0101-0200/0124-binary-tree-maximum-path-sum/0124-binary-tree-maximum-path-sum.rs) | 官方仅一解：后序递归，返回给父节点的一侧贡献要与 0 取 max，答案用「左+右+当前值」更新；O(n) 时间 O(h) 空间，即最优解 |
 | ✅ | [437. 路径总和 III （中等）](https://leetcode.cn/problems/path-sum-iii/) | [cpp](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.cpp) | [go](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.go) | [py](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.py) | [rs](Problems/0401-0500/0437-path-sum-iii/0437-path-sum-iii.rs) | 官方两解：DFS 枚举每个起点 O(n^2) / 前缀和 + 哈希表回溯 O(n)；最优解为前缀和，先查后插、退出时回滚，累加用 64 位 |
 
-# 第六阶段（1 周）
+# 第六阶段（1 周）· 堆与 Trie
 
 ## 堆
 
@@ -423,7 +424,7 @@
 | ✅ | [面试题 17.17. 多次搜索（中等） 标准 AC 自动机，不过写 AC 自动机太复杂，Trie 树搞定](https://leetcode.cn/problems/multi-search-lcci/) | [cpp](InterviewQuestions/17.17-multi-search-lcci.cpp) | [go](InterviewQuestions/17.17-multi-search-lcci.go) | [py](InterviewQuestions/17.17-multi-search-lcci.py) | [rs](InterviewQuestions/17.17-multi-search-lcci.rs) | 官方一解：把 smalls 建成 Trie，再从 big 的每个起点向下匹配，O(B·L) 即最优；B 不超过 1000，写 AC 自动机收益不足，注释里说明了取舍；逐词暴力为对照 |
 | ✅ | [212. 单词搜索 II（困难）](https://leetcode.cn/problems/word-search-ii/) | [cpp](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.cpp) | [go](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.go) | [py](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.py) | [rs](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.rs) | 官方一解：Trie + 回溯，命中后把词尾标记清空即可避免重复输出，同时剪掉无孩子的叶节点；两版实现同阶并列最优；每次回溯必须还原棋盘字符 |
 
-# 第七阶段（3 周）
+# 第七阶段（4 周）· 图与搜索
 
 ## 回溯
 
@@ -475,6 +476,21 @@
 | ✅ | [1494. 并行课程 II（困难）](https://leetcode.cn/problems/parallel-courses-ii/) | [cpp](Problems/1401-1500/1494-parallel-courses-ii/1494-parallel-courses-ii.cpp) | [go](Problems/1401-1500/1494-parallel-courses-ii/1494-parallel-courses-ii.go) | [py](Problems/1401-1500/1494-parallel-courses-ii/1494-parallel-courses-ii.py) | [rs](Problems/1401-1500/1494-parallel-courses-ii/1494-parallel-courses-ii.rs) | 官方一解：状态压缩 DP，dp[mask] 对「最后一学期可上的子集」转移；真实复杂度是 O(3^n) 时间 O(2^n) 空间（不是 O(2^n·n)），按官方分析写；n=15 时约 1.4×10^7 量级 |
 | ✅ | [2050. 并行课程 III（困难）](https://leetcode.cn/problems/parallel-courses-iii/) | [cpp](Problems/2001-2100/2050-parallel-courses-iii/2050-parallel-courses-iii.cpp) | [go](Problems/2001-2100/2050-parallel-courses-iii/2050-parallel-courses-iii.go) | [py](Problems/2001-2100/2050-parallel-courses-iii/2050-parallel-courses-iii.py) | [rs](Problems/2001-2100/2050-parallel-courses-iii/2050-parallel-courses-iii.rs) | 官方一解：记忆化搜索求每门课的最早完成月份，O(n+m) 即最优；另附拓扑序 + DP 顺手递推，同阶并列；同层并行取先修完成时间的最大值再加本课耗时，不是累加 |
 
+## 并查集
+
+并查集本身只有十几行，但「连通性 + 逐步合并」这一类问题的正解几乎都是它。
+带权并查集（399）与「并查集 + 二分答案」（778）是两个高频变体。
+
+| 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
+| --- | --- | --- | --- | --- | --- | --- |
+| ✅ | [684. 冗余连接（中等）](https://leetcode.cn/problems/redundant-connection/) | [cpp](Problems/0601-0700/0684-redundant-connection/0684-redundant-connection.cpp) | [go](Problems/0601-0700/0684-redundant-connection/0684-redundant-connection.go) | [py](Problems/0601-0700/0684-redundant-connection/0684-redundant-connection.py) | [rs](Problems/0601-0700/0684-redundant-connection/0684-redundant-connection.rs) | 官方一解：并查集逐边合并，第一条两端已连通的边即答案，O(n α(n)) 即最优；另附逐边 DFS 作对照 O(n^2)；答案等价于最后出现的成环边 |
+| ✅ | [547. 省份数量（中等）](https://leetcode.cn/problems/number-of-provinces/) | [cpp](Problems/0501-0600/0547-number-of-provinces/0547-number-of-provinces.cpp) | [go](Problems/0501-0600/0547-number-of-provinces/0547-number-of-provinces.go) | [py](Problems/0501-0600/0547-number-of-provinces/0547-number-of-provinces.py) | [rs](Problems/0501-0600/0547-number-of-provinces/0547-number-of-provinces.rs) | 官方三解：并查集 / DFS / BFS，同为 O(n^2) 并列最优；连通块数 = n - 成功合并次数，只需扫上三角 |
+| ✅ | [130. 被围绕的区域（中等）](https://leetcode.cn/problems/surrounded-regions/) | [cpp](Problems/0101-0200/0130-surrounded-regions/0130-surrounded-regions.cpp) | [go](Problems/0101-0200/0130-surrounded-regions/0130-surrounded-regions.go) | [py](Problems/0101-0200/0130-surrounded-regions/0130-surrounded-regions.py) | [rs](Problems/0101-0200/0130-surrounded-regions/0130-surrounded-regions.rs) | 官方两解：边界 BFS 标记后回写 / 并查集连虚拟边界节点，同为 O(mn) 并列最优；必须从边界出发，不能从内部格反向判断 |
+| ✅ | [399. 除法求值（中等）](https://leetcode.cn/problems/evaluate-division/) | [cpp](Problems/0301-0400/0399-evaluate-division/0399-evaluate-division.cpp) | [go](Problems/0301-0400/0399-evaluate-division/0399-evaluate-division.go) | [py](Problems/0301-0400/0399-evaluate-division/0399-evaluate-division.py) | [rs](Problems/0301-0400/0399-evaluate-division/0399-evaluate-division.rs) | 官方两解：带权并查集 / 建图 DFS；并查集为 O((N+Q)α(N)) 最优，图 DFS 每次查询重走一条路径是 O(QN) 为非最优；权值取到根的比值，压缩时同步累乘 |
+| ✅ | [778. 水位上升的泳池中游泳（困难）](https://leetcode.cn/problems/swim-in-rising-water/) | [cpp](Problems/0701-0800/0778-swim-in-rising-water/0778-swim-in-rising-water.cpp) | [go](Problems/0701-0800/0778-swim-in-rising-water/0778-swim-in-rising-water.go) | [py](Problems/0701-0800/0778-swim-in-rising-water/0778-swim-in-rising-water.py) | [rs](Problems/0701-0800/0778-swim-in-rising-water/0778-swim-in-rising-water.rs) | 官方三解：二分答案 + BFS / 最小堆 / 按高度加格并查集，同为 O(n^2 log n) 并列最优；求的是路径最大高度的最小值，不是路径和 |
+| ✅ | [面试题 17.07. 婴儿名字（中等） ](https://leetcode.cn/problems/baby-names-lcci/) | [cpp](InterviewQuestions/17.07-baby-names-lcci.cpp) | [go](InterviewQuestions/17.07-baby-names-lcci.go) | [py](InterviewQuestions/17.07-baby-names-lcci.py) | [rs](InterviewQuestions/17.07-baby-names-lcci.rs) | 平台无题解文章，按题面用并查集合并同义词并累加频次，代表名取字典序最小（题面明写，不是取频率最高，官方示例 Chris 13 与 Christopher 19 合成 Chris 36 即此规则）；只出现在同义词里的名字也参与比较 |
+| ☐ | [323. 无向图中连通分量的数目（中等）力扣会员](https://leetcode.cn/problems/number-of-connected-components-in-an-undirected-graph/) |  |  |  |  | 力扣会员题，暂未收录；免费等价练习：547. 省份数量（同为并查集数连通块） |
+
 ## BFS
 
 BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅长**无权图上的最短路**。
@@ -491,7 +507,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ✅ | [752. 打开转盘锁（中等）](https://leetcode.cn/problems/open-the-lock/) | [cpp](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.cpp) | [go](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.go) | [py](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.py) | [rs](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.rs) | 官方两解：逐层 BFS（每状态 8 个邻居 + deadends 去重）/ 双向 BFS；状态空间固定 10^4，两解最坏同为 O(10^4)，并列最优（双向只把实际展开量从 b^d 压到 b^(d/2)）；0000 在 deadends 中返回 -1 |
 | ✅ | [面试题 17.22. 单词转换（中等） ](https://leetcode.cn/problems/word-transformer-lcci/) | [cpp](InterviewQuestions/17.22-word-transformer-lcci.cpp) | [go](InterviewQuestions/17.22-word-transformer-lcci.go) | [py](InterviewQuestions/17.22-word-transformer-lcci.py) | [rs](InterviewQuestions/17.22-word-transformer-lcci.rs) | 平台无题解文章，按题面自拟两解：单向 BFS / 双向 BFS，同为 O(V·L^2) 时间，并列最优；终点必须在字典里；题目接受任意合法序列，官方示例本身不是最短的 |
 
-# 第八阶段（2 周）
+# 第八阶段（2 周）· 动态规划
 
 动态规划按「状态是什么形状」分节，而不是按题面故事分节。股票、房子、背包
 只是外壳；决定转移方程的，是状态带几个下标、下标之上往哪个方向转移。
@@ -562,18 +578,22 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ✅ | [714. 买卖股票的最佳时机含手续](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/) | [cpp](Problems/0701-0800/0714-best-time-to-buy-and-sell-stock-with-transaction-fee/0714-best-time-to-buy-and-sell-stock-with-transaction-fee.cpp) | [go](Problems/0701-0800/0714-best-time-to-buy-and-sell-stock-with-transaction-fee/0714-best-time-to-buy-and-sell-stock-with-transaction-fee.go) | [py](Problems/0701-0800/0714-best-time-to-buy-and-sell-stock-with-transaction-fee/0714-best-time-to-buy-and-sell-stock-with-transaction-fee.py) | [rs](Problems/0701-0800/0714-best-time-to-buy-and-sell-stock-with-transaction-fee/0714-best-time-to-buy-and-sell-stock-with-transaction-fee.rs) | 官方两解：DP 状态机（卖出时扣手续费）/ 贪心（买入时预扣）；并列最优 O(n) 时间 O(1) 空间；手续费只在一头扣一次，fee=0 时退化成 122 题 |
 | ✅ | [309. 最佳买卖股票时机含冷冻期](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/) | [cpp](Problems/0301-0400/0309-best-time-to-buy-and-sell-stock-with-cooldown/0309-best-time-to-buy-and-sell-stock-with-cooldown.cpp) | [go](Problems/0301-0400/0309-best-time-to-buy-and-sell-stock-with-cooldown/0309-best-time-to-buy-and-sell-stock-with-cooldown.go) | [py](Problems/0301-0400/0309-best-time-to-buy-and-sell-stock-with-cooldown/0309-best-time-to-buy-and-sell-stock-with-cooldown.py) | [rs](Problems/0301-0400/0309-best-time-to-buy-and-sell-stock-with-cooldown/0309-best-time-to-buy-and-sell-stock-with-cooldown.rs) | 官方一解：三状态 DP（持有/当天卖出/空仓可买），按天存表为 O(n) 空间、滚成三变量为 O(1) 空间，后者最优；买入只能来自空仓，卖出次日才解冻 |
 
-# 第九阶段（3 周）
+# 第九阶段（2 周）· 线性扫描与常用技巧
+
+这一阶段不引入新容器，只讲四类把解法抬一档的手段：双指针与滑动窗口把两重循环
+压成一次扫描；前缀后缀统计把区间答案压成 O(1) 作差；位运算把状态压进一个整数；
+贪心没有模板，靠的是对「为什么可以贪」的证明。
 
 ## 双指针
 
 | 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
 | --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [344. 反转字符串](https://leetcode.cn/problems/reverse-string/) | [cpp](Problems/0301-0400/0344-reverse-string/0344-reverse-string.cpp) | [go](Problems/0301-0400/0344-reverse-string/0344-reverse-string.go) | [py](Problems/0301-0400/0344-reverse-string/0344-reverse-string.py) | [rs](Problems/0301-0400/0344-reverse-string/0344-reverse-string.rs) | 双指针首尾交换 |
+| ✅ | [344. 反转字符串](https://leetcode.cn/problems/reverse-string/) | [cpp](Problems/0301-0400/0344-reverse-string/0344-reverse-string.cpp) | [go](Problems/0301-0400/0344-reverse-string/0344-reverse-string.go) | [py](Problems/0301-0400/0344-reverse-string/0344-reverse-string.py) | [rs](Problems/0301-0400/0344-reverse-string/0344-reverse-string.rs) | 另见 第一阶段 · 纯编程；双指针首尾交换 |
 | ✅ | [面试题 16.24. 数对和（例题 1）](https://leetcode.cn/problems/pairs-with-sum-lcci/) | [cpp](InterviewQuestions/16.24-pairs-with-sum-lcci.cpp) | [go](InterviewQuestions/16.24-pairs-with-sum-lcci.go) | [py](InterviewQuestions/16.24-pairs-with-sum-lcci.py) | [rs](InterviewQuestions/16.24-pairs-with-sum-lcci.rs) | 官方两解：排序 + 两端双指针 / 哈希计数一次遍历配对；均为 O(n) 级时间，哈希版单遍 O(n) 但占用 O(n) 空间，排序版额外空间可到 O(1)（原地排序），README 取其哈希版；同一元素只能用一次，k=2a 时计数要减半 |
-| ✅ | [1. 两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 与第一阶段同一题：官方哈希表为最优；本题在双指针板块仅作对照——双指针须先排序，会打乱下标，返回下标时不能直接用，故非本题官方解法 |
-| ✅ | [15. 三数之和（中等，墨奇社招）](https://leetcode.cn/problems/3sum/) | [cpp](Problems/0001-0100/0015-3sum/0015-3sum.cpp) | [go](Problems/0001-0100/0015-3sum/0015-3sum.go) | [py](Problems/0001-0100/0015-3sum/0015-3sum.py) | [rs](Problems/0001-0100/0015-3sum/0015-3sum.rs) | 等价条目，题解见「哈希表」章节同一行 |
-| ✅ | [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 ](https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/) | [cpp](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.cpp) | [go](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.go) | [py](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.py) | [rs](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.rs) | 与第三阶段排序板块同一题（现收录为 LCR 139「训练计划 I」）：首尾双指针原地交换，O(n) 时间 O(1) 空间，不保证稳定性 |
-| ✅ | [75. 颜色分类 ](https://leetcode.cn/problems/sort-colors/) | [cpp](Problems/0001-0100/0075-sort-colors/0075-sort-colors.cpp) | [go](Problems/0001-0100/0075-sort-colors/0075-sort-colors.go) | [py](Problems/0001-0100/0075-sort-colors/0075-sort-colors.py) | [rs](Problems/0001-0100/0075-sort-colors/0075-sort-colors.rs) | 与第三阶段排序板块同一题：官方三解中最优为 p0+p2 双指针一趟扫描，O(n) 时间 O(1) 空间，本质是三路划分 |
+| ✅ | [1. 两数之和（简单，虾皮社招）](https://leetcode.cn/problems/two-sum/) | [cpp](Problems/0001-0100/0001-two-sum/0001-two-sum.cpp) | [go](Problems/0001-0100/0001-two-sum/0001-two-sum.go) | [py](Problems/0001-0100/0001-two-sum/0001-two-sum.py) | [rs](Problems/0001-0100/0001-two-sum/0001-two-sum.rs) | 另见 第一阶段 · 纯编程、第四阶段 · 哈希表；官方哈希表为最优；本题在双指针板块仅作对照——双指针须先排序，会打乱下标，返回下标时不能直接用，故非本题官方解法 |
+| ✅ | [15. 三数之和（中等，墨奇社招）](https://leetcode.cn/problems/3sum/) | [cpp](Problems/0001-0100/0015-3sum/0015-3sum.cpp) | [go](Problems/0001-0100/0015-3sum/0015-3sum.go) | [py](Problems/0001-0100/0015-3sum/0015-3sum.py) | [rs](Problems/0001-0100/0015-3sum/0015-3sum.rs) | 另见 第四阶段 · 哈希表；两处共用同一份题解 |
+| ✅ | [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 ](https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/) | [cpp](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.cpp) | [go](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.go) | [py](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.py) | [rs](JianZhiOffer/21-调整数组顺序使奇数位于偶数前面.rs) | 另见 第三阶段 · 排序；（现收录为 LCR 139「训练计划 I」）：首尾双指针原地交换，O(n) 时间 O(1) 空间，不保证稳定性 |
+| ✅ | [75. 颜色分类 ](https://leetcode.cn/problems/sort-colors/) | [cpp](Problems/0001-0100/0075-sort-colors/0075-sort-colors.cpp) | [go](Problems/0001-0100/0075-sort-colors/0075-sort-colors.go) | [py](Problems/0001-0100/0075-sort-colors/0075-sort-colors.py) | [rs](Problems/0001-0100/0075-sort-colors/0075-sort-colors.rs) | 另见 第三阶段 · 排序；官方三解中最优为 p0+p2 双指针一趟扫描，O(n) 时间 O(1) 空间，本质是三路划分 |
 | ✅ | [283. 移动零 已排序未排序指针（例题 2）](https://leetcode.cn/problems/move-zeroes/) | [cpp](Problems/0201-0300/0283-move-zeroes/0283-move-zeroes.cpp) | [go](Problems/0201-0300/0283-move-zeroes/0283-move-zeroes.go) | [py](Problems/0201-0300/0283-move-zeroes/0283-move-zeroes.py) | [rs](Problems/0201-0300/0283-move-zeroes/0283-move-zeroes.rs) | 官方两解：一次遍历把非零元素与零原地交换 / 两次遍历先覆盖非零再补零；两解同为 O(n) 时间 O(1) 空间，并列最优（交换版写次数少，覆盖版赋值次数少） |
 | ✅ | [面试题 16.06. 最小差 类似合并两个有序数组（例题 3）](https://leetcode.cn/problems/smallest-difference-lcci/) | [cpp](InterviewQuestions/16.06-smallest-difference-lcci.cpp) | [go](InterviewQuestions/16.06-smallest-difference-lcci.go) | [py](InterviewQuestions/16.06-smallest-difference-lcci.py) | [rs](InterviewQuestions/16.06-smallest-difference-lcci.rs) | 官方两解：暴力枚举数对 / 两数组排序后双指针收割；后者 O(m log m + n log n) 时间、O(1) 额外空间，为最优；指针每次前移较小一方的元素，差值要用 64 位防溢出 |
 | ✅ | [面试题 17.11. 单词距离 类似合并两个有序数组](https://leetcode.cn/problems/find-closest-lcci/) | [cpp](InterviewQuestions/17.11-find-closest-lcci.cpp) | [go](InterviewQuestions/17.11-find-closest-lcci.go) | [py](InterviewQuestions/17.11-find-closest-lcci.py) | [rs](InterviewQuestions/17.11-find-closest-lcci.rs) | 官方三解：枚举下标组合 / 哈希表存词的出现位置再归并 / 一次遍历同时记两个词最近下标；末解 O(n) 时间 O(1) 空间，为最优；两词相同要按题意直接返回 0 |
@@ -593,8 +613,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | --- | --- | --- | --- | --- | --- | --- |
 | ✅ | [53. 最大子序和](https://leetcode.cn/problems/maximum-subarray/) | [cpp](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.cpp) | [go](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.go) | [py](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.py) | [rs](Problems/0001-0100/0053-maximum-subarray/0053-maximum-subarray.rs) | 官方三解：Kadane DP / 分治维护区间四值 / 前缀和的最值差；DP 与前缀和同为 O(n) 时间 O(1) 空间，并列最优；四值合并的分治时间也是 O(n)，只因递归栈 O(log n) 才落选（按扫描合并才是 O(n log n)）；全负数时答案初值不能取 0 |
 | ✅ | [238. 除自身以外数组的乘积](https://leetcode.cn/problems/product-of-array-except-self/) | [cpp](Problems/0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.cpp) | [go](Problems/0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.go) | [py](Problems/0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.py) | [rs](Problems/0201-0300/0238-product-of-array-except-self/0238-product-of-array-except-self.rs) | 官方两解：左右乘积数组 / 结果数组存左积再用一个变量滚右积；后者额外空间 O(1)（结果数组不计），为最优；不用除法，所以含 0 甚至含两个 0 也成立 |
-| ✅ | [面试题 05.03. 翻转数位](https://leetcode.cn/problems/reverse-bits-lcci/) | [cpp](InterviewQuestions/05.03-reverse-bits-lcci.cpp) | [go](InterviewQuestions/05.03-reverse-bits-lcci.go) | [py](InterviewQuestions/05.03-reverse-bits-lcci.py) | [rs](InterviewQuestions/05.03-reverse-bits-lcci.rs) | 官方一解：用 prev/cur 记录上一段与当前段连续 1 的长度，遇 0 时尝试拼接，即最优；32 位全 1 时结果必须截到 32 不能变 33，负数按无符号位模式处理 |
-| ✅ | [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/) | [cpp](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.cpp) | [go](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.go) | [py](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.py) | [rs](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.rs) | 同「单调栈」章节条目，前缀后缀视角即解法二 DP 预处理左右最高 |
+| ✅ | [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/) | [cpp](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.cpp) | [go](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.go) | [py](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.py) | [rs](Problems/0001-0100/0042-trapping-rain-water/0042-trapping-rain-water.rs) | 另见 第二阶段 · 栈；前缀后缀视角即解法二 DP 预处理左右最高 |
 
 ## 位运算
 
@@ -610,21 +629,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ✅ | [LCR 178 / 剑指 Offer 56 - II. 训练计划 VI（中等） ](https://leetcode.cn/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/) | [cpp](JianZhiOffer/56-II-数组中数字出现的次数 II.cpp) | [go](JianZhiOffer/56-II-数组中数字出现的次数 II.go) | [py](JianZhiOffer/56-II-数组中数字出现的次数 II.py) | [rs](JianZhiOffer/56-II-数组中数字出现的次数 II.rs) | 现收录为 LCR 178「训练计划 VI」，签名改为 trainingPlan(actions)；官方两解：按位统计对 3 取模 / 有限状态自动机两掩码；均为 O(n) 时间 O(1) 空间，并列最优（前者 O(32n) 常数，后者一次遍历、状态转移可用卡诺图化简） |
 | ✅ | [面试题 16.01. 交换数字](https://leetcode.cn/problems/swap-numbers-lcci/) | [cpp](InterviewQuestions/16.01-swap-numbers-lcci.cpp) | [go](InterviewQuestions/16.01-swap-numbers-lcci.go) | [py](InterviewQuestions/16.01-swap-numbers-lcci.py) | [rs](InterviewQuestions/16.01-swap-numbers-lcci.rs) | 官方两解：异或交换 / 加减交换；两解同为 O(1) 时间 O(1) 空间，并列最优；异或法在两数相同时会清零，需先判等 |
 | ✅ | [231. 2 的幂](https://leetcode.cn/problems/power-of-two/) | [cpp](Problems/0201-0300/0231-power-of-two/0231-power-of-two.cpp) | [go](Problems/0201-0300/0231-power-of-two/0231-power-of-two.go) | [py](Problems/0201-0300/0231-power-of-two/0231-power-of-two.py) | [rs](Problems/0201-0300/0231-power-of-two/0231-power-of-two.rs) | 官方三解：反复除以 2 / 清除最低位的 1 看是否归零 / 判断能否整除 2^30；后两解为 O(1)，并列最优；n 为 0 或负数一律 false，取模版本要用 2^30 因为 2^31 溢出 int |
-
-## 并查集
-
-并查集本身只有十几行，但「连通性 + 逐步合并」这一类问题的正解几乎都是它。
-带权并查集（399）与「并查集 + 二分答案」（778）是两个高频变体。
-
-| 状态 | 题目 | C++ | Go | Py | Rust | 备注 |
-| --- | --- | --- | --- | --- | --- | --- |
-| ✅ | [684. 冗余连接（中等）](https://leetcode.cn/problems/redundant-connection/) | [cpp](Problems/0601-0700/0684-redundant-connection/0684-redundant-connection.cpp) | [go](Problems/0601-0700/0684-redundant-connection/0684-redundant-connection.go) | [py](Problems/0601-0700/0684-redundant-connection/0684-redundant-connection.py) | [rs](Problems/0601-0700/0684-redundant-connection/0684-redundant-connection.rs) | 官方一解：并查集逐边合并，第一条两端已连通的边即答案，O(n α(n)) 即最优；另附逐边 DFS 作对照 O(n^2)；答案等价于最后出现的成环边 |
-| ✅ | [547. 省份数量（中等）](https://leetcode.cn/problems/number-of-provinces/) | [cpp](Problems/0501-0600/0547-number-of-provinces/0547-number-of-provinces.cpp) | [go](Problems/0501-0600/0547-number-of-provinces/0547-number-of-provinces.go) | [py](Problems/0501-0600/0547-number-of-provinces/0547-number-of-provinces.py) | [rs](Problems/0501-0600/0547-number-of-provinces/0547-number-of-provinces.rs) | 官方三解：并查集 / DFS / BFS，同为 O(n^2) 并列最优；连通块数 = n - 成功合并次数，只需扫上三角 |
-| ✅ | [130. 被围绕的区域（中等）](https://leetcode.cn/problems/surrounded-regions/) | [cpp](Problems/0101-0200/0130-surrounded-regions/0130-surrounded-regions.cpp) | [go](Problems/0101-0200/0130-surrounded-regions/0130-surrounded-regions.go) | [py](Problems/0101-0200/0130-surrounded-regions/0130-surrounded-regions.py) | [rs](Problems/0101-0200/0130-surrounded-regions/0130-surrounded-regions.rs) | 官方两解：边界 BFS 标记后回写 / 并查集连虚拟边界节点，同为 O(mn) 并列最优；必须从边界出发，不能从内部格反向判断 |
-| ✅ | [399. 除法求值（中等）](https://leetcode.cn/problems/evaluate-division/) | [cpp](Problems/0301-0400/0399-evaluate-division/0399-evaluate-division.cpp) | [go](Problems/0301-0400/0399-evaluate-division/0399-evaluate-division.go) | [py](Problems/0301-0400/0399-evaluate-division/0399-evaluate-division.py) | [rs](Problems/0301-0400/0399-evaluate-division/0399-evaluate-division.rs) | 官方两解：带权并查集 / 建图 DFS；并查集为 O((N+Q)α(N)) 最优，图 DFS 每次查询重走一条路径是 O(QN) 为非最优；权值取到根的比值，压缩时同步累乘 |
-| ✅ | [778. 水位上升的泳池中游泳（困难）](https://leetcode.cn/problems/swim-in-rising-water/) | [cpp](Problems/0701-0800/0778-swim-in-rising-water/0778-swim-in-rising-water.cpp) | [go](Problems/0701-0800/0778-swim-in-rising-water/0778-swim-in-rising-water.go) | [py](Problems/0701-0800/0778-swim-in-rising-water/0778-swim-in-rising-water.py) | [rs](Problems/0701-0800/0778-swim-in-rising-water/0778-swim-in-rising-water.rs) | 官方三解：二分答案 + BFS / 最小堆 / 按高度加格并查集，同为 O(n^2 log n) 并列最优；求的是路径最大高度的最小值，不是路径和 |
-| ✅ | [面试题 17.07. 婴儿名字（中等） ](https://leetcode.cn/problems/baby-names-lcci/) | [cpp](InterviewQuestions/17.07-baby-names-lcci.cpp) | [go](InterviewQuestions/17.07-baby-names-lcci.go) | [py](InterviewQuestions/17.07-baby-names-lcci.py) | [rs](InterviewQuestions/17.07-baby-names-lcci.rs) | 平台无题解文章，按题面用并查集合并同义词并累加频次，代表名取字典序最小（题面明写，不是取频率最高，官方示例 Chris 13 与 Christopher 19 合成 Chris 36 即此规则）；只出现在同义词里的名字也参与比较 |
-| ☐ | [323. 无向图中连通分量的数目（中等）力扣会员](https://leetcode.cn/problems/number-of-connected-components-in-an-undirected-graph/) |  |  |  |  | 力扣会员题，暂未收录；免费等价练习：547. 省份数量（同为并查集数连通块） |
+| ✅ | [面试题 05.03. 翻转数位](https://leetcode.cn/problems/reverse-bits-lcci/) | [cpp](InterviewQuestions/05.03-reverse-bits-lcci.cpp) | [go](InterviewQuestions/05.03-reverse-bits-lcci.go) | [py](InterviewQuestions/05.03-reverse-bits-lcci.py) | [rs](InterviewQuestions/05.03-reverse-bits-lcci.rs) | 官方一解：用 prev/cur 记录上一段与当前段连续 1 的长度，遇 0 时尝试拼接，即最优；32 位全 1 时结果必须截到 32 不能变 33，负数按无符号位模式处理 |
 
 ## 贪心
 
@@ -638,7 +643,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ✅ | [455. 分发饼干（简单）](https://leetcode.cn/problems/assign-cookies/) | [cpp](Problems/0401-0500/0455-assign-cookies/0455-assign-cookies.cpp) | [go](Problems/0401-0500/0455-assign-cookies/0455-assign-cookies.go) | [py](Problems/0401-0500/0455-assign-cookies/0455-assign-cookies.py) | [rs](Problems/0401-0500/0455-assign-cookies/0455-assign-cookies.rs) | 官方一解：排序 + 双指针，O(m log m + n log n) 即最优；小饼干优先喂小胃口，喂不饱就换更大的饼干 |
 | ✅ | [334. 递增的三元子序列（中等）](https://leetcode.cn/problems/increasing-triplet-subsequence/) | [cpp](Problems/0301-0400/0334-increasing-triplet-subsequence/0334-increasing-triplet-subsequence.cpp) | [go](Problems/0301-0400/0334-increasing-triplet-subsequence/0334-increasing-triplet-subsequence.go) | [py](Problems/0301-0400/0334-increasing-triplet-subsequence/0334-increasing-triplet-subsequence.py) | [rs](Problems/0301-0400/0334-increasing-triplet-subsequence/0334-increasing-triplet-subsequence.rs) | 官方两解：贪心维护 first/second O(n) O(1) 最优 / 前后缀最值数组 O(n) 空间非最优；first 与 second 不必来自同一组连续下标 |
 | ✅ | [452. 用最少数量的箭引爆气球（中等）](https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/) | [cpp](Problems/0401-0500/0452-minimum-number-of-arrows-to-burst-balloons/0452-minimum-number-of-arrows-to-burst-balloons.cpp) | [go](Problems/0401-0500/0452-minimum-number-of-arrows-to-burst-balloons/0452-minimum-number-of-arrows-to-burst-balloons.go) | [py](Problems/0401-0500/0452-minimum-number-of-arrows-to-burst-balloons/0452-minimum-number-of-arrows-to-burst-balloons.py) | [rs](Problems/0401-0500/0452-minimum-number-of-arrows-to-burst-balloons/0452-minimum-number-of-arrows-to-burst-balloons.rs) | 官方一解：按右端点排序 + 贪心，O(n log n) 即最优；端点相接算覆盖，按左端点排序会得到反例 |
-| ✅ | [56. 合并区间（中等） ](https://leetcode.cn/problems/merge-intervals/) | [cpp](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.cpp) | [go](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.go) | [py](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.py) | [rs](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.rs) | 与排序板块同一题：按左端点排序后一次扫描合并，O(n log n)，是「排序 + 贪心」的典型 |
+| ✅ | [56. 合并区间（中等） ](https://leetcode.cn/problems/merge-intervals/) | [cpp](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.cpp) | [go](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.go) | [py](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.py) | [rs](Problems/0001-0100/0056-merge-intervals/0056-merge-intervals.rs) | 另见 第三阶段 · 排序；按左端点排序后一次扫描合并，O(n log n)，是「排序 + 贪心」的典型 |
 | ✅ | [打车软件的订单调度系统（华为机考）](HuaweiJikao/taxi-order-scheduling-system/taxi-order-scheduling-system.cpp) | [cpp](HuaweiJikao/taxi-order-scheduling-system/taxi-order-scheduling-system.cpp) |  |  |  | 华为机考，无官方题解；先按题面把每人耗时折算成闭式公式（拥堵段/2 + 顺畅段/10 + 红灯数×15）并取最小值 T，再在 [T, T+60) 窗口内取评分最高者；每人耗时互不依赖、没有可复用的子问题，所以是「模拟 + 窗口贪心」而非动态规划；样例只覆盖 0 个红灯的司机，红灯按 15 秒还是按 50% 折算成期望 7.5 秒都得到 3,230，两种读法在样例上无法区分 |
 
 # 综合示例
