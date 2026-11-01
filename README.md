@@ -5,9 +5,20 @@
 > 每份文件都是可单文件编译运行的自包含程序，`main` 跑通后打印 `all tests passed`。
 > 另有一个独立章节，用手写的方式实现 31 个基础数据结构与算法，不依赖任何标准库容器。
 
+> **阶段怎么划的**：一至六阶段主要看「数据放在什么结构里」——链表、栈、哈希表、
+> 二叉树、堆与 Trie；七至九阶段换成「按什么套路算」——搜索、动态规划、常用技巧。
+> 第三阶段的排序与递归分治夹在中间，是二分查找和后面所有递归题型的垫脚；
+> 第一阶段的纯编程与找规律则是最前面的热身。
+>
+> **周数怎么算的**：按题量与难度估算，简单记 1、中等记 2、困难记 4 个负载单位，
+> 每周按 30 单位（约每天 3 道中等题）折算，不足一周的向上取整。
+> 九个阶段合计约 17 周，是零基础起步的投入；有基础可压到一半，
+> 每天只有一小时的话翻倍也正常。
+
 ## 目录
 
-- [目录](#目录)
+- [LeetCode 题解集 · 刷题路线](#leetcode-题解集--刷题路线)
+  - [目录](#目录)
 - [手写基础数据结构与算法](#手写基础数据结构与算法)
   - [手写排序算法](#手写排序算法)
   - [手写线性结构](#手写线性结构)
@@ -18,14 +29,14 @@
 - [第一阶段（1 周）](#第一阶段1-周)
   - [纯编程](#纯编程)
   - [找规律](#找规律)
-- [第二阶段（1 周）](#第二阶段1-周)
+- [第二阶段（2 周）](#第二阶段2-周)
   - [链表](#链表)
   - [栈](#栈)
     - [单调栈与单调队列](#单调栈与单调队列)
 - [第三阶段（1 周）](#第三阶段1-周)
   - [递归 + 分治](#递归--分治)
   - [排序](#排序)
-- [第四阶段（1 周）](#第四阶段1-周)
+- [第四阶段（2 周）](#第四阶段2-周)
   - [二分查找](#二分查找)
   - [哈希表](#哈希表)
 - [第五阶段（2 周）](#第五阶段2-周)
@@ -41,18 +52,18 @@
 - [第六阶段（1 周）](#第六阶段1-周)
   - [堆](#堆)
   - [Trie 树](#trie-树)
-- [第七阶段（1 周）](#第七阶段1-周)
+- [第七阶段（3 周）](#第七阶段3-周)
   - [回溯](#回溯)
   - [DFS](#dfs)
   - [拓扑排序（课程表系列）](#拓扑排序课程表系列)
   - [BFS](#bfs)
-- [第八阶段（1 周）](#第八阶段1-周)
+- [第八阶段（2 周）](#第八阶段2-周)
   - [背包](#背包)
   - [线性 DP](#线性-dp)
   - [路径 DP](#路径-dp)
   - [区间与序列 DP](#区间与序列-dp)
   - [状态机 DP（买卖股票）](#状态机-dp买卖股票)
-- [第九阶段（1 周）](#第九阶段1-周)
+- [第九阶段（3 周）](#第九阶段3-周)
   - [双指针](#双指针)
   - [滑动窗口](#滑动窗口)
   - [前缀后缀统计](#前缀后缀统计)
@@ -169,7 +180,7 @@
 | ✅ | [54. 螺旋矩阵（中等，字节电商 22 届暑期实习，出处）](https://leetcode.cn/problems/spiral-matrix/) | [cpp](Problems/0001-0100/0054-spiral-matrix/0054-spiral-matrix.cpp) | [go](Problems/0001-0100/0054-spiral-matrix/0054-spiral-matrix.go) | [py](Problems/0001-0100/0054-spiral-matrix/0054-spiral-matrix.py) | [rs](Problems/0001-0100/0054-spiral-matrix/0054-spiral-matrix.rs) | 官方两解：方向数组模拟 O(mn) 访问标记空间非最优 / 四条边界收缩 O(1) 额外空间最优；末圈只剩一行或一列时须跳过下、左两段，否则重复输出 |
 | ✅ | [240. 搜索二维矩阵 II （中等）](https://leetcode.cn/problems/search-a-2d-matrix-ii/) | [cpp](Problems/0201-0300/0240-search-a-2d-matrix-ii/0240-search-a-2d-matrix-ii.cpp) | [go](Problems/0201-0300/0240-search-a-2d-matrix-ii/0240-search-a-2d-matrix-ii.go) | [py](Problems/0201-0300/0240-search-a-2d-matrix-ii/0240-search-a-2d-matrix-ii.py) | [rs](Problems/0201-0300/0240-search-a-2d-matrix-ii/0240-search-a-2d-matrix-ii.rs) | 官方三解：逐个比较 O(mn) / 每行二分 O(m log n) / 右上角 Z 字形 O(m+n)；最优为 Z 字形；只能从右上角或左下角出发，每步才能排除一行或一列 |
 
-# 第二阶段（1 周）
+# 第二阶段（2 周）
 
 ## 链表
 
@@ -261,7 +272,7 @@
 - 手写排序算法（快排 / 归并 / 冒泡 / 插入 / 堆排 / 希尔 / 计数 / 基数 / 桶）
   见独立章节：[手写基础数据结构与算法 · 手写排序算法](#手写排序算法)。
 
-# 第四阶段（1 周）
+# 第四阶段（2 周）
 
 ## 二分查找
 
@@ -412,7 +423,7 @@
 | ✅ | [面试题 17.17. 多次搜索（中等） 标准 AC 自动机，不过写 AC 自动机太复杂，Trie 树搞定](https://leetcode.cn/problems/multi-search-lcci/) | [cpp](InterviewQuestions/17.17-multi-search-lcci.cpp) | [go](InterviewQuestions/17.17-multi-search-lcci.go) | [py](InterviewQuestions/17.17-multi-search-lcci.py) | [rs](InterviewQuestions/17.17-multi-search-lcci.rs) | 官方一解：把 smalls 建成 Trie，再从 big 的每个起点向下匹配，O(B·L) 即最优；B 不超过 1000，写 AC 自动机收益不足，注释里说明了取舍；逐词暴力为对照 |
 | ✅ | [212. 单词搜索 II（困难）](https://leetcode.cn/problems/word-search-ii/) | [cpp](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.cpp) | [go](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.go) | [py](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.py) | [rs](Problems/0201-0300/0212-word-search-ii/0212-word-search-ii.rs) | 官方一解：Trie + 回溯，命中后把词尾标记清空即可避免重复输出，同时剪掉无孩子的叶节点；两版实现同阶并列最优；每次回溯必须还原棋盘字符 |
 
-# 第七阶段（1 周）
+# 第七阶段（3 周）
 
 ## 回溯
 
@@ -480,7 +491,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ✅ | [752. 打开转盘锁（中等）](https://leetcode.cn/problems/open-the-lock/) | [cpp](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.cpp) | [go](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.go) | [py](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.py) | [rs](Problems/0701-0800/0752-open-the-lock/0752-open-the-lock.rs) | 官方两解：逐层 BFS（每状态 8 个邻居 + deadends 去重）/ 双向 BFS；状态空间固定 10^4，两解最坏同为 O(10^4)，并列最优（双向只把实际展开量从 b^d 压到 b^(d/2)）；0000 在 deadends 中返回 -1 |
 | ✅ | [面试题 17.22. 单词转换（中等） ](https://leetcode.cn/problems/word-transformer-lcci/) | [cpp](InterviewQuestions/17.22-word-transformer-lcci.cpp) | [go](InterviewQuestions/17.22-word-transformer-lcci.go) | [py](InterviewQuestions/17.22-word-transformer-lcci.py) | [rs](InterviewQuestions/17.22-word-transformer-lcci.rs) | 平台无题解文章，按题面自拟两解：单向 BFS / 双向 BFS，同为 O(V·L^2) 时间，并列最优；终点必须在字典里；题目接受任意合法序列，官方示例本身不是最短的 |
 
-# 第八阶段（1 周）
+# 第八阶段（2 周）
 
 动态规划按「状态是什么形状」分节，而不是按题面故事分节。股票、房子、背包
 只是外壳；决定转移方程的，是状态带几个下标、下标之上往哪个方向转移。
@@ -551,7 +562,7 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
 | ✅ | [714. 买卖股票的最佳时机含手续](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/) | [cpp](Problems/0701-0800/0714-best-time-to-buy-and-sell-stock-with-transaction-fee/0714-best-time-to-buy-and-sell-stock-with-transaction-fee.cpp) | [go](Problems/0701-0800/0714-best-time-to-buy-and-sell-stock-with-transaction-fee/0714-best-time-to-buy-and-sell-stock-with-transaction-fee.go) | [py](Problems/0701-0800/0714-best-time-to-buy-and-sell-stock-with-transaction-fee/0714-best-time-to-buy-and-sell-stock-with-transaction-fee.py) | [rs](Problems/0701-0800/0714-best-time-to-buy-and-sell-stock-with-transaction-fee/0714-best-time-to-buy-and-sell-stock-with-transaction-fee.rs) | 官方两解：DP 状态机（卖出时扣手续费）/ 贪心（买入时预扣）；并列最优 O(n) 时间 O(1) 空间；手续费只在一头扣一次，fee=0 时退化成 122 题 |
 | ✅ | [309. 最佳买卖股票时机含冷冻期](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/) | [cpp](Problems/0301-0400/0309-best-time-to-buy-and-sell-stock-with-cooldown/0309-best-time-to-buy-and-sell-stock-with-cooldown.cpp) | [go](Problems/0301-0400/0309-best-time-to-buy-and-sell-stock-with-cooldown/0309-best-time-to-buy-and-sell-stock-with-cooldown.go) | [py](Problems/0301-0400/0309-best-time-to-buy-and-sell-stock-with-cooldown/0309-best-time-to-buy-and-sell-stock-with-cooldown.py) | [rs](Problems/0301-0400/0309-best-time-to-buy-and-sell-stock-with-cooldown/0309-best-time-to-buy-and-sell-stock-with-cooldown.rs) | 官方一解：三状态 DP（持有/当天卖出/空仓可买），按天存表为 O(n) 空间、滚成三变量为 O(1) 空间，后者最优；买入只能来自空仓，卖出次日才解冻 |
 
-# 第九阶段（1 周）
+# 第九阶段（3 周）
 
 ## 双指针
 
