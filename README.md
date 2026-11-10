@@ -18,8 +18,6 @@
 
 ## 目录
 
-- [LeetCode 题解集 · 刷题路线](#leetcode-题解集--刷题路线)
-  - [目录](#目录)
 - [手写基础数据结构与算法](#手写基础数据结构与算法)
   - [手写排序算法](#手写排序算法)
   - [手写线性结构](#手写线性结构)
@@ -73,6 +71,7 @@
   - [贪心](#贪心)
 - [综合示例](#综合示例)
 - [其他](#其他)
+- [许可协议](#许可协议)
 
 # 手写基础数据结构与算法
 
@@ -147,8 +146,6 @@
 | ✅ | 哈希表 | [cpp](Algorithms/hash/hash-map.cpp) | [go](Algorithms/hash/hash-map.go) | [py](Algorithms/hash/hash-map.py) | [rs](Algorithms/hash/hash-map.rs) | 平均 O(1)，最坏 O(n)；空间 O(n) | 链地址法 + 负载因子 0.75 扩容；容量取 2 的幂，用 `& (capacity-1)` 代替取模；扩容后每个节点都要用新容量重新计算桶下标，否则「原来同桶」的节点会散错位置 |
 
 # 第一阶段（1 周）· 代码基本功
-
-> [详细速览版](Docs/stage01.md)
 
 ## 纯编程
 
@@ -663,3 +660,10 @@ BFS 与 DFS 是图遍历的两大支柱：DFS 擅长连通性与枚举，BFS 擅
   - [LeetCode刷题手册.pdf](./Docs/pdf/LeetCode刷题手册.pdf)
   - [LeetCode 101 - A LeetCode Grinding Guide (C++ Version).pdf](./Docs/pdf/LeetCode-101_A-LeetCode-Grinding-Guide_C++_Version.pdf)
   - [LeetCode题解（java语言实现）.pdf](./Docs/pdf/LeetCode题解（java语言实现）.pdf)
+
+# 许可协议
+
+题解代码与手写数据结构/算法的实现以 MIT 协议发布，完整条款见 [LICENSE](LICENSE)。
+题解文件头里引用的题目描述版权归 LeetCode 所有，本条授权只覆盖本仓库作者编写的代码。
+
+`Examples/` 等个别目录下的代码不适用上述 MIT 条款，沿用各自文件头标注的原有许可。

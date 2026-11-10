@@ -118,7 +118,7 @@ scope 词表（只在这些值里选，拼写照抄）：
 | scope | 对应路径 |
 | --- | --- |
 | `README` | 根目录 `README.md` |
-| `Guidelines` | `Problems/TEMPLATE.md`、`.cursor/skills/` |
+| `Guidelines` | `Problems/TEMPLATE.md`、`.agent/skills/` |
 | `Config` | `.vscode/`、`.gitignore` |
 | `Docs` | `Docs/` |
 | `Examples` | `Examples/` |
